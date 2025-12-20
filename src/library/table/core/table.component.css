@@ -1,0 +1,106 @@
+.lib-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.lib-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+/* Header */
+.lib-table-header {
+  background-color: #2e4053;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.lib-table-header-cell {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #cccfd3;
+  white-space: nowrap;
+}
+
+.lib-table-header-cell--sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.lib-table-header-cell--sortable:hover {
+  background-color: #e9ecef;
+}
+
+/* Body */
+.lib-table-body {
+  background-color: #fff;
+}
+
+.lib-table-row {
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.lib-table--hoverable .lib-table-row:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.lib-table--striped .lib-table-row--odd {
+  background-color: #f8f9fa;
+}
+
+.lib-table-cell {
+  padding: 0.75rem 1rem;
+  color: #212529;
+  vertical-align: middle;
+}
+
+/* Density Variants */
+.lib-table--compact .lib-table-header-cell,
+.lib-table--compact .lib-table-cell {
+  padding: 0.4rem 0.75rem;
+}
+
+.lib-table--comfortable .lib-table-header-cell,
+.lib-table--comfortable .lib-table-cell {
+  padding: 1rem 1.25rem;
+}
+
+/* Empty State */
+.lib-table-empty-row td {
+  padding: 2rem;
+  text-align: center;
+}
+
+.lib-table-empty {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Loading State */
+.lib-table-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #6c757d;
+  gap: 1rem;
+}
+
+.lib-table-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #e9ecef;
+  border-top-color: #0d6efd;
+  border-radius: 50%;
+  animation: lib-table-spin 0.8s linear infinite;
+}
+
+@keyframes lib-table-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

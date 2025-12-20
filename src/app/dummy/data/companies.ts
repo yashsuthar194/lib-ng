@@ -1,0 +1,184 @@
+import { Company } from '../models';
+
+export const COMPANIES: Company[] = [
+  {
+    id: 'comp-001',
+    name: 'TechNova Solutions',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=TechNova',
+    industry: 'Software Development',
+    address: { city: 'San Francisco', country: 'USA' },
+    employeeCount: 1250,
+    createdAt: '2018-03-15T08:00:00Z'
+  },
+  {
+    id: 'comp-002',
+    name: 'GreenLeaf Energy',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=GreenLeaf',
+    industry: 'Renewable Energy',
+    address: { city: 'Berlin', country: 'Germany' },
+    employeeCount: 890,
+    createdAt: '2019-07-22T10:30:00Z'
+  },
+  {
+    id: 'comp-003',
+    name: 'Apex Logistics International',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=ApexLogistics',
+    industry: 'Transportation & Logistics',
+    address: { city: 'Rotterdam', country: 'Netherlands' },
+    employeeCount: 4500,
+    createdAt: '2015-11-10T14:45:00Z'
+  },
+  {
+    id: 'comp-004',
+    name: 'FinStream Capital',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=FinStream',
+    industry: 'Financial Services',
+    address: { city: 'London', country: 'United Kingdom' },
+    employeeCount: 3200,
+    createdAt: '2017-01-05T09:15:00Z'
+  },
+  {
+    id: 'comp-005',
+    name: 'BioGenix Labs',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=BioGenix',
+    industry: 'Biotechnology',
+    address: { city: 'Boston', country: 'USA' },
+    employeeCount: 520,
+    createdAt: '2020-04-12T11:00:00Z'
+  },
+  {
+    id: 'comp-006',
+    name: 'Quantum Computing Inc',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=QuantumComputing',
+    industry: 'Technology Research',
+    address: { city: 'Tokyo', country: 'Japan' },
+    employeeCount: 340,
+    createdAt: '2021-09-01T07:30:00Z'
+  },
+  {
+    id: 'comp-007',
+    name: 'CloudNine Hosting',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=CloudNine',
+    industry: 'Cloud Infrastructure',
+    address: { city: 'Seattle', country: 'USA' },
+    employeeCount: 780,
+    createdAt: '2016-06-18T13:20:00Z'
+  },
+  {
+    id: 'comp-008',
+    name: 'MediCare Plus',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=MediCarePlus',
+    industry: 'Healthcare',
+    address: { city: 'Toronto', country: 'Canada' },
+    employeeCount: 2100,
+    createdAt: '2014-02-28T16:00:00Z'
+  },
+  {
+    id: 'comp-009',
+    name: 'EduSmart Academy',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=EduSmart',
+    industry: 'Education Technology',
+    address: { city: 'Singapore', country: 'Singapore' },
+    employeeCount: 450,
+    createdAt: '2019-08-10T09:45:00Z'
+  },
+  {
+    id: 'comp-010',
+    name: 'AutoDrive Motors',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=AutoDrive',
+    industry: 'Automotive',
+    address: { city: 'Munich', country: 'Germany' },
+    employeeCount: 6800,
+    createdAt: '2012-05-20T08:00:00Z'
+  },
+  {
+    id: 'comp-011',
+    name: 'FreshMart Retail',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=FreshMart',
+    industry: 'Retail',
+    address: { city: 'Chicago', country: 'USA' },
+    employeeCount: 15000,
+    createdAt: '2008-12-01T10:00:00Z'
+  },
+  {
+    id: 'comp-012',
+    name: 'SecureVault Cyber',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=SecureVault',
+    industry: 'Cybersecurity',
+    address: { city: 'Tel Aviv', country: 'Israel' },
+    employeeCount: 620,
+    createdAt: '2018-10-15T12:30:00Z'
+  },
+  {
+    id: 'comp-013',
+    name: 'AeroSpace Dynamics',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=AeroSpace',
+    industry: 'Aerospace',
+    address: { city: 'Los Angeles', country: 'USA' },
+    employeeCount: 2800,
+    createdAt: '2010-07-04T14:00:00Z'
+  },
+  {
+    id: 'comp-014',
+    name: 'GourmetChef Foods',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=GourmetChef',
+    industry: 'Food & Beverage',
+    address: { city: 'Paris', country: 'France' },
+    employeeCount: 1100,
+    createdAt: '2016-03-22T11:15:00Z'
+  },
+  {
+    id: 'comp-015',
+    name: 'Stellar Entertainment',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=StellarEntertainment',
+    industry: 'Media & Entertainment',
+    address: { city: 'Los Angeles', country: 'USA' },
+    employeeCount: 950,
+    createdAt: '2017-11-30T09:00:00Z'
+  },
+  {
+    id: 'comp-016',
+    name: 'BuildRight Construction',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=BuildRight',
+    industry: 'Construction',
+    address: { city: 'Dubai', country: 'UAE' },
+    employeeCount: 3400,
+    createdAt: '2013-04-10T08:30:00Z'
+  },
+  {
+    id: 'comp-017',
+    name: 'PharmaCore Industries',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=PharmaCore',
+    industry: 'Pharmaceuticals',
+    address: { city: 'Basel', country: 'Switzerland' },
+    employeeCount: 4200,
+    createdAt: '2011-09-05T10:45:00Z'
+  },
+  {
+    id: 'comp-018',
+    name: 'TravelWise Tours',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=TravelWise',
+    industry: 'Travel & Tourism',
+    address: { city: 'Sydney', country: 'Australia' },
+    employeeCount: 680,
+    createdAt: '2015-02-14T15:00:00Z'
+  },
+  {
+    id: 'comp-019',
+    name: 'SmartHome Devices',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=SmartHome',
+    industry: 'Consumer Electronics',
+    address: { city: 'Shenzhen', country: 'China' },
+    employeeCount: 2200,
+    createdAt: '2018-06-25T07:00:00Z'
+  },
+  {
+    id: 'comp-020',
+    name: 'LegalEase Partners',
+    logoUrl: 'https://api.dicebear.com/7.x/initials/svg?seed=LegalEase',
+    industry: 'Legal Services',
+    address: { city: 'New York', country: 'USA' },
+    employeeCount: 380,
+    createdAt: '2014-08-19T13:30:00Z'
+  }
+];

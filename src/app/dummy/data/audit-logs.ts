@@ -1,0 +1,685 @@
+import { AuditLog } from '../models';
+
+export const AUDIT_LOGS: AuditLog[] = [
+  // TechNova Users Activity
+  {
+    id: 'log-001',
+    userId: 'user-001',
+    action: 'Login',
+    timestamp: '2024-12-18T09:15:00Z',
+    details: 'Successful login from corporate network',
+    ipAddress: '192.168.1.45'
+  },
+  {
+    id: 'log-002',
+    userId: 'user-002',
+    action: 'Create Project',
+    timestamp: '2024-12-17T14:30:00Z',
+    details: 'Created new project: Mobile App v3.0',
+    ipAddress: '192.168.1.78'
+  },
+  {
+    id: 'log-003',
+    userId: 'user-003',
+    action: 'Update Task',
+    timestamp: '2024-12-18T08:45:00Z',
+    details: 'Updated task status: Design Homepage Wireframes to Done',
+    ipAddress: '192.168.1.102'
+  },
+  {
+    id: 'log-004',
+    userId: 'user-001',
+    action: 'Access Settings',
+    timestamp: '2024-12-18T09:20:00Z',
+    details: 'Accessed company security settings',
+    ipAddress: '192.168.1.45'
+  },
+  {
+    id: 'log-005',
+    userId: 'user-004',
+    action: 'Download Report',
+    timestamp: '2024-12-16T16:20:00Z',
+    details: 'Downloaded project performance report',
+    ipAddress: '10.0.0.55'
+  },
+
+  // GreenLeaf Energy Activity
+  {
+    id: 'log-006',
+    userId: 'user-006',
+    action: 'Login',
+    timestamp: '2024-12-18T07:00:00Z',
+    details: 'Login from Berlin office',
+    ipAddress: '185.45.12.89'
+  },
+  {
+    id: 'log-007',
+    userId: 'user-007',
+    action: 'Assign Task',
+    timestamp: '2024-12-17T18:45:00Z',
+    details: 'Assigned IoT Sensor Integration Protocol to Lukas Braun',
+    ipAddress: '185.45.12.102'
+  },
+  {
+    id: 'log-008',
+    userId: 'user-008',
+    action: 'Update Task',
+    timestamp: '2024-12-18T06:30:00Z',
+    details: 'Updated task progress: IoT Sensor Integration Protocol - 60%',
+    ipAddress: '185.45.12.150'
+  },
+
+  // Apex Logistics Activity
+  {
+    id: 'log-009',
+    userId: 'user-009',
+    action: 'Login',
+    timestamp: '2024-12-18T05:45:00Z',
+    details: 'Early morning login from Rotterdam HQ',
+    ipAddress: '82.217.45.10'
+  },
+  {
+    id: 'log-010',
+    userId: 'user-010',
+    action: 'View Fleet Dashboard',
+    timestamp: '2024-12-17T17:30:00Z',
+    details: 'Accessed real-time fleet tracking dashboard',
+    ipAddress: '82.217.45.25'
+  },
+  {
+    id: 'log-011',
+    userId: 'user-011',
+    action: 'Complete Task',
+    timestamp: '2024-12-18T04:20:00Z',
+    details: 'Marked GPS Tracking Module as completed',
+    ipAddress: '82.217.45.67'
+  },
+  {
+    id: 'log-012',
+    userId: 'user-009',
+    action: 'Export Data',
+    timestamp: '2024-12-18T06:00:00Z',
+    details: 'Exported fleet analytics for Q4 report',
+    ipAddress: '82.217.45.10'
+  },
+
+  // FinStream Capital Activity
+  {
+    id: 'log-013',
+    userId: 'user-013',
+    action: 'Login',
+    timestamp: '2024-12-18T08:00:00Z',
+    details: 'Secure login with 2FA from London office',
+    ipAddress: '51.140.25.88'
+  },
+  {
+    id: 'log-014',
+    userId: 'user-014',
+    action: 'View Fraud Cases',
+    timestamp: '2024-12-17T16:45:00Z',
+    details: 'Accessed fraud detection dashboard - viewed 15 flagged cases',
+    ipAddress: '51.140.25.112'
+  },
+  {
+    id: 'log-015',
+    userId: 'user-015',
+    action: 'Update Task',
+    timestamp: '2024-12-18T07:30:00Z',
+    details: 'Updated Real-time Scoring Engine task with new requirements',
+    ipAddress: '51.140.25.45'
+  },
+  {
+    id: 'log-016',
+    userId: 'user-016',
+    action: 'Comment Added',
+    timestamp: '2024-12-16T14:15:00Z',
+    details: 'Added comment on Case Investigation Dashboard task',
+    ipAddress: '51.140.25.78'
+  },
+
+  // BioGenix Labs Activity
+  {
+    id: 'log-017',
+    userId: 'user-017',
+    action: 'Login',
+    timestamp: '2024-12-18T10:30:00Z',
+    details: 'Login to lab management system',
+    ipAddress: '72.14.202.55'
+  },
+  {
+    id: 'log-018',
+    userId: 'user-018',
+    action: 'Upload Data',
+    timestamp: '2024-12-17T11:20:00Z',
+    details: 'Uploaded genome sequencing batch results - 2.3GB',
+    ipAddress: '72.14.202.78'
+  },
+  {
+    id: 'log-019',
+    userId: 'user-019',
+    action: 'Run Analysis',
+    timestamp: '2024-12-18T09:45:00Z',
+    details: 'Initiated variant calling pipeline for batch #4521',
+    ipAddress: '72.14.202.102'
+  },
+
+  // Quantum Computing Activity
+  {
+    id: 'log-020',
+    userId: 'user-020',
+    action: 'Login',
+    timestamp: '2024-12-18T02:00:00Z',
+    details: 'Login from Tokyo research facility',
+    ipAddress: '203.104.45.12'
+  },
+  {
+    id: 'log-021',
+    userId: 'user-021',
+    action: 'Run Simulation',
+    timestamp: '2024-12-17T23:45:00Z',
+    details: 'Executed quantum circuit simulation - 50 qubits',
+    ipAddress: '203.104.45.34'
+  },
+  {
+    id: 'log-022',
+    userId: 'user-022',
+    action: 'Save Experiment',
+    timestamp: '2024-12-18T01:30:00Z',
+    details: 'Saved experiment results: Grover algorithm optimization',
+    ipAddress: '203.104.45.56'
+  },
+
+  // CloudNine Hosting Activity
+  {
+    id: 'log-023',
+    userId: 'user-023',
+    action: 'Login',
+    timestamp: '2024-12-18T11:00:00Z',
+    details: 'Admin login from Seattle HQ',
+    ipAddress: '104.215.148.20'
+  },
+  {
+    id: 'log-024',
+    userId: 'user-024',
+    action: 'Scale Cluster',
+    timestamp: '2024-12-17T19:30:00Z',
+    details: 'Scaled kubernetes cluster from 10 to 25 nodes',
+    ipAddress: '104.215.148.45'
+  },
+  {
+    id: 'log-025',
+    userId: 'user-025',
+    action: 'View Metrics',
+    timestamp: '2024-12-18T10:15:00Z',
+    details: 'Accessed auto-scaling metrics dashboard',
+    ipAddress: '104.215.148.78'
+  },
+
+  // MediCare Plus Activity
+  {
+    id: 'log-026',
+    userId: 'user-026',
+    action: 'Login',
+    timestamp: '2024-12-18T12:00:00Z',
+    details: 'Secure healthcare portal login',
+    ipAddress: '99.79.45.10'
+  },
+  {
+    id: 'log-027',
+    userId: 'user-027',
+    action: 'Start Consultation',
+    timestamp: '2024-12-17T15:20:00Z',
+    details: 'Initiated video consultation with patient ID: P-4521',
+    ipAddress: '99.79.45.25'
+  },
+  {
+    id: 'log-028',
+    userId: 'user-028',
+    action: 'Update Patient Record',
+    timestamp: '2024-12-18T06:45:00Z',
+    details: 'Updated patient vitals for ID: P-3892',
+    ipAddress: '99.79.45.67'
+  },
+  {
+    id: 'log-029',
+    userId: 'user-026',
+    action: 'Generate Prescription',
+    timestamp: '2024-12-18T12:30:00Z',
+    details: 'Generated e-prescription for patient P-4521',
+    ipAddress: '99.79.45.10'
+  },
+
+  // EduSmart Academy Activity
+  {
+    id: 'log-030',
+    userId: 'user-030',
+    action: 'Login',
+    timestamp: '2024-12-18T03:30:00Z',
+    details: 'Professor login from Singapore campus',
+    ipAddress: '13.251.45.12'
+  },
+  {
+    id: 'log-031',
+    userId: 'user-031',
+    action: 'Create Course',
+    timestamp: '2024-12-17T22:00:00Z',
+    details: 'Created new course: Advanced Machine Learning',
+    ipAddress: '13.251.45.34'
+  },
+  {
+    id: 'log-032',
+    userId: 'user-032',
+    action: 'Upload Content',
+    timestamp: '2024-12-18T02:45:00Z',
+    details: 'Uploaded 12 video lectures for AI Tutoring module',
+    ipAddress: '13.251.45.56'
+  },
+
+  // AutoDrive Motors Activity
+  {
+    id: 'log-033',
+    userId: 'user-033',
+    action: 'Login',
+    timestamp: '2024-12-18T06:00:00Z',
+    details: 'Executive login from Munich headquarters',
+    ipAddress: '89.246.78.10'
+  },
+  {
+    id: 'log-034',
+    userId: 'user-034',
+    action: 'View Telemetry',
+    timestamp: '2024-12-17T13:45:00Z',
+    details: 'Accessed EV fleet telemetry dashboard',
+    ipAddress: '89.246.78.25'
+  },
+  {
+    id: 'log-035',
+    userId: 'user-035',
+    action: 'Update Task',
+    timestamp: '2024-12-18T05:30:00Z',
+    details: 'Moved Charging Station Locator to Review status',
+    ipAddress: '89.246.78.45'
+  },
+  {
+    id: 'log-036',
+    userId: 'user-036',
+    action: 'Comment Added',
+    timestamp: '2024-12-16T11:20:00Z',
+    details: 'Added technical requirements to Predictive Maintenance task',
+    ipAddress: '89.246.78.67'
+  },
+
+  // FreshMart Activity
+  {
+    id: 'log-037',
+    userId: 'user-037',
+    action: 'Login',
+    timestamp: '2024-12-18T13:00:00Z',
+    details: 'Login from Chicago corporate office',
+    ipAddress: '23.96.52.10'
+  },
+  {
+    id: 'log-038',
+    userId: 'user-038',
+    action: 'View Inventory',
+    timestamp: '2024-12-17T20:15:00Z',
+    details: 'Accessed inventory forecasting dashboard',
+    ipAddress: '23.96.52.25'
+  },
+  {
+    id: 'log-039',
+    userId: 'user-039',
+    action: 'Generate Order',
+    timestamp: '2024-12-18T08:30:00Z',
+    details: 'Auto-generated purchase order for 45 SKUs',
+    ipAddress: '23.96.52.45'
+  },
+
+  // SecureVault Cyber Activity
+  {
+    id: 'log-040',
+    userId: 'user-040',
+    action: 'Login',
+    timestamp: '2024-12-18T07:15:00Z',
+    details: 'Secure admin login with hardware key',
+    ipAddress: '185.107.56.10'
+  },
+  {
+    id: 'log-041',
+    userId: 'user-041',
+    action: 'Threat Analysis',
+    timestamp: '2024-12-17T21:30:00Z',
+    details: 'Analyzed 23 potential threat indicators',
+    ipAddress: '185.107.56.25'
+  },
+  {
+    id: 'log-042',
+    userId: 'user-042',
+    action: 'Update Policy',
+    timestamp: '2024-12-18T06:00:00Z',
+    details: 'Updated micro-segmentation policy for client network',
+    ipAddress: '185.107.56.45'
+  },
+
+  // AeroSpace Dynamics Activity
+  {
+    id: 'log-043',
+    userId: 'user-043',
+    action: 'Login',
+    timestamp: '2024-12-18T14:30:00Z',
+    details: 'Login from LA aerospace facility',
+    ipAddress: '65.52.45.10'
+  },
+  {
+    id: 'log-044',
+    userId: 'user-044',
+    action: 'Run Simulation',
+    timestamp: '2024-12-17T12:00:00Z',
+    details: 'Executed flight control simulation - scenario alpha-7',
+    ipAddress: '65.52.45.25'
+  },
+  {
+    id: 'log-045',
+    userId: 'user-045',
+    action: 'Upload Test Results',
+    timestamp: '2024-12-18T09:00:00Z',
+    details: 'Uploaded sensor fusion test results - passed all criteria',
+    ipAddress: '65.52.45.45'
+  },
+
+  // GourmetChef Foods Activity
+  {
+    id: 'log-046',
+    userId: 'user-046',
+    action: 'Login',
+    timestamp: '2024-12-18T08:45:00Z',
+    details: 'Login from Paris headquarters',
+    ipAddress: '62.210.45.10'
+  },
+  {
+    id: 'log-047',
+    userId: 'user-047',
+    action: 'Verify Supplier',
+    timestamp: '2024-12-17T17:00:00Z',
+    details: 'Verified blockchain traceability for supplier ID: SUP-892',
+    ipAddress: '62.210.45.25'
+  },
+  {
+    id: 'log-048',
+    userId: 'user-048',
+    action: 'Update Recipe',
+    timestamp: '2024-12-18T07:00:00Z',
+    details: 'Updated allergen information for recipe ID: R-4521',
+    ipAddress: '62.210.45.45'
+  },
+
+  // Stellar Entertainment Activity
+  {
+    id: 'log-049',
+    userId: 'user-049',
+    action: 'Login',
+    timestamp: '2024-12-18T15:00:00Z',
+    details: 'Login from LA production studio',
+    ipAddress: '104.42.45.10'
+  },
+  {
+    id: 'log-050',
+    userId: 'user-050',
+    action: 'Deploy Update',
+    timestamp: '2024-12-17T14:30:00Z',
+    details: 'Deployed streaming platform update v2.4.1',
+    ipAddress: '104.42.45.25'
+  },
+
+  // BuildRight Construction Activity
+  {
+    id: 'log-051',
+    userId: 'user-051',
+    action: 'Login',
+    timestamp: '2024-12-18T05:00:00Z',
+    details: 'Login from Dubai project office',
+    ipAddress: '94.200.45.10'
+  },
+  {
+    id: 'log-052',
+    userId: 'user-052',
+    action: 'Upload BIM Model',
+    timestamp: '2024-12-17T16:00:00Z',
+    details: 'Uploaded updated BIM model for Tower Project Phase 3',
+    ipAddress: '94.200.45.25'
+  },
+  {
+    id: 'log-053',
+    userId: 'user-053',
+    action: 'Schedule Meeting',
+    timestamp: '2024-12-18T04:30:00Z',
+    details: 'Scheduled project coordination meeting for Dec 20',
+    ipAddress: '94.200.45.45'
+  },
+
+  // PharmaCore Industries Activity
+  {
+    id: 'log-054',
+    userId: 'user-054',
+    action: 'Login',
+    timestamp: '2024-12-18T07:30:00Z',
+    details: 'Researcher login from Basel lab',
+    ipAddress: '193.134.45.10'
+  },
+  {
+    id: 'log-055',
+    userId: 'user-055',
+    action: 'Submit Trial Data',
+    timestamp: '2024-12-17T13:00:00Z',
+    details: 'Submitted Phase 2 clinical trial data for review',
+    ipAddress: '193.134.45.25'
+  },
+  {
+    id: 'log-056',
+    userId: 'user-056',
+    action: 'Review Adverse Event',
+    timestamp: '2024-12-18T06:15:00Z',
+    details: 'Reviewed and classified adverse event AE-2024-0892',
+    ipAddress: '193.134.45.45'
+  },
+
+  // TravelWise Tours Activity
+  {
+    id: 'log-057',
+    userId: 'user-057',
+    action: 'Login',
+    timestamp: '2024-12-18T00:30:00Z',
+    details: 'Login from Sydney operations center',
+    ipAddress: '54.252.45.10'
+  },
+  {
+    id: 'log-058',
+    userId: 'user-058',
+    action: 'Update Pricing',
+    timestamp: '2024-12-17T22:15:00Z',
+    details: 'Updated dynamic pricing rules for peak season',
+    ipAddress: '54.252.45.25'
+  },
+  {
+    id: 'log-059',
+    userId: 'user-059',
+    action: 'Process Booking',
+    timestamp: '2024-12-17T23:45:00Z',
+    details: 'Processed group booking for 24 passengers',
+    ipAddress: '54.252.45.45'
+  },
+
+  // SmartHome Devices Activity
+  {
+    id: 'log-060',
+    userId: 'user-060',
+    action: 'Login',
+    timestamp: '2024-12-18T01:00:00Z',
+    details: 'Login from Shenzhen R&D center',
+    ipAddress: '116.228.45.10'
+  },
+  {
+    id: 'log-061',
+    userId: 'user-061',
+    action: 'Test Integration',
+    timestamp: '2024-12-17T18:00:00Z',
+    details: 'Completed Alexa skill integration testing - all passed',
+    ipAddress: '116.228.45.25'
+  },
+  {
+    id: 'log-062',
+    userId: 'user-062',
+    action: 'Deploy Firmware',
+    timestamp: '2024-12-18T00:15:00Z',
+    details: 'Deployed firmware update v3.2.0 to home hub devices',
+    ipAddress: '116.228.45.45'
+  },
+
+  // LegalEase Partners Activity
+  {
+    id: 'log-063',
+    userId: 'user-063',
+    action: 'Login',
+    timestamp: '2024-12-18T10:45:00Z',
+    details: 'Partner login from NYC office',
+    ipAddress: '52.170.45.10'
+  },
+  {
+    id: 'log-064',
+    userId: 'user-064',
+    action: 'Analyze Contract',
+    timestamp: '2024-12-17T15:30:00Z',
+    details: 'Ran AI analysis on merger agreement - 127 pages',
+    ipAddress: '52.170.45.25'
+  },
+  {
+    id: 'log-065',
+    userId: 'user-065',
+    action: 'Create Case',
+    timestamp: '2024-12-18T09:30:00Z',
+    details: 'Created new case file: CL-2024-0892',
+    ipAddress: '52.170.45.45'
+  },
+
+  // Additional activity logs for high volume
+  {
+    id: 'log-066',
+    userId: 'user-001',
+    action: 'Logout',
+    timestamp: '2024-12-18T18:00:00Z',
+    details: 'Session ended - normal logout',
+    ipAddress: '192.168.1.45'
+  },
+  {
+    id: 'log-067',
+    userId: 'user-013',
+    action: 'Generate Report',
+    timestamp: '2024-12-18T16:30:00Z',
+    details: 'Generated monthly compliance report',
+    ipAddress: '51.140.25.88'
+  },
+  {
+    id: 'log-068',
+    userId: 'user-023',
+    action: 'Alert Acknowledged',
+    timestamp: '2024-12-18T14:15:00Z',
+    details: 'Acknowledged high CPU alert on cluster-prod-3',
+    ipAddress: '104.215.148.20'
+  },
+  {
+    id: 'log-069',
+    userId: 'user-040',
+    action: 'Block IP',
+    timestamp: '2024-12-18T11:45:00Z',
+    details: 'Blocked suspicious IP: 185.220.101.45',
+    ipAddress: '185.107.56.10'
+  },
+  {
+    id: 'log-070',
+    userId: 'user-017',
+    action: 'Download Dataset',
+    timestamp: '2024-12-18T13:20:00Z',
+    details: 'Downloaded reference genome dataset - 4.5GB',
+    ipAddress: '72.14.202.55'
+  },
+  {
+    id: 'log-071',
+    userId: 'user-033',
+    action: 'Approve Budget',
+    timestamp: '2024-12-18T09:30:00Z',
+    details: 'Approved budget increase for EV Telemetry project',
+    ipAddress: '89.246.78.10'
+  },
+  {
+    id: 'log-072',
+    userId: 'user-051',
+    action: 'Review Plan',
+    timestamp: '2024-12-18T07:00:00Z',
+    details: 'Reviewed and approved construction timeline for Phase 4',
+    ipAddress: '94.200.45.10'
+  },
+  {
+    id: 'log-073',
+    userId: 'user-046',
+    action: 'Audit Trail',
+    timestamp: '2024-12-18T10:00:00Z',
+    details: 'Generated supply chain audit trail for regulatory review',
+    ipAddress: '62.210.45.10'
+  },
+  {
+    id: 'log-074',
+    userId: 'user-054',
+    action: 'Peer Review',
+    timestamp: '2024-12-18T08:45:00Z',
+    details: 'Submitted molecular analysis for peer review',
+    ipAddress: '193.134.45.10'
+  },
+  {
+    id: 'log-075',
+    userId: 'user-063',
+    action: 'Bill Client',
+    timestamp: '2024-12-18T11:30:00Z',
+    details: 'Generated invoice for case CL-2024-0756 - $45,000',
+    ipAddress: '52.170.45.10'
+  },
+  {
+    id: 'log-076',
+    userId: 'user-002',
+    action: 'Code Review',
+    timestamp: '2024-12-18T15:45:00Z',
+    details: 'Approved pull request #892 for Apollo Website Redesign',
+    ipAddress: '192.168.1.78'
+  },
+  {
+    id: 'log-077',
+    userId: 'user-014',
+    action: 'Flag Transaction',
+    timestamp: '2024-12-18T12:30:00Z',
+    details: 'Manually flagged transaction ID: TXN-2024-892156 for review',
+    ipAddress: '51.140.25.112'
+  },
+  {
+    id: 'log-078',
+    userId: 'user-027',
+    action: 'End Consultation',
+    timestamp: '2024-12-18T14:00:00Z',
+    details: 'Completed video consultation - duration: 28 minutes',
+    ipAddress: '99.79.45.25'
+  },
+  {
+    id: 'log-079',
+    userId: 'user-037',
+    action: 'Inventory Alert',
+    timestamp: '2024-12-18T16:00:00Z',
+    details: 'Received low stock alert for 12 products',
+    ipAddress: '23.96.52.10'
+  },
+  {
+    id: 'log-080',
+    userId: 'user-020',
+    action: 'Export Results',
+    timestamp: '2024-12-18T03:00:00Z',
+    details: 'Exported quantum experiment results to research paper format',
+    ipAddress: '203.104.45.12'
+  }
+];
