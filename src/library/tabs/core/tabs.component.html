@@ -1,0 +1,89 @@
+<!-- Tab Headers -->
+<div 
+  class="lib-tabs__header" 
+  role="tablist"
+  [attr.aria-orientation]="orientation()"
+>
+  @for (tab of tabs(); track trackByTab($index, tab)) {
+    <button
+      type="button"
+      class="lib-tabs__header-item"
+      role="tab"
+      [attr.id]="'tab-' + $index"
+      [attr.aria-selected]="tab.isActive()"
+      [attr.aria-controls]="'panel-' + $index"
+      [attr.tabindex]="tab.isActive() ? 0 : -1"
+      [attr.aria-disabled]="tab.disabled()"
+      [class.lib-tabs__header-item--active]="tab.isActive()"
+      [class.lib-tabs__header-item--disabled]="tab.disabled()"
+      [disabled]="tab.disabled()"
+      (click)="onTabHeaderClick(tab, $index)"
+    >
+      <!-- Icon -->
+      @if (tab.icon()) {
+        <span class="lib-tabs__icon">{{ tab.icon() }}</span>
+      }
+      
+      <!-- Label -->
+      <span class="lib-tabs__label">{{ tab.label() }}</span>
+      
+      <!-- Badge -->
+      @if (tab.badge()) {
+        <span class="lib-tabs__badge">{{ tab.badge() }}</span>
+      }
+      
+      <!-- Close button -->
+      @if (tab.closable()) {
+        <button
+          type="button"
+          class="lib-tabs__close"
+          aria-label="Close tab"
+          (click)="onTabClose(tab, $index, $event)"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+      }
+    </button>
+  }
+  
+  <!-- Active indicator (animated underline) -->
+  <div class="lib-tabs__indicator" aria-hidden="true"></div>
+</div>
+
+<!-- Tab Panels -->
+<div class="lib-tabs__content">
+  @for (tab of tabs(); track trackByTab($index, tab)) {
+    <div
+      class="lib-tabs__panel"
+      role="tabpanel"
+      [attr.id]="'panel-' + $index"
+      [attr.aria-labelledby]="'tab-' + $index"
+      [attr.hidden]="!tab.isActive() ? true : null"
+      [class.lib-tabs__panel--active]="tab.isActive()"
+      [class]="tab.isActive() ? animationClass() : ''"
+      (animationend)="onAnimationEnd()"
+    >
+      <!-- Only render when active OR keepAlive is true -->
+      @if (keepAlive() || tab.isActive()) {
+        <!-- For lazy tabs: only render after first activation -->
+        @if (tab.isLazy()) {
+          @if (tab.wasActivated()) {
+            <ng-container [ngTemplateOutlet]="tab.lazyTemplate()!" />
+          } @else {
+            <!-- Loading placeholder for lazy content -->
+            <div class="lib-tabs__loading">
+              <div class="lib-tabs__loading-spinner"></div>
+              <span>Loading...</span>
+            </div>
+          }
+        } @else {
+          <!-- Eager content: render the captured template -->
+          <ng-container [ngTemplateOutlet]="tab.eagerTemplate" />
+        }
+      }
+    </div>
+  }
+</div>
+

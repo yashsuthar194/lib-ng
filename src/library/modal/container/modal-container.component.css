@@ -1,0 +1,272 @@
+/* ==============================================
+   Modal Container Styles
+   Premium SaaS Design with CSS Variables
+   ============================================== */
+
+/* Host container - fixed overlay */
+:host {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: var(--lib-z-index-modal, 1000);
+}
+
+:host(.lib-modal-container--open) {
+  pointer-events: auto;
+}
+
+/* ==============================================
+   Backdrop
+   ============================================== */
+.lib-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity var(--lib-transition-base);
+  pointer-events: auto;
+  backdrop-filter: blur(2px);
+}
+
+.lib-modal__backdrop--visible {
+  opacity: 1;
+}
+
+/* ==============================================
+   Modal Panel
+   ============================================== */
+.lib-modal__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--lib-color-neutral-0);
+  border-radius: var(--lib-border-radius-xl);
+  box-shadow: var(--lib-shadow-xl);
+  pointer-events: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  outline: none;
+  
+  /* Animation setup */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: none;
+}
+
+.lib-modal__panel--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==============================================
+   Animation: Fade
+   ============================================== */
+.lib-modal__panel--fade {
+  transform: none;
+}
+
+:host([data-animation="fade"]) .lib-modal__panel--visible {
+  animation: modalFadeIn var(--lib-transition-base) ease-out forwards;
+}
+
+:host([data-animation="fade"]) .lib-modal__panel:not(.lib-modal__panel--visible) {
+  animation: modalFadeOut var(--lib-transition-fast) ease-in forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ==============================================
+   Animation: Scale
+   ============================================== */
+:host([data-animation="scale"]) .lib-modal__panel--visible {
+  animation: modalScaleIn var(--lib-transition-base) ease-out forwards;
+}
+
+:host([data-animation="scale"]) .lib-modal__panel:not(.lib-modal__panel--visible) {
+  animation: modalScaleOut var(--lib-transition-fast) ease-in forwards;
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalScaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* ==============================================
+   Animation: Slide Up
+   ============================================== */
+:host([data-animation="slide-up"]) .lib-modal__panel--visible {
+  animation: modalSlideUpIn var(--lib-transition-base) ease-out forwards;
+}
+
+:host([data-animation="slide-up"]) .lib-modal__panel:not(.lib-modal__panel--visible) {
+  animation: modalSlideUpOut var(--lib-transition-fast) ease-in forwards;
+}
+
+@keyframes modalSlideUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalSlideUpOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+/* ==============================================
+   Animation: Slide Down
+   ============================================== */
+:host([data-animation="slide-down"]) .lib-modal__panel--visible {
+  animation: modalSlideDownIn var(--lib-transition-base) ease-out forwards;
+}
+
+:host([data-animation="slide-down"]) .lib-modal__panel:not(.lib-modal__panel--visible) {
+  animation: modalSlideDownOut var(--lib-transition-fast) ease-in forwards;
+}
+
+@keyframes modalSlideDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalSlideDownOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+/* ==============================================
+   Animation: Origin (from trigger element)
+   Uses CSS variables set by component:
+   --modal-origin-x: viewport X center of trigger element
+   --modal-origin-y: viewport Y center of trigger element
+   ============================================== */
+:host([data-animation="origin"]) .lib-modal__panel {
+  /* Calculate offset from viewport center to trigger element */
+  --center-x: 50vw;
+  --center-y: 50vh;
+  --offset-x: calc(var(--modal-origin-x, 50vw) - var(--center-x));
+  --offset-y: calc(var(--modal-origin-y, 50vh) - var(--center-y));
+}
+
+:host([data-animation="origin"]) .lib-modal__panel--visible {
+  animation: modalOriginIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+:host([data-animation="origin"]) .lib-modal__panel:not(.lib-modal__panel--visible) {
+  animation: modalOriginOut 200ms ease-in forwards;
+}
+
+@keyframes modalOriginIn {
+  0% {
+    opacity: 0;
+    transform: translate(var(--offset-x), var(--offset-y)) scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes modalOriginOut {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--offset-x), var(--offset-y)) scale(0.1);
+  }
+}
+
+/* ==============================================
+   Animation: None
+   ============================================== */
+:host([data-animation="none"]) .lib-modal__panel {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+:host([data-animation="none"]) .lib-modal__backdrop {
+  transition: none;
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lib-modal__panel,
+  .lib-modal__backdrop {
+    animation: none !important;
+    transition: opacity 0.01ms !important;
+  }
+  
+  .lib-modal__panel--visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==============================================
+   Dark Theme
+   ============================================== */
+[data-theme-mode="dark"] .lib-modal__panel {
+  background: var(--lib-color-neutral-900);
+  border: var(--lib-border-width-thin) solid var(--lib-color-neutral-700);
+}
+
+[data-theme-mode="dark"] .lib-modal__backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}

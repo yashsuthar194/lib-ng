@@ -1,106 +1,278 @@
+/* ==============================================
+   Table Component Styles
+   Using CSS Variables from Design Tokens
+   ============================================== */
+
+/* Container */
 .lib-table-container {
   width: 100%;
   overflow-x: auto;
+  border-radius: var(--lib-border-radius-lg);
+  border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+  background: var(--lib-color-neutral-0);
+  box-shadow: var(--lib-shadow-sm);
 }
 
+/* Base Table */
 .lib-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-family: var(--lib-font-family-base);
+  font-size: var(--lib-font-size-sm);
+  line-height: var(--lib-line-height-normal);
 }
 
-/* Header */
+/* ==============================================
+   Header Styles
+   ============================================== */
 .lib-table-header {
-  background-color: #2e4053;
-  border-bottom: 2px solid #dee2e6;
+  background: var(--lib-color-neutral-800);
 }
 
 .lib-table-header-cell {
-  padding: 0.75rem 1rem;
+  padding-block: var(--lib-spacing-4);
+  padding-inline: var(--lib-spacing-4);
   text-align: left;
-  font-weight: 600;
-  color: #cccfd3;
+  font-weight: var(--lib-font-weight-semibold);
+  font-size: var(--lib-font-size-xs);
+  color: var(--lib-color-neutral-100);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   white-space: nowrap;
+  border-block-end: var(--lib-border-width-thin) solid
+    var(--lib-color-neutral-700);
+  transition: background var(--lib-transition-fast);
 }
 
 .lib-table-header-cell--sortable {
   cursor: pointer;
   user-select: none;
+  position: relative;
+}
+
+.lib-table-header-cell--sortable::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-inline-start: var(--lib-spacing-2);
+  vertical-align: middle;
+  opacity: 0.4;
+  border-inline: 4px solid transparent;
+  border-block-end: 5px solid currentColor;
+  transition: opacity var(--lib-transition-fast),
+    transform var(--lib-transition-fast);
 }
 
 .lib-table-header-cell--sortable:hover {
-  background-color: #e9ecef;
+  background: var(--lib-color-neutral-700);
 }
 
-/* Body */
+.lib-table-header-cell--sortable:hover::after {
+  opacity: 0.8;
+}
+
+/* ==============================================
+   Body Styles
+   ============================================== */
 .lib-table-body {
-  background-color: #fff;
+  background: var(--lib-color-neutral-0);
 }
 
 .lib-table-row {
-  border-bottom: 1px solid #dee2e6;
-  transition: background-color 0.15s ease-in-out;
+  border-block-end: var(--lib-border-width-thin) solid
+    var(--lib-color-neutral-100);
+  transition: background var(--lib-transition-fast),
+    box-shadow var(--lib-transition-fast);
 }
 
-.lib-table--hoverable .lib-table-row:hover {
-  background-color: #f8f9fa;
-  cursor: pointer;
-}
-
-.lib-table--striped .lib-table-row--odd {
-  background-color: #f8f9fa;
+.lib-table-row:last-child {
+  border-block-end: none;
 }
 
 .lib-table-cell {
-  padding: 0.75rem 1rem;
-  color: #212529;
+  padding-block: var(--lib-spacing-4);
+  padding-inline: var(--lib-spacing-4);
+  color: var(--lib-color-neutral-700);
+  font-size: var(--lib-font-size-sm);
   vertical-align: middle;
 }
 
-/* Density Variants */
-.lib-table--compact .lib-table-header-cell,
+/* ==============================================
+   Interactive States
+   ============================================== */
+
+/* Hoverable Rows */
+.lib-table--hoverable .lib-table-row {
+  cursor: pointer;
+}
+
+.lib-table--hoverable .lib-table-row:hover {
+  background: var(--lib-color-primary-50);
+  box-shadow: inset 3px 0 0 var(--lib-color-primary-500);
+}
+
+.lib-table--hoverable .lib-table-row:hover .lib-table-cell {
+  color: var(--lib-color-neutral-900);
+}
+
+/* Striped Rows */
+.lib-table--striped .lib-table-row--odd {
+  background: var(--lib-color-neutral-50);
+}
+
+.lib-table--striped.lib-table--hoverable .lib-table-row--odd:hover {
+  background: var(--lib-color-primary-50);
+}
+
+/* ==============================================
+   Density Variants
+   ============================================== */
+
+/* Compact */
+.lib-table--compact .lib-table-header-cell {
+  padding-block: var(--lib-spacing-2);
+  padding-inline: var(--lib-spacing-3);
+  font-size: var(--lib-font-size-xs);
+}
+
 .lib-table--compact .lib-table-cell {
-  padding: 0.4rem 0.75rem;
+  padding-block: var(--lib-spacing-2);
+  padding-inline: var(--lib-spacing-3);
+  font-size: var(--lib-font-size-xs);
 }
 
-.lib-table--comfortable .lib-table-header-cell,
+/* Comfortable */
+.lib-table--comfortable .lib-table-header-cell {
+  padding-block: var(--lib-spacing-4);
+  padding-inline: var(--lib-spacing-5);
+}
+
 .lib-table--comfortable .lib-table-cell {
-  padding: 1rem 1.25rem;
+  padding-block: var(--lib-spacing-5);
+  padding-inline: var(--lib-spacing-5);
 }
 
-/* Empty State */
+/* ==============================================
+   Empty State
+   ============================================== */
 .lib-table-empty-row td {
-  padding: 2rem;
+  padding: var(--lib-spacing-12);
   text-align: center;
 }
 
 .lib-table-empty {
-  color: #6c757d;
-  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--lib-spacing-3);
+  color: var(--lib-color-neutral-400);
+  font-size: var(--lib-font-size-base);
 }
 
-/* Loading State */
+.lib-table-empty::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  background: var(--lib-color-neutral-100);
+  border-radius: var(--lib-border-radius-full);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  background-color: var(--lib-color-neutral-300);
+}
+
+/* ==============================================
+   Loading State
+   ============================================== */
 .lib-table-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
-  color: #6c757d;
-  gap: 1rem;
+  padding: var(--lib-spacing-12);
+  color: var(--lib-color-neutral-500);
+  gap: var(--lib-spacing-4);
 }
 
 .lib-table-spinner {
-  width: 2rem;
-  height: 2rem;
-  border: 3px solid #e9ecef;
-  border-top-color: #0d6efd;
-  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--lib-color-neutral-200);
+  border-top-color: var(--lib-color-primary-500);
+  border-radius: var(--lib-border-radius-full);
   animation: lib-table-spin 0.8s linear infinite;
+}
+
+.lib-table-loading-text {
+  font-size: var(--lib-font-size-sm);
+  font-weight: var(--lib-font-weight-medium);
+  color: var(--lib-color-neutral-500);
 }
 
 @keyframes lib-table-spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ==============================================
+   Focus States (Accessibility)
+   ============================================== */
+.lib-table-row:focus-visible {
+  outline: 2px solid var(--lib-color-primary-500);
+  outline-offset: -2px;
+  background: var(--lib-color-primary-50);
+}
+
+.lib-table-header-cell--sortable:focus-visible {
+  outline: 2px solid var(--lib-color-primary-400);
+  outline-offset: -2px;
+  background: var(--lib-color-neutral-700);
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lib-table-row,
+  .lib-table-header-cell,
+  .lib-table-header-cell--sortable::after {
+    transition: none;
+  }
+
+  .lib-table-spinner {
+    animation-duration: 1.5s;
+  }
+}
+
+/* ==============================================
+   Dark Theme Support
+   ============================================== */
+[data-theme-mode="dark"] .lib-table-container {
+  background: var(--lib-color-neutral-900);
+  border-color: var(--lib-color-neutral-700);
+}
+
+[data-theme-mode="dark"] .lib-table-body {
+  background: var(--lib-color-neutral-900);
+}
+
+[data-theme-mode="dark"] .lib-table-row {
+  border-color: var(--lib-color-neutral-800);
+}
+
+[data-theme-mode="dark"] .lib-table-cell {
+  color: var(--lib-color-neutral-200);
+}
+
+[data-theme-mode="dark"] .lib-table--hoverable .lib-table-row:hover {
+  background: var(--lib-color-neutral-800);
+  color: var(--lib-color-neutral-900);
+}
+
+[data-theme-mode="dark"] .lib-table--striped .lib-table-row--odd {
+  background: var(--lib-color-neutral-800);
 }

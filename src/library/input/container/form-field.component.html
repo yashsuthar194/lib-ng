@@ -1,0 +1,56 @@
+<!-- Label -->
+@if (label()) {
+  <label 
+    class="lib-form-field__label"
+    [for]="inputId()"
+  >
+    {{ label() }}
+    @if (required()) {
+      <span class="lib-form-field__required" aria-hidden="true">*</span>
+    }
+  </label>
+}
+
+<!-- Input Container -->
+<div class="lib-form-field__container">
+  <!-- Prefix -->
+  <div class="lib-form-field__prefix">
+    <ng-content select="[libPrefix]" />
+  </div>
+  
+  <!-- Input slot -->
+  <div class="lib-form-field__input-wrapper">
+    <ng-content select="input[libInput], textarea[libInput]" />
+  </div>
+  
+  <!-- Suffix -->
+  <div class="lib-form-field__suffix">
+    <ng-content select="[libSuffix]" />
+  </div>
+</div>
+
+<!-- Subscript (Hint / Error / Character Count) -->
+<div class="lib-form-field__subscript">
+  @if (inputDirective()?.isInvalid() && error()) {
+    <span 
+      class="lib-form-field__error" 
+      [id]="errorId()"
+      role="alert"
+    >
+      {{ error() }}
+    </span>
+  } @else if (hint()) {
+    <span 
+      class="lib-form-field__hint"
+      [id]="hintId()"
+    >
+      {{ hint() }}
+    </span>
+  }
+  
+  @if (showCharCount() && maxLength()) {
+    <span class="lib-form-field__char-count">
+      {{ charCount() }} / {{ maxLength() }}
+    </span>
+  }
+</div>
