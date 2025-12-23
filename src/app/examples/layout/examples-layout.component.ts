@@ -350,6 +350,99 @@ export class ExamplesLayoutComponent {
         { path: 'modal/animated', label: 'Animated', description: 'Origin and other animations' },
       ]
     },
+    // ============================================
+    // Tier 1: Essential Feedback & Overlays
+    // ============================================
+    {
+      title: 'Toast',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"/></svg>`,
+      links: [
+        { path: 'toast', label: 'Toast Examples', description: 'Notifications, positions, stacking' },
+      ]
+    },
+    {
+      title: 'Tooltip',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"/></svg>`,
+      links: [
+        { path: 'tooltip', label: 'Tooltip Examples', description: 'Positions, variants, accessibility' },
+      ]
+    },
+    {
+      title: 'Alert',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"/></svg>`,
+      links: [
+        { path: 'alert', label: 'Alert Examples', description: 'Variants, appearances, dismissible' },
+      ]
+    },
+    {
+      title: 'Progress',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/></svg>`,
+      links: [
+        { path: 'progress', label: 'Progress Examples', description: 'Bar, circular, spinner indicators' },
+      ]
+    },
+    // ============================================
+    // Tier 2: Data Display Components
+    // ============================================
+    {
+      title: 'Card',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/></svg>`,
+      links: [
+        { path: 'card/basic', label: 'Basic Card', description: 'Container with sections' },
+      ],
+      comingSoon: true
+    },
+    {
+      title: 'Badge',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>`,
+      links: [
+        { path: 'badge/basic', label: 'Basic Badge', description: 'Status and count indicators' },
+      ],
+      comingSoon: true
+    },
+    {
+      title: 'Avatar',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>`,
+      links: [
+        { path: 'avatar/basic', label: 'Basic Avatar', description: 'User profile images' },
+      ],
+      comingSoon: true
+    },
+    {
+      title: 'Skeleton',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>`,
+      links: [
+        { path: 'skeleton/basic', label: 'Basic Skeleton', description: 'Loading placeholders' },
+      ],
+      comingSoon: true
+    },
+    {
+      title: 'Accordion',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"/></svg>`,
+      links: [
+        { path: 'accordion/basic', label: 'Basic Accordion', description: 'Collapsible content panels' },
+      ],
+      comingSoon: true
+    },
+    // ============================================
+    // Tier 3: Navigation Components
+    // ============================================
+    {
+      title: 'Breadcrumb',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>`,
+      links: [
+        { path: 'breadcrumb/basic', label: 'Basic Breadcrumb', description: 'Navigation path' },
+      ],
+      comingSoon: true
+    },
+    {
+      title: 'Stepper',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"/></svg>`,
+      links: [
+        { path: 'stepper/basic', label: 'Basic Stepper', description: 'Multi-step wizard' },
+      ],
+      comingSoon: true
+    },
   ];
 }
 

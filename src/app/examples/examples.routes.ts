@@ -25,6 +25,14 @@ import { AnimatedModalExampleComponent } from './modal/animated/animated-modal.c
 import { ButtonExampleComponent } from './button/button-example.component';
 // Checkbox examples
 import { CheckboxExampleComponent } from './checkbox/checkbox-example.component';
+// Toast examples
+import { ToastExampleComponent } from './toast/toast-example.component';
+// Tooltip examples
+import { TooltipExampleComponent } from './tooltip/tooltip-example.component';
+// Alert examples
+import { AlertExampleComponent } from './alert/alert-example.component';
+// Progress examples
+import { ProgressExampleComponent } from './progress/progress-example.component';
 
 export const EXAMPLES_ROUTES: Routes = [
   {
@@ -57,6 +65,14 @@ export const EXAMPLES_ROUTES: Routes = [
       { path: 'button', component: ButtonExampleComponent },
       // Checkbox routes
       { path: 'checkbox', component: CheckboxExampleComponent },
+      // Toast routes
+      { path: 'toast', component: ToastExampleComponent },
+      // Tooltip routes
+      { path: 'tooltip', component: TooltipExampleComponent },
+      // Alert routes
+      { path: 'alert', component: AlertExampleComponent },
+      // Progress routes
+      { path: 'progress', component: ProgressExampleComponent },
       // Input routes (lazy loaded)
       { 
         path: 'input', 

@@ -1,0 +1,209 @@
+/**
+ * Alert Component Styles
+ * 
+ * Features:
+ * - 5 semantic variants (info, success, warning, error, neutral)
+ * - 3 appearances (filled, outlined, soft)
+ * - Dismissible with animation
+ * - Responsive design
+ */
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+:host {
+  /* Default (info) colors */
+  --alert-bg: var(--lib-color-info-50, #eff6ff);
+  --alert-border: var(--lib-color-info-200, #bfdbfe);
+  --alert-text: var(--lib-color-info-800, #1e40af);
+  --alert-icon: var(--lib-color-info-500, #3b82f6);
+  --alert-title: var(--lib-color-info-900, #1e3a8a);
+  
+  display: block;
+}
+
+:host(.lib-alert--dismissed) {
+  display: none;
+}
+
+.lib-alert__wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--lib-spacing-3, 12px);
+  padding: var(--lib-spacing-3, 12px) var(--lib-spacing-4, 16px);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  font-size: var(--lib-font-size-sm, 0.875rem);
+  line-height: var(--lib-line-height-normal, 1.5);
+}
+
+/* ========================================
+   Appearances
+   ======================================== */
+
+/* Filled (default) */
+:host(.lib-alert--filled) .lib-alert__wrapper {
+  background: var(--alert-bg);
+  border: 1px solid var(--alert-border);
+  color: var(--alert-text);
+}
+
+/* Outlined */
+:host(.lib-alert--outlined) .lib-alert__wrapper {
+  background: transparent;
+  border: 1px solid var(--alert-border);
+  color: var(--alert-text);
+}
+
+/* Soft (lighter background) */
+:host(.lib-alert--soft) .lib-alert__wrapper {
+  background: var(--alert-bg);
+  border: none;
+  color: var(--alert-text);
+}
+
+/* ========================================
+   Variants
+   ======================================== */
+
+:host(.lib-alert--success) {
+  --alert-bg: var(--lib-color-success-50, #f0fdf4);
+  --alert-border: var(--lib-color-success-200, #bbf7d0);
+  --alert-text: var(--lib-color-success-800, #166534);
+  --alert-icon: var(--lib-color-success-500, #22c55e);
+  --alert-title: var(--lib-color-success-900, #14532d);
+}
+
+:host(.lib-alert--warning) {
+  --alert-bg: var(--lib-color-warning-50, #fffbeb);
+  --alert-border: var(--lib-color-warning-200, #fde68a);
+  --alert-text: var(--lib-color-warning-800, #92400e);
+  --alert-icon: var(--lib-color-warning-500, #f59e0b);
+  --alert-title: var(--lib-color-warning-900, #78350f);
+}
+
+:host(.lib-alert--error) {
+  --alert-bg: var(--lib-color-error-50, #fef2f2);
+  --alert-border: var(--lib-color-error-200, #fecaca);
+  --alert-text: var(--lib-color-error-800, #991b1b);
+  --alert-icon: var(--lib-color-error-500, #ef4444);
+  --alert-title: var(--lib-color-error-900, #7f1d1d);
+}
+
+:host(.lib-alert--neutral) {
+  --alert-bg: var(--lib-color-neutral-100, #f4f4f5);
+  --alert-border: var(--lib-color-neutral-300, #d4d4d8);
+  --alert-text: var(--lib-color-neutral-700, #3f3f46);
+  --alert-icon: var(--lib-color-neutral-500, #71717a);
+  --alert-title: var(--lib-color-neutral-900, #18181b);
+}
+
+/* ========================================
+   Icon
+   ======================================== */
+
+.lib-alert__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--alert-icon);
+  margin-block-start: 1px; /* Align with text */
+}
+
+.lib-alert__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ========================================
+   Content
+   ======================================== */
+
+.lib-alert__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.lib-alert__title {
+  font-weight: var(--lib-font-weight-semibold, 600);
+  color: var(--alert-title);
+  margin-block-end: var(--lib-spacing-1, 4px);
+}
+
+.lib-alert__message {
+  color: var(--alert-text);
+}
+
+/* ========================================
+   Dismiss Button
+   ======================================== */
+
+.lib-alert__dismiss {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: -4px -8px -4px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--lib-border-radius-md, 6px);
+  color: var(--alert-text);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 
+    opacity 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.lib-alert__dismiss svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lib-alert__dismiss:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.lib-alert__dismiss:focus-visible {
+  outline: 2px solid var(--alert-icon);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* ========================================
+   Dismiss Animation
+   ======================================== */
+
+:host(.lib-alert--dismissing) .lib-alert__wrapper {
+  animation: alert-dismiss 0.2s ease-out forwards;
+}
+
+@keyframes alert-dismiss {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.lib-alert--dismissing) .lib-alert__wrapper {
+    animation: none;
+    opacity: 0;
+  }
+  
+  .lib-alert__dismiss {
+    transition: none;
+  }
+}
