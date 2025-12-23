@@ -322,8 +322,9 @@ export class ExamplesLayoutComponent {
     {
       title: 'Button',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm4 14a1 1 0 100-2 1 1 0 000 2z"/></svg>`,
-      links: [],
-      comingSoon: true
+      links: [
+        { path: 'button', label: 'Button Examples', description: 'Variants, sizes, loading, icons' },
+      ]
     },
     {
       title: 'Input',
@@ -337,8 +338,9 @@ export class ExamplesLayoutComponent {
     {
       title: 'Checkbox',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>`,
-      links: [],
-      comingSoon: true
+      links: [
+        { path: 'checkbox', label: 'Checkbox Examples', description: 'Checkbox, switch, groups' },
+      ]
     },
     {
       title: 'Modal',

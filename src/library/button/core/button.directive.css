@@ -1,0 +1,377 @@
+/**
+ * Button Styles
+ * 
+ * Uses CSS variables for theming support.
+ * All values use design tokens - no hardcoded values.
+ */
+
+/* ==============================================
+   Base Button Styles
+   ============================================== */
+.lib-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lib-spacing-2, 8px);
+  font-family: var(--lib-font-family-base, system-ui, sans-serif);
+  font-weight: var(--lib-font-weight-medium, 500);
+  text-decoration: none;
+  border-radius: var(--lib-border-radius-md, 6px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: 
+    background var(--lib-transition-fast, 150ms ease),
+    color var(--lib-transition-fast, 150ms ease),
+    border-color var(--lib-transition-fast, 150ms ease),
+    box-shadow var(--lib-transition-fast, 150ms ease),
+    transform var(--lib-transition-fast, 150ms ease);
+}
+
+/* ==============================================
+   Size Variants
+   ============================================== */
+.lib-button--sm {
+  height: 32px;
+  padding-inline: var(--lib-spacing-4, 16px);
+  font-size: var(--lib-font-size-sm, 0.875rem);
+  border-radius: var(--lib-border-radius-base, 4px);
+}
+
+.lib-button--md {
+  height: 40px;
+  padding-inline: var(--lib-spacing-5, 20px);
+  font-size: var(--lib-font-size-base, 1rem);
+}
+
+.lib-button--lg {
+  height: 48px;
+  padding-inline: var(--lib-spacing-6, 24px);
+  font-size: var(--lib-font-size-lg, 1.125rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+}
+
+/* ==============================================
+   Primary Variant (Default)
+   ============================================== */
+.lib-button--primary {
+  background: var(--lib-color-primary-500, #3b82f6);
+  color: var(--lib-color-neutral-0, #ffffff);
+}
+
+.lib-button--primary:hover:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-primary-600, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+}
+
+.lib-button--primary:active:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-primary-700, #1d4ed8);
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+/* ==============================================
+   Secondary Variant
+   ============================================== */
+.lib-button--secondary {
+  background: var(--lib-color-neutral-100, #f4f4f5);
+  color: var(--lib-color-neutral-900, #18181b);
+}
+
+.lib-button--secondary:hover:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-neutral-200, #e4e4e7);
+  transform: translateY(-1px);
+}
+
+.lib-button--secondary:active:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-neutral-300, #d4d4d8);
+  transform: translateY(0) scale(0.98);
+}
+
+/* ==============================================
+   Outline Variant
+   ============================================== */
+.lib-button--outline {
+  background: transparent;
+  color: var(--lib-color-primary-500, #3b82f6);
+  border: var(--lib-border-width-thin, 1px) solid var(--lib-color-primary-500, #3b82f6);
+}
+
+.lib-button--outline:hover:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-primary-50, #eff6ff);
+  transform: translateY(-1px);
+}
+
+.lib-button--outline:active:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-primary-100, #dbeafe);
+  transform: translateY(0) scale(0.98);
+}
+
+/* ==============================================
+   Ghost Variant
+   ============================================== */
+.lib-button--ghost {
+  background: transparent;
+  color: var(--lib-color-neutral-700, #3f3f46);
+}
+
+.lib-button--ghost:hover:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-neutral-100, #f4f4f5);
+}
+
+.lib-button--ghost:active:not(:disabled):not(.lib-button--loading) {
+  background: var(--lib-color-neutral-200, #e4e4e7);
+  transform: scale(0.98);
+}
+
+/* ==============================================
+   Link Variant
+   ============================================== */
+.lib-button--link {
+  background: transparent;
+  color: var(--lib-color-primary-500, #3b82f6);
+  padding-inline: 0;
+  height: auto;
+}
+
+.lib-button--link:hover:not(:disabled):not(.lib-button--loading) {
+  text-decoration: underline;
+  color: var(--lib-color-primary-600, #2563eb);
+}
+
+.lib-button--link:active:not(:disabled):not(.lib-button--loading) {
+  color: var(--lib-color-primary-700, #1d4ed8);
+}
+
+/* ==============================================
+   Danger Variant
+   ============================================== */
+.lib-button--danger {
+  background: var(--lib-color-error, #ef4444);
+  color: var(--lib-color-neutral-0, #ffffff);
+}
+
+.lib-button--danger:hover:not(:disabled):not(.lib-button--loading) {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+}
+
+.lib-button--danger:active:not(:disabled):not(.lib-button--loading) {
+  background: #b91c1c;
+  transform: translateY(0) scale(0.98);
+}
+
+/* ==============================================
+   Success Variant
+   ============================================== */
+.lib-button--success {
+  background: var(--lib-color-success, #22c55e);
+  color: var(--lib-color-neutral-0, #ffffff);
+}
+
+.lib-button--success:hover:not(:disabled):not(.lib-button--loading) {
+  background: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
+}
+
+.lib-button--success:active:not(:disabled):not(.lib-button--loading) {
+  background: #15803d;
+  transform: translateY(0) scale(0.98);
+}
+
+/* ==============================================
+   Disabled State
+   ============================================== */
+.lib-button--disabled,
+.lib-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ==============================================
+   Full Width
+   ============================================== */
+.lib-button--full-width {
+  width: 100%;
+}
+
+/* ==============================================
+   Icon Only (Circular)
+   ============================================== */
+.lib-button--icon-only {
+  padding: 0;
+  border-radius: var(--lib-border-radius-full, 9999px);
+  aspect-ratio: 1;
+}
+
+.lib-button--icon-only.lib-button--sm {
+  width: 32px;
+  height: 32px;
+}
+
+.lib-button--icon-only.lib-button--md {
+  width: 40px;
+  height: 40px;
+}
+
+.lib-button--icon-only.lib-button--lg {
+  width: 48px;
+  height: 48px;
+}
+
+/* ==============================================
+   Focus State (Accessibility)
+   ============================================== */
+.lib-button:focus-visible {
+  outline: 2px solid var(--lib-color-primary-500, #3b82f6);
+  outline-offset: 2px;
+}
+
+.lib-button--danger:focus-visible {
+  outline-color: var(--lib-color-error, #ef4444);
+}
+
+.lib-button--success:focus-visible {
+  outline-color: var(--lib-color-success, #22c55e);
+}
+
+/* ==============================================
+   Loading State
+   ============================================== */
+.lib-button--loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* Loading spinner animation */
+@keyframes libButtonSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Inline loading - spinner appears before content */
+.lib-button--loading-inline::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: var(--lib-border-radius-full, 9999px);
+  animation: libButtonSpin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+.lib-button--loading-inline.lib-button--sm::before {
+  width: 14px;
+  height: 14px;
+}
+
+.lib-button--loading-inline.lib-button--lg::before {
+  width: 20px;
+  height: 20px;
+}
+
+/* Replace loading - content fades, spinner centered */
+.lib-button--loading-replace {
+  color: transparent !important;
+}
+
+.lib-button--loading-replace::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--lib-color-neutral-0, #ffffff);
+  border-top-color: transparent;
+  border-radius: var(--lib-border-radius-full, 9999px);
+  animation: libButtonSpin 0.6s linear infinite;
+}
+
+.lib-button--loading-replace.lib-button--secondary::after,
+.lib-button--loading-replace.lib-button--outline::after,
+.lib-button--loading-replace.lib-button--ghost::after,
+.lib-button--loading-replace.lib-button--link::after {
+  border-color: var(--lib-color-primary-500, #3b82f6);
+  border-top-color: transparent;
+}
+
+/* ==============================================
+   Ripple Effect
+   ============================================== */
+.lib-button__ripple {
+  position: absolute;
+  border-radius: var(--lib-border-radius-full, 9999px);
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: libButtonRipple 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes libButtonRipple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Darker ripple for light buttons */
+.lib-button--secondary .lib-button__ripple,
+.lib-button--outline .lib-button__ripple,
+.lib-button--ghost .lib-button__ripple {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ==============================================
+   SVG Icon Sizing
+   ============================================== */
+.lib-button svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.lib-button--sm svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lib-button--md svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lib-button--lg svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ==============================================
+   Reduced Motion (Accessibility)
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lib-button {
+    transition-duration: 0.01ms !important;
+  }
+  
+  .lib-button--loading-inline::before,
+  .lib-button--loading-replace::after {
+    animation-duration: 0.01ms !important;
+  }
+  
+  .lib-button__ripple {
+    animation-duration: 0.01ms !important;
+  }
+}

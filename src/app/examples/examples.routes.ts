@@ -18,9 +18,13 @@ import { BasicTabsExampleComponent } from './tabs/basic/basic-tabs.component';
 import { ProgrammaticTabsExampleComponent } from './tabs/programmatic/programmatic-tabs.component';
 import { AnimatedTabsExampleComponent } from './tabs/animated/animated-tabs.component';
 import { LazyTabsExampleComponent } from './tabs/lazy/lazy-tabs.component';
-// Modal examples
+// Modal routes
 import { BasicModalExampleComponent } from './modal/basic/basic-modal.component';
 import { AnimatedModalExampleComponent } from './modal/animated/animated-modal.component';
+// Button examples
+import { ButtonExampleComponent } from './button/button-example.component';
+// Checkbox examples
+import { CheckboxExampleComponent } from './checkbox/checkbox-example.component';
 
 export const EXAMPLES_ROUTES: Routes = [
   {
@@ -49,6 +53,10 @@ export const EXAMPLES_ROUTES: Routes = [
       // Modal routes
       { path: 'modal/basic', component: BasicModalExampleComponent },
       { path: 'modal/animated', component: AnimatedModalExampleComponent },
+      // Button routes
+      { path: 'button', component: ButtonExampleComponent },
+      // Checkbox routes
+      { path: 'checkbox', component: CheckboxExampleComponent },
       // Input routes (lazy loaded)
       { 
         path: 'input', 

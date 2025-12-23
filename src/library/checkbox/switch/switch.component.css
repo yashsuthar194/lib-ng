@@ -1,0 +1,287 @@
+/**
+ * Switch Component Styles
+ * 
+ * Clean CSS without !important - no conflicts with checkbox.
+ * All values use CSS variables for theming support.
+ * 
+ * REFACTORED: Uses CSS custom properties with calc() for
+ * consistent sizing across all size variants.
+ */
+
+/* ==============================================
+   CSS Custom Properties (Size Tokens)
+   ============================================== */
+
+/*
+ * DESIGN SPECS:
+ * - Dark navy track when OFF, light gray when ON
+ * - Perfect pill shape (border-radius = half height)
+ * - Consistent padding for thumb centering
+ *
+ * SIZES (all calculated from custom properties):
+ * SM: Track 44x22, Thumb 18x18
+ * MD: Track 52x26, Thumb 22x22
+ * LG: Track 60x30, Thumb 26x26
+ */
+
+/* ==============================================
+   Base Switch Styles
+   ============================================== */
+.lib-switch {
+  /* Default size tokens (MD) */
+  --switch-track-width: 52px;
+  --switch-track-height: 26px;
+  --switch-thumb-size: 22px;
+  --switch-padding: 2px;
+  --switch-indicator-size: 8px;
+
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  font-family: var(--lib-font-family-base, system-ui, sans-serif);
+}
+
+:host(.lib-switch--disabled) {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.lib-switch__container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lib-spacing-2, 8px);
+}
+
+/* Label before track */
+:host(.lib-switch--label-before) .lib-switch__container {
+  flex-direction: row-reverse;
+}
+
+/* ==============================================
+   Size Variants (Override Custom Properties Only)
+   ============================================== */
+
+/* Small */
+:host(.lib-switch--sm) {
+  --switch-track-width: 44px;
+  --switch-track-height: 22px;
+  --switch-thumb-size: 18px;
+  --switch-indicator-size: 6px;
+}
+
+/* Medium (explicit - uses defaults) */
+:host(.lib-switch--md) {
+  --switch-track-width: 52px;
+  --switch-track-height: 26px;
+  --switch-thumb-size: 22px;
+  --switch-indicator-size: 8px;
+}
+
+/* Large */
+:host(.lib-switch--lg) {
+  --switch-track-width: 60px;
+  --switch-track-height: 30px;
+  --switch-thumb-size: 26px;
+  --switch-indicator-size: 10px;
+}
+
+/* ==============================================
+   Switch Track (the pill-shaped container)
+   ============================================== */
+
+.lib-switch__track {
+  position: relative;
+  width: var(--switch-track-width);
+  height: var(--switch-track-height);
+  border-radius: calc(var(--switch-track-height) / 2);
+  border: none;
+  background-color: #374151;
+  padding: 0;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* Hover */
+:host(:hover:not(.lib-switch--disabled)) .lib-switch__track {
+  background-color: #4b5563;
+}
+
+/* Checked - light gray track */
+:host(.lib-switch--checked) .lib-switch__track {
+  background-color: #e5e7eb;
+}
+
+:host(.lib-switch--checked:hover:not(.lib-switch--disabled)) .lib-switch__track {
+  background-color: #d1d5db;
+}
+
+/* ==============================================
+   Switch Thumb (the sliding circle)
+   ============================================== */
+
+.lib-switch__thumb {
+  position: absolute;
+  /* Center vertically using calc */
+  top: calc((var(--switch-track-height) - var(--switch-thumb-size)) / 2);
+  left: var(--switch-padding);
+  width: var(--switch-thumb-size);
+  height: var(--switch-thumb-size);
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Checked - move to right (single rule for all sizes) */
+:host(.lib-switch--checked) .lib-switch__thumb {
+  left: calc(var(--switch-track-width) - var(--switch-thumb-size) - var(--switch-padding));
+}
+
+/* ==============================================
+   Indicator Dot (inside thumb)
+   ============================================== */
+
+.lib-switch__indicator {
+  width: var(--switch-indicator-size);
+  height: var(--switch-indicator-size);
+  border-radius: 50%;
+  background-color: #ef4444; /* Red when OFF */
+  transition: background-color 0.3s ease;
+}
+
+/* Checked - green */
+:host(.lib-switch--checked) .lib-switch__indicator {
+  background-color: #22c55e;
+}
+
+/* ==============================================
+   Icon Containers (inside thumb)
+   ============================================== */
+
+.lib-switch__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  font-size: calc(var(--switch-thumb-size) * 0.55);
+  line-height: 1;
+  color: inherit;
+}
+
+/* Unchecked state: show unchecked icon, hide checked icon */
+.lib-switch__icon--checked {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.lib-switch__icon--unchecked {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Checked state: swap visibility with animation */
+:host(.lib-switch--checked) .lib-switch__icon--checked {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+:host(.lib-switch--checked) .lib-switch__icon--unchecked {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* SVG icon sizing - scales proportionally */
+.lib-switch__icon svg {
+  width: calc(var(--switch-thumb-size) * 0.6);
+  height: calc(var(--switch-thumb-size) * 0.6);
+  fill: currentColor;
+}
+
+/* Emoji and text content */
+.lib-switch__icon > span,
+.lib-switch__icon > ng-container {
+  display: contents;
+}
+
+/* ==============================================
+   Label
+   ============================================== */
+
+.lib-switch__label {
+  font-size: var(--lib-font-size-base, 1rem);
+  line-height: var(--lib-line-height-normal, 1.5);
+  color: var(--lib-color-neutral-700, #3f3f46);
+}
+
+:host(.lib-switch--sm) .lib-switch__label {
+  font-size: var(--lib-font-size-sm, 0.875rem);
+}
+
+:host(.lib-switch--lg) .lib-switch__label {
+  font-size: var(--lib-font-size-lg, 1.125rem);
+}
+
+:host(.lib-switch--disabled) .lib-switch__label {
+  color: var(--lib-color-neutral-400, #a1a1aa);
+}
+
+/* ==============================================
+   Focus State
+   ============================================== */
+
+:host(:focus-visible) .lib-switch__track {
+  outline: 2px solid var(--lib-color-primary-500, #6366f1);
+  outline-offset: 2px;
+}
+
+/* ==============================================
+   Ripple Effect
+   ============================================== */
+
+.lib-switch__ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  animation: lib-switch-ripple 400ms ease-out forwards;
+}
+
+@keyframes lib-switch-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .lib-switch__thumb,
+  .lib-switch__track,
+  .lib-switch__indicator,
+  .lib-switch__icon {
+    transition: none;
+  }
+  
+  .lib-switch__ripple {
+    animation: none;
+  }
+}
