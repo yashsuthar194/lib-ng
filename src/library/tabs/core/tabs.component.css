@@ -1,0 +1,315 @@
+/* ==============================================
+   Tabs Component Styles
+   Premium SaaS Design with CSS Variables
+   ============================================== */
+
+/* Base Container */
+:host {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--lib-font-family-base);
+  --_animation-duration: var(--lib-tabs-animation-duration, 200ms);
+}
+
+:host(.lib-tabs--vertical) {
+  flex-direction: row;
+}
+
+/* ==============================================
+   Tab Header
+   ============================================== */
+.lib-tabs__header {
+  display: flex;
+  align-items: stretch;
+  gap: var(--lib-spacing-1);
+  position: relative;
+  border-block-end: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+  padding-inline: var(--lib-spacing-2);
+}
+
+:host(.lib-tabs--vertical) .lib-tabs__header {
+  flex-direction: column;
+  border-block-end: none;
+  border-inline-end: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+  padding-block: var(--lib-spacing-2);
+  padding-inline: 0;
+  min-width: 180px;
+}
+
+/* ==============================================
+   Tab Header Item
+   ============================================== */
+.lib-tabs__header-item {
+  display: flex;
+  align-items: center;
+  gap: var(--lib-spacing-2);
+  padding: var(--lib-spacing-3) var(--lib-spacing-4);
+  background: transparent;
+  border: none;
+  border-radius: var(--lib-border-radius-md) var(--lib-border-radius-md) 0 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--lib-font-size-sm);
+  font-weight: var(--lib-font-weight-medium);
+  color: var(--lib-color-neutral-600);
+  white-space: nowrap;
+  position: relative;
+  transition: 
+    color var(--lib-transition-fast),
+    background var(--lib-transition-fast);
+}
+
+:host(.lib-tabs--vertical) .lib-tabs__header-item {
+  border-radius: var(--lib-border-radius-md) 0 0 var(--lib-border-radius-md);
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.lib-tabs__header-item:hover:not(:disabled) {
+  color: var(--lib-color-neutral-900);
+  background: var(--lib-color-neutral-50);
+}
+
+.lib-tabs__header-item:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--lib-color-primary-500);
+}
+
+.lib-tabs__header-item--active {
+  color: var(--lib-color-primary-600);
+}
+
+.lib-tabs__header-item--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--lib-color-primary-500);
+  border-radius: var(--lib-border-radius-full);
+}
+
+:host(.lib-tabs--vertical) .lib-tabs__header-item--active::after {
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  width: 2px;
+  height: auto;
+}
+
+.lib-tabs__header-item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==============================================
+   Icon & Label
+   ============================================== */
+.lib-tabs__icon {
+  font-size: var(--lib-font-size-base);
+  line-height: 1;
+}
+
+.lib-tabs__label {
+  flex: 1;
+}
+
+/* ==============================================
+   Badge
+   ============================================== */
+.lib-tabs__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--lib-spacing-1);
+  background: var(--lib-color-primary-500);
+  color: white;
+  font-size: var(--lib-font-size-xs);
+  font-weight: var(--lib-font-weight-semibold);
+  border-radius: var(--lib-border-radius-full);
+}
+
+/* ==============================================
+   Close Button
+   ============================================== */
+.lib-tabs__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--lib-border-radius-full);
+  cursor: pointer;
+  color: var(--lib-color-neutral-400);
+  transition: 
+    color var(--lib-transition-fast),
+    background var(--lib-transition-fast);
+}
+
+.lib-tabs__close:hover {
+  color: var(--lib-color-neutral-700);
+  background: var(--lib-color-neutral-200);
+}
+
+/* ==============================================
+   Tab Content
+   ============================================== */
+.lib-tabs__content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==============================================
+   Tab Panel
+   ============================================== */
+.lib-tabs__panel {
+  display: none;
+  padding: var(--lib-spacing-4);
+}
+
+.lib-tabs__panel--active {
+  display: block;
+}
+
+/* ==============================================
+   Animations
+   ============================================== */
+
+/* Slide in from right */
+.lib-tabs__panel--entering-right {
+  animation: tabSlideInRight var(--_animation-duration) ease-out;
+}
+
+/* Slide in from left */
+.lib-tabs__panel--entering-left {
+  animation: tabSlideInLeft var(--_animation-duration) ease-out;
+}
+
+@keyframes tabSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tabSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade animation */
+:host([data-animation="fade"]) .lib-tabs__panel--entering-right,
+:host([data-animation="fade"]) .lib-tabs__panel--entering-left {
+  animation: tabFadeIn var(--_animation-duration) ease-out;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* No animation */
+:host([data-animation="none"]) .lib-tabs__panel--entering-right,
+:host([data-animation="none"]) .lib-tabs__panel--entering-left {
+  animation: none;
+}
+
+/* ==============================================
+   Loading State
+   ============================================== */
+.lib-tabs__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lib-spacing-3);
+  padding: var(--lib-spacing-8);
+  color: var(--lib-color-neutral-500);
+  font-size: var(--lib-font-size-sm);
+}
+
+.lib-tabs__loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--lib-color-neutral-200);
+  border-top-color: var(--lib-color-primary-500);
+  border-radius: var(--lib-border-radius-full);
+  animation: tabSpin 0.8s linear infinite;
+}
+
+@keyframes tabSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lib-tabs__panel--entering-right,
+  .lib-tabs__panel--entering-left,
+  .lib-tabs__loading-spinner {
+    animation: none;
+  }
+  
+  .lib-tabs__header-item,
+  .lib-tabs__close {
+    transition: none;
+  }
+}
+
+/* ==============================================
+   Dark Theme
+   ============================================== */
+[data-theme-mode="dark"] :host .lib-tabs__header {
+  border-color: var(--lib-color-neutral-700);
+}
+
+[data-theme-mode="dark"] :host .lib-tabs__header-item {
+  color: var(--lib-color-neutral-400);
+}
+
+[data-theme-mode="dark"] :host .lib-tabs__header-item:hover:not(:disabled) {
+  color: var(--lib-color-neutral-100);
+  background: var(--lib-color-neutral-800);
+}
+
+[data-theme-mode="dark"] :host .lib-tabs__header-item--active {
+  color: var(--lib-color-primary-400);
+}
+
+[data-theme-mode="dark"] :host .lib-tabs__header-item--active::after {
+  background: var(--lib-color-primary-400);
+}
+
+[data-theme-mode="dark"] :host .lib-tabs__close:hover {
+  color: var(--lib-color-neutral-100);
+  background: var(--lib-color-neutral-700);
+}
+
+[data-theme-mode="dark"] :host .lib-tabs__loading {
+  color: var(--lib-color-neutral-400);
+}

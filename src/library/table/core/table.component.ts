@@ -10,14 +10,14 @@ import {
   Signal,
   isSignal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ColumnDefDirective } from '../column-def';
 import { SortState, RowContext } from '../types/table.types';
 
 @Component({
   selector: 'lib-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgTemplateOutlet],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

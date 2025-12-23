@@ -1,0 +1,306 @@
+/* ==============================================
+   Form Field Component Styles
+   Premium SaaS Design - Standard Labels Pattern
+   ============================================== */
+
+/* ==============================================
+   Base Container
+   ============================================== */
+.lib-form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* ==============================================
+   Label (Standard - Above Input)
+   ============================================== */
+.lib-form-field__label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--lib-color-neutral-700, #374151);
+  line-height: 1.4;
+}
+
+.lib-form-field__required {
+  color: var(--lib-color-error, #ef4444);
+  margin-left: 4px;
+}
+
+/* ==============================================
+   Input Container (Has Border - Holds Everything)
+   ============================================== */
+.lib-form-field__container {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  background: var(--lib-color-neutral-0, #fff);
+  border: 1px solid var(--lib-color-neutral-300, #d1d5db);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  overflow: hidden;
+  min-height: 42px;
+}
+
+/* Container Focus State */
+.lib-form-field--focused .lib-form-field__container {
+  border-color: var(--lib-color-primary-500, #6366f1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Container Invalid State */
+.lib-form-field--invalid .lib-form-field__container {
+  border-color: var(--lib-color-error, #ef4444);
+}
+
+.lib-form-field--invalid.lib-form-field--focused .lib-form-field__container {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* Container Disabled State */
+.lib-form-field--disabled .lib-form-field__container {
+  background: var(--lib-color-neutral-100, #f3f4f6);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ==============================================
+   Input Wrapper (Input Sits Here)
+   ============================================== */
+.lib-form-field__input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.lib-form-field__input-wrapper input,
+.lib-form-field__input-wrapper textarea {
+  width: 100%;
+  min-width: 0;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ==============================================
+   Prefix & Suffix (Inside Container)
+   ============================================== */
+.lib-form-field__prefix,
+.lib-form-field__suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Hide empty prefix/suffix */
+.lib-form-field__prefix:empty,
+.lib-form-field__suffix:empty {
+  display: none;
+}
+
+/* Prefix/Suffix Content Styling */
+.lib-form-field__prefix-content,
+.lib-form-field__suffix-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lib-color-neutral-500, #6b7280);
+  padding: 0 var(--lib-spacing-3, 12px);
+  height: 100%;
+}
+
+/* Explicit SVG sizing for icons - larger for better visibility */
+.lib-form-field__prefix-content svg,
+.lib-form-field__suffix-content svg,
+.lib-form-field__prefix svg,
+.lib-form-field__suffix svg {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
+  color: currentColor;
+  display: block;
+}
+
+/* Prefix layout - remove right padding to avoid gap */
+.lib-form-field__prefix-content {
+  padding-inline-end: 0;
+}
+
+/* Suffix layout - remove left padding to avoid gap  */
+.lib-form-field__suffix-content {
+  padding-inline-start: 0;
+}
+
+/* Remove any outline artifacts on prefix/suffix content */
+.lib-form-field__prefix-content,
+.lib-form-field__suffix-content {
+  outline: none;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Suffix Buttons */
+.lib-form-field__suffix-content button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-left: none;
+  outline: none;
+  cursor: pointer;
+  padding: var(--lib-spacing-2, 8px) var(--lib-spacing-3, 12px);
+  color: var(--lib-color-neutral-500, #6b7280);
+  transition: all var(--lib-transition-fast, 0.15s ease);
+  font-size: var(--lib-font-size-base, 1rem);
+  line-height: 1;
+}
+
+.lib-form-field__suffix-content button:hover {
+  background: var(--lib-color-neutral-100, rgba(0, 0, 0, 0.04));
+  color: var(--lib-color-neutral-700, #374151);
+}
+
+.lib-form-field__suffix-content button:focus {
+  outline: none;
+}
+
+.lib-form-field__suffix-content button:focus-visible {
+  background: var(--lib-color-neutral-100, rgba(0, 0, 0, 0.04));
+}
+
+/* ==============================================
+   Subscript (Hint / Error / Char Count)
+   ============================================== */
+.lib-form-field__subscript {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 20px;
+  padding-top: 4px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.lib-form-field__hint {
+  color: var(--lib-color-neutral-500, #6b7280);
+}
+
+.lib-form-field__error {
+  color: var(--lib-color-error, #ef4444);
+  font-weight: 500;
+}
+
+.lib-form-field__char-count {
+  color: var(--lib-color-neutral-400, #9ca3af);
+  margin-left: auto;
+  padding-left: 8px;
+}
+
+/* ==============================================
+   Label State Modifiers
+   ============================================== */
+.lib-form-field--focused .lib-form-field__label {
+  color: var(--lib-color-primary-600, #4f46e5);
+}
+
+.lib-form-field--invalid .lib-form-field__label {
+  color: var(--lib-color-error, #ef4444);
+}
+
+.lib-form-field--disabled .lib-form-field__label {
+  color: var(--lib-color-neutral-400, #9ca3af);
+}
+
+/* ==============================================
+   Floating Label Mode (opt-in with [floatingLabel]="true")
+   ============================================== */
+.lib-form-field--floating-label {
+  padding-top: 12px;
+}
+
+.lib-form-field--floating-label .lib-form-field__label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0 4px;
+  background: var(--lib-color-neutral-0, #fff);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--lib-color-neutral-500, #6b7280);
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.15s ease;
+}
+
+.lib-form-field--floating-label.lib-form-field--focused .lib-form-field__label,
+.lib-form-field--floating-label.lib-form-field--label-active .lib-form-field__label,
+.lib-form-field--floating-label.lib-form-field--has-value .lib-form-field__label {
+  top: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--lib-color-primary-600, #4f46e5);
+}
+
+.lib-form-field--floating-label.lib-form-field--invalid .lib-form-field__label {
+  color: var(--lib-color-error, #ef4444);
+}
+
+/* ==============================================
+   Dark Theme
+   ============================================== */
+[data-theme-mode="dark"] .lib-form-field__label {
+  color: var(--lib-color-neutral-300, #d1d5db);
+}
+
+[data-theme-mode="dark"] .lib-form-field__container {
+  background: var(--lib-color-neutral-900, #111827);
+  border-color: var(--lib-color-neutral-600, #4b5563);
+}
+
+[data-theme-mode="dark"] .lib-form-field--focused .lib-form-field__container {
+  border-color: var(--lib-color-primary-400, #818cf8);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme-mode="dark"] .lib-form-field--floating-label .lib-form-field__label {
+  background: var(--lib-color-neutral-900, #111827);
+  color: var(--lib-color-neutral-400, #9ca3af);
+}
+
+[data-theme-mode="dark"] .lib-form-field__prefix-content,
+[data-theme-mode="dark"] .lib-form-field__suffix-content {
+  color: var(--lib-color-neutral-400, #9ca3af);
+}
+
+[data-theme-mode="dark"] .lib-form-field__suffix-content button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--lib-color-neutral-200, #e5e7eb);
+}
+
+[data-theme-mode="dark"] .lib-form-field__hint {
+  color: var(--lib-color-neutral-400, #9ca3af);
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lib-form-field__label,
+  .lib-form-field__container {
+    transition: none;
+  }
+}

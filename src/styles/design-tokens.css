@@ -1,0 +1,269 @@
+/* ==============================================
+   Design Tokens - CSS Custom Properties
+   Angular Component Library
+   Premium SaaS Theme System
+   ============================================== */
+
+:root {
+  /* ==============================================
+     Theme Color Palettes
+     ============================================== */
+  
+  /* Indigo Theme (Default) */
+  --lib-theme-primary-50: #eef2ff;
+  --lib-theme-primary-100: #e0e7ff;
+  --lib-theme-primary-200: #c7d2fe;
+  --lib-theme-primary-300: #a5b4fc;
+  --lib-theme-primary-400: #818cf8;
+  --lib-theme-primary-500: #6366f1;
+  --lib-theme-primary-600: #4f46e5;
+  --lib-theme-primary-700: #4338ca;
+  --lib-theme-primary-800: #3730a3;
+  --lib-theme-primary-900: #312e81;
+
+  /* ==============================================
+     Active Theme (References theme palette)
+     ============================================== */
+  --lib-color-primary-50: var(--lib-theme-primary-50);
+  --lib-color-primary-100: var(--lib-theme-primary-100);
+  --lib-color-primary-200: var(--lib-theme-primary-200);
+  --lib-color-primary-300: var(--lib-theme-primary-300);
+  --lib-color-primary-400: var(--lib-theme-primary-400);
+  --lib-color-primary-500: var(--lib-theme-primary-500);
+  --lib-color-primary-600: var(--lib-theme-primary-600);
+  --lib-color-primary-700: var(--lib-theme-primary-700);
+  --lib-color-primary-800: var(--lib-theme-primary-800);
+  --lib-color-primary-900: var(--lib-theme-primary-900);
+
+  /* ==============================================
+     Neutral Palette (Light Mode)
+     ============================================== */
+  --lib-color-neutral-0: #ffffff;
+  --lib-color-neutral-50: #f8fafc;
+  --lib-color-neutral-100: #f1f5f9;
+  --lib-color-neutral-200: #e2e8f0;
+  --lib-color-neutral-300: #cbd5e1;
+  --lib-color-neutral-400: #94a3b8;
+  --lib-color-neutral-500: #64748b;
+  --lib-color-neutral-600: #475569;
+  --lib-color-neutral-700: #334155;
+  --lib-color-neutral-800: #1e293b;
+  --lib-color-neutral-900: #0f172a;
+  --lib-color-neutral-950: #020617;
+
+  /* ==============================================
+     Semantic Colors
+     ============================================== */
+  --lib-color-success: #10b981;
+  --lib-color-success-light: #d1fae5;
+  --lib-color-warning: #f59e0b;
+  --lib-color-warning-light: #fef3c7;
+  --lib-color-error: #ef4444;
+  --lib-color-error-light: #fee2e2;
+  --lib-color-info: #0ea5e9;
+  --lib-color-info-light: #e0f2fe;
+
+  /* ==============================================
+     Sidebar & Header
+     ============================================== */
+  --lib-sidebar-bg: var(--lib-color-neutral-900);
+  --lib-sidebar-text: var(--lib-color-neutral-300);
+  --lib-sidebar-text-hover: var(--lib-color-neutral-0);
+  --lib-sidebar-active-bg: var(--lib-color-primary-600);
+  --lib-sidebar-hover-bg: var(--lib-color-neutral-800);
+  --lib-sidebar-width: 280px;
+
+  --lib-header-bg: var(--lib-color-neutral-0);
+  --lib-header-border: var(--lib-color-neutral-200);
+  --lib-header-height: 64px;
+
+  /* ==============================================
+     Content Area
+     ============================================== */
+  --lib-content-bg: var(--lib-color-neutral-50);
+
+  /* ==============================================
+     Spacing Scale
+     ============================================== */
+  --lib-spacing-0: 0;
+  --lib-spacing-1: 0.25rem;
+  --lib-spacing-2: 0.5rem;
+  --lib-spacing-3: 0.75rem;
+  --lib-spacing-4: 1rem;
+  --lib-spacing-5: 1.25rem;
+  --lib-spacing-6: 1.5rem;
+  --lib-spacing-8: 2rem;
+  --lib-spacing-10: 2.5rem;
+  --lib-spacing-12: 3rem;
+  --lib-spacing-16: 4rem;
+
+  /* ==============================================
+     Typography
+     ============================================== */
+  --lib-font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --lib-font-family-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  --lib-font-size-xs: 0.75rem;
+  --lib-font-size-sm: 0.875rem;
+  --lib-font-size-base: 1rem;
+  --lib-font-size-lg: 1.125rem;
+  --lib-font-size-xl: 1.25rem;
+  --lib-font-size-2xl: 1.5rem;
+  --lib-font-size-3xl: 1.875rem;
+
+  --lib-font-weight-light: 300;
+  --lib-font-weight-normal: 400;
+  --lib-font-weight-medium: 500;
+  --lib-font-weight-semibold: 600;
+  --lib-font-weight-bold: 700;
+
+  --lib-line-height-tight: 1.25;
+  --lib-line-height-normal: 1.5;
+  --lib-line-height-relaxed: 1.75;
+
+  /* ==============================================
+     Borders
+     ============================================== */
+  --lib-border-width-thin: 1px;
+  --lib-border-width-medium: 2px;
+  --lib-border-width-thick: 4px;
+
+  --lib-border-radius-none: 0;
+  --lib-border-radius-sm: 0.25rem;
+  --lib-border-radius-base: 0.375rem;
+  --lib-border-radius-md: 0.5rem;
+  --lib-border-radius-lg: 0.75rem;
+  --lib-border-radius-xl: 1rem;
+  --lib-border-radius-2xl: 1.5rem;
+  --lib-border-radius-full: 9999px;
+
+  /* ==============================================
+     Shadows
+     ============================================== */
+  --lib-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --lib-shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --lib-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --lib-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --lib-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ==============================================
+     Transitions
+     ============================================== */
+  --lib-transition-fast: 150ms ease;
+  --lib-transition-base: 200ms ease;
+  --lib-transition-slow: 300ms ease;
+
+  /* ==============================================
+     Z-Index
+     ============================================== */
+  --lib-z-index-dropdown: 1000;
+  --lib-z-index-sticky: 1020;
+  --lib-z-index-fixed: 1030;
+  --lib-z-index-modal-backdrop: 1040;
+  --lib-z-index-modal: 1050;
+  --lib-z-index-popover: 1060;
+  --lib-z-index-tooltip: 1070;
+}
+
+/* ==============================================
+   Color Theme Variants
+   ============================================== */
+
+/* Ocean Theme */
+[data-theme-color="ocean"] {
+  --lib-theme-primary-50: #ecfeff;
+  --lib-theme-primary-100: #cffafe;
+  --lib-theme-primary-200: #a5f3fc;
+  --lib-theme-primary-300: #67e8f9;
+  --lib-theme-primary-400: #22d3ee;
+  --lib-theme-primary-500: #06b6d4;
+  --lib-theme-primary-600: #0891b2;
+  --lib-theme-primary-700: #0e7490;
+  --lib-theme-primary-800: #155e75;
+  --lib-theme-primary-900: #164e63;
+}
+
+/* Emerald Theme */
+[data-theme-color="emerald"] {
+  --lib-theme-primary-50: #ecfdf5;
+  --lib-theme-primary-100: #d1fae5;
+  --lib-theme-primary-200: #a7f3d0;
+  --lib-theme-primary-300: #6ee7b7;
+  --lib-theme-primary-400: #34d399;
+  --lib-theme-primary-500: #10b981;
+  --lib-theme-primary-600: #059669;
+  --lib-theme-primary-700: #047857;
+  --lib-theme-primary-800: #065f46;
+  --lib-theme-primary-900: #064e3b;
+}
+
+/* Rose Theme */
+[data-theme-color="rose"] {
+  --lib-theme-primary-50: #fff1f2;
+  --lib-theme-primary-100: #ffe4e6;
+  --lib-theme-primary-200: #fecdd3;
+  --lib-theme-primary-300: #fda4af;
+  --lib-theme-primary-400: #fb7185;
+  --lib-theme-primary-500: #f43f5e;
+  --lib-theme-primary-600: #e11d48;
+  --lib-theme-primary-700: #be123c;
+  --lib-theme-primary-800: #9f1239;
+  --lib-theme-primary-900: #881337;
+}
+
+/* Amber Theme */
+[data-theme-color="amber"] {
+  --lib-theme-primary-50: #fffbeb;
+  --lib-theme-primary-100: #fef3c7;
+  --lib-theme-primary-200: #fde68a;
+  --lib-theme-primary-300: #fcd34d;
+  --lib-theme-primary-400: #fbbf24;
+  --lib-theme-primary-500: #f59e0b;
+  --lib-theme-primary-600: #d97706;
+  --lib-theme-primary-700: #b45309;
+  --lib-theme-primary-800: #92400e;
+  --lib-theme-primary-900: #78350f;
+}
+
+/* Violet Theme */
+[data-theme-color="violet"] {
+  --lib-theme-primary-50: #f5f3ff;
+  --lib-theme-primary-100: #ede9fe;
+  --lib-theme-primary-200: #ddd6fe;
+  --lib-theme-primary-300: #c4b5fd;
+  --lib-theme-primary-400: #a78bfa;
+  --lib-theme-primary-500: #8b5cf6;
+  --lib-theme-primary-600: #7c3aed;
+  --lib-theme-primary-700: #6d28d9;
+  --lib-theme-primary-800: #5b21b6;
+  --lib-theme-primary-900: #4c1d95;
+}
+
+/* ==============================================
+   Dark Mode
+   ============================================== */
+[data-theme-mode="dark"] {
+  --lib-color-neutral-0: #0f172a;
+  --lib-color-neutral-50: #1e293b;
+  --lib-color-neutral-100: #334155;
+  --lib-color-neutral-200: #475569;
+  --lib-color-neutral-300: #64748b;
+  --lib-color-neutral-400: #94a3b8;
+  --lib-color-neutral-500: #cbd5e1;
+  --lib-color-neutral-600: #e2e8f0;
+  --lib-color-neutral-700: #f1f5f9;
+  --lib-color-neutral-800: #f8fafc;
+  --lib-color-neutral-900: #ffffff;
+  --lib-color-neutral-950: #ffffff;
+
+  --lib-sidebar-bg: #020617;
+  --lib-sidebar-hover-bg: #1e293b;
+  --lib-header-bg: #0f172a;
+  --lib-header-border: #1e293b;
+  --lib-content-bg: #0f172a;
+
+  --lib-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --lib-shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+  --lib-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --lib-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+}

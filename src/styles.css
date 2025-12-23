@@ -1,14 +1,175 @@
-/* You can add global styles to this file, and also import other style files */
-* {
+/* ==============================================
+   Global Styles
+   Angular Component Library
+   ============================================== */
+
+/* Import Design Tokens */
+@import url('./styles/design-tokens.css');
+
+/* Import Library Component Styles */
+@import url('./library/input/core/input.directive.css');
+@import url('./library/input/container/form-field.component.css');
+@import url('./library/button/core/button.directive.css');
+@import url('./library/checkbox/core/checkbox.component.css');
+@import url('./library/checkbox/switch/switch.component.css');
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ==============================================
+   Base Reset
+   ============================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
 }
 
-:root {
-  --primary-color: #4caf50;
-  --secondary-color: #f44336;
-  --font-color: #333;
-  --background-color: #f9f9f9;
+/* ==============================================
+   Root Styles
+   ============================================== */
+html {
+  font-family: var(--lib-font-family-base);
+  font-size: 16px;
+  line-height: var(--lib-line-height-normal);
+  color: var(--lib-color-neutral-900);
+  background: var(--lib-color-neutral-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--lib-content-bg);
+}
+
+/* ==============================================
+   Typography Base
+   ============================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--lib-font-weight-semibold);
+  line-height: var(--lib-line-height-tight);
+  color: var(--lib-color-neutral-900);
+}
+
+h1 { font-size: var(--lib-font-size-3xl); }
+h2 { font-size: var(--lib-font-size-2xl); }
+h3 { font-size: var(--lib-font-size-xl); }
+h4 { font-size: var(--lib-font-size-lg); }
+
+p {
+  margin-block-end: var(--lib-spacing-4);
+  color: var(--lib-color-neutral-700);
+}
+
+a {
+  color: var(--lib-color-primary-600);
+  text-decoration: none;
+  transition: color var(--lib-transition-fast);
+}
+
+a:hover {
+  color: var(--lib-color-primary-700);
+  text-decoration: underline;
+}
+
+/* ==============================================
+   Code Styles
+   ============================================== */
+code, pre {
+  font-family: var(--lib-font-family-mono);
+  font-size: var(--lib-font-size-sm);
+}
+
+code {
+  padding: var(--lib-spacing-1) var(--lib-spacing-2);
+  background: var(--lib-color-neutral-100);
+  border-radius: var(--lib-border-radius-base);
+  color: var(--lib-color-primary-700);
+}
+
+pre {
+  padding: var(--lib-spacing-4);
+  background: var(--lib-color-neutral-900);
+  color: var(--lib-color-neutral-100);
+  border-radius: var(--lib-border-radius-lg);
+  overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+/* ==============================================
+   Focus Visible (Accessibility)
+   ============================================== */
+:focus-visible {
+  outline: 2px solid var(--lib-color-primary-500);
+  outline-offset: 2px;
+}
+
+/* ==============================================
+   Selection
+   ============================================== */
+::selection {
+  background: var(--lib-color-primary-200);
+  color: var(--lib-color-primary-900);
+}
+
+/* ==============================================
+   Scrollbar Styling
+   ============================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lib-color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lib-color-neutral-300);
+  border-radius: var(--lib-border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lib-color-neutral-400);
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==============================================
+   Dark Mode Adjustments
+   ============================================== */
+[data-theme-mode="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme-mode="dark"] body {
+  background: var(--lib-color-neutral-950);
+}
+
+[data-theme-mode="dark"] ::-webkit-scrollbar-track {
+  background: var(--lib-color-neutral-800);
+}
+
+[data-theme-mode="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--lib-color-neutral-600);
 }

@@ -1,0 +1,33 @@
+<!-- Switch Template -->
+<div class="lib-switch__container">
+  <!-- Switch Track -->
+  <span class="lib-switch__track">
+    <span class="lib-switch__thumb">
+      @if (checkedIconTemplate || uncheckedIconTemplate) {
+        <!-- Custom icons mode -->
+        <span class="lib-switch__icon lib-switch__icon--checked" aria-hidden="true">
+          @if (checkedIconTemplate) {
+            <ng-container *ngTemplateOutlet="checkedIconTemplate"></ng-container>
+          }
+        </span>
+        <span class="lib-switch__icon lib-switch__icon--unchecked" aria-hidden="true">
+          @if (uncheckedIconTemplate) {
+            <ng-container *ngTemplateOutlet="uncheckedIconTemplate"></ng-container>
+          }
+        </span>
+      } @else {
+        <!-- Default indicator dot -->
+        <span class="lib-switch__indicator"></span>
+      }
+    </span>
+  </span>
+  
+  <!-- Label -->
+  <span class="lib-switch__label">
+    @if (currentLabel()) {
+      {{ currentLabel() }}
+    } @else {
+      <ng-content></ng-content>
+    }
+  </span>
+</div>

@@ -1,0 +1,323 @@
+/* ==============================================
+   Input Directive Styles
+   Premium SaaS Design with CSS Variables
+   ============================================== */
+
+/* ==============================================
+   Autofill Detection (via CSS animation)
+   ============================================== */
+@keyframes libInputAutoFillStart {
+  from { /* empty */ }
+  to { /* empty */ }
+}
+
+@keyframes libInputAutoFillEnd {
+  from { /* empty */ }
+  to { /* empty */ }
+}
+
+/* ==============================================
+   Base Input Styles (Standalone)
+   ============================================== */
+.lib-input {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  color: var(--lib-color-neutral-900);
+  background: var(--lib-color-neutral-0);
+  border: 1px solid var(--lib-color-neutral-300);
+  border-radius: var(--lib-border-radius-md);
+  transition: 
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.lib-input::placeholder {
+  color: var(--lib-color-neutral-400);
+  opacity: 1;
+}
+
+/* ==============================================
+   Size Variants
+   ============================================== */
+.lib-input--sm {
+  height: 32px;
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+}
+
+.lib-input--md {
+  height: 40px;
+  min-height: 40px;
+  padding: 8px 14px;
+  font-size: 0.9375rem;
+}
+
+.lib-input--lg {
+  height: 48px;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-size: 1rem;
+}
+
+/* Textarea adjustments */
+textarea.lib-input {
+  height: auto;
+  min-height: 80px;
+  resize: vertical;
+  padding: 10px 14px;
+}
+
+textarea.lib-input--sm {
+  min-height: 60px;
+}
+
+textarea.lib-input--lg {
+  min-height: 120px;
+}
+
+/* ==============================================
+   Auto-Resize Textarea
+   ============================================== */
+textarea.lib-input--auto-resize,
+textarea.lib-input[data-auto-resize="true"] {
+  resize: none;
+  overflow-y: hidden;
+}
+
+/* ==============================================
+   Style Variants
+   ============================================== */
+
+/* Outline (default) */
+.lib-input--outline {
+  background: var(--lib-color-neutral-0, #fff);
+  border-color: var(--lib-color-neutral-300, #d1d5db);
+}
+
+.lib-input--outline:hover:not(:disabled):not(:focus) {
+  border-color: var(--lib-color-neutral-400, #9ca3af);
+}
+
+/* Filled */
+.lib-input--filled {
+  background: var(--lib-color-neutral-100, #f3f4f6);
+  border-color: transparent;
+}
+
+.lib-input--filled:hover:not(:disabled):not(:focus) {
+  background: var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-input--filled:focus {
+  background: var(--lib-color-neutral-0, #fff);
+  border-color: var(--lib-color-primary-500, #6366f1);
+}
+
+/* Underline */
+.lib-input--underline {
+  background: transparent;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 2px solid var(--lib-color-neutral-300, #d1d5db);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.lib-input--underline:hover:not(:disabled):not(:focus) {
+  border-bottom-color: var(--lib-color-neutral-400, #9ca3af);
+}
+
+.lib-input--underline:focus {
+  border-bottom-color: var(--lib-color-primary-500, #6366f1);
+}
+
+/* ==============================================
+   States
+   ============================================== */
+
+/* Focus */
+.lib-input--focused,
+.lib-input:focus {
+  border-color: var(--lib-color-primary-500, #6366f1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.lib-input--underline.lib-input--focused,
+.lib-input--underline:focus {
+  box-shadow: none;
+}
+
+/* Disabled */
+.lib-input--disabled,
+.lib-input:disabled {
+  background: var(--lib-color-neutral-100, #f3f4f6);
+  color: var(--lib-color-neutral-400, #9ca3af);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.lib-input:disabled::placeholder {
+  color: var(--lib-color-neutral-300, #d1d5db);
+}
+
+/* Readonly */
+.lib-input--readonly,
+.lib-input[readonly] {
+  background: var(--lib-color-neutral-50, #f9fafb);
+  cursor: default;
+}
+
+/* Invalid */
+.lib-input--invalid {
+  border-color: var(--lib-color-error, #ef4444);
+}
+
+.lib-input--invalid:focus {
+  border-color: var(--lib-color-error, #ef4444);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.lib-input--underline.lib-input--invalid {
+  border-bottom-color: var(--lib-color-error, #ef4444);
+}
+
+/* ==============================================
+   INSIDE FORM-FIELD: Remove input border
+   The form-field container provides the border
+   ============================================== */
+.lib-form-field .lib-input {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  height: auto;
+}
+
+.lib-form-field .lib-input:focus {
+  box-shadow: none !important;
+}
+
+.lib-form-field .lib-input--sm {
+  padding: 6px 14px;
+  min-height: 32px;
+}
+
+.lib-form-field .lib-input--md {
+  padding: 10px 14px;
+  min-height: 40px;
+}
+
+.lib-form-field .lib-input--lg {
+  padding: 14px 16px;
+  min-height: 48px;
+}
+
+/* ==============================================
+   Autofill Styling
+   ============================================== */
+.lib-input:-webkit-autofill,
+.lib-input:-webkit-autofill:hover,
+.lib-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--lib-color-neutral-900, #111827);
+  -webkit-box-shadow: 0 0 0 1000px var(--lib-color-neutral-50, #f9fafb) inset;
+  box-shadow: 0 0 0 1000px var(--lib-color-neutral-50, #f9fafb) inset;
+  transition: background-color 5000s ease-in-out 0s;
+  animation: libInputAutoFillStart 0.001s forwards;
+}
+
+.lib-input:not(:-webkit-autofill) {
+  animation: libInputAutoFillEnd 0.001s forwards;
+}
+
+/* ==============================================
+   Search Input Styling
+   ============================================== */
+.lib-input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.lib-input[type="search"]::-webkit-search-cancel-button,
+.lib-input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ==============================================
+   Number Input Styling
+   ============================================== */
+.lib-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.lib-input[type="number"]::-webkit-outer-spin-button,
+.lib-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ==============================================
+   Dark Theme
+   ============================================== */
+[data-theme-mode="dark"] .lib-input {
+  color: var(--lib-color-neutral-100, #f3f4f6);
+  background: var(--lib-color-neutral-900, #111827);
+  border-color: var(--lib-color-neutral-600, #4b5563);
+}
+
+[data-theme-mode="dark"] .lib-input::placeholder {
+  color: var(--lib-color-neutral-500, #6b7280);
+}
+
+[data-theme-mode="dark"] .lib-input--outline:hover:not(:disabled):not(:focus) {
+  border-color: var(--lib-color-neutral-500, #6b7280);
+}
+
+[data-theme-mode="dark"] .lib-input--filled {
+  background: var(--lib-color-neutral-800, #1f2937);
+  border-color: transparent;
+}
+
+[data-theme-mode="dark"] .lib-input--filled:hover:not(:disabled):not(:focus) {
+  background: var(--lib-color-neutral-700, #374151);
+}
+
+[data-theme-mode="dark"] .lib-input--filled:focus {
+  background: var(--lib-color-neutral-900, #111827);
+}
+
+[data-theme-mode="dark"] .lib-input--focused,
+[data-theme-mode="dark"] .lib-input:focus {
+  border-color: var(--lib-color-primary-400, #818cf8);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme-mode="dark"] .lib-input--disabled,
+[data-theme-mode="dark"] .lib-input:disabled {
+  background: var(--lib-color-neutral-800, #1f2937);
+  color: var(--lib-color-neutral-600, #4b5563);
+}
+
+[data-theme-mode="dark"] .lib-input:-webkit-autofill,
+[data-theme-mode="dark"] .lib-input:-webkit-autofill:hover,
+[data-theme-mode="dark"] .lib-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--lib-color-neutral-100, #f3f4f6);
+  -webkit-box-shadow: 0 0 0 1000px var(--lib-color-neutral-800, #1f2937) inset;
+  box-shadow: 0 0 0 1000px var(--lib-color-neutral-800, #1f2937) inset;
+}
+
+/* ==============================================
+   Reduced Motion
+   ============================================== */
+@media (prefers-reduced-motion: reduce) {
+  .lib-input {
+    transition: none;
+  }
+}
