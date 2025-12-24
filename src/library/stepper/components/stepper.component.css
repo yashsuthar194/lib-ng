@@ -197,6 +197,19 @@
   color: var(--step-icon-color-disabled);
 }
 
+/* Unreachable state (linear mode - can't navigate to this step yet) */
+.lib-stepper__step--unreachable:not(.lib-stepper__step--active) .lib-stepper__step-header {
+  cursor: not-allowed;
+}
+
+.lib-stepper__step--unreachable:not(.lib-stepper__step--active):not(.lib-stepper__step--completed) .lib-stepper__step-icon {
+  opacity: 0.6;
+}
+
+.lib-stepper__step--unreachable:not(.lib-stepper__step--active) .lib-stepper__step-label-text {
+  color: var(--lib-color-neutral-400, #a1a1aa);
+}
+
 /* ========================================
    Check Icon Animation
    ======================================== */
