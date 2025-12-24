@@ -25,6 +25,26 @@ import { AnimatedModalExampleComponent } from './modal/animated/animated-modal.c
 import { ButtonExampleComponent } from './button/button-example.component';
 // Checkbox examples
 import { CheckboxExampleComponent } from './checkbox/checkbox-example.component';
+// Toast examples
+import { ToastExampleComponent } from './toast/toast-example.component';
+// Tooltip examples
+import { TooltipExampleComponent } from './tooltip/tooltip-example.component';
+// Alert examples
+import { AlertExampleComponent } from './alert/alert-example.component';
+// Progress examples
+import { ProgressExampleComponent } from './progress/progress-example.component';
+// Card examples
+import { CardExampleComponent } from './card/card-example.component';
+// Badge examples
+import { BadgeExampleComponent } from './badge/badge-example.component';
+// Avatar examples
+import { AvatarExampleComponent } from './avatar/avatar-example.component';
+// Accordion examples
+import { AccordionExampleComponent } from './accordion/accordion-example.component';
+// Breadcrumb examples
+import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example.component';
+// Stepper examples
+import { StepperExampleComponent } from './stepper/stepper-example.component';
 
 export const EXAMPLES_ROUTES: Routes = [
   {
@@ -57,6 +77,26 @@ export const EXAMPLES_ROUTES: Routes = [
       { path: 'button', component: ButtonExampleComponent },
       // Checkbox routes
       { path: 'checkbox', component: CheckboxExampleComponent },
+      // Toast routes
+      { path: 'toast', component: ToastExampleComponent },
+      // Tooltip routes
+      { path: 'tooltip', component: TooltipExampleComponent },
+      // Alert routes
+      { path: 'alert', component: AlertExampleComponent },
+      // Progress routes
+      { path: 'progress', component: ProgressExampleComponent },
+      // Card routes
+      { path: 'card', component: CardExampleComponent },
+      // Badge routes
+      { path: 'badge', component: BadgeExampleComponent },
+      // Avatar routes
+      { path: 'avatar', component: AvatarExampleComponent },
+      // Accordion routes
+      { path: 'accordion', component: AccordionExampleComponent },
+      // Breadcrumb routes
+      { path: 'breadcrumb', component: BreadcrumbExampleComponent },
+      // Stepper routes
+      { path: 'stepper', component: StepperExampleComponent },
       // Input routes (lazy loaded)
       { 
         path: 'input', 

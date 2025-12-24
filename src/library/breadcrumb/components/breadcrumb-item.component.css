@@ -1,0 +1,83 @@
+/**
+ * Breadcrumb Item Component Styles
+ */
+
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Common styles for link, button, and span */
+.lib-breadcrumb-item__link,
+.lib-breadcrumb-item__button,
+.lib-breadcrumb-item__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lib-spacing-1, 0.25rem);
+  padding: var(--lib-spacing-1, 0.25rem) var(--lib-spacing-2, 0.5rem);
+  border-radius: var(--lib-border-radius-sm, 0.25rem);
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--lib-color-neutral-600, #52525b);
+  transition: 
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+/* Link and button interactive styles */
+.lib-breadcrumb-item__link,
+.lib-breadcrumb-item__button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.lib-breadcrumb-item__link:hover,
+.lib-breadcrumb-item__button:hover {
+  background: var(--lib-color-neutral-100, #f4f4f5);
+  color: var(--lib-color-neutral-900, #18181b);
+}
+
+.lib-breadcrumb-item__link:focus-visible,
+.lib-breadcrumb-item__button:focus-visible {
+  outline: 2px solid var(--lib-color-primary-500, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Current page */
+:host(.lib-breadcrumb-item--current) .lib-breadcrumb-item__content {
+  color: var(--lib-color-neutral-900, #18181b);
+  font-weight: var(--lib-font-weight-medium, 500);
+}
+
+/* Disabled state */
+:host(.lib-breadcrumb-item--disabled) {
+  pointer-events: none;
+}
+
+:host(.lib-breadcrumb-item--disabled) .lib-breadcrumb-item__content {
+  color: var(--lib-color-neutral-400, #a1a1aa);
+  cursor: not-allowed;
+}
+
+/* Icon */
+.lib-breadcrumb-item__icon {
+  display: inline-flex;
+  font-size: 1em;
+  opacity: 0.7;
+}
+
+/* Label */
+.lib-breadcrumb-item__label {
+  white-space: nowrap;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .lib-breadcrumb-item__link,
+  .lib-breadcrumb-item__button,
+  .lib-breadcrumb-item__content {
+    transition: none;
+  }
+}

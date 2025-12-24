@@ -1,0 +1,142 @@
+/**
+ * Tooltip Component Styles
+ */
+
+:host {
+  --tooltip-bg: var(--lib-color-neutral-800, #1f2937);
+  --tooltip-text: var(--lib-color-neutral-100, #f3f4f6);
+  --tooltip-radius: var(--lib-border-radius-md, 6px);
+  --tooltip-arrow-size: 6px;
+  
+  position: absolute;
+  z-index: var(--lib-z-index-tooltip, 10000);
+  pointer-events: none;
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: 
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out,
+    visibility 0.15s;
+}
+
+:host(.lib-tooltip--visible) {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* Position-specific transforms */
+:host(.lib-tooltip--top) {
+  transform-origin: bottom center;
+}
+
+:host(.lib-tooltip--bottom) {
+  transform-origin: top center;
+}
+
+:host(.lib-tooltip--left) {
+  transform-origin: right center;
+}
+
+:host(.lib-tooltip--right) {
+  transform-origin: left center;
+}
+
+/* Hidden state transforms */
+:host(.lib-tooltip--top):not(.lib-tooltip--visible) {
+  transform: scale(0.95) translateY(4px);
+}
+
+:host(.lib-tooltip--bottom):not(.lib-tooltip--visible) {
+  transform: scale(0.95) translateY(-4px);
+}
+
+:host(.lib-tooltip--left):not(.lib-tooltip--visible) {
+  transform: scale(0.95) translateX(4px);
+}
+
+:host(.lib-tooltip--right):not(.lib-tooltip--visible) {
+  transform: scale(0.95) translateX(-4px);
+}
+
+/* ========================================
+   Content
+   ======================================== */
+
+.lib-tooltip__content {
+  background: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  padding: var(--lib-spacing-2, 8px) var(--lib-spacing-3, 12px);
+  border-radius: var(--tooltip-radius);
+  box-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1));
+  font-size: var(--lib-font-size-sm, 0.875rem);
+  line-height: var(--lib-line-height-normal, 1.5);
+  max-width: 280px;
+  word-wrap: break-word;
+}
+
+/* ========================================
+   Variants
+   ======================================== */
+
+:host(.lib-tooltip--info) {
+  --tooltip-bg: var(--lib-color-info, #3b82f6);
+}
+
+:host(.lib-tooltip--warning) {
+  --tooltip-bg: var(--lib-color-warning, #f59e0b);
+  --tooltip-text: var(--lib-color-neutral-900, #111827);
+}
+
+:host(.lib-tooltip--error) {
+  --tooltip-bg: var(--lib-color-error, #ef4444);
+}
+
+/* ========================================
+   Arrow
+   ======================================== */
+
+.lib-tooltip__arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: var(--tooltip-arrow-size) solid transparent;
+}
+
+/* Arrow positions */
+:host(.lib-tooltip--top) .lib-tooltip__arrow {
+  bottom: calc(var(--tooltip-arrow-size) * -2);
+  border-top-color: var(--tooltip-bg);
+  border-bottom: none;
+}
+
+:host(.lib-tooltip--bottom) .lib-tooltip__arrow {
+  top: calc(var(--tooltip-arrow-size) * -1);
+  border-bottom-color: var(--tooltip-bg);
+  border-top: none;
+}
+
+:host(.lib-tooltip--left) .lib-tooltip__arrow {
+  right: calc(var(--tooltip-arrow-size) * -2);
+  border-left-color: var(--tooltip-bg);
+  border-right: none;
+}
+
+:host(.lib-tooltip--right) .lib-tooltip__arrow {
+  left: calc(var(--tooltip-arrow-size) * -1);
+  border-right-color: var(--tooltip-bg);
+  border-left: none;
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    transition: none;
+  }
+}

@@ -1,0 +1,53 @@
+<h3 class="lib-accordion-item__header-wrapper">
+  <button
+    #headerButton
+    type="button"
+    class="lib-accordion-item__header"
+    [id]="'header-' + id()"
+    [attr.aria-expanded]="isExpanded()"
+    [attr.aria-controls]="'panel-' + id()"
+    [attr.aria-disabled]="disabled() || null"
+    [disabled]="disabled()"
+    (click)="toggle()"
+    (keydown)="onKeydown($event)"
+  >
+    <!-- Custom header template or default -->
+    @if (headerTemplate) {
+      <ng-container *ngTemplateOutlet="headerTemplate; context: headerContext()"></ng-container>
+    } @else {
+      <span class="lib-accordion-item__title">{{ header() }}</span>
+    }
+    
+    <!-- Expand icon -->
+    <span class="lib-accordion-item__icon" aria-hidden="true">
+      <svg 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2"
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </span>
+  </button>
+</h3>
+
+<div
+  [id]="'panel-' + id()"
+  role="region"
+  [attr.aria-labelledby]="'header-' + id()"
+  class="lib-accordion-item__body"
+  (transitionend)="onAnimationEnd()"
+>
+  <div class="lib-accordion-item__content">
+    @if (shouldRenderContent()) {
+      @if (contentTemplate) {
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+      } @else {
+        <ng-content></ng-content>
+      }
+    }
+  </div>
+</div>

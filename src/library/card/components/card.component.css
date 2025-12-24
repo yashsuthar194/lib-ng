@@ -1,0 +1,83 @@
+/**
+ * Card Component Styles
+ */
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+:host {
+  --card-bg: var(--lib-color-neutral-0, #ffffff);
+  --card-border: var(--lib-color-neutral-200, #e5e7eb);
+  --card-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1));
+  --card-radius: var(--lib-border-radius-xl, 12px);
+  
+  display: block;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+/* ========================================
+   Variants
+   ======================================== */
+
+:host(.lib-card--elevated) {
+  box-shadow: var(--card-shadow);
+}
+
+:host(.lib-card--outlined) {
+  border: 1px solid var(--card-border);
+  box-shadow: none;
+}
+
+:host(.lib-card--filled) {
+  background: var(--lib-color-neutral-100, #f4f4f5);
+  box-shadow: none;
+}
+
+/* ========================================
+   Clickable State
+   ======================================== */
+
+:host(.lib-card--clickable) {
+  cursor: pointer;
+  transition: 
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+:host(.lib-card--clickable):hover {
+  transform: translateY(-2px);
+}
+
+:host(.lib-card--clickable.lib-card--elevated):hover {
+  box-shadow: var(--lib-shadow-lg, 0 10px 15px -3px rgba(0,0,0,0.1));
+}
+
+:host(.lib-card--clickable.lib-card--outlined):hover {
+  border-color: var(--lib-color-neutral-400, #a1a1aa);
+}
+
+:host(.lib-card--clickable.lib-card--filled):hover {
+  background: var(--lib-color-neutral-200, #e5e7eb);
+}
+
+:host(.lib-card--clickable):active {
+  transform: translateY(0);
+}
+
+:host(.lib-card--clickable):focus-visible {
+  outline: 2px solid var(--lib-color-primary-500, #6366f1);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.lib-card--clickable) {
+    transition: none;
+  }
+}
