@@ -417,9 +417,8 @@ export class ExamplesLayoutComponent {
       title: 'Accordion',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z"/></svg>`,
       links: [
-        { path: 'accordion/basic', label: 'Basic Accordion', description: 'Collapsible content panels' },
+        { path: 'accordion', label: 'Accordion Examples', description: 'Expandable content panels' },
       ],
-      comingSoon: true
     },
     // ============================================
     // Tier 3: Navigation Components
@@ -428,18 +427,15 @@ export class ExamplesLayoutComponent {
       title: 'Breadcrumb',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>`,
       links: [
-        { path: 'breadcrumb/basic', label: 'Basic Breadcrumb', description: 'Navigation path' },
+        { path: 'breadcrumb', label: 'Breadcrumb Examples', description: 'Navigation trail with icons' },
       ],
-      comingSoon: true
     },
     {
       title: 'Stepper',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"/></svg>`,
       links: [
-        { path: 'stepper/basic', label: 'Basic Stepper', description: 'Multi-step wizard' },
+        { path: 'stepper', label: 'Stepper Examples', description: 'Multi-step wizard with animations' },
       ],
-      comingSoon: true
     },
   ];
 }
-

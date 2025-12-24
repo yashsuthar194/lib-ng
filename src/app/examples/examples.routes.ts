@@ -39,6 +39,12 @@ import { CardExampleComponent } from './card/card-example.component';
 import { BadgeExampleComponent } from './badge/badge-example.component';
 // Avatar examples
 import { AvatarExampleComponent } from './avatar/avatar-example.component';
+// Accordion examples
+import { AccordionExampleComponent } from './accordion/accordion-example.component';
+// Breadcrumb examples
+import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example.component';
+// Stepper examples
+import { StepperExampleComponent } from './stepper/stepper-example.component';
 
 export const EXAMPLES_ROUTES: Routes = [
   {
@@ -85,6 +91,12 @@ export const EXAMPLES_ROUTES: Routes = [
       { path: 'badge', component: BadgeExampleComponent },
       // Avatar routes
       { path: 'avatar', component: AvatarExampleComponent },
+      // Accordion routes
+      { path: 'accordion', component: AccordionExampleComponent },
+      // Breadcrumb routes
+      { path: 'breadcrumb', component: BreadcrumbExampleComponent },
+      // Stepper routes
+      { path: 'stepper', component: StepperExampleComponent },
       // Input routes (lazy loaded)
       { 
         path: 'input', 

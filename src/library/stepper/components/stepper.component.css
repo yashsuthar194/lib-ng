@@ -1,0 +1,530 @@
+/**
+ * Stepper Component Styles
+ * Unique animations: flow connector, pulse ring, bounce-in icons, slide content
+ */
+
+/* ========================================
+   CSS Variables
+   ======================================== */
+
+:host {
+  --step-icon-size: 40px;
+  --step-icon-bg: var(--lib-color-neutral-200, #e4e4e7);
+  --step-icon-color: var(--lib-color-neutral-600, #52525b);
+  --step-icon-bg-active: var(--lib-color-primary-500, #3b82f6);
+  --step-icon-color-active: var(--lib-color-neutral-0, #ffffff);
+  --step-icon-bg-completed: var(--lib-color-success, #22c55e);
+  --step-icon-color-completed: var(--lib-color-neutral-0, #ffffff);
+  --step-icon-bg-error: var(--lib-color-error, #ef4444);
+  --step-icon-color-error: var(--lib-color-neutral-0, #ffffff);
+  --step-icon-bg-disabled: var(--lib-color-neutral-100, #f4f4f5);
+  --step-icon-color-disabled: var(--lib-color-neutral-400, #a1a1aa);
+  --step-connector-color: var(--lib-color-neutral-300, #d4d4d8);
+  --step-connector-color-completed: var(--lib-color-success, #22c55e);
+  --step-connector-height: 2px;
+  --step-animation-duration: 300ms;
+  --step-gap: var(--lib-spacing-4, 16px);
+  
+  display: block;
+  width: 100%;
+}
+
+/* ========================================
+   Header (Step Icons Row)
+   ======================================== */
+
+.lib-stepper__header {
+  display: flex;
+  align-items: flex-start;
+}
+
+:host(.lib-stepper--horizontal) .lib-stepper__header {
+  flex-direction: row;
+  align-items: center;
+}
+
+:host(.lib-stepper--vertical) .lib-stepper__header {
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Step Container
+   ======================================== */
+
+.lib-stepper__step {
+  display: flex;
+  position: relative;
+  min-width: 0;
+  
+  /* Staggered entrance animation */
+  animation: stepReveal var(--step-animation-duration) ease-out backwards;
+  animation-delay: calc(var(--step-index, 0) * 80ms);
+}
+
+/* Horizontal: each step takes equal space, connector fills gap */
+:host(.lib-stepper--horizontal) .lib-stepper__step {
+  flex: 1;
+  align-items: center;
+}
+
+/* Last step doesn't need flex: 1 (no connector after it) */
+:host(.lib-stepper--horizontal) .lib-stepper__step:last-child {
+  flex: none;
+}
+
+/* Vertical: steps stack vertically, each is a row with connector */
+:host(.lib-stepper--vertical) .lib-stepper__step {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+@keyframes stepReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Step Header Button
+   ======================================== */
+
+.lib-stepper__step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--lib-spacing-3, 12px);
+  padding: var(--lib-spacing-2, 8px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--lib-border-radius-lg, 8px);
+  transition: background var(--lib-transition-fast, 150ms ease);
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.lib-stepper__step-header:hover:not(:disabled) {
+  background: var(--lib-color-neutral-100, #f4f4f5);
+}
+
+.lib-stepper__step-header:focus-visible {
+  outline: 2px solid var(--lib-color-primary-500, #3b82f6);
+  outline-offset: 2px;
+}
+
+.lib-stepper__step-header:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Alternative label position */
+:host(.lib-stepper--alternative-label) .lib-stepper__step-header {
+  flex-direction: column;
+  text-align: center;
+}
+
+/* ========================================
+   Step Icon Circle
+   ======================================== */
+
+.lib-stepper__step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--step-icon-size);
+  height: var(--step-icon-size);
+  border-radius: var(--lib-border-radius-full, 9999px);
+  background: var(--step-icon-bg);
+  color: var(--step-icon-color);
+  font-size: var(--lib-font-size-base, 1rem);
+  font-weight: var(--lib-font-weight-semibold, 600);
+  flex-shrink: 0;
+  position: relative;
+  transition: 
+    background var(--lib-transition-fast, 150ms ease),
+    color var(--lib-transition-fast, 150ms ease),
+    transform var(--lib-transition-fast, 150ms ease);
+}
+
+/* Active state with pulse ring */
+.lib-stepper__step--active .lib-stepper__step-icon {
+  background: var(--step-icon-bg-active);
+  color: var(--step-icon-color-active);
+}
+
+.lib-stepper__step--active .lib-stepper__step-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 var(--step-icon-bg-active);
+    opacity: 0.6;
+  }
+  70% {
+    box-shadow: 0 0 0 14px var(--step-icon-bg-active);
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--step-icon-bg-active);
+    opacity: 0;
+  }
+}
+
+/* Completed state */
+.lib-stepper__step--completed .lib-stepper__step-icon {
+  background: var(--step-icon-bg-completed);
+  color: var(--step-icon-color-completed);
+}
+
+/* Error state */
+.lib-stepper__step--error .lib-stepper__step-icon {
+  background: var(--step-icon-bg-error);
+  color: var(--step-icon-color-error);
+}
+
+/* Disabled state */
+.lib-stepper__step--disabled .lib-stepper__step-icon {
+  background: var(--step-icon-bg-disabled);
+  color: var(--step-icon-color-disabled);
+}
+
+/* ========================================
+   Check Icon Animation
+   ======================================== */
+
+.lib-stepper__check-icon {
+  width: 20px;
+  height: 20px;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: drawCheck 400ms ease-out forwards;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.lib-stepper__error-icon {
+  width: 18px;
+  height: 18px;
+  animation: bounceIn 400ms ease-out;
+}
+
+.lib-stepper__step-number {
+  animation: bounceIn 300ms ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.15); }
+  70% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* ========================================
+   Step Label
+   ======================================== */
+
+.lib-stepper__step-label {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  min-width: 0;
+}
+
+.lib-stepper__step-label-text {
+  font-size: var(--lib-font-size-sm, 0.875rem);
+  font-weight: var(--lib-font-weight-medium, 500);
+  color: var(--lib-color-neutral-700, #3f3f46);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lib-stepper__step--active .lib-stepper__step-label-text {
+  color: var(--lib-color-primary-600, #2563eb);
+  font-weight: var(--lib-font-weight-semibold, 600);
+}
+
+.lib-stepper__step--disabled .lib-stepper__step-label-text {
+  color: var(--lib-color-neutral-400, #a1a1aa);
+}
+
+.lib-stepper__step-sublabel {
+  font-size: var(--lib-font-size-xs, 0.75rem);
+  color: var(--lib-color-neutral-500, #71717a);
+}
+
+.lib-stepper__step-optional {
+  font-size: var(--lib-font-size-xs, 0.75rem);
+  color: var(--lib-color-neutral-400, #a1a1aa);
+  font-style: italic;
+}
+
+.lib-stepper__step-error {
+  font-size: var(--lib-font-size-xs, 0.75rem);
+  color: var(--lib-color-error, #ef4444);
+}
+
+/* ========================================
+   Connector Line
+   ======================================== */
+
+.lib-stepper__connector {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Horizontal: connector takes remaining space */
+:host(.lib-stepper--horizontal) .lib-stepper__connector {
+  flex: 1;
+  height: var(--step-connector-height);
+  min-width: var(--step-gap);
+  margin-inline: var(--lib-spacing-2, 8px);
+  background: var(--step-connector-color);
+  align-self: center;
+}
+
+/* Vertical: connector is a vertical line below the icon */
+:host(.lib-stepper--vertical) .lib-stepper__connector {
+  position: absolute;
+  left: calc(var(--lib-spacing-2, 8px) + var(--step-icon-size) / 2 - var(--step-connector-height) / 2);
+  top: calc(var(--lib-spacing-2, 8px) + var(--step-icon-size));
+  width: var(--step-connector-height);
+  bottom: 0;
+  background: var(--step-connector-color);
+}
+
+/* Flowing fill animation for completed connector */
+.lib-stepper__connector::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--step-connector-color-completed);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 500ms ease-out;
+}
+
+:host(.lib-stepper--vertical) .lib-stepper__connector::after {
+  transform-origin: center top;
+  transform: scaleY(0);
+}
+
+.lib-stepper__connector--completed::after {
+  transform: scaleX(1);
+}
+
+:host(.lib-stepper--vertical) .lib-stepper__connector--completed::after {
+  transform: scaleY(1);
+}
+
+/* Flow animation (liquid effect) */
+:host([data-animation="flow"]) .lib-stepper__connector--completed::after {
+  animation: flowConnector 600ms ease-out forwards;
+}
+
+@keyframes flowConnector {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  30% {
+    clip-path: polygon(0 0, 40% 20%, 35% 80%, 0 100%);
+  }
+  70% {
+    clip-path: polygon(0 0, 80% 10%, 75% 90%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* ========================================
+   Vertical Layout Structure
+   ======================================== */
+
+/* Vertical stepper uses grid: header (rail) on left, content on right */
+:host(.lib-stepper--vertical) {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--lib-spacing-4, 16px);
+}
+
+:host(.lib-stepper--vertical) .lib-stepper__header {
+  grid-column: 1;
+}
+
+:host(.lib-stepper--vertical) .lib-stepper__content {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Add padding for vertical steps */
+:host(.lib-stepper--vertical) .lib-stepper__step {
+  padding-block-end: var(--lib-spacing-6, 24px);
+}
+
+/* ========================================
+   Content Panel
+   ======================================== */
+
+.lib-stepper__content {
+  padding-block-start: var(--lib-spacing-6, 24px);
+}
+
+:host(.lib-stepper--vertical) .lib-stepper__content {
+  padding-block-start: var(--lib-spacing-2, 8px);
+}
+
+
+/* ========================================
+   Content Slide Animations
+   ======================================== */
+
+.lib-stepper__content--slide-next {
+  animation: slideInRight var(--step-animation-duration) ease-out;
+}
+
+.lib-stepper__content--slide-prev {
+  animation: slideInLeft var(--step-animation-duration) ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Fade Animation */
+.lib-stepper__content--fade-next,
+.lib-stepper__content--fade-prev {
+  animation: fadeIn var(--step-animation-duration) ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scale Animation */
+.lib-stepper__content--scale-next,
+.lib-stepper__content--scale-prev {
+  animation: scaleIn var(--step-animation-duration) ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bounce Animation */
+.lib-stepper__content--bounce-next {
+  animation: bounceInRight var(--step-animation-duration) ease-out;
+}
+
+.lib-stepper__content--bounce-prev {
+  animation: bounceInLeft var(--step-animation-duration) ease-out;
+}
+
+@keyframes bounceInRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceInLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Flow Animation (matches connector) */
+.lib-stepper__content--flow-next,
+.lib-stepper__content--flow-prev {
+  animation: flowIn var(--step-animation-duration) ease-out;
+}
+
+@keyframes flowIn {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .lib-stepper__step,
+  .lib-stepper__step-icon::before,
+  .lib-stepper__check-icon,
+  .lib-stepper__error-icon,
+  .lib-stepper__step-number,
+  .lib-stepper__connector::after,
+  .lib-stepper__content {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .lib-stepper__connector--completed::after {
+    transform: scaleX(1);
+  }
+  
+  :host(.lib-stepper--vertical) .lib-stepper__connector--completed::after {
+    transform: scaleY(1);
+  }
+}

@@ -1,0 +1,161 @@
+<div class="example-container">
+  <h1>Stepper Component</h1>
+  <p class="example-description">
+    Multi-step workflow component with unique animations, programmatic control, and full disable support.
+  </p>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="control-group">
+      <label>Orientation:</label>
+      <select [value]="orientation()" (change)="orientation.set($any($event.target).value)">
+        <option value="horizontal">Horizontal</option>
+        <option value="vertical">Vertical</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>Animation:</label>
+      <select [value]="animation()" (change)="animation.set($any($event.target).value)">
+        <option value="none">None</option>
+        <option value="slide">Slide</option>
+        <option value="fade">Fade</option>
+        <option value="scale">Scale</option>
+        <option value="bounce">Bounce</option>
+        <option value="flow">Flow</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>
+        <input type="checkbox" [checked]="linear()" (change)="linear.set($any($event.target).checked)">
+        Linear Mode
+      </label>
+    </div>
+  </div>
+
+  <!-- Stepper Demo -->
+  <div class="demo-section">
+    <lib-stepper
+      #stepper
+      [(activeStepIndex)]="activeIndex"
+      [orientation]="orientation()"
+      [animation]="animation()"
+      [linear]="linear()"
+      (stepChange)="onStepChange($event)"
+    >
+      <lib-step id="account" label="Account" sublabel="Create your account">
+        <div class="step-content">
+          <h3>Step 1: Account Information</h3>
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" placeholder="Enter your name">
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email">
+          </div>
+        </div>
+      </lib-step>
+
+      <lib-step id="profile" label="Profile" [optional]="true">
+        <div class="step-content">
+          <h3>Step 2: Profile Details (Optional)</h3>
+          <div class="form-field">
+            <label>Bio</label>
+            <textarea placeholder="Tell us about yourself"></textarea>
+          </div>
+          <div class="form-field">
+            <label>Website</label>
+            <input type="url" placeholder="https://...">
+          </div>
+        </div>
+      </lib-step>
+
+      <lib-step id="plan" label="Plan" sublabel="Choose your plan">
+        <div class="step-content">
+          <h3>Step 3: Select Plan</h3>
+          <div class="plan-options">
+            <label class="plan-option">
+              <input type="radio" name="plan" value="basic" checked>
+              <span class="plan-card">
+                <strong>Basic</strong>
+                <span>$9/month</span>
+              </span>
+            </label>
+            <label class="plan-option">
+              <input type="radio" name="plan" value="pro">
+              <span class="plan-card">
+                <strong>Pro</strong>
+                <span>$29/month</span>
+              </span>
+            </label>
+            <label class="plan-option">
+              <input type="radio" name="plan" value="enterprise">
+              <span class="plan-card">
+                <strong>Enterprise</strong>
+                <span>$99/month</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </lib-step>
+
+      <lib-step id="confirm" label="Confirm">
+        <div class="step-content">
+          <h3>Step 4: Confirm & Submit</h3>
+          <div class="confirmation">
+            <p>✓ Account information completed</p>
+            <p>✓ Profile details added</p>
+            <p>✓ Plan selected</p>
+          </div>
+          <button class="submit-button">Complete Setup</button>
+        </div>
+      </lib-step>
+    </lib-stepper>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button (click)="prevStep()" [disabled]="activeIndex() === 0">Previous</button>
+      <button (click)="nextStep()" class="primary">
+        {{ activeIndex() === 3 ? 'Finish' : 'Next' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Programmatic Control Demo -->
+  <div class="demo-section">
+    <h2>Programmatic Control</h2>
+    <div class="button-row">
+      <button (click)="goToStepById('account')">Go to Account</button>
+      <button (click)="goToStepById('profile')">Go to Profile</button>
+      <button (click)="goToStepById('plan')">Go to Plan</button>
+      <button (click)="goToStepById('confirm')">Go to Confirm</button>
+    </div>
+    <div class="button-row">
+      <button (click)="toggleStep2Disabled()">
+        {{ step2Disabled() ? 'Enable' : 'Disable' }} Step 2
+      </button>
+      <button (click)="setStepError()">Set Error on Step 2</button>
+      <button (click)="clearStepError()">Clear Error</button>
+      <button (click)="reset()">Reset</button>
+    </div>
+  </div>
+
+  <!-- Vertical Demo -->
+  <div class="demo-section">
+    <h2>Vertical Orientation</h2>
+    <lib-stepper orientation="vertical" [linear]="false">
+      <lib-step label="Planning">
+        <p>Define project requirements and scope.</p>
+      </lib-step>
+      <lib-step label="Design">
+        <p>Create wireframes and visual designs.</p>
+      </lib-step>
+      <lib-step label="Development" [disabled]="true">
+        <p>Build the application (coming soon).</p>
+      </lib-step>
+      <lib-step label="Launch">
+        <p>Deploy and monitor the application.</p>
+      </lib-step>
+    </lib-stepper>
+  </div>
+</div>
