@@ -33,6 +33,12 @@ import { TooltipExampleComponent } from './tooltip/tooltip-example.component';
 import { AlertExampleComponent } from './alert/alert-example.component';
 // Progress examples
 import { ProgressExampleComponent } from './progress/progress-example.component';
+// Card examples
+import { CardExampleComponent } from './card/card-example.component';
+// Badge examples
+import { BadgeExampleComponent } from './badge/badge-example.component';
+// Avatar examples
+import { AvatarExampleComponent } from './avatar/avatar-example.component';
 
 export const EXAMPLES_ROUTES: Routes = [
   {
@@ -73,6 +79,12 @@ export const EXAMPLES_ROUTES: Routes = [
       { path: 'alert', component: AlertExampleComponent },
       // Progress routes
       { path: 'progress', component: ProgressExampleComponent },
+      // Card routes
+      { path: 'card', component: CardExampleComponent },
+      // Badge routes
+      { path: 'badge', component: BadgeExampleComponent },
+      // Avatar routes
+      { path: 'avatar', component: AvatarExampleComponent },
       // Input routes (lazy loaded)
       { 
         path: 'input', 

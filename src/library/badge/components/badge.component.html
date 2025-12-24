@@ -1,0 +1,8 @@
+@if (!isHidden()) {
+  @if (shape() !== 'dot') {
+    <span class="lib-badge__content">
+      {{ displayContent() }}
+      <ng-content></ng-content>
+    </span>
+  }
+}

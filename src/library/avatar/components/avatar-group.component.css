@@ -1,0 +1,206 @@
+/**
+ * Avatar Group Component Styles
+ * 
+ * Uses normal flex direction with z-index stacking to achieve the
+ * overlapping avatar effect. This ensures hidden avatars expand
+ * to the RIGHT (end) of visible avatars, not the left (start).
+ */
+
+/* ========================================
+   Container
+   ======================================== */
+
+:host {
+  --avatar-group-overlap: -0.5rem;
+  --avatar-group-size: 2.5rem;
+  --avatar-group-font-size: var(--lib-font-size-sm);
+  --avatar-group-total: 10; /* Default, can be overridden inline */
+
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.lib-avatar-group__container {
+  display: flex;
+  flex-direction: row; /* Normal order - avatars appear left to right */
+  align-items: center;
+}
+
+/* Apply overlap to all avatars except the first one */
+.lib-avatar-group__container ::ng-deep lib-avatar:not(:first-child) {
+  margin-inline-start: var(--avatar-group-overlap);
+}
+
+/* 
+ * Stacking order: First avatars on TOP (higher z-index).
+ * This creates the left-over-right overlap effect.
+ * Using CSS custom properties for dynamic z-index based on position.
+ */
+.lib-avatar-group__container ::ng-deep lib-avatar {
+  position: relative;
+  z-index: calc(var(--avatar-group-total) - var(--avatar-index, 0));
+}
+
+/* Add border to overlapping avatars */
+.lib-avatar-group__container ::ng-deep lib-avatar .lib-avatar__container {
+  border: 2px solid var(--lib-color-neutral-0);
+  box-sizing: content-box;
+}
+
+/* ========================================
+   Sizes
+   ======================================== */
+
+:host(.lib-avatar-group--xs) {
+  --avatar-group-overlap: -0.375rem;
+  --avatar-group-size: 1.5rem;
+  --avatar-group-font-size: 0.625rem;
+}
+
+:host(.lib-avatar-group--sm) {
+  --avatar-group-overlap: -0.5rem;
+  --avatar-group-size: 2rem;
+  --avatar-group-font-size: var(--lib-font-size-xs);
+}
+
+:host(.lib-avatar-group--md) {
+  --avatar-group-overlap: -0.625rem;
+  --avatar-group-size: 2.5rem;
+  --avatar-group-font-size: var(--lib-font-size-sm);
+}
+
+:host(.lib-avatar-group--lg) {
+  --avatar-group-overlap: -0.75rem;
+  --avatar-group-size: 3rem;
+  --avatar-group-font-size: var(--lib-font-size-base);
+}
+
+:host(.lib-avatar-group--xl) {
+  --avatar-group-overlap: -0.875rem;
+  --avatar-group-size: 3.5rem;
+  --avatar-group-font-size: var(--lib-font-size-lg);
+}
+
+:host(.lib-avatar-group--2xl) {
+  --avatar-group-overlap: -1rem;
+  --avatar-group-size: 4rem;
+  --avatar-group-font-size: var(--lib-font-size-xl);
+}
+
+/* ========================================
+   Overflow Indicator
+   ======================================== */
+
+.lib-avatar-group__overflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--avatar-group-size);
+  height: var(--avatar-group-size);
+  margin-inline-start: var(--avatar-group-overlap);
+  background: var(--lib-color-neutral-200);
+  color: var(--lib-color-neutral-700);
+  font-family: var(--lib-font-family-base);
+  font-size: var(--avatar-group-font-size);
+  font-weight: var(--lib-font-weight-medium);
+  border-radius: var(--lib-border-radius-full);
+  border: 2px solid var(--lib-color-neutral-0);
+  box-sizing: content-box;
+  z-index: 0; /* Behind all avatars */
+  transition: 
+    transform 0.2s ease-out,
+    opacity 0.2s ease-out;
+  transform-origin: center;
+}
+
+/* ========================================
+   Hidden Avatar (Collapsed State)
+   ======================================== */
+
+/* 
+ * Hidden avatars collapse with scale and opacity.
+ * They stay in DOM flow but take zero space.
+ * When expanded, they smoothly grow into place at the END of the group.
+ */
+::ng-deep lib-avatar.lib-avatar--hidden {
+  transform: scale(0.5) translateX(-10px);
+  opacity: 0;
+  max-width: 0;
+  margin-inline-start: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+  /* Smooth ease-out-quart for buttery animation */
+  transition: 
+    transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    max-width 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    margin 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center;
+}
+
+/* ========================================
+   Expanded State
+   ======================================== */
+
+/* When expanded, spread out avatars with a small gap instead of overlap */
+:host(.lib-avatar-group--expanded) .lib-avatar-group__container ::ng-deep lib-avatar:not(:first-child) {
+  margin-inline-start: var(--lib-spacing-1, 0.25rem); /* Small gap between avatars */
+}
+
+/* Show all avatars when expanded with smooth animation */
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden {
+  transform: scale(1) translateX(0);
+  opacity: 1;
+  max-width: var(--avatar-group-size);
+  margin-inline-start: var(--lib-spacing-1, 0.25rem) !important; /* Gap for hidden avatars too */
+  pointer-events: auto;
+}
+
+/* 
+ * Staggered animation delays - quick cascade for fluid wave effect
+ */
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden:nth-of-type(1) { transition-delay: 0ms; }
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden:nth-of-type(2) { transition-delay: 50ms; }
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden:nth-of-type(3) { transition-delay: 100ms; }
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden:nth-of-type(4) { transition-delay: 150ms; }
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden:nth-of-type(5) { transition-delay: 200ms; }
+:host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden:nth-of-type(n+6) { transition-delay: 250ms; }
+
+/* Hide overflow indicator when expanded */
+:host(.lib-avatar-group--expanded) .lib-avatar-group__overflow {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ========================================
+   Expandable State (Interactive)
+   ======================================== */
+
+:host(.lib-avatar-group--expandable) {
+  cursor: pointer;
+  outline: none;
+}
+
+/* Focus indicator for accessibility */
+:host(.lib-avatar-group--expandable):focus-visible {
+  outline: 2px solid var(--lib-color-primary-500, #3b82f6);
+  outline-offset: 2px;
+  border-radius: var(--lib-border-radius-full);
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  ::ng-deep lib-avatar.lib-avatar--hidden,
+  .lib-avatar-group__overflow {
+    transition: none !important;
+  }
+  
+  :host(.lib-avatar-group--expanded) ::ng-deep lib-avatar.lib-avatar--hidden {
+    transition-delay: 0ms !important;
+  }
+}

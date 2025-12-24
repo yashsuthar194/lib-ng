@@ -388,25 +388,22 @@ export class ExamplesLayoutComponent {
       title: 'Card',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"/></svg>`,
       links: [
-        { path: 'card/basic', label: 'Basic Card', description: 'Container with sections' },
-      ],
-      comingSoon: true
+        { path: 'card', label: 'Card Examples', description: 'Variants, images, clickable' },
+      ]
     },
     {
       title: 'Badge',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>`,
       links: [
-        { path: 'badge/basic', label: 'Basic Badge', description: 'Status and count indicators' },
-      ],
-      comingSoon: true
+        { path: 'badge', label: 'Badge Examples', description: 'Variants, pulse, status, overlays' },
+      ]
     },
     {
       title: 'Avatar',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>`,
       links: [
-        { path: 'avatar/basic', label: 'Basic Avatar', description: 'User profile images' },
-      ],
-      comingSoon: true
+        { path: 'avatar', label: 'Avatar Examples', description: 'Images, initials, presence, groups' },
+      ]
     },
     {
       title: 'Skeleton',
