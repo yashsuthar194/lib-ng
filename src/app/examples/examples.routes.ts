@@ -43,8 +43,11 @@ import { AvatarExampleComponent } from './avatar/avatar-example.component';
 import { AccordionExampleComponent } from './accordion/accordion-example.component';
 // Breadcrumb examples
 import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example.component';
-// Stepper examples
 import { StepperExampleComponent } from './stepper/stepper-example.component';
+// Skeleton examples
+import { SkeletonExampleComponent } from './skeleton/skeleton-example.component';
+// DatePicker examples
+import { DatePickerExampleComponent } from './datepicker/datepicker-example.component';
 
 export const EXAMPLES_ROUTES: Routes = [
   {
@@ -97,11 +100,15 @@ export const EXAMPLES_ROUTES: Routes = [
       { path: 'breadcrumb', component: BreadcrumbExampleComponent },
       // Stepper routes
       { path: 'stepper', component: StepperExampleComponent },
+      // Skeleton routes
+      { path: 'skeleton', component: SkeletonExampleComponent },
       // Input routes (lazy loaded)
       { 
         path: 'input', 
         loadChildren: () => import('./input/input.routes').then(m => m.INPUT_ROUTES) 
       },
+      // DatePicker routes
+      { path: 'datepicker', component: DatePickerExampleComponent },
     ]
   }
 ];

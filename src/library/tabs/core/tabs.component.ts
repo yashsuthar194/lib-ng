@@ -11,7 +11,6 @@ import {
   inject,
   ChangeDetectionStrategy,
   AfterContentInit,
-  OnDestroy,
   HostListener,
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
@@ -50,7 +49,7 @@ import { DEFAULT_TABS_CONFIG } from '../types/tabs.types';
     '[attr.data-animation]': 'animation()',
   },
 })
-export class TabsComponent implements AfterContentInit, OnDestroy {
+export class TabsComponent implements AfterContentInit {
   readonly tabsService = inject(TabsService);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
@@ -131,10 +130,6 @@ export class TabsComponent implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     this.initializeTabs();
-  }
-
-  ngOnDestroy(): void {
-    // Cleanup if needed
   }
 
   // ============================================

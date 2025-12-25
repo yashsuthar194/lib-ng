@@ -159,6 +159,9 @@ export class SelectComponent<T = unknown>
   /** Whether content has been initialized (for effect guards) */
   private readonly _contentInitialized = signal(false);
 
+  /** Cleanup functions for option subscriptions */
+  private optionCleanups: Array<() => void> = [];
+
   // ============================================
   // Computed Values
   // ============================================
@@ -276,7 +279,9 @@ export class SelectComponent<T = unknown>
   }
 
   ngOnDestroy(): void {
-    // Cleanup if needed
+    // Cleanup option subscriptions to prevent memory leaks
+    this.optionCleanups.forEach(cleanup => cleanup());
+    this.optionCleanups = [];
   }
 
   // ============================================
@@ -430,10 +435,16 @@ export class SelectComponent<T = unknown>
   // ============================================
 
   private setupOptionListeners(): void {
-    // Subscribe to option selection events
+    // Clean up previous subscriptions if options changed
+    this.optionCleanups.forEach(cleanup => cleanup());
+    this.optionCleanups = [];
+    
+    // Subscribe to option events and store cleanup functions
     this.options().forEach((option, index) => {
-      option.select.subscribe(value => this.selectOption(value));
-      option.focus.subscribe(() => this.focusedIndex.set(index));
+      const selectSub = option.select.subscribe(value => this.selectOption(value));
+      const focusSub = option.focus.subscribe(() => this.focusedIndex.set(index));
+      // Store unsubscribe functions (OutputRefSubscription has unsubscribe)
+      this.optionCleanups.push(() => selectSub.unsubscribe(), () => focusSub.unsubscribe());
     });
   }
 
