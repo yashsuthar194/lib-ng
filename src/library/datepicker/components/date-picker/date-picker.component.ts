@@ -179,9 +179,6 @@ export class DatePickerComponent implements ControlValueAccessor {
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
 
-  /** Flag to skip the first click-outside event after opening (prevents open-close-reopen) */
-  private skipNextClickOutside = false;
-
   // ============================================================================
   // INPUTS
   // ============================================================================
@@ -316,11 +313,7 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   private setupClickOutsideListener(): void {
     const handler = (event: MouseEvent) => {
-      // Skip first click-outside after opening to prevent open-close-reopen
-      if (this.skipNextClickOutside) {
-        this.skipNextClickOutside = false;
-        return;
-      }
+      // Only close if open and click is outside the component
       if (this.isOpen() && !this.elementRef.nativeElement.contains(event.target)) {
         this.closeDropdown();
       }
@@ -355,11 +348,11 @@ export class DatePickerComponent implements ControlValueAccessor {
     }
   }
 
-  /** Handle input click - open dropdown with stopPropagation to prevent double-toggle */
+  /** Handle input click - toggle dropdown with stopPropagation */
   onInputClick(event: MouseEvent): void {
     event.stopPropagation();
     if (!this.disabled()) {
-      this.openDropdown();
+      this.toggleDropdown();
     }
   }
 
@@ -423,8 +416,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
 
   openDropdown(): void {
-    if (this.disabled() || this.mode() === 'inline') return;
-    this.skipNextClickOutside = true;
+    if (this.disabled() || this.mode() === 'inline' || this.isOpen()) return;
     this.isOpen.set(true);
     this.openChange.emit(true);
   }

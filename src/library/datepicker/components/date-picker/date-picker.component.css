@@ -188,18 +188,8 @@
   left: 0;
   z-index: var(--lib-z-index-dropdown, 1000);
   margin-top: var(--lib-spacing-1, 4px);
-  animation: dropdownOpen 200ms var(--lib-transition-base, ease) forwards;
-}
-
-@keyframes dropdownOpen {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Open state */

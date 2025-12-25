@@ -128,16 +128,22 @@ import { CalendarComponent } from '../calendar/calendar.component';
           }
 
           <!-- Calendars -->
-          <div class="lib-date-range-picker__calendars">
+          <div 
+            class="lib-date-range-picker__calendars"
+            (mouseleave)="onCalendarLeave()"
+          >
             <lib-calendar
               [selected]="null"
               [range]="tempRange()"
+              [hoveredDate]="hoveredDate()"
+              [isSelectingRangeEnd]="isSelectingRangeEnd()"
               [minDate]="minDate()"
               [maxDate]="maxDate()"
               [weekStart]="weekStart()"
               [locale]="locale()"
               [showTodayButton]="false"
               (dateSelect)="onDateSelect($event)"
+              (dateHover)="onDateHover($event)"
             />
           </div>
         </div>
@@ -405,7 +411,17 @@ export class DateRangePickerComponent implements ControlValueAccessor {
 
   readonly isOpen = signal<boolean>(false);
   readonly tempRange = signal<DateRange>({ start: null, end: null });
-  private selectingStart = true;
+  
+  /** Currently hovered date for preview */
+  readonly hoveredDate = signal<Date | null>(null);
+  
+  /** Whether selecting start (true) or end (false) of range */
+  private readonly selectingStart = signal<boolean>(true);
+  
+  /** Computed: whether we're selecting range end (for hover preview) */
+  readonly isSelectingRangeEnd = computed(() => 
+    !this.selectingStart() && this.tempRange().start !== null
+  );
 
   // ============================================================================
   // ControlValueAccessor
@@ -541,15 +557,31 @@ export class DateRangePickerComponent implements ControlValueAccessor {
   onDateSelect(date: Date): void {
     const current = this.tempRange();
 
-    if (this.selectingStart || (current.start && date < current.start)) {
+    if (this.selectingStart()) {
       // Start new selection
       this.tempRange.set({ start: date, end: null });
-      this.selectingStart = false;
+      this.selectingStart.set(false);
+      this.hoveredDate.set(null);
     } else {
-      // Complete selection
-      this.tempRange.set({ start: current.start, end: date });
-      this.selectingStart = true;
+      // Complete selection - auto-swap to ensure chronological order
+      const start = current.start!;
+      const selectedStart = date < start ? date : start;
+      const selectedEnd = date < start ? start : date;
+      
+      this.tempRange.set({ start: selectedStart, end: selectedEnd });
+      this.selectingStart.set(true);
+      this.hoveredDate.set(null);
     }
+  }
+
+  /** Handle date hover for range preview */
+  onDateHover(date: Date | null): void {
+    this.hoveredDate.set(date);
+  }
+
+  /** Clear hover when mouse leaves calendar area */
+  onCalendarLeave(): void {
+    this.hoveredDate.set(null);
   }
 
   applyPreset(preset: RangePreset): void {
@@ -569,7 +601,8 @@ export class DateRangePickerComponent implements ControlValueAccessor {
     // Reset to current value
     const current = this.value();
     this.tempRange.set(current ? { ...current } : { start: null, end: null });
-    this.selectingStart = true;
+    this.selectingStart.set(true);
+    this.hoveredDate.set(null);
     this.closeDropdown();
   }
 
@@ -585,7 +618,8 @@ export class DateRangePickerComponent implements ControlValueAccessor {
       // Re-open with current value
       const current = this.value();
       this.tempRange.set(current ? { ...current } : { start: null, end: null });
-      this.selectingStart = true;
+      this.selectingStart.set(true);
+      this.hoveredDate.set(null);
       this.isOpen.set(true);
     }
   }

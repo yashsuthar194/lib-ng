@@ -29,6 +29,7 @@ import {
   signal,
   computed,
   effect,
+  untracked,
   ElementRef,
   inject,
   DestroyRef,
@@ -150,6 +151,9 @@ import {
                 [class.lib-calendar__day--range-start]="day.isRangeStart"
                 [class.lib-calendar__day--range-end]="day.isRangeEnd"
                 [class.lib-calendar__day--weekend]="day.isWeekend"
+                [class.lib-calendar__day--in-preview]="isInPreviewRange(day)"
+                [class.lib-calendar__day--preview-start]="isPreviewStart(day)"
+                [class.lib-calendar__day--preview-end]="isPreviewEnd(day)"
                 [attr.aria-selected]="day.isSelected"
                 [attr.aria-disabled]="day.isDisabled"
                 [attr.aria-label]="getDayAriaLabel(day)"
@@ -157,6 +161,7 @@ import {
                 [disabled]="day.isDisabled"
                 (click)="selectDate(day)"
                 (focus)="onDayFocus(day)"
+                (mouseenter)="onDayHover(day)"
               >
                 <span class="lib-calendar__day-number">{{ day.day }}</span>
               </button>
@@ -246,6 +251,12 @@ export class CalendarComponent {
   /** Date range selection (for range picker) */
   readonly range = input<DateRange | null>(null);
 
+  /** Currently hovered date for range preview */
+  readonly hoveredDate = input<Date | null>(null);
+
+  /** Whether user is selecting end of range (enables hover preview) */
+  readonly isSelectingRangeEnd = input<boolean>(false);
+
   /** Minimum selectable date */
   readonly minDate = input<Date | undefined>();
 
@@ -282,6 +293,9 @@ export class CalendarComponent {
 
   /** Emitted when calendar navigates */
   readonly navigate = output<CalendarNavigationEvent>();
+
+  /** Emitted when hovering over a date (for range preview) */
+  readonly dateHover = output<Date | null>();
 
   // ============================================================================
   // STATE
@@ -383,22 +397,30 @@ export class CalendarComponent {
   // ============================================================================
 
   constructor() {
-    // Sync focusedDate with selected date
+    // Sync focusedDate with selected date and initially jump to selected month
+    // Use untracked for viewDate to prevent navigation being reset
     effect(() => {
       const selected = this.selected();
       if (selected) {
         this.focusedDate.set(selected);
-        if (!isSameMonth(selected, this.viewDate())) {
+        // Only jump to selected month if we're not currently viewing the same month
+        // Use untracked to prevent this effect from running when viewDate changes
+        const currentViewDate = untracked(() => this.viewDate());
+        if (!isSameMonth(selected, currentViewDate)) {
           this.viewDate.set(startOfMonth(selected));
         }
       }
     });
 
     // Sync viewDate with range.start (for range picker presets)
+    // Use untracked to prevent navigation being reset
     effect(() => {
       const range = this.range();
-      if (range?.start && !isSameMonth(range.start, this.viewDate())) {
-        this.viewDate.set(startOfMonth(range.start));
+      if (range?.start) {
+        const currentViewDate = untracked(() => this.viewDate());
+        if (!isSameMonth(range.start, currentViewDate)) {
+          this.viewDate.set(startOfMonth(range.start));
+        }
       }
     });
 
@@ -432,7 +454,7 @@ export class CalendarComponent {
     if (this.animationTimeoutId) {
       clearTimeout(this.animationTimeoutId);
     }
-    this.animationTimeoutId = setTimeout(() => this.slideDirection.set('none'), 300);
+    this.animationTimeoutId = setTimeout(() => this.slideDirection.set('none'), 200);
   }
 
   navigateNext(): void {
@@ -453,7 +475,7 @@ export class CalendarComponent {
     if (this.animationTimeoutId) {
       clearTimeout(this.animationTimeoutId);
     }
-    this.animationTimeoutId = setTimeout(() => this.slideDirection.set('none'), 300);
+    this.animationTimeoutId = setTimeout(() => this.slideDirection.set('none'), 200);
   }
 
   toggleView(): void {
@@ -484,6 +506,75 @@ export class CalendarComponent {
     if (day.isDisabled) return;
     this.dateSelect.emit(day.date);
     this.screenReaderAnnouncement.set(`Selected ${this.getDayAriaLabel(day)}`);
+  }
+
+  // ============================================================================
+  // HOVER PREVIEW (for range selection)
+  // ============================================================================
+
+  /** Emit hovered date for range preview */
+  onDayHover(day: CalendarDay): void {
+    if (!day.isDisabled && this.isSelectingRangeEnd()) {
+      this.dateHover.emit(day.date);
+    }
+  }
+
+  /** Check if day is the start date during hover preview (first clicked date) */
+  isPreviewStart(day: CalendarDay): boolean {
+    if (!this.isSelectingRangeEnd()) return false;
+    
+    const rangeStart = this.range()?.start;
+    const hovered = this.hoveredDate();
+    
+    // Show start highlight when we have a start date and are hovering (selecting end)
+    if (!rangeStart || !hovered) return false;
+    
+    return day.date.getFullYear() === rangeStart.getFullYear() &&
+           day.date.getMonth() === rangeStart.getMonth() &&
+           day.date.getDate() === rangeStart.getDate();
+  }
+
+  /** Check if day is within the hover preview range (between start and hovered) */
+  isInPreviewRange(day: CalendarDay): boolean {
+    if (!this.isSelectingRangeEnd()) return false;
+    
+    const rangeStart = this.range()?.start;
+    const hovered = this.hoveredDate();
+    
+    if (!rangeStart || !hovered || day.isDisabled) return false;
+    
+    // Use getTime() to avoid mutating original dates
+    const dayTime = new Date(day.date.getFullYear(), day.date.getMonth(), day.date.getDate()).getTime();
+    const startTime = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate()).getTime();
+    const hoveredTime = new Date(hovered.getFullYear(), hovered.getMonth(), hovered.getDate()).getTime();
+    
+    // Determine preview range bounds (bidirectional support)
+    const minTime = Math.min(startTime, hoveredTime);
+    const maxTime = Math.max(startTime, hoveredTime);
+    
+    // Check if day is strictly between (not on edges since they have different styling)
+    return dayTime > minTime && dayTime < maxTime;
+  }
+
+  /** Check if day is the currently hovered potential end date */
+  isPreviewEnd(day: CalendarDay): boolean {
+    if (!this.isSelectingRangeEnd()) return false;
+    
+    const hovered = this.hoveredDate();
+    const rangeStart = this.range()?.start;
+    
+    if (!hovered || !rangeStart || day.isDisabled) return false;
+    
+    // Don't show preview-end on the same date as start
+    const isSameAsStart = day.date.getFullYear() === rangeStart.getFullYear() &&
+                          day.date.getMonth() === rangeStart.getMonth() &&
+                          day.date.getDate() === rangeStart.getDate();
+    if (isSameAsStart) return false;
+    
+    // Check if this is the hovered date
+    return day.date.getFullYear() === hovered.getFullYear() &&
+           day.date.getMonth() === hovered.getMonth() &&
+           day.date.getDate() === hovered.getDate();
   }
 
   selectMonth(monthIndex: number): void {
