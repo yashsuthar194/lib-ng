@@ -49,7 +49,6 @@ import {
   addMonths,
   addYears,
   isSameMonth,
-  isToday,
   getWeekNumber,
   startOfMonth,
 } from '../../utils/date-utils';

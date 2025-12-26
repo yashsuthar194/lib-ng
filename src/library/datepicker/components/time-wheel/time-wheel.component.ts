@@ -319,8 +319,10 @@ export class TimeWheelComponent implements ControlValueAccessor, AfterViewInit {
   // ============================================================================
 
   ngAfterViewInit(): void {
-    // Scroll to initial values
-    setTimeout(() => this.scrollToSelected(), 100);
+    // Scroll to initial values with a small delay for DOM to be ready
+    // Store timeout ID for cleanup to prevent memory leaks
+    const timeoutId = setTimeout(() => this.scrollToSelected(), 100);
+    this.destroyRef.onDestroy(() => clearTimeout(timeoutId));
   }
 
   // ============================================================================

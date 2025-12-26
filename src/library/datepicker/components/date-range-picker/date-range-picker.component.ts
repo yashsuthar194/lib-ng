@@ -46,7 +46,6 @@ import {
   formatDate,
   addDays,
   addMonths,
-  startOfWeek,
   startOfMonth,
   endOfMonth,
 } from '../../utils/date-utils';
