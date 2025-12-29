@@ -248,7 +248,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
       }, { once: true });
       
       // Fallback timeout in case animationend doesn't fire
-      setTimeout(() => this.destroy(), 300);
+      this.exitTimeoutId = window.setTimeout(() => this.destroy(), 300);
     } else {
       this.destroy();
     }
@@ -256,6 +256,9 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
 
   /** Whether this container has been destroyed */
   private destroyed = false;
+  
+  /** Fallback timeout ID for animation cleanup */
+  private exitTimeoutId?: number;
 
   /**
    * Destroy this modal container.
@@ -264,6 +267,12 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
     // Guard against double-destroy from both animationend and timeout
     if (this.destroyed) return;
     this.destroyed = true;
+    
+    // Clear fallback timeout if animation completed first
+    if (this.exitTimeoutId) {
+      clearTimeout(this.exitTimeoutId);
+      this.exitTimeoutId = undefined;
+    }
     
     this.elementRef.nativeElement.remove();
   }

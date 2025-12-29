@@ -409,9 +409,8 @@ export class ExamplesLayoutComponent {
       title: 'Skeleton',
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg>`,
       links: [
-        { path: 'skeleton/basic', label: 'Basic Skeleton', description: 'Loading placeholders' },
+        { path: 'skeleton', label: 'Skeleton Examples', description: 'GPU-accelerated loading placeholders' },
       ],
-      comingSoon: true
     },
     {
       title: 'Accordion',
@@ -435,6 +434,16 @@ export class ExamplesLayoutComponent {
       icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"/></svg>`,
       links: [
         { path: 'stepper', label: 'Stepper Examples', description: 'Multi-step wizard with animations' },
+      ],
+    },
+    // ============================================
+    // Tier 4: Form Components
+    // ============================================
+    {
+      title: 'DatePicker',
+      icon: `<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"/></svg>`,
+      links: [
+        { path: 'datepicker', label: 'DatePicker Examples', description: 'Date, range, time, datetime pickers' },
       ],
     },
   ];

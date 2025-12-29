@@ -1,0 +1,439 @@
+/**
+ * Skeleton Group Component Styles
+ *
+ * Layouts for complex skeleton patterns and presets.
+ */
+
+/* ========================================
+   Host Styles
+   ======================================== */
+
+:host {
+  --skeleton-group-gap: var(--lib-spacing-4, 1rem);
+  --skeleton-group-columns: 4;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--skeleton-group-gap);
+  width: 100%;
+}
+
+:host(.lib-skeleton-group--horizontal) {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Screen reader text */
+.lib-skeleton-group__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   Group Item
+   ======================================== */
+
+.lib-skeleton-group__item {
+  width: 100%;
+}
+
+/* ========================================
+   Preset Base Styles
+   ======================================== */
+
+.lib-skeleton-preset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lib-spacing-2, 0.5rem);
+  flex: 1;
+}
+
+.lib-skeleton-preset__row {
+  display: flex;
+  align-items: center;
+  gap: var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lib-spacing-1, 0.25rem);
+}
+
+.lib-skeleton-preset__header {
+  display: flex;
+  align-items: center;
+  gap: var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset__actions {
+  display: flex;
+  gap: var(--lib-spacing-2, 0.5rem);
+}
+
+.lib-skeleton-preset__cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lib-spacing-1, 0.25rem);
+  flex: 1;
+}
+
+.lib-skeleton-preset__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lib-spacing-2, 0.5rem);
+}
+
+.lib-skeleton-preset__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lib-spacing-2, 0.5rem);
+  padding-block: var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset__author {
+  display: flex;
+  align-items: center;
+  gap: var(--lib-spacing-3, 0.75rem);
+  margin-top: var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset__separator {
+  color: var(--lib-color-neutral-300, #d4d4d8);
+  font-size: 0.875rem;
+}
+
+.lib-skeleton-preset__controls {
+  padding: var(--lib-spacing-2, 0.5rem);
+  align-items: center;
+}
+
+/* ========================================
+   Card Presets
+   ======================================== */
+
+.lib-skeleton-preset--card {
+  border-radius: var(--lib-border-radius-lg, 8px);
+  overflow: hidden;
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--card .lib-skeleton-preset__body {
+  padding: var(--lib-spacing-4, 1rem);
+}
+
+.lib-skeleton-preset--card-horizontal {
+  flex-direction: row;
+  border-radius: var(--lib-border-radius-lg, 8px);
+  overflow: hidden;
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+  min-height: 120px;
+}
+
+.lib-skeleton-preset--card-horizontal .lib-skeleton-preset__body {
+  padding: var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset--card-compact {
+  padding: var(--lib-spacing-3, 0.75rem);
+  border-radius: var(--lib-border-radius-md, 6px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--product-card {
+  border-radius: var(--lib-border-radius-lg, 8px);
+  overflow: hidden;
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--product-card .lib-skeleton-preset__body {
+  padding: var(--lib-spacing-4, 1rem);
+}
+
+.lib-skeleton-preset--article-card {
+  border-radius: var(--lib-border-radius-lg, 8px);
+  overflow: hidden;
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--article-card .lib-skeleton-preset__body {
+  padding: var(--lib-spacing-4, 1rem);
+}
+
+/* ========================================
+   List Presets
+   ======================================== */
+
+.lib-skeleton-preset--list-item {
+  padding: var(--lib-spacing-3, 0.75rem) 0;
+  border-bottom: 1px solid var(--lib-color-neutral-100, #f4f4f5);
+}
+
+.lib-skeleton-preset--list-item-avatar,
+.lib-skeleton-preset--list-item-media,
+.lib-skeleton-preset--list-item-action {
+  flex-direction: row;
+  align-items: center;
+  padding: var(--lib-spacing-3, 0.75rem) 0;
+  border-bottom: 1px solid var(--lib-color-neutral-100, #f4f4f5);
+}
+
+/* ========================================
+   Table Presets
+   ======================================== */
+
+.lib-skeleton-preset--table-row,
+.lib-skeleton-preset--table-row-actions {
+  flex-direction: row;
+  gap: var(--lib-spacing-4, 1rem);
+  padding: var(--lib-spacing-3, 0.75rem);
+  border-bottom: 1px solid var(--lib-color-neutral-100, #f4f4f5);
+}
+
+.lib-skeleton-preset--table-row > *,
+.lib-skeleton-preset--table-row-actions > *:not(.lib-skeleton-preset__actions) {
+  flex: 1;
+}
+
+.lib-skeleton-preset--data-grid {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--lib-spacing-4, 1rem);
+}
+
+.lib-skeleton-preset--data-grid > .lib-skeleton-preset__cell {
+  flex: 1 1 calc(100% / var(--skeleton-group-columns) - var(--lib-spacing-4, 1rem));
+  min-width: 120px;
+}
+
+/* ========================================
+   Social Presets
+   ======================================== */
+
+.lib-skeleton-preset--social-post {
+  padding: var(--lib-spacing-4, 1rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--comment,
+.lib-skeleton-preset--feed-item,
+.lib-skeleton-preset--notification {
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--lib-spacing-3, 0.75rem) 0;
+}
+
+/* ========================================
+   Profile Presets
+   ======================================== */
+
+.lib-skeleton-preset--profile-header {
+  position: relative;
+}
+
+.lib-skeleton-preset--profile-header .lib-skeleton-preset__profile-content {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--lib-spacing-4, 1rem);
+  padding: var(--lib-spacing-4, 1rem);
+  margin-top: -40px;
+}
+
+.lib-skeleton-preset--user-card {
+  align-items: center;
+  text-align: center;
+  padding: var(--lib-spacing-6, 1.5rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--avatar-text,
+.lib-skeleton-preset--contact-card {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* ========================================
+   Media Presets
+   ======================================== */
+
+.lib-skeleton-preset--video {
+  border-radius: var(--lib-border-radius-lg, 8px);
+  overflow: hidden;
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--skeleton-group-columns), 1fr);
+  gap: var(--lib-spacing-2, 0.5rem);
+}
+
+.lib-skeleton-preset--carousel-item {
+  padding: var(--lib-spacing-3, 0.75rem);
+}
+
+/* ========================================
+   Navigation Presets
+   ======================================== */
+
+.lib-skeleton-preset--sidebar-item,
+.lib-skeleton-preset--menu-item {
+  flex-direction: row;
+  align-items: center;
+  padding: var(--lib-spacing-2, 0.5rem) var(--lib-spacing-3, 0.75rem);
+}
+
+.lib-skeleton-preset--breadcrumb {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--lib-spacing-2, 0.5rem);
+}
+
+.lib-skeleton-preset--tab-bar {
+  flex-direction: row;
+  gap: var(--lib-spacing-6, 1.5rem);
+  padding-bottom: var(--lib-spacing-3, 0.75rem);
+  border-bottom: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+/* ========================================
+   Form Presets
+   ======================================== */
+
+.lib-skeleton-preset--form-field {
+  gap: var(--lib-spacing-2, 0.5rem);
+}
+
+.lib-skeleton-preset--form-group {
+  gap: var(--lib-spacing-4, 1rem);
+}
+
+.lib-skeleton-preset--search-bar {
+  flex-direction: row;
+  align-items: center;
+  padding: var(--lib-spacing-2, 0.5rem) var(--lib-spacing-3, 0.75rem);
+  border-radius: var(--lib-border-radius-full, 9999px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+/* ========================================
+   Dashboard Presets
+   ======================================== */
+
+.lib-skeleton-preset--stat-card,
+.lib-skeleton-preset--kpi-card {
+  padding: var(--lib-spacing-4, 1rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--chart {
+  padding: var(--lib-spacing-4, 1rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--widget {
+  padding: var(--lib-spacing-4, 1rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+/* ========================================
+   Complex Layout Presets
+   ======================================== */
+
+.lib-skeleton-preset--hero-section {
+  align-items: center;
+  text-align: center;
+  padding: var(--lib-spacing-12, 3rem) var(--lib-spacing-6, 1.5rem);
+  gap: var(--lib-spacing-4, 1rem);
+}
+
+.lib-skeleton-preset--pricing-card {
+  align-items: center;
+  text-align: center;
+  padding: var(--lib-spacing-6, 1.5rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--pricing-card .lib-skeleton-preset__features {
+  width: 100%;
+  align-items: flex-start;
+}
+
+.lib-skeleton-preset--testimonial {
+  padding: var(--lib-spacing-6, 1.5rem);
+  border-radius: var(--lib-border-radius-lg, 8px);
+  border: 1px solid var(--lib-color-neutral-200, #e5e7eb);
+}
+
+.lib-skeleton-preset--feature-item {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* ========================================
+   Dark Theme
+   ======================================== */
+
+:host-context([data-theme='dark']),
+:host-context(.dark) {
+  .lib-skeleton-preset--card,
+  .lib-skeleton-preset--card-horizontal,
+  .lib-skeleton-preset--card-compact,
+  .lib-skeleton-preset--product-card,
+  .lib-skeleton-preset--article-card,
+  .lib-skeleton-preset--social-post,
+  .lib-skeleton-preset--user-card,
+  .lib-skeleton-preset--video,
+  .lib-skeleton-preset--search-bar,
+  .lib-skeleton-preset--stat-card,
+  .lib-skeleton-preset--kpi-card,
+  .lib-skeleton-preset--chart,
+  .lib-skeleton-preset--widget,
+  .lib-skeleton-preset--pricing-card,
+  .lib-skeleton-preset--testimonial {
+    border-color: var(--lib-color-neutral-700, #3f3f46);
+  }
+
+  .lib-skeleton-preset--list-item,
+  .lib-skeleton-preset--list-item-avatar,
+  .lib-skeleton-preset--list-item-media,
+  .lib-skeleton-preset--list-item-action,
+  .lib-skeleton-preset--table-row,
+  .lib-skeleton-preset--table-row-actions,
+  .lib-skeleton-preset--tab-bar {
+    border-color: var(--lib-color-neutral-800, #27272a);
+  }
+
+  .lib-skeleton-preset__separator {
+    color: var(--lib-color-neutral-600, #52525b);
+  }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  :host {
+    display: none !important;
+  }
+}

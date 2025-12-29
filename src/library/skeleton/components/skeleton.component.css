@@ -1,0 +1,257 @@
+/**
+ * Skeleton Component Styles
+ *
+ * PERFORMANCE GUARANTEE:
+ * All animations use ONLY transform and opacity properties.
+ * This ensures 60fps on all devices by leveraging GPU compositing.
+ * No layout or paint operations occur during animations.
+ */
+
+/* ========================================
+   CSS Variables (Theme Integration)
+   ======================================== */
+
+:host {
+  /* Base colors - integrates with library theme */
+  --skeleton-base: var(--lib-color-neutral-200, #e5e7eb);
+  --skeleton-highlight: var(--lib-color-neutral-100, #f4f5f7);
+
+  /* Animation timing (can be overridden via component) */
+  --skeleton-duration: 1.5s;
+  --skeleton-easing: ease-in-out;
+
+  /* Default dimensions */
+  --skeleton-width: 100%;
+  --skeleton-height: 1rem;
+  --skeleton-radius: var(--lib-border-radius-base, 4px);
+  --skeleton-gap: var(--lib-spacing-2, 0.5rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--skeleton-gap);
+  width: fit-content;
+}
+
+/* Full width mode */
+:host(.lib-skeleton--full-width) {
+  width: 100%;
+}
+
+/* ========================================
+   Base Skeleton Element
+   ======================================== */
+
+.lib-skeleton {
+  background-color: var(--skeleton-base);
+  border-radius: var(--skeleton-radius);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  /* Force GPU layer creation for smooth animation */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Screen reader only text */
+.lib-skeleton__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   Shape Variants
+   ======================================== */
+
+.lib-skeleton--text {
+  height: var(--skeleton-height, 1em);
+  width: 100%;
+  border-radius: var(--lib-border-radius-sm, 2px);
+}
+
+.lib-skeleton--circle {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.lib-skeleton--rectangle {
+  border-radius: 0;
+}
+
+.lib-skeleton--rounded {
+  border-radius: var(--lib-border-radius-lg, 8px);
+}
+
+.lib-skeleton--square {
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Shimmer Animation (GPU-Accelerated)
+   Uses translateX for 60fps performance
+   ======================================== */
+
+.lib-skeleton--shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* Shimmer gradient - moves across the element */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-highlight) 50%,
+    transparent 100%
+  );
+
+  /* Start off-screen to the left */
+  transform: translateX(-100%);
+
+  /* GPU layer hint for smooth animation */
+  will-change: transform;
+
+  /* Animation */
+  animation: skeleton-shimmer var(--skeleton-duration) var(--skeleton-easing)
+    infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================================
+   Pulse Animation (GPU-Accelerated)
+   Uses opacity for maximum performance
+   ======================================== */
+
+.lib-skeleton--pulse {
+  animation: skeleton-pulse var(--skeleton-duration) var(--skeleton-easing)
+    infinite;
+  will-change: opacity;
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ========================================
+   Wave Animation (GPU-Accelerated)
+   Combines translateX with opacity for softer effect
+   ======================================== */
+
+.lib-skeleton--wave::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* Wider gradient for smoother wave */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--skeleton-highlight) 25%,
+    var(--skeleton-highlight) 75%,
+    transparent 100%
+  );
+
+  transform: translateX(-100%);
+  opacity: 0;
+
+  /* GPU layer hint */
+  will-change: transform, opacity;
+  animation: skeleton-wave var(--skeleton-duration) linear infinite;
+}
+
+@keyframes skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   Speed Variants
+   ======================================== */
+
+:host(.lib-skeleton--slow) {
+  --skeleton-duration: 2s;
+}
+
+:host(.lib-skeleton--fast) {
+  --skeleton-duration: 1s;
+}
+
+/* ========================================
+   Dark Theme Support
+   ======================================== */
+
+:host-context([data-theme='dark']),
+:host-context(.dark) {
+  --skeleton-base: var(--lib-color-neutral-800, #27272a);
+  --skeleton-highlight: var(--lib-color-neutral-700, #3f3f46);
+}
+
+/* ========================================
+   Reduced Motion (MANDATORY for Accessibility)
+   Disables all animations when user prefers reduced motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .lib-skeleton--shimmer::after,
+  .lib-skeleton--wave::after {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0 !important;
+  }
+
+  .lib-skeleton--pulse {
+    animation: none !important;
+    opacity: 0.7 !important;
+  }
+}
+
+/* ========================================
+   Print Styles
+   Hide skeletons in print view
+   ======================================== */
+
+@media print {
+  :host {
+    display: none !important;
+  }
+}

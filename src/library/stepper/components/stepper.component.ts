@@ -260,6 +260,27 @@ export class StepperComponent implements AfterContentInit {
     return this.stepperService.isStepDisabled(index) || this.steps()[index]?.disabled();
   }
 
+  /** Check if step can be navigated to (considers linear mode) */
+  isStepReachable(index: number): boolean {
+    if (this.isStepDisabled(index)) return false;
+    
+    const current = this.stepperService.activeIndex();
+    
+    // Active step is always reachable
+    if (index === current) return true;
+    
+    // In non-linear mode, all non-disabled steps are reachable
+    if (!this.linear()) return true;
+    
+    // In linear mode: can go backwards freely
+    if (index < current) return true;
+    
+    // In linear mode: can only go to next step if current is completed
+    if (index === current + 1 && this.isStepCompleted(current)) return true;
+    
+    return false;
+  }
+
   getStepError(index: number): string | undefined {
     return this.stepperService.getStepError(index);
   }
