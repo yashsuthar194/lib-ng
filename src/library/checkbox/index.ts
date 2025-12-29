@@ -6,7 +6,7 @@
 export { CheckboxComponent } from './core/checkbox.component';
 
 // Switch component (separate from checkbox)
-export { 
+export {
   SwitchComponent,
   SwitchCheckedIconDirective,
   SwitchUncheckedIconDirective,
@@ -17,8 +17,8 @@ export type { SwitchSize, SwitchLabelPosition, SwitchChangeEvent } from './switc
 export { CheckboxGroupComponent } from './group/checkbox-group.component';
 
 // Checkbox types
-export type { 
-  CheckboxSize, 
+export type {
+  CheckboxSize,
   LabelPosition,
   CheckboxChangeEvent,
   CheckboxOption,

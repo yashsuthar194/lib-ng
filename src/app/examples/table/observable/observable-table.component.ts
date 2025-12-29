@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TableComponent, ColumnDefDirective } from '../../../../library/table';
 import { User } from '../../../dummy/models';
@@ -11,20 +11,14 @@ import { MockApiService } from '../../../dummy/services';
   template: `
     <div class="example-container">
       <h1>Observable Data Example</h1>
-      <p class="description">
-        Table with Observable data converted to Signal for reactivity.
-      </p>
+      <p class="description">Table with Observable data converted to Signal for reactivity.</p>
 
       <div class="actions">
         <button class="btn" (click)="loadData()">Reload Data</button>
       </div>
 
       <div class="example-card">
-        <lib-table
-          [dataSource]="users()"
-          [loading]="loading()"
-          [striped]="true"
-        >
+        <lib-table [dataSource]="users()" [loading]="loading()" [striped]="true">
           <ng-container libColumnDef="name">
             <ng-template #header>Name</ng-template>
             <ng-template #cell let-row>
@@ -145,7 +139,7 @@ export class ObservableTableExampleComponent {
 
   loadData() {
     this.loading.set(true);
-    MockApiService.getUsers().subscribe((data) => {
+    MockApiService.getUsers().subscribe(_data => {
       // Since we can't reassign the signal, we'll simulate reload
       // In a real app, you'd use a Subject or refresh mechanism
       this.loading.set(false);

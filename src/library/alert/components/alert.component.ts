@@ -1,23 +1,14 @@
 /**
  * Alert Component
- * 
+ *
  * Inline alert/banner for displaying important messages.
- * 
+ *
  * @example
  * <lib-alert variant="success">Changes saved!</lib-alert>
  * <lib-alert variant="error" dismissible (dismissed)="onClose()">Error occurred</lib-alert>
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  output,
-  signal,
-  computed,
-  contentChild,
-  TemplateRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output, signal, computed } from '@angular/core';
 import type { AlertVariant, AlertAppearance } from '../types/alert.types';
 import { ALERT_ANIMATION } from '../types/alert.types';
 
@@ -26,7 +17,7 @@ import { ALERT_ANIMATION } from '../types/alert.types';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-alert',
+    class: 'lib-alert',
     '[class.lib-alert--info]': 'variant() === "info"',
     '[class.lib-alert--success]': 'variant() === "success"',
     '[class.lib-alert--warning]': 'variant() === "warning"',
@@ -47,43 +38,43 @@ export class AlertComponent {
   // ========================================
   // Inputs
   // ========================================
-  
+
   /** Semantic variant */
   readonly variant = input<AlertVariant>('info');
-  
+
   /** Visual appearance */
   readonly appearance = input<AlertAppearance>('filled');
-  
+
   /** Show icon */
   readonly showIcon = input<boolean>(true);
-  
+
   /** Can be dismissed */
   readonly dismissible = input<boolean>(false);
-  
+
   /** Optional title */
   readonly title = input<string>('');
 
   // ========================================
   // Outputs
   // ========================================
-  
+
   /** Emitted after dismiss animation completes */
   readonly dismissed = output<void>();
 
   // ========================================
   // State
   // ========================================
-  
+
   /** Dismissing animation state */
   readonly isDismissing = signal(false);
-  
+
   /** Fully dismissed */
   readonly isDismissed = signal(false);
 
   // ========================================
   // Computed
   // ========================================
-  
+
   /** Get default icon for current variant */
   readonly defaultIcon = computed(() => {
     switch (this.variant()) {
@@ -103,13 +94,13 @@ export class AlertComponent {
   // ========================================
   // Methods
   // ========================================
-  
+
   /** Dismiss the alert */
   dismiss(): void {
     if (this.isDismissing() || this.isDismissed()) return;
-    
+
     this.isDismissing.set(true);
-    
+
     setTimeout(() => {
       this.isDismissed.set(true);
       this.dismissed.emit();

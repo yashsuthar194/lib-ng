@@ -134,10 +134,21 @@ import { BadgeComponent, BadgeDirective } from '../../../library/badge';
           <button [libBadge]="notificationCount()" libBadgeVariant="error" class="demo-btn">
             🔔 Notifications
           </button>
-          <button [libBadge]="messageCount()" libBadgeVariant="primary" [libBadgePulse]="messageCount() > 0" class="demo-btn">
+          <button
+            [libBadge]="messageCount()"
+            libBadgeVariant="primary"
+            [libBadgePulse]="messageCount() > 0"
+            class="demo-btn"
+          >
             ✉️ Messages
           </button>
-          <button libBadge libBadgeShape="dot" libBadgeStatus="online" libBadgePosition="bottom-right" class="demo-btn">
+          <button
+            libBadge
+            libBadgeShape="dot"
+            libBadgeStatus="online"
+            libBadgePosition="bottom-right"
+            class="demo-btn"
+          >
             👤 Profile
           </button>
         </div>
@@ -153,10 +164,20 @@ import { BadgeComponent, BadgeDirective } from '../../../library/badge';
         <h2>Hide When Zero</h2>
         <p class="hint">Option to hide badge when value is 0.</p>
         <div class="badge-row">
-          <button [libBadge]="zeroBadge()" [libBadgeHideZero]="true" libBadgeVariant="error" class="demo-btn">
+          <button
+            [libBadge]="zeroBadge()"
+            [libBadgeHideZero]="true"
+            libBadgeVariant="error"
+            class="demo-btn"
+          >
             With hideZero (count: {{ zeroBadge() }})
           </button>
-          <button [libBadge]="zeroBadge()" [libBadgeHideZero]="false" libBadgeVariant="error" class="demo-btn">
+          <button
+            [libBadge]="zeroBadge()"
+            [libBadgeHideZero]="false"
+            libBadgeVariant="error"
+            class="demo-btn"
+          >
             Without hideZero
           </button>
         </div>
@@ -191,7 +212,7 @@ import { BadgeComponent, BadgeDirective } from '../../../library/badge';
             <div class="badge-row">
               <lib-badge appearance="filled" variant="error" size="sm">Admin</lib-badge>
               <lib-badge appearance="filled" variant="primary" size="sm">Owner</lib-badge>
-          </div>
+            </div>
           </div>
         </div>
       </section>
@@ -205,7 +226,9 @@ import { BadgeComponent, BadgeDirective } from '../../../library/badge';
             <h3>Component with Custom Colors</h3>
             <div class="badge-row">
               @for (role of customRoles; track role.name) {
-                <lib-badge [bgColor]="role.color" textColor="#fff" size="sm">{{ role.name }}</lib-badge>
+                <lib-badge [bgColor]="role.color" textColor="#fff" size="sm">{{
+                  role.name
+                }}</lib-badge>
               }
             </div>
           </div>
@@ -213,9 +236,9 @@ import { BadgeComponent, BadgeDirective } from '../../../library/badge';
             <h3>Directive with Custom Colors</h3>
             <div class="badge-row">
               @for (role of customRoles; track role.name) {
-                <button 
-                  [libBadge]="role.count" 
-                  [libBadgeBgColor]="role.color" 
+                <button
+                  [libBadge]="role.count"
+                  [libBadgeBgColor]="role.color"
                   libBadgeTextColor="#fff"
                   class="demo-btn"
                 >
@@ -370,11 +393,11 @@ export class BadgeExampleComponent {
   ];
 
   incrementNotifications(): void {
-    this.notificationCount.update((n) => n + 1);
+    this.notificationCount.update(n => n + 1);
   }
 
   incrementMessages(): void {
-    this.messageCount.update((n) => n + 1);
+    this.messageCount.update(n => n + 1);
   }
 
   resetCounts(): void {
@@ -383,6 +406,6 @@ export class BadgeExampleComponent {
   }
 
   toggleZeroBadge(): void {
-    this.zeroBadge.update((n) => (n === 0 ? 5 : 0));
+    this.zeroBadge.update(n => (n === 0 ? 5 : 0));
   }
 }

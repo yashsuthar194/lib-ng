@@ -1,6 +1,6 @@
 /**
  * Tab Component Types
- * 
+ *
  * Type definitions for the Tab component system.
  */
 

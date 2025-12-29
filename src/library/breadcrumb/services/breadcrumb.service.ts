@@ -6,18 +6,10 @@
  * Uses Angular 17+ features: signals, DestroyRef, takeUntilDestroyed.
  */
 
-import {
-  Injectable,
-  signal,
-  computed,
-  inject,
-  DestroyRef,
-  Injector,
-  runInInjectionContext,
-} from '@angular/core';
+import { Injectable, signal, computed, inject, DestroyRef, Injector } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, switchMap, of, Observable, firstValueFrom } from 'rxjs';
+import { filter } from 'rxjs';
 import type {
   BreadcrumbItem,
   BreadcrumbOverrideMode,
@@ -80,14 +72,16 @@ export class BreadcrumbService {
 
   constructor() {
     // Listen to router navigation events
-    this.router.events.pipe(
-      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe(() => {
-      if (this._autoGenerate() && this._overrideMode() !== 'full') {
-        this.regenerateFromRoute();
-      }
-    });
+    this.router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(() => {
+        if (this._autoGenerate() && this._overrideMode() !== 'full') {
+          this.regenerateFromRoute();
+        }
+      });
   }
 
   // ============================================
@@ -146,7 +140,7 @@ export class BreadcrumbService {
   /** Update item by ID (RECOMMENDED) */
   updateById(id: string, changes: Partial<BreadcrumbItem>): void {
     this._items.update(items =>
-      items.map(item => item.id === id ? { ...item, ...changes } : item)
+      items.map(item => (item.id === id ? { ...item, ...changes } : item))
     );
   }
 
@@ -163,14 +157,14 @@ export class BreadcrumbService {
   /** Update item by label match */
   updateByLabel(label: string, changes: Partial<BreadcrumbItem>): void {
     this._items.update(items =>
-      items.map(item => item.label === label ? { ...item, ...changes } : item)
+      items.map(item => (item.label === label ? { ...item, ...changes } : item))
     );
   }
 
   /** Update item by index (legacy support) */
   updateByIndex(index: number, changes: Partial<BreadcrumbItem>): void {
     this._items.update(items =>
-      items.map((item, i) => i === index ? { ...item, ...changes } : item)
+      items.map((item, i) => (i === index ? { ...item, ...changes } : item))
     );
   }
 
@@ -283,7 +277,7 @@ export class BreadcrumbService {
     route: ActivatedRouteSnapshot,
     data: RouteBreadcrumb
   ): BreadcrumbItem | null {
-    const config = typeof data === 'string' ? { label: data } : data as RouteBreadcrumbConfig;
+    const config = typeof data === 'string' ? { label: data } : (data as RouteBreadcrumbConfig);
 
     // Build path from route segments
     const pathSegments = this.getFullPath(route);

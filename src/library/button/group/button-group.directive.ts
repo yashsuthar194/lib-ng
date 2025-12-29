@@ -1,9 +1,9 @@
 /**
  * Button Group Directive
- * 
+ *
  * @description
  * Groups multiple buttons together with connected styling.
- * 
+ *
  * @example
  * ```html
  * <div libButtonGroup>
@@ -20,8 +20,8 @@ import { Directive } from '@angular/core';
   selector: '[libButtonGroup]',
   standalone: true,
   host: {
-    'class': 'lib-button-group',
-    'role': 'group',
+    class: 'lib-button-group',
+    role: 'group',
   },
 })
 export class ButtonGroupDirective {}

@@ -18,12 +18,7 @@
  * <lib-skeleton-text [widths]="[100, 95, 80, 60]" />
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  computed,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, computed } from '@angular/core';
 import type {
   SkeletonAnimation,
   SkeletonSize,
@@ -63,7 +58,7 @@ interface LineConfig {
         [class.lib-skeleton-text__line--wave]="effectiveAnimation() === 'wave'"
         [style.width]="line.width"
         [style.height]="line.height"
-        [style.animation-delay]="stagger() ? (line.index * staggerDelay()) + 'ms' : '0ms'"
+        [style.animation-delay]="stagger() ? line.index * staggerDelay() + 'ms' : '0ms'"
       ></div>
     }
     <span class="lib-skeleton-text__sr-only">Loading text...</span>
@@ -82,14 +77,10 @@ export class SkeletonTextComponent {
   readonly heading = input<boolean>(DEFAULT_TEXT_SKELETON_CONFIG.heading);
 
   /** Heading level for size */
-  readonly headingLevel = input<SkeletonHeadingLevel>(
-    DEFAULT_TEXT_SKELETON_CONFIG.headingLevel
-  );
+  readonly headingLevel = input<SkeletonHeadingLevel>(DEFAULT_TEXT_SKELETON_CONFIG.headingLevel);
 
   /** Last line width percentage (0-100) */
-  readonly lastLineWidth = input<number>(
-    DEFAULT_TEXT_SKELETON_CONFIG.lastLineWidth
-  );
+  readonly lastLineWidth = input<number>(DEFAULT_TEXT_SKELETON_CONFIG.lastLineWidth);
 
   /** Randomize line widths slightly */
   readonly randomize = input<boolean>(DEFAULT_TEXT_SKELETON_CONFIG.randomize);
@@ -126,9 +117,7 @@ export class SkeletonTextComponent {
   // ============================================================================
 
   /** Effective animation (respects animated flag) */
-  readonly effectiveAnimation = computed(() =>
-    this.animated() ? this.animation() : 'none'
-  );
+  readonly effectiveAnimation = computed(() => (this.animated() ? this.animation() : 'none'));
 
   /** Computed gap between lines */
   readonly computedGap = computed(() => {

@@ -1,6 +1,6 @@
-/** 
+/**
  * Checkbox Types and Configuration
- * 
+ *
  * @description
  * Type definitions for the checkbox component.
  * For switch types, see switch.component.ts

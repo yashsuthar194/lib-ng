@@ -1,16 +1,10 @@
 /**
  * Tooltip Component
- * 
+ *
  * Renders the tooltip content with styling and arrow.
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  computed,
-  TemplateRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, computed, TemplateRef } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import type { TooltipVariant, TooltipPosition } from '../types/tooltip.types';
 
@@ -20,7 +14,7 @@ import type { TooltipVariant, TooltipPosition } from '../types/tooltip.types';
   imports: [NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-tooltip',
+    class: 'lib-tooltip',
     '[class.lib-tooltip--visible]': 'isVisible()',
     '[class.lib-tooltip--info]': 'variant() === "info"',
     '[class.lib-tooltip--warning]': 'variant() === "warning"',
@@ -32,7 +26,7 @@ import type { TooltipVariant, TooltipPosition } from '../types/tooltip.types';
     '[attr.id]': 'id()',
     '[style.left.px]': 'x()',
     '[style.top.px]': 'y()',
-    'role': 'tooltip',
+    role: 'tooltip',
   },
   template: `
     <div class="lib-tooltip__content">
@@ -43,11 +37,7 @@ import type { TooltipVariant, TooltipPosition } from '../types/tooltip.types';
       }
     </div>
     @if (showArrow()) {
-      <div 
-        class="lib-tooltip__arrow"
-        [style.left.px]="arrowX()"
-        [style.top.px]="arrowY()"
-      ></div>
+      <div class="lib-tooltip__arrow" [style.left.px]="arrowX()" [style.top.px]="arrowY()"></div>
     }
   `,
   styleUrl: './tooltip.component.css',
@@ -63,16 +53,16 @@ export class TooltipComponent {
   readonly y = input<number>(0);
   readonly arrowX = input<number | undefined>(undefined);
   readonly arrowY = input<number | undefined>(undefined);
-  
+
   /** Check if content is string */
   readonly isString = computed(() => typeof this.content() === 'string');
-  
+
   /** Get string content */
   readonly stringContent = computed(() => this.content() as string);
-  
+
   /** Get template content */
   readonly templateContent = computed(() => this.content() as TemplateRef<unknown>);
-  
+
   /** Get base position (top/bottom/left/right) */
   readonly positionBase = computed(() => this.position().split('-')[0]);
 }

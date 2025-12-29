@@ -280,8 +280,7 @@
 
 :host(.lib-badge--gradient) {
   background:
-    linear-gradient(var(--lib-color-neutral-0), var(--lib-color-neutral-0))
-      padding-box,
+    linear-gradient(var(--lib-color-neutral-0), var(--lib-color-neutral-0)) padding-box,
     linear-gradient(
         135deg,
         var(--lib-color-primary-500),
@@ -295,8 +294,7 @@
 
 :host(.lib-badge--gradient.lib-badge--error) {
   background:
-    linear-gradient(var(--lib-color-neutral-0), var(--lib-color-neutral-0))
-      padding-box,
+    linear-gradient(var(--lib-color-neutral-0), var(--lib-color-neutral-0)) padding-box,
     linear-gradient(
         135deg,
         var(--lib-color-error),
@@ -309,8 +307,7 @@
 
 :host(.lib-badge--gradient.lib-badge--success) {
   background:
-    linear-gradient(var(--lib-color-neutral-0), var(--lib-color-neutral-0))
-      padding-box,
+    linear-gradient(var(--lib-color-neutral-0), var(--lib-color-neutral-0)) padding-box,
     linear-gradient(
         135deg,
         var(--lib-color-success),

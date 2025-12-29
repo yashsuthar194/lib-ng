@@ -1,6 +1,6 @@
 /**
  * Select Component Types
- * 
+ *
  * Type definitions for the Select component system.
  * Uses generics for type-safe value handling.
  */

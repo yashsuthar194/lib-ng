@@ -16,12 +16,7 @@
  * </lib-skeleton-group>
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  computed,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, computed } from '@angular/core';
 import type {
   SkeletonPreset,
   SkeletonAnimation,
@@ -29,10 +24,7 @@ import type {
   SkeletonLayout,
   SkeletonSpeed,
 } from '../types/skeleton.types';
-import {
-  DEFAULT_GROUP_SKELETON_CONFIG,
-  SKELETON_SIZE_MAP,
-} from '../types/skeleton.types';
+import { DEFAULT_GROUP_SKELETON_CONFIG, SKELETON_SIZE_MAP } from '../types/skeleton.types';
 import { SkeletonComponent } from './skeleton.component';
 import { SkeletonTextComponent } from './skeleton-text.component';
 
@@ -55,9 +47,9 @@ import { SkeletonTextComponent } from './skeleton-text.component';
     @if (preset()) {
       <!-- Preset-based rendering -->
       @for (i of repeatArray(); track i) {
-        <div 
+        <div
           class="lib-skeleton-group__item"
-          [style.animation-delay]="stagger() ? (i * staggerDelay()) + 'ms' : '0ms'"
+          [style.animation-delay]="stagger() ? i * staggerDelay() + 'ms' : '0ms'"
         >
           @switch (preset()) {
             <!-- Content Cards -->
@@ -111,7 +103,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 </div>
               </div>
             }
-            
+
             <!-- Lists & Items -->
             @case ('list-item') {
               <div class="lib-skeleton-preset lib-skeleton-preset--list-item">
@@ -148,7 +140,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 <lib-skeleton variant="rounded" width="70px" height="32px" />
               </div>
             }
-            
+
             <!-- Tables & Data -->
             @case ('table-row') {
               <div class="lib-skeleton-preset lib-skeleton-preset--table-row">
@@ -178,7 +170,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 }
               </div>
             }
-            
+
             <!-- Social & Feed -->
             @case ('social-post') {
               <div class="lib-skeleton-preset lib-skeleton-preset--social-post">
@@ -229,7 +221,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 </div>
               </div>
             }
-            
+
             <!-- Profile & User -->
             @case ('profile-header') {
               <div class="lib-skeleton-preset lib-skeleton-preset--profile-header">
@@ -273,7 +265,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 </div>
               </div>
             }
-            
+
             <!-- Media -->
             @case ('image') {
               <lib-skeleton variant="rounded" width="100%" height="200px" />
@@ -302,7 +294,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 <lib-skeleton width="80%" height="0.875rem" />
               </div>
             }
-            
+
             <!-- Navigation -->
             @case ('sidebar-item') {
               <div class="lib-skeleton-preset lib-skeleton-preset--sidebar-item">
@@ -331,7 +323,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 }
               </div>
             }
-            
+
             <!-- Forms -->
             @case ('form-field') {
               <div class="lib-skeleton-preset lib-skeleton-preset--form-field">
@@ -359,7 +351,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 <lib-skeleton variant="rounded" width="60px" height="32px" />
               </div>
             }
-            
+
             <!-- Dashboard -->
             @case ('stat-card') {
               <div class="lib-skeleton-preset lib-skeleton-preset--stat-card">
@@ -394,7 +386,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 <lib-skeleton width="80px" height="0.75rem" />
               </div>
             }
-            
+
             <!-- Complex Layouts -->
             @case ('hero-section') {
               <div class="lib-skeleton-preset lib-skeleton-preset--hero-section">
@@ -439,7 +431,7 @@ import { SkeletonTextComponent } from './skeleton-text.component';
                 </div>
               </div>
             }
-            
+
             @default {
               <!-- Fallback to simple skeleton -->
               <lib-skeleton />
@@ -476,9 +468,7 @@ export class SkeletonGroupComponent {
   readonly stagger = input<boolean>(DEFAULT_GROUP_SKELETON_CONFIG.stagger);
 
   /** Stagger delay in ms */
-  readonly staggerDelay = input<number>(
-    DEFAULT_GROUP_SKELETON_CONFIG.staggerDelay
-  );
+  readonly staggerDelay = input<number>(DEFAULT_GROUP_SKELETON_CONFIG.staggerDelay);
 
   /** Number of columns (for grid presets) */
   readonly columns = input<number>(DEFAULT_GROUP_SKELETON_CONFIG.columns);
@@ -500,14 +490,10 @@ export class SkeletonGroupComponent {
   // ============================================================================
 
   /** Array for repeat @for loop */
-  readonly repeatArray = computed(() =>
-    Array.from({ length: this.repeat() }, (_, i) => i)
-  );
+  readonly repeatArray = computed(() => Array.from({ length: this.repeat() }, (_, i) => i));
 
   /** Array for columns @for loop */
-  readonly columnsArray = computed(() =>
-    Array.from({ length: this.columns() }, (_, i) => i)
-  );
+  readonly columnsArray = computed(() => Array.from({ length: this.columns() }, (_, i) => i));
 
   /** Effective layout based on preset or input */
   readonly effectiveLayout = computed(() => {
@@ -518,7 +504,7 @@ export class SkeletonGroupComponent {
     // The horizontal layout is handled within the preset's own CSS.
     // Only single-item horizontal presets should be listed here.
     const horizontalPresets: SkeletonPreset[] = [
-      // Note: list-item-avatar, list-item-media, list-item-action have 
+      // Note: list-item-avatar, list-item-media, list-item-action have
       // horizontal internal layout but should stack vertically when repeated
       'avatar-text',
       'contact-card',

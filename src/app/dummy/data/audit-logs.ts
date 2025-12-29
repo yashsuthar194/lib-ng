@@ -8,7 +8,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T09:15:00Z',
     details: 'Successful login from corporate network',
-    ipAddress: '192.168.1.45'
+    ipAddress: '192.168.1.45',
   },
   {
     id: 'log-002',
@@ -16,7 +16,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Create Project',
     timestamp: '2024-12-17T14:30:00Z',
     details: 'Created new project: Mobile App v3.0',
-    ipAddress: '192.168.1.78'
+    ipAddress: '192.168.1.78',
   },
   {
     id: 'log-003',
@@ -24,7 +24,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Task',
     timestamp: '2024-12-18T08:45:00Z',
     details: 'Updated task status: Design Homepage Wireframes to Done',
-    ipAddress: '192.168.1.102'
+    ipAddress: '192.168.1.102',
   },
   {
     id: 'log-004',
@@ -32,7 +32,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Access Settings',
     timestamp: '2024-12-18T09:20:00Z',
     details: 'Accessed company security settings',
-    ipAddress: '192.168.1.45'
+    ipAddress: '192.168.1.45',
   },
   {
     id: 'log-005',
@@ -40,7 +40,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Download Report',
     timestamp: '2024-12-16T16:20:00Z',
     details: 'Downloaded project performance report',
-    ipAddress: '10.0.0.55'
+    ipAddress: '10.0.0.55',
   },
 
   // GreenLeaf Energy Activity
@@ -50,7 +50,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T07:00:00Z',
     details: 'Login from Berlin office',
-    ipAddress: '185.45.12.89'
+    ipAddress: '185.45.12.89',
   },
   {
     id: 'log-007',
@@ -58,7 +58,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Assign Task',
     timestamp: '2024-12-17T18:45:00Z',
     details: 'Assigned IoT Sensor Integration Protocol to Lukas Braun',
-    ipAddress: '185.45.12.102'
+    ipAddress: '185.45.12.102',
   },
   {
     id: 'log-008',
@@ -66,7 +66,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Task',
     timestamp: '2024-12-18T06:30:00Z',
     details: 'Updated task progress: IoT Sensor Integration Protocol - 60%',
-    ipAddress: '185.45.12.150'
+    ipAddress: '185.45.12.150',
   },
 
   // Apex Logistics Activity
@@ -76,7 +76,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T05:45:00Z',
     details: 'Early morning login from Rotterdam HQ',
-    ipAddress: '82.217.45.10'
+    ipAddress: '82.217.45.10',
   },
   {
     id: 'log-010',
@@ -84,7 +84,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'View Fleet Dashboard',
     timestamp: '2024-12-17T17:30:00Z',
     details: 'Accessed real-time fleet tracking dashboard',
-    ipAddress: '82.217.45.25'
+    ipAddress: '82.217.45.25',
   },
   {
     id: 'log-011',
@@ -92,7 +92,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Complete Task',
     timestamp: '2024-12-18T04:20:00Z',
     details: 'Marked GPS Tracking Module as completed',
-    ipAddress: '82.217.45.67'
+    ipAddress: '82.217.45.67',
   },
   {
     id: 'log-012',
@@ -100,7 +100,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Export Data',
     timestamp: '2024-12-18T06:00:00Z',
     details: 'Exported fleet analytics for Q4 report',
-    ipAddress: '82.217.45.10'
+    ipAddress: '82.217.45.10',
   },
 
   // FinStream Capital Activity
@@ -110,7 +110,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T08:00:00Z',
     details: 'Secure login with 2FA from London office',
-    ipAddress: '51.140.25.88'
+    ipAddress: '51.140.25.88',
   },
   {
     id: 'log-014',
@@ -118,7 +118,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'View Fraud Cases',
     timestamp: '2024-12-17T16:45:00Z',
     details: 'Accessed fraud detection dashboard - viewed 15 flagged cases',
-    ipAddress: '51.140.25.112'
+    ipAddress: '51.140.25.112',
   },
   {
     id: 'log-015',
@@ -126,7 +126,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Task',
     timestamp: '2024-12-18T07:30:00Z',
     details: 'Updated Real-time Scoring Engine task with new requirements',
-    ipAddress: '51.140.25.45'
+    ipAddress: '51.140.25.45',
   },
   {
     id: 'log-016',
@@ -134,7 +134,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Comment Added',
     timestamp: '2024-12-16T14:15:00Z',
     details: 'Added comment on Case Investigation Dashboard task',
-    ipAddress: '51.140.25.78'
+    ipAddress: '51.140.25.78',
   },
 
   // BioGenix Labs Activity
@@ -144,7 +144,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T10:30:00Z',
     details: 'Login to lab management system',
-    ipAddress: '72.14.202.55'
+    ipAddress: '72.14.202.55',
   },
   {
     id: 'log-018',
@@ -152,7 +152,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Upload Data',
     timestamp: '2024-12-17T11:20:00Z',
     details: 'Uploaded genome sequencing batch results - 2.3GB',
-    ipAddress: '72.14.202.78'
+    ipAddress: '72.14.202.78',
   },
   {
     id: 'log-019',
@@ -160,7 +160,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Run Analysis',
     timestamp: '2024-12-18T09:45:00Z',
     details: 'Initiated variant calling pipeline for batch #4521',
-    ipAddress: '72.14.202.102'
+    ipAddress: '72.14.202.102',
   },
 
   // Quantum Computing Activity
@@ -170,7 +170,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T02:00:00Z',
     details: 'Login from Tokyo research facility',
-    ipAddress: '203.104.45.12'
+    ipAddress: '203.104.45.12',
   },
   {
     id: 'log-021',
@@ -178,7 +178,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Run Simulation',
     timestamp: '2024-12-17T23:45:00Z',
     details: 'Executed quantum circuit simulation - 50 qubits',
-    ipAddress: '203.104.45.34'
+    ipAddress: '203.104.45.34',
   },
   {
     id: 'log-022',
@@ -186,7 +186,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Save Experiment',
     timestamp: '2024-12-18T01:30:00Z',
     details: 'Saved experiment results: Grover algorithm optimization',
-    ipAddress: '203.104.45.56'
+    ipAddress: '203.104.45.56',
   },
 
   // CloudNine Hosting Activity
@@ -196,7 +196,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T11:00:00Z',
     details: 'Admin login from Seattle HQ',
-    ipAddress: '104.215.148.20'
+    ipAddress: '104.215.148.20',
   },
   {
     id: 'log-024',
@@ -204,7 +204,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Scale Cluster',
     timestamp: '2024-12-17T19:30:00Z',
     details: 'Scaled kubernetes cluster from 10 to 25 nodes',
-    ipAddress: '104.215.148.45'
+    ipAddress: '104.215.148.45',
   },
   {
     id: 'log-025',
@@ -212,7 +212,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'View Metrics',
     timestamp: '2024-12-18T10:15:00Z',
     details: 'Accessed auto-scaling metrics dashboard',
-    ipAddress: '104.215.148.78'
+    ipAddress: '104.215.148.78',
   },
 
   // MediCare Plus Activity
@@ -222,7 +222,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T12:00:00Z',
     details: 'Secure healthcare portal login',
-    ipAddress: '99.79.45.10'
+    ipAddress: '99.79.45.10',
   },
   {
     id: 'log-027',
@@ -230,7 +230,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Start Consultation',
     timestamp: '2024-12-17T15:20:00Z',
     details: 'Initiated video consultation with patient ID: P-4521',
-    ipAddress: '99.79.45.25'
+    ipAddress: '99.79.45.25',
   },
   {
     id: 'log-028',
@@ -238,7 +238,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Patient Record',
     timestamp: '2024-12-18T06:45:00Z',
     details: 'Updated patient vitals for ID: P-3892',
-    ipAddress: '99.79.45.67'
+    ipAddress: '99.79.45.67',
   },
   {
     id: 'log-029',
@@ -246,7 +246,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Generate Prescription',
     timestamp: '2024-12-18T12:30:00Z',
     details: 'Generated e-prescription for patient P-4521',
-    ipAddress: '99.79.45.10'
+    ipAddress: '99.79.45.10',
   },
 
   // EduSmart Academy Activity
@@ -256,7 +256,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T03:30:00Z',
     details: 'Professor login from Singapore campus',
-    ipAddress: '13.251.45.12'
+    ipAddress: '13.251.45.12',
   },
   {
     id: 'log-031',
@@ -264,7 +264,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Create Course',
     timestamp: '2024-12-17T22:00:00Z',
     details: 'Created new course: Advanced Machine Learning',
-    ipAddress: '13.251.45.34'
+    ipAddress: '13.251.45.34',
   },
   {
     id: 'log-032',
@@ -272,7 +272,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Upload Content',
     timestamp: '2024-12-18T02:45:00Z',
     details: 'Uploaded 12 video lectures for AI Tutoring module',
-    ipAddress: '13.251.45.56'
+    ipAddress: '13.251.45.56',
   },
 
   // AutoDrive Motors Activity
@@ -282,7 +282,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T06:00:00Z',
     details: 'Executive login from Munich headquarters',
-    ipAddress: '89.246.78.10'
+    ipAddress: '89.246.78.10',
   },
   {
     id: 'log-034',
@@ -290,7 +290,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'View Telemetry',
     timestamp: '2024-12-17T13:45:00Z',
     details: 'Accessed EV fleet telemetry dashboard',
-    ipAddress: '89.246.78.25'
+    ipAddress: '89.246.78.25',
   },
   {
     id: 'log-035',
@@ -298,7 +298,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Task',
     timestamp: '2024-12-18T05:30:00Z',
     details: 'Moved Charging Station Locator to Review status',
-    ipAddress: '89.246.78.45'
+    ipAddress: '89.246.78.45',
   },
   {
     id: 'log-036',
@@ -306,7 +306,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Comment Added',
     timestamp: '2024-12-16T11:20:00Z',
     details: 'Added technical requirements to Predictive Maintenance task',
-    ipAddress: '89.246.78.67'
+    ipAddress: '89.246.78.67',
   },
 
   // FreshMart Activity
@@ -316,7 +316,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T13:00:00Z',
     details: 'Login from Chicago corporate office',
-    ipAddress: '23.96.52.10'
+    ipAddress: '23.96.52.10',
   },
   {
     id: 'log-038',
@@ -324,7 +324,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'View Inventory',
     timestamp: '2024-12-17T20:15:00Z',
     details: 'Accessed inventory forecasting dashboard',
-    ipAddress: '23.96.52.25'
+    ipAddress: '23.96.52.25',
   },
   {
     id: 'log-039',
@@ -332,7 +332,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Generate Order',
     timestamp: '2024-12-18T08:30:00Z',
     details: 'Auto-generated purchase order for 45 SKUs',
-    ipAddress: '23.96.52.45'
+    ipAddress: '23.96.52.45',
   },
 
   // SecureVault Cyber Activity
@@ -342,7 +342,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T07:15:00Z',
     details: 'Secure admin login with hardware key',
-    ipAddress: '185.107.56.10'
+    ipAddress: '185.107.56.10',
   },
   {
     id: 'log-041',
@@ -350,7 +350,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Threat Analysis',
     timestamp: '2024-12-17T21:30:00Z',
     details: 'Analyzed 23 potential threat indicators',
-    ipAddress: '185.107.56.25'
+    ipAddress: '185.107.56.25',
   },
   {
     id: 'log-042',
@@ -358,7 +358,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Policy',
     timestamp: '2024-12-18T06:00:00Z',
     details: 'Updated micro-segmentation policy for client network',
-    ipAddress: '185.107.56.45'
+    ipAddress: '185.107.56.45',
   },
 
   // AeroSpace Dynamics Activity
@@ -368,7 +368,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T14:30:00Z',
     details: 'Login from LA aerospace facility',
-    ipAddress: '65.52.45.10'
+    ipAddress: '65.52.45.10',
   },
   {
     id: 'log-044',
@@ -376,7 +376,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Run Simulation',
     timestamp: '2024-12-17T12:00:00Z',
     details: 'Executed flight control simulation - scenario alpha-7',
-    ipAddress: '65.52.45.25'
+    ipAddress: '65.52.45.25',
   },
   {
     id: 'log-045',
@@ -384,7 +384,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Upload Test Results',
     timestamp: '2024-12-18T09:00:00Z',
     details: 'Uploaded sensor fusion test results - passed all criteria',
-    ipAddress: '65.52.45.45'
+    ipAddress: '65.52.45.45',
   },
 
   // GourmetChef Foods Activity
@@ -394,7 +394,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T08:45:00Z',
     details: 'Login from Paris headquarters',
-    ipAddress: '62.210.45.10'
+    ipAddress: '62.210.45.10',
   },
   {
     id: 'log-047',
@@ -402,7 +402,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Verify Supplier',
     timestamp: '2024-12-17T17:00:00Z',
     details: 'Verified blockchain traceability for supplier ID: SUP-892',
-    ipAddress: '62.210.45.25'
+    ipAddress: '62.210.45.25',
   },
   {
     id: 'log-048',
@@ -410,7 +410,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Recipe',
     timestamp: '2024-12-18T07:00:00Z',
     details: 'Updated allergen information for recipe ID: R-4521',
-    ipAddress: '62.210.45.45'
+    ipAddress: '62.210.45.45',
   },
 
   // Stellar Entertainment Activity
@@ -420,7 +420,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T15:00:00Z',
     details: 'Login from LA production studio',
-    ipAddress: '104.42.45.10'
+    ipAddress: '104.42.45.10',
   },
   {
     id: 'log-050',
@@ -428,7 +428,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Deploy Update',
     timestamp: '2024-12-17T14:30:00Z',
     details: 'Deployed streaming platform update v2.4.1',
-    ipAddress: '104.42.45.25'
+    ipAddress: '104.42.45.25',
   },
 
   // BuildRight Construction Activity
@@ -438,7 +438,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T05:00:00Z',
     details: 'Login from Dubai project office',
-    ipAddress: '94.200.45.10'
+    ipAddress: '94.200.45.10',
   },
   {
     id: 'log-052',
@@ -446,7 +446,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Upload BIM Model',
     timestamp: '2024-12-17T16:00:00Z',
     details: 'Uploaded updated BIM model for Tower Project Phase 3',
-    ipAddress: '94.200.45.25'
+    ipAddress: '94.200.45.25',
   },
   {
     id: 'log-053',
@@ -454,7 +454,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Schedule Meeting',
     timestamp: '2024-12-18T04:30:00Z',
     details: 'Scheduled project coordination meeting for Dec 20',
-    ipAddress: '94.200.45.45'
+    ipAddress: '94.200.45.45',
   },
 
   // PharmaCore Industries Activity
@@ -464,7 +464,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T07:30:00Z',
     details: 'Researcher login from Basel lab',
-    ipAddress: '193.134.45.10'
+    ipAddress: '193.134.45.10',
   },
   {
     id: 'log-055',
@@ -472,7 +472,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Submit Trial Data',
     timestamp: '2024-12-17T13:00:00Z',
     details: 'Submitted Phase 2 clinical trial data for review',
-    ipAddress: '193.134.45.25'
+    ipAddress: '193.134.45.25',
   },
   {
     id: 'log-056',
@@ -480,7 +480,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Review Adverse Event',
     timestamp: '2024-12-18T06:15:00Z',
     details: 'Reviewed and classified adverse event AE-2024-0892',
-    ipAddress: '193.134.45.45'
+    ipAddress: '193.134.45.45',
   },
 
   // TravelWise Tours Activity
@@ -490,7 +490,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T00:30:00Z',
     details: 'Login from Sydney operations center',
-    ipAddress: '54.252.45.10'
+    ipAddress: '54.252.45.10',
   },
   {
     id: 'log-058',
@@ -498,7 +498,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Update Pricing',
     timestamp: '2024-12-17T22:15:00Z',
     details: 'Updated dynamic pricing rules for peak season',
-    ipAddress: '54.252.45.25'
+    ipAddress: '54.252.45.25',
   },
   {
     id: 'log-059',
@@ -506,7 +506,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Process Booking',
     timestamp: '2024-12-17T23:45:00Z',
     details: 'Processed group booking for 24 passengers',
-    ipAddress: '54.252.45.45'
+    ipAddress: '54.252.45.45',
   },
 
   // SmartHome Devices Activity
@@ -516,7 +516,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T01:00:00Z',
     details: 'Login from Shenzhen R&D center',
-    ipAddress: '116.228.45.10'
+    ipAddress: '116.228.45.10',
   },
   {
     id: 'log-061',
@@ -524,7 +524,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Test Integration',
     timestamp: '2024-12-17T18:00:00Z',
     details: 'Completed Alexa skill integration testing - all passed',
-    ipAddress: '116.228.45.25'
+    ipAddress: '116.228.45.25',
   },
   {
     id: 'log-062',
@@ -532,7 +532,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Deploy Firmware',
     timestamp: '2024-12-18T00:15:00Z',
     details: 'Deployed firmware update v3.2.0 to home hub devices',
-    ipAddress: '116.228.45.45'
+    ipAddress: '116.228.45.45',
   },
 
   // LegalEase Partners Activity
@@ -542,7 +542,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Login',
     timestamp: '2024-12-18T10:45:00Z',
     details: 'Partner login from NYC office',
-    ipAddress: '52.170.45.10'
+    ipAddress: '52.170.45.10',
   },
   {
     id: 'log-064',
@@ -550,7 +550,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Analyze Contract',
     timestamp: '2024-12-17T15:30:00Z',
     details: 'Ran AI analysis on merger agreement - 127 pages',
-    ipAddress: '52.170.45.25'
+    ipAddress: '52.170.45.25',
   },
   {
     id: 'log-065',
@@ -558,7 +558,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Create Case',
     timestamp: '2024-12-18T09:30:00Z',
     details: 'Created new case file: CL-2024-0892',
-    ipAddress: '52.170.45.45'
+    ipAddress: '52.170.45.45',
   },
 
   // Additional activity logs for high volume
@@ -568,7 +568,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Logout',
     timestamp: '2024-12-18T18:00:00Z',
     details: 'Session ended - normal logout',
-    ipAddress: '192.168.1.45'
+    ipAddress: '192.168.1.45',
   },
   {
     id: 'log-067',
@@ -576,7 +576,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Generate Report',
     timestamp: '2024-12-18T16:30:00Z',
     details: 'Generated monthly compliance report',
-    ipAddress: '51.140.25.88'
+    ipAddress: '51.140.25.88',
   },
   {
     id: 'log-068',
@@ -584,7 +584,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Alert Acknowledged',
     timestamp: '2024-12-18T14:15:00Z',
     details: 'Acknowledged high CPU alert on cluster-prod-3',
-    ipAddress: '104.215.148.20'
+    ipAddress: '104.215.148.20',
   },
   {
     id: 'log-069',
@@ -592,7 +592,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Block IP',
     timestamp: '2024-12-18T11:45:00Z',
     details: 'Blocked suspicious IP: 185.220.101.45',
-    ipAddress: '185.107.56.10'
+    ipAddress: '185.107.56.10',
   },
   {
     id: 'log-070',
@@ -600,7 +600,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Download Dataset',
     timestamp: '2024-12-18T13:20:00Z',
     details: 'Downloaded reference genome dataset - 4.5GB',
-    ipAddress: '72.14.202.55'
+    ipAddress: '72.14.202.55',
   },
   {
     id: 'log-071',
@@ -608,7 +608,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Approve Budget',
     timestamp: '2024-12-18T09:30:00Z',
     details: 'Approved budget increase for EV Telemetry project',
-    ipAddress: '89.246.78.10'
+    ipAddress: '89.246.78.10',
   },
   {
     id: 'log-072',
@@ -616,7 +616,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Review Plan',
     timestamp: '2024-12-18T07:00:00Z',
     details: 'Reviewed and approved construction timeline for Phase 4',
-    ipAddress: '94.200.45.10'
+    ipAddress: '94.200.45.10',
   },
   {
     id: 'log-073',
@@ -624,7 +624,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Audit Trail',
     timestamp: '2024-12-18T10:00:00Z',
     details: 'Generated supply chain audit trail for regulatory review',
-    ipAddress: '62.210.45.10'
+    ipAddress: '62.210.45.10',
   },
   {
     id: 'log-074',
@@ -632,7 +632,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Peer Review',
     timestamp: '2024-12-18T08:45:00Z',
     details: 'Submitted molecular analysis for peer review',
-    ipAddress: '193.134.45.10'
+    ipAddress: '193.134.45.10',
   },
   {
     id: 'log-075',
@@ -640,7 +640,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Bill Client',
     timestamp: '2024-12-18T11:30:00Z',
     details: 'Generated invoice for case CL-2024-0756 - $45,000',
-    ipAddress: '52.170.45.10'
+    ipAddress: '52.170.45.10',
   },
   {
     id: 'log-076',
@@ -648,7 +648,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Code Review',
     timestamp: '2024-12-18T15:45:00Z',
     details: 'Approved pull request #892 for Apollo Website Redesign',
-    ipAddress: '192.168.1.78'
+    ipAddress: '192.168.1.78',
   },
   {
     id: 'log-077',
@@ -656,7 +656,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Flag Transaction',
     timestamp: '2024-12-18T12:30:00Z',
     details: 'Manually flagged transaction ID: TXN-2024-892156 for review',
-    ipAddress: '51.140.25.112'
+    ipAddress: '51.140.25.112',
   },
   {
     id: 'log-078',
@@ -664,7 +664,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'End Consultation',
     timestamp: '2024-12-18T14:00:00Z',
     details: 'Completed video consultation - duration: 28 minutes',
-    ipAddress: '99.79.45.25'
+    ipAddress: '99.79.45.25',
   },
   {
     id: 'log-079',
@@ -672,7 +672,7 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Inventory Alert',
     timestamp: '2024-12-18T16:00:00Z',
     details: 'Received low stock alert for 12 products',
-    ipAddress: '23.96.52.10'
+    ipAddress: '23.96.52.10',
   },
   {
     id: 'log-080',
@@ -680,6 +680,6 @@ export const AUDIT_LOGS: AuditLog[] = [
     action: 'Export Results',
     timestamp: '2024-12-18T03:00:00Z',
     details: 'Exported quantum experiment results to research paper format',
-    ipAddress: '203.104.45.12'
-  }
+    ipAddress: '203.104.45.12',
+  },
 ];

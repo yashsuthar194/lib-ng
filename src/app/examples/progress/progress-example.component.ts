@@ -1,6 +1,6 @@
 /**
  * Progress Example Component
- * 
+ *
  * Demonstrates Progress components with various configurations.
  */
 
@@ -15,7 +15,7 @@ import { ProgressBarComponent, ProgressCircleComponent } from '../../../library/
   template: `
     <div class="example-page">
       <h1>Progress Examples</h1>
-      
+
       <!-- Linear Progress Bar -->
       <section class="example-section">
         <h2>Linear Progress Bar</h2>
@@ -135,72 +135,74 @@ import { ProgressBarComponent, ProgressCircleComponent } from '../../../library/
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6, 24px);
-      max-width: 800px;
-    }
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6, 24px);
+        max-width: 800px;
+      }
 
-    h1 {
-      font-size: var(--lib-font-size-2xl, 1.5rem);
-      margin-block-end: var(--lib-spacing-6, 24px);
-      color: var(--lib-color-neutral-900, #18181b);
-    }
+      h1 {
+        font-size: var(--lib-font-size-2xl, 1.5rem);
+        margin-block-end: var(--lib-spacing-6, 24px);
+        color: var(--lib-color-neutral-900, #18181b);
+      }
 
-    .example-section {
-      margin-block-end: var(--lib-spacing-8, 32px);
-      padding: var(--lib-spacing-4, 16px);
-      background: var(--lib-color-neutral-50, #fafafa);
-      border-radius: var(--lib-border-radius-lg, 8px);
-    }
+      .example-section {
+        margin-block-end: var(--lib-spacing-8, 32px);
+        padding: var(--lib-spacing-4, 16px);
+        background: var(--lib-color-neutral-50, #fafafa);
+        border-radius: var(--lib-border-radius-lg, 8px);
+      }
 
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg, 1.125rem);
-      margin-block-end: var(--lib-spacing-3, 12px);
-      color: var(--lib-color-neutral-800, #27272a);
-    }
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg, 1.125rem);
+        margin-block-end: var(--lib-spacing-3, 12px);
+        color: var(--lib-color-neutral-800, #27272a);
+      }
 
-    .hint {
-      font-size: var(--lib-font-size-sm, 0.875rem);
-      color: var(--lib-color-neutral-500, #71717a);
-      margin-block-end: var(--lib-spacing-4, 16px);
-    }
+      .hint {
+        font-size: var(--lib-font-size-sm, 0.875rem);
+        color: var(--lib-color-neutral-500, #71717a);
+        margin-block-end: var(--lib-spacing-4, 16px);
+      }
 
-    .progress-stack {
-      display: flex;
-      flex-direction: column;
-      gap: var(--lib-spacing-4, 16px);
-    }
+      .progress-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--lib-spacing-4, 16px);
+      }
 
-    .circle-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--lib-spacing-4, 16px);
-      align-items: center;
-    }
+      .circle-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--lib-spacing-4, 16px);
+        align-items: center;
+      }
 
-    .controls {
-      display: flex;
-      gap: var(--lib-spacing-2, 8px);
-    }
+      .controls {
+        display: flex;
+        gap: var(--lib-spacing-2, 8px);
+      }
 
-    .btn {
-      padding: var(--lib-spacing-2, 8px) var(--lib-spacing-4, 16px);
-      font-size: var(--lib-font-size-sm, 0.875rem);
-      font-weight: 500;
-      font-family: inherit;
-      border-radius: var(--lib-border-radius-md, 6px);
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      background: var(--lib-color-primary-500, #6366f1);
-      color: white;
-    }
+      .btn {
+        padding: var(--lib-spacing-2, 8px) var(--lib-spacing-4, 16px);
+        font-size: var(--lib-font-size-sm, 0.875rem);
+        font-weight: 500;
+        font-family: inherit;
+        border-radius: var(--lib-border-radius-md, 6px);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        background: var(--lib-color-primary-500, #6366f1);
+        color: white;
+      }
 
-    .btn:hover {
-      background: var(--lib-color-primary-600, #4f46e5);
-    }
-  `]
+      .btn:hover {
+        background: var(--lib-color-primary-600, #4f46e5);
+      }
+    `,
+  ],
 })
 export class ProgressExampleComponent {
   readonly progressValue = signal(60);

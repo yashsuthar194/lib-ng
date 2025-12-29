@@ -14,34 +14,38 @@ import { TabsComponent, TabComponent } from '../../../../library/tabs';
       <div class="heavy-component__status">Loaded!</div>
     </div>
   `,
-  styles: [`
-    .heavy-component {
-      display: flex;
-      align-items: center;
-      gap: var(--lib-spacing-3);
-      padding: var(--lib-spacing-4);
-      background: linear-gradient(135deg, 
-        var(--lib-color-neutral-50) 0%, 
-        var(--lib-color-neutral-100) 100%);
-      border-radius: var(--lib-border-radius-md);
-      margin-block-start: var(--lib-spacing-4);
-    }
-    
-    .heavy-component__icon {
-      font-size: 24px;
-    }
-    
-    .heavy-component__label {
-      flex: 1;
-      font-weight: var(--lib-font-weight-medium);
-    }
-    
-    .heavy-component__status {
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-success);
-      font-weight: var(--lib-font-weight-medium);
-    }
-  `],
+  styles: [
+    `
+      .heavy-component {
+        display: flex;
+        align-items: center;
+        gap: var(--lib-spacing-3);
+        padding: var(--lib-spacing-4);
+        background: linear-gradient(
+          135deg,
+          var(--lib-color-neutral-50) 0%,
+          var(--lib-color-neutral-100) 100%
+        );
+        border-radius: var(--lib-border-radius-md);
+        margin-block-start: var(--lib-spacing-4);
+      }
+
+      .heavy-component__icon {
+        font-size: 24px;
+      }
+
+      .heavy-component__label {
+        flex: 1;
+        font-weight: var(--lib-font-weight-medium);
+      }
+
+      .heavy-component__status {
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-success);
+        font-weight: var(--lib-font-weight-medium);
+      }
+    `,
+  ],
 })
 export class HeavyComponent {
   readonly name = input('Component');
@@ -49,7 +53,7 @@ export class HeavyComponent {
 
 /**
  * Lazy Loading Tabs Example
- * 
+ *
  * Demonstrates lazy loading of tab content using ng-template.
  */
 @Component({
@@ -79,7 +83,7 @@ export class HeavyComponent {
       <section class="example-section">
         <h2>Lazy Loading Demo</h2>
         <p class="hint">Click on each tab to load its content. Check the load log below.</p>
-        
+
         <div class="example-container">
           <lib-tabs>
             <lib-tab label="Dashboard (Eager)">
@@ -89,7 +93,7 @@ export class HeavyComponent {
                 <p class="timestamp">Rendered at: {{ getTime() }}</p>
               </div>
             </lib-tab>
-            
+
             <lib-tab label="Analytics (Lazy)">
               <ng-template #lazy>
                 <div class="tab-content">
@@ -100,7 +104,7 @@ export class HeavyComponent {
                 </div>
               </ng-template>
             </lib-tab>
-            
+
             <lib-tab label="Reports (Lazy)">
               <ng-template #lazy>
                 <div class="tab-content">
@@ -111,7 +115,7 @@ export class HeavyComponent {
                 </div>
               </ng-template>
             </lib-tab>
-            
+
             <lib-tab label="Settings (Lazy)">
               <ng-template #lazy>
                 <div class="tab-content">
@@ -135,8 +139,7 @@ export class HeavyComponent {
               <span class="log-time">{{ entry.time }}</span>
               <span class="log-name">{{ entry.name }}</span>
             </div>
-          }
-          @empty {
+          } @empty {
             <div class="log-entry log-entry--empty">
               Click on lazy tabs to see when content loads...
             </div>
@@ -145,104 +148,106 @@ export class HeavyComponent {
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6);
-      max-width: 900px;
-    }
-    
-    .description {
-      color: var(--lib-color-neutral-600);
-      margin-block-end: var(--lib-spacing-6);
-    }
-    
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
-    
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      margin-block-end: var(--lib-spacing-3);
-    }
-    
-    .example-container {
-      background: var(--lib-color-neutral-0);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-lg);
-      overflow: hidden;
-    }
-    
-    .info-box {
-      background: var(--lib-color-primary-50);
-      border: var(--lib-border-width-thin) solid var(--lib-color-primary-200);
-      border-radius: var(--lib-border-radius-lg);
-      padding: var(--lib-spacing-4);
-    }
-    
-    .info-box h3 {
-      margin-block-end: var(--lib-spacing-2);
-    }
-    
-    .info-box ol {
-      margin: 0;
-      padding-inline-start: var(--lib-spacing-5);
-    }
-    
-    .info-box li {
-      margin-block-end: var(--lib-spacing-1);
-    }
-    
-    .info-box code {
-      background: var(--lib-color-primary-100);
-      padding: 2px 6px;
-      border-radius: var(--lib-border-radius-sm);
-      font-size: var(--lib-font-size-sm);
-    }
-    
-    .hint {
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-neutral-500);
-      margin-block-end: var(--lib-spacing-3);
-    }
-    
-    .tab-content {
-      min-height: 150px;
-    }
-    
-    .timestamp {
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-success);
-      font-weight: var(--lib-font-weight-medium);
-    }
-    
-    .load-log {
-      background: var(--lib-color-neutral-900);
-      color: var(--lib-color-neutral-100);
-      border-radius: var(--lib-border-radius-md);
-      padding: var(--lib-spacing-3);
-      font-family: monospace;
-      font-size: var(--lib-font-size-sm);
-    }
-    
-    .log-entry {
-      display: flex;
-      gap: var(--lib-spacing-3);
-      padding: var(--lib-spacing-1) 0;
-    }
-    
-    .log-time {
-      color: var(--lib-color-neutral-400);
-    }
-    
-    .log-name {
-      color: var(--lib-color-success);
-    }
-    
-    .log-entry--empty {
-      color: var(--lib-color-neutral-500);
-      font-style: italic;
-    }
-  `],
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6);
+        max-width: 900px;
+      }
+
+      .description {
+        color: var(--lib-color-neutral-600);
+        margin-block-end: var(--lib-spacing-6);
+      }
+
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
+
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        margin-block-end: var(--lib-spacing-3);
+      }
+
+      .example-container {
+        background: var(--lib-color-neutral-0);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-lg);
+        overflow: hidden;
+      }
+
+      .info-box {
+        background: var(--lib-color-primary-50);
+        border: var(--lib-border-width-thin) solid var(--lib-color-primary-200);
+        border-radius: var(--lib-border-radius-lg);
+        padding: var(--lib-spacing-4);
+      }
+
+      .info-box h3 {
+        margin-block-end: var(--lib-spacing-2);
+      }
+
+      .info-box ol {
+        margin: 0;
+        padding-inline-start: var(--lib-spacing-5);
+      }
+
+      .info-box li {
+        margin-block-end: var(--lib-spacing-1);
+      }
+
+      .info-box code {
+        background: var(--lib-color-primary-100);
+        padding: 2px 6px;
+        border-radius: var(--lib-border-radius-sm);
+        font-size: var(--lib-font-size-sm);
+      }
+
+      .hint {
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-neutral-500);
+        margin-block-end: var(--lib-spacing-3);
+      }
+
+      .tab-content {
+        min-height: 150px;
+      }
+
+      .timestamp {
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-success);
+        font-weight: var(--lib-font-weight-medium);
+      }
+
+      .load-log {
+        background: var(--lib-color-neutral-900);
+        color: var(--lib-color-neutral-100);
+        border-radius: var(--lib-border-radius-md);
+        padding: var(--lib-spacing-3);
+        font-family: monospace;
+        font-size: var(--lib-font-size-sm);
+      }
+
+      .log-entry {
+        display: flex;
+        gap: var(--lib-spacing-3);
+        padding: var(--lib-spacing-1) 0;
+      }
+
+      .log-time {
+        color: var(--lib-color-neutral-400);
+      }
+
+      .log-name {
+        color: var(--lib-color-success);
+      }
+
+      .log-entry--empty {
+        color: var(--lib-color-neutral-500);
+        font-style: italic;
+      }
+    `,
+  ],
 })
 export class LazyTabsExampleComponent {
   readonly loadLog = signal<{ time: string; name: string }[]>([]);
@@ -254,14 +259,13 @@ export class LazyTabsExampleComponent {
 
   logLoad(name: string): string {
     const time = new Date().toLocaleTimeString();
-    
+
     // Only log first load
     if (!this.loadedTabs.has(name)) {
       this.loadedTabs.add(name);
       this.loadLog.update(log => [...log, { time, name }]);
     }
-    
+
     return time;
   }
 }
-

@@ -15,8 +15,8 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       <section class="example-section">
         <h2>Select Tags</h2>
         <div class="example-demo">
-          <lib-select 
-            [(value)]="selectedTags" 
+          <lib-select
+            [(value)]="selectedTags"
             [multiple]="true"
             [searchable]="true"
             placeholder="Select tags..."
@@ -28,9 +28,9 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
               </lib-option>
             }
           </lib-select>
-          
+
           <div class="example-output">
-            <strong>Selected ({{ selectedTags().length }}):</strong> 
+            <strong>Selected ({{ selectedTags().length }}):</strong>
             {{ getTagNames(selectedTags()) }}
           </div>
         </div>
@@ -39,8 +39,8 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       <section class="example-section">
         <h2>Limited Selections (Max 3)</h2>
         <div class="example-demo">
-          <lib-select 
-            [(value)]="selectedSkills" 
+          <lib-select
+            [(value)]="selectedSkills"
             [multiple]="true"
             [maxSelections]="3"
             placeholder="Select up to 3 skills..."
@@ -49,76 +49,76 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
               <lib-option [value]="skill">{{ skill }}</lib-option>
             }
           </lib-select>
-          
-          <div class="example-hint">
-            {{ 3 - selectedSkills().length }} selection(s) remaining
-          </div>
+
+          <div class="example-hint">{{ 3 - selectedSkills().length }} selection(s) remaining</div>
         </div>
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      max-width: 600px;
-    }
+  styles: [
+    `
+      .example-page {
+        max-width: 600px;
+      }
 
-    .example-header {
-      margin-block-end: var(--lib-spacing-8);
-    }
+      .example-header {
+        margin-block-end: var(--lib-spacing-8);
+      }
 
-    .example-header h1 {
-      font-size: var(--lib-font-size-2xl);
-      font-weight: var(--lib-font-weight-bold);
-      color: var(--lib-color-neutral-900);
-      margin-block-end: var(--lib-spacing-2);
-    }
+      .example-header h1 {
+        font-size: var(--lib-font-size-2xl);
+        font-weight: var(--lib-font-weight-bold);
+        color: var(--lib-color-neutral-900);
+        margin-block-end: var(--lib-spacing-2);
+      }
 
-    .example-header p {
-      color: var(--lib-color-neutral-600);
-      margin: 0;
-    }
+      .example-header p {
+        color: var(--lib-color-neutral-600);
+        margin: 0;
+      }
 
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
 
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      font-weight: var(--lib-font-weight-semibold);
-      color: var(--lib-color-neutral-800);
-      margin-block-end: var(--lib-spacing-4);
-    }
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        font-weight: var(--lib-font-weight-semibold);
+        color: var(--lib-color-neutral-800);
+        margin-block-end: var(--lib-spacing-4);
+      }
 
-    .example-demo {
-      padding: var(--lib-spacing-6);
-      background: var(--lib-color-neutral-0);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-lg);
-    }
+      .example-demo {
+        padding: var(--lib-spacing-6);
+        background: var(--lib-color-neutral-0);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-lg);
+      }
 
-    .example-output {
-      margin-block-start: var(--lib-spacing-4);
-      padding: var(--lib-spacing-3);
-      background: var(--lib-color-neutral-50);
-      border-radius: var(--lib-border-radius-base);
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-neutral-600);
-    }
+      .example-output {
+        margin-block-start: var(--lib-spacing-4);
+        padding: var(--lib-spacing-3);
+        background: var(--lib-color-neutral-50);
+        border-radius: var(--lib-border-radius-base);
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-neutral-600);
+      }
 
-    .example-hint {
-      margin-block-start: var(--lib-spacing-3);
-      font-size: var(--lib-font-size-xs);
-      color: var(--lib-color-neutral-500);
-    }
+      .example-hint {
+        margin-block-start: var(--lib-spacing-3);
+        font-size: var(--lib-font-size-xs);
+        color: var(--lib-color-neutral-500);
+      }
 
-    .tag-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: var(--lib-border-radius-full);
-      margin-inline-end: var(--lib-spacing-2);
-    }
-  `]
+      .tag-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: var(--lib-border-radius-full);
+        margin-inline-end: var(--lib-spacing-2);
+      }
+    `,
+  ],
 })
 export class MultiSelectExampleComponent {
   selectedTags = signal<string[]>([]);
@@ -135,9 +135,21 @@ export class MultiSelectExampleComponent {
   ];
 
   skills = [
-    'Angular', 'React', 'Vue', 'TypeScript', 'JavaScript',
-    'Node.js', 'Python', 'Go', 'Rust', 'Docker',
-    'Kubernetes', 'AWS', 'GraphQL', 'PostgreSQL', 'MongoDB'
+    'Angular',
+    'React',
+    'Vue',
+    'TypeScript',
+    'JavaScript',
+    'Node.js',
+    'Python',
+    'Go',
+    'Rust',
+    'Docker',
+    'Kubernetes',
+    'AWS',
+    'GraphQL',
+    'PostgreSQL',
+    'MongoDB',
   ];
 
   getTagNames(ids: string[]): string {

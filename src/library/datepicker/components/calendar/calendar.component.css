@@ -15,13 +15,13 @@
   --calendar-bg: var(--lib-color-neutral-0, #ffffff);
   --calendar-border: var(--lib-color-neutral-200, #e4e4e7);
   --calendar-radius: var(--lib-border-radius-lg, 8px);
-  
+
   /* Day cell */
   --calendar-day-size: 36px;
   --calendar-day-gap: 2px;
   --calendar-day-radius: var(--lib-border-radius-full, 9999px);
   --calendar-day-font-size: var(--lib-font-size-sm, 14px);
-  
+
   /* Colors */
   --calendar-primary: var(--lib-color-primary-500, #3b82f6);
   --calendar-primary-hover: var(--lib-color-primary-600, #2563eb);
@@ -211,7 +211,7 @@
   font-weight: var(--lib-font-weight-normal, 400);
   cursor: pointer;
   position: relative;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
 }
@@ -267,7 +267,9 @@
 }
 
 /* Range styles */
-.lib-calendar__day--in-range:not(.lib-calendar__day--range-start):not(.lib-calendar__day--range-end) {
+.lib-calendar__day--in-range:not(.lib-calendar__day--range-start):not(
+    .lib-calendar__day--range-end
+  ) {
   background: var(--calendar-range-bg);
   border-radius: 0;
 }
@@ -299,7 +301,7 @@
   background: var(--calendar-range-bg);
   opacity: 0.7;
   border-radius: 0;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     opacity var(--lib-transition-fast, 150ms ease);
 }
@@ -320,7 +322,7 @@
   opacity: 0.85;
   border: 2px dashed var(--calendar-primary-hover);
   border-radius: var(--calendar-day-radius);
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     opacity var(--lib-transition-fast, 150ms ease),
     border var(--lib-transition-fast, 150ms ease);
@@ -359,7 +361,7 @@
   color: var(--calendar-text);
   font-size: var(--lib-font-size-sm, 14px);
   cursor: pointer;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
 }
@@ -405,7 +407,7 @@
   color: var(--calendar-text);
   font-size: var(--lib-font-size-sm, 14px);
   cursor: pointer;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
 }

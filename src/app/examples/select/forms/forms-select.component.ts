@@ -26,7 +26,10 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
                 <lib-option value="ca">Canada</lib-option>
                 <lib-option value="au">Australia</lib-option>
               </lib-select>
-              @if (registrationForm.get('country')?.touched && registrationForm.get('country')?.hasError('required')) {
+              @if (
+                registrationForm.get('country')?.touched &&
+                registrationForm.get('country')?.hasError('required')
+              ) {
                 <span class="error-message">Country is required</span>
               }
             </div>
@@ -39,16 +42,19 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
                 <lib-option value="manager">Manager</lib-option>
                 <lib-option value="other">Other</lib-option>
               </lib-select>
-              @if (registrationForm.get('role')?.touched && registrationForm.get('role')?.hasError('required')) {
+              @if (
+                registrationForm.get('role')?.touched &&
+                registrationForm.get('role')?.hasError('required')
+              ) {
                 <span class="error-message">Role is required</span>
               }
             </div>
 
             <div class="form-field">
               <label>Interests (optional)</label>
-              <lib-select 
-                formControlName="interests" 
-                [multiple]="true" 
+              <lib-select
+                formControlName="interests"
+                [multiple]="true"
                 [searchable]="true"
                 placeholder="Select your interests..."
               >
@@ -65,9 +71,7 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
               <button type="submit" class="submit-btn" [disabled]="registrationForm.invalid">
                 Submit
               </button>
-              <button type="button" class="reset-btn" (click)="resetForm()">
-                Reset
-              </button>
+              <button type="button" class="reset-btn" (click)="resetForm()">Reset</button>
             </div>
           </form>
 
@@ -82,11 +86,7 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       <section class="example-section">
         <h2>Disabled State</h2>
         <div class="example-demo">
-          <lib-select 
-            [(value)]="disabledValue" 
-            [disabled]="true"
-            placeholder="This is disabled"
-          >
+          <lib-select [(value)]="disabledValue" [disabled]="true" placeholder="This is disabled">
             <lib-option value="1">Option 1</lib-option>
             <lib-option value="2">Option 2</lib-option>
           </lib-select>
@@ -94,122 +94,124 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      max-width: 600px;
-    }
+  styles: [
+    `
+      .example-page {
+        max-width: 600px;
+      }
 
-    .example-header {
-      margin-block-end: var(--lib-spacing-8);
-    }
+      .example-header {
+        margin-block-end: var(--lib-spacing-8);
+      }
 
-    .example-header h1 {
-      font-size: var(--lib-font-size-2xl);
-      font-weight: var(--lib-font-weight-bold);
-      color: var(--lib-color-neutral-900);
-      margin-block-end: var(--lib-spacing-2);
-    }
+      .example-header h1 {
+        font-size: var(--lib-font-size-2xl);
+        font-weight: var(--lib-font-weight-bold);
+        color: var(--lib-color-neutral-900);
+        margin-block-end: var(--lib-spacing-2);
+      }
 
-    .example-header p {
-      color: var(--lib-color-neutral-600);
-      margin: 0;
-    }
+      .example-header p {
+        color: var(--lib-color-neutral-600);
+        margin: 0;
+      }
 
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
 
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      font-weight: var(--lib-font-weight-semibold);
-      color: var(--lib-color-neutral-800);
-      margin-block-end: var(--lib-spacing-4);
-    }
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        font-weight: var(--lib-font-weight-semibold);
+        color: var(--lib-color-neutral-800);
+        margin-block-end: var(--lib-spacing-4);
+      }
 
-    .example-demo {
-      padding: var(--lib-spacing-6);
-      background: var(--lib-color-neutral-0);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-lg);
-    }
+      .example-demo {
+        padding: var(--lib-spacing-6);
+        background: var(--lib-color-neutral-0);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-lg);
+      }
 
-    .form-field {
-      margin-block-end: var(--lib-spacing-5);
-    }
+      .form-field {
+        margin-block-end: var(--lib-spacing-5);
+      }
 
-    .form-field label {
-      display: block;
-      font-size: var(--lib-font-size-sm);
-      font-weight: var(--lib-font-weight-medium);
-      color: var(--lib-color-neutral-700);
-      margin-block-end: var(--lib-spacing-2);
-    }
+      .form-field label {
+        display: block;
+        font-size: var(--lib-font-size-sm);
+        font-weight: var(--lib-font-weight-medium);
+        color: var(--lib-color-neutral-700);
+        margin-block-end: var(--lib-spacing-2);
+      }
 
-    .error-message {
-      display: block;
-      margin-block-start: var(--lib-spacing-1);
-      font-size: var(--lib-font-size-xs);
-      color: var(--lib-color-error);
-    }
+      .error-message {
+        display: block;
+        margin-block-start: var(--lib-spacing-1);
+        font-size: var(--lib-font-size-xs);
+        color: var(--lib-color-error);
+      }
 
-    .form-actions {
-      display: flex;
-      gap: var(--lib-spacing-3);
-      margin-block-start: var(--lib-spacing-6);
-    }
+      .form-actions {
+        display: flex;
+        gap: var(--lib-spacing-3);
+        margin-block-start: var(--lib-spacing-6);
+      }
 
-    .submit-btn {
-      padding: var(--lib-spacing-3) var(--lib-spacing-5);
-      background: var(--lib-color-primary-500);
-      color: white;
-      border: none;
-      border-radius: var(--lib-border-radius-md);
-      font-weight: var(--lib-font-weight-medium);
-      cursor: pointer;
-      transition: background var(--lib-transition-fast);
-    }
+      .submit-btn {
+        padding: var(--lib-spacing-3) var(--lib-spacing-5);
+        background: var(--lib-color-primary-500);
+        color: white;
+        border: none;
+        border-radius: var(--lib-border-radius-md);
+        font-weight: var(--lib-font-weight-medium);
+        cursor: pointer;
+        transition: background var(--lib-transition-fast);
+      }
 
-    .submit-btn:hover:not(:disabled) {
-      background: var(--lib-color-primary-600);
-    }
+      .submit-btn:hover:not(:disabled) {
+        background: var(--lib-color-primary-600);
+      }
 
-    .submit-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+      .submit-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-    .reset-btn {
-      padding: var(--lib-spacing-3) var(--lib-spacing-5);
-      background: var(--lib-color-neutral-100);
-      color: var(--lib-color-neutral-700);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-300);
-      border-radius: var(--lib-border-radius-md);
-      font-weight: var(--lib-font-weight-medium);
-      cursor: pointer;
-      transition: background var(--lib-transition-fast);
-    }
+      .reset-btn {
+        padding: var(--lib-spacing-3) var(--lib-spacing-5);
+        background: var(--lib-color-neutral-100);
+        color: var(--lib-color-neutral-700);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-300);
+        border-radius: var(--lib-border-radius-md);
+        font-weight: var(--lib-font-weight-medium);
+        cursor: pointer;
+        transition: background var(--lib-transition-fast);
+      }
 
-    .reset-btn:hover {
-      background: var(--lib-color-neutral-200);
-    }
+      .reset-btn:hover {
+        background: var(--lib-color-neutral-200);
+      }
 
-    .example-output {
-      margin-block-start: var(--lib-spacing-6);
-      padding: var(--lib-spacing-4);
-      background: var(--lib-color-neutral-50);
-      border-radius: var(--lib-border-radius-base);
-      font-size: var(--lib-font-size-sm);
-    }
+      .example-output {
+        margin-block-start: var(--lib-spacing-6);
+        padding: var(--lib-spacing-4);
+        background: var(--lib-color-neutral-50);
+        border-radius: var(--lib-border-radius-base);
+        font-size: var(--lib-font-size-sm);
+      }
 
-    .example-output pre {
-      margin: var(--lib-spacing-2) 0;
-      padding: var(--lib-spacing-2);
-      background: var(--lib-color-neutral-900);
-      color: var(--lib-color-neutral-100);
-      border-radius: var(--lib-border-radius-base);
-      overflow-x: auto;
-    }
-  `]
+      .example-output pre {
+        margin: var(--lib-spacing-2) 0;
+        padding: var(--lib-spacing-2);
+        background: var(--lib-color-neutral-900);
+        color: var(--lib-color-neutral-100);
+        border-radius: var(--lib-border-radius-base);
+        overflow-x: auto;
+      }
+    `,
+  ],
 })
 export class FormsSelectExampleComponent {
   registrationForm: FormGroup;

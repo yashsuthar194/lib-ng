@@ -18,12 +18,7 @@
  * <lib-skeleton [count]="3" />
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  computed,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, computed } from '@angular/core';
 import type {
   SkeletonVariant,
   SkeletonAnimation,
@@ -95,9 +90,7 @@ export class SkeletonComponent {
   readonly height = input<string | null>(null);
 
   /** Animation type */
-  readonly animation = input<SkeletonAnimation>(
-    DEFAULT_SKELETON_CONFIG.animation
-  );
+  readonly animation = input<SkeletonAnimation>(DEFAULT_SKELETON_CONFIG.animation);
 
   /** Animation speed */
   readonly speed = input<SkeletonSpeed>(DEFAULT_SKELETON_CONFIG.speed);
@@ -122,14 +115,10 @@ export class SkeletonComponent {
   // ============================================================================
 
   /** Array for @for loop */
-  readonly countArray = computed(() =>
-    Array.from({ length: this.count() }, (_, i) => i)
-  );
+  readonly countArray = computed(() => Array.from({ length: this.count() }, (_, i) => i));
 
   /** Effective animation (respects animated flag) */
-  readonly effectiveAnimation = computed(() =>
-    this.animated() ? this.animation() : 'none'
-  );
+  readonly effectiveAnimation = computed(() => (this.animated() ? this.animation() : 'none'));
 
   /** Check if full width needed */
   readonly isFullWidth = computed(() => {
@@ -157,7 +146,7 @@ export class SkeletonComponent {
     }
 
     // Rectangle uses size map or 100%
-    return size === 'full' ? '100%' : SKELETON_SIZE_MAP[size] ?? '100%';
+    return size === 'full' ? '100%' : (SKELETON_SIZE_MAP[size] ?? '100%');
   });
 
   /** Computed height based on variant and inputs */

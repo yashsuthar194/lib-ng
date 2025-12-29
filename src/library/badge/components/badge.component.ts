@@ -18,12 +18,7 @@
  * <lib-badge appearance="outlined" [gradient]="true">Pro</lib-badge>
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  computed,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, computed } from '@angular/core';
 import type {
   BadgeVariant,
   BadgeAppearance,
@@ -40,7 +35,7 @@ import { formatBadgeValue, shouldHideBadge } from '../utils/badge-utils';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-badge',
+    class: 'lib-badge',
     // Variant classes
     '[class.lib-badge--primary]': 'variant() === "primary"',
     '[class.lib-badge--secondary]': 'variant() === "secondary"',
@@ -142,9 +137,7 @@ export class BadgeComponent {
   });
 
   /** Whether badge should be hidden */
-  readonly isHidden = computed(() =>
-    shouldHideBadge(this.content(), this.hideZero())
-  );
+  readonly isHidden = computed(() => shouldHideBadge(this.content(), this.hideZero()));
 
   /** Accessible label for screen readers */
   readonly ariaLabel = computed(() => {
@@ -152,9 +145,7 @@ export class BadgeComponent {
 
     const content = this.content();
     if (this.shape() === 'dot') {
-      return this.status() !== 'none'
-        ? `Status: ${this.status()}`
-        : 'Notification indicator';
+      return this.status() !== 'none' ? `Status: ${this.status()}` : 'Notification indicator';
     }
 
     if (typeof content === 'number') {

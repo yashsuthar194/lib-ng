@@ -23,19 +23,41 @@
         [disabled]="!isStepReachable(i)"
         (click)="onStepHeaderClick(step, i)"
       >
-
         <!-- Step Icon/Number -->
         <div class="lib-stepper__step-icon">
           @if (step.iconTemplate(); as iconTmpl) {
             <ng-container *ngTemplateOutlet="iconTmpl"></ng-container>
           } @else if (isStepCompleted(i) && !getStepError(i)) {
             <svg class="lib-stepper__check-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline
+                points="20 6 9 17 4 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           } @else if (getStepError(i)) {
             <svg class="lib-stepper__error-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line
+                x1="18"
+                y1="6"
+                x2="6"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <line
+                x1="6"
+                y1="6"
+                x2="18"
+                y2="18"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
             </svg>
           } @else if (step.icon()) {
             <span class="lib-stepper__custom-icon">{{ step.icon() }}</span>
@@ -65,7 +87,7 @@
 
       <!-- Connector (not on last step) -->
       @if (!last && showConnector()) {
-        <div 
+        <div
           class="lib-stepper__connector"
           [class.lib-stepper__connector--completed]="isStepCompleted(i)"
         ></div>
@@ -75,12 +97,12 @@
 </div>
 
 <!-- Step Content Panel -->
-<div 
+<div
   class="lib-stepper__content"
   [class]="animationClass()"
-  [attr.id]="'panel-' + activeStep()?.internalId"
+  [attr.id]="'panel-' + activeStep().internalId"
   [attr.role]="'tabpanel'"
-  [attr.aria-labelledby]="activeStep()?.internalId"
+  [attr.aria-labelledby]="activeStep().internalId"
   (animationend)="onAnimationEnd()"
 >
   @if (activeStep(); as active) {

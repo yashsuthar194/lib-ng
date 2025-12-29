@@ -5,13 +5,14 @@ export const TASKS: Task[] = [
   {
     id: 'task-001',
     title: 'Design Homepage Wireframes',
-    description: 'Create initial wireframes for the new homepage layout including hero section and navigation.',
+    description:
+      'Create initial wireframes for the new homepage layout including hero section and navigation.',
     projectId: 'proj-001',
     assigneeId: 'user-003', // Priya Sharma - TechNova
     priority: TaskPriority.High,
     status: TaskStatus.Done,
     dueDate: '2024-02-01',
-    tags: ['design', 'ui']
+    tags: ['design', 'ui'],
   },
   {
     id: 'task-002',
@@ -22,7 +23,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Done,
     dueDate: '2024-02-15',
-    tags: ['frontend', 'angular']
+    tags: ['frontend', 'angular'],
   },
   {
     id: 'task-003',
@@ -33,7 +34,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-03-01',
-    tags: ['backend', 'angular', 'performance']
+    tags: ['backend', 'angular', 'performance'],
   },
   {
     id: 'task-004',
@@ -44,7 +45,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-04-15',
-    tags: ['integration', 'cms']
+    tags: ['integration', 'cms'],
   },
   {
     id: 'task-005',
@@ -55,7 +56,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-05-30',
-    tags: ['performance', 'testing']
+    tags: ['performance', 'testing'],
   },
 
   // TechNova - Mobile App v3.0 (proj-002)
@@ -68,7 +69,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-04-15',
-    tags: ['security', 'mobile', 'feature']
+    tags: ['security', 'mobile', 'feature'],
   },
   {
     id: 'task-007',
@@ -79,7 +80,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Review,
     dueDate: '2024-04-30',
-    tags: ['ui', 'mobile', 'design']
+    tags: ['ui', 'mobile', 'design'],
   },
   {
     id: 'task-008',
@@ -90,7 +91,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-06-01',
-    tags: ['feature', 'mobile']
+    tags: ['feature', 'mobile'],
   },
 
   // GreenLeaf Energy - Smart Grid Monitoring (proj-004)
@@ -103,7 +104,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-05-01',
-    tags: ['iot', 'backend', 'integration']
+    tags: ['iot', 'backend', 'integration'],
   },
   {
     id: 'task-010',
@@ -114,7 +115,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-15',
-    tags: ['dashboard', 'frontend', 'realtime']
+    tags: ['dashboard', 'frontend', 'realtime'],
   },
   {
     id: 'task-011',
@@ -125,7 +126,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-07-30',
-    tags: ['monitoring', 'alerts', 'backend']
+    tags: ['monitoring', 'alerts', 'backend'],
   },
 
   // Apex Logistics - Fleet Management (proj-006)
@@ -138,29 +139,31 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.Done,
     dueDate: '2024-03-15',
-    tags: ['gps', 'tracking', 'integration']
+    tags: ['gps', 'tracking', 'integration'],
   },
   {
     id: 'task-013',
     title: 'Route Optimization Algorithm',
-    description: 'Develop AI-based algorithm for optimizing delivery routes based on traffic and distance.',
+    description:
+      'Develop AI-based algorithm for optimizing delivery routes based on traffic and distance.',
     projectId: 'proj-006',
     assigneeId: 'user-010', // Anna de Jong - Apex
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-05-31',
-    tags: ['ai', 'algorithm', 'optimization']
+    tags: ['ai', 'algorithm', 'optimization'],
   },
   {
     id: 'task-014',
     title: 'Driver Mobile Application',
-    description: 'Mobile app for drivers with navigation, delivery confirmation, and communication features.',
+    description:
+      'Mobile app for drivers with navigation, delivery confirmation, and communication features.',
     projectId: 'proj-006',
     assigneeId: 'user-011', // Pieter Jansen
     priority: TaskPriority.High,
     status: TaskStatus.Review,
     dueDate: '2024-06-30',
-    tags: ['mobile', 'frontend', 'feature']
+    tags: ['mobile', 'frontend', 'feature'],
   },
   {
     id: 'task-015',
@@ -171,7 +174,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-08-15',
-    tags: ['analytics', 'reporting']
+    tags: ['analytics', 'reporting'],
   },
 
   // FinStream Capital - Fraud Detection AI (proj-008)
@@ -184,7 +187,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-01',
-    tags: ['ml', 'ai', 'security']
+    tags: ['ml', 'ai', 'security'],
   },
   {
     id: 'task-017',
@@ -195,7 +198,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-07-15',
-    tags: ['backend', 'realtime', 'performance']
+    tags: ['backend', 'realtime', 'performance'],
   },
   {
     id: 'task-018',
@@ -206,7 +209,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-09-01',
-    tags: ['dashboard', 'ui', 'investigation']
+    tags: ['dashboard', 'ui', 'investigation'],
   },
 
   // BioGenix Labs - Genome Sequencing Pipeline (proj-011)
@@ -219,7 +222,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Done,
     dueDate: '2024-04-30',
-    tags: ['backend', 'performance', 'data']
+    tags: ['backend', 'performance', 'data'],
   },
   {
     id: 'task-020',
@@ -230,7 +233,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-07-01',
-    tags: ['pipeline', 'genomics', 'automation']
+    tags: ['pipeline', 'genomics', 'automation'],
   },
   {
     id: 'task-021',
@@ -241,7 +244,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-09-30',
-    tags: ['visualization', 'dashboard', 'ui']
+    tags: ['visualization', 'dashboard', 'ui'],
   },
 
   // Quantum Computing - Algorithm Simulator (proj-013)
@@ -254,7 +257,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['quantum', 'core', 'library']
+    tags: ['quantum', 'core', 'library'],
   },
   {
     id: 'task-023',
@@ -265,7 +268,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-08-15',
-    tags: ['visualization', 'frontend', 'ui']
+    tags: ['visualization', 'frontend', 'ui'],
   },
   {
     id: 'task-024',
@@ -276,7 +279,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-11-30',
-    tags: ['simulation', 'accuracy', 'research']
+    tags: ['simulation', 'accuracy', 'research'],
   },
 
   // CloudNine Hosting - Kubernetes Auto-Scaling (proj-014)
@@ -289,7 +292,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Done,
     dueDate: '2024-03-31',
-    tags: ['monitoring', 'kubernetes', 'agent']
+    tags: ['monitoring', 'kubernetes', 'agent'],
   },
   {
     id: 'task-026',
@@ -300,7 +303,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-15',
-    tags: ['ml', 'scaling', 'prediction']
+    tags: ['ml', 'scaling', 'prediction'],
   },
   {
     id: 'task-027',
@@ -311,7 +314,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-07-31',
-    tags: ['dashboard', 'monitoring', 'ui']
+    tags: ['dashboard', 'monitoring', 'ui'],
   },
 
   // MediCare Plus - Telemedicine Platform (proj-016)
@@ -324,7 +327,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-05-15',
-    tags: ['video', 'webrtc', 'feature']
+    tags: ['video', 'webrtc', 'feature'],
   },
   {
     id: 'task-029',
@@ -335,7 +338,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Review,
     dueDate: '2024-06-30',
-    tags: ['integration', 'healthcare', 'compliance']
+    tags: ['integration', 'healthcare', 'compliance'],
   },
   {
     id: 'task-030',
@@ -346,7 +349,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-08-15',
-    tags: ['feature', 'ux', 'patient']
+    tags: ['feature', 'ux', 'patient'],
   },
 
   // EduSmart - AI Tutoring Assistant (proj-018)
@@ -359,7 +362,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-01',
-    tags: ['ai', 'knowledge', 'backend']
+    tags: ['ai', 'knowledge', 'backend'],
   },
   {
     id: 'task-032',
@@ -370,7 +373,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-07-15',
-    tags: ['ai', 'education', 'algorithm']
+    tags: ['ai', 'education', 'algorithm'],
   },
   {
     id: 'task-033',
@@ -381,7 +384,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-09-30',
-    tags: ['dashboard', 'analytics', 'ui']
+    tags: ['dashboard', 'analytics', 'ui'],
   },
 
   // AutoDrive Motors - EV Telemetry (proj-020)
@@ -394,7 +397,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['telemetry', 'battery', 'monitoring']
+    tags: ['telemetry', 'battery', 'monitoring'],
   },
   {
     id: 'task-035',
@@ -405,7 +408,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Review,
     dueDate: '2024-07-15',
-    tags: ['integration', 'maps', 'feature']
+    tags: ['integration', 'maps', 'feature'],
   },
   {
     id: 'task-036',
@@ -416,7 +419,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-10-31',
-    tags: ['ai', 'maintenance', 'prediction']
+    tags: ['ai', 'maintenance', 'prediction'],
   },
 
   // FreshMart - Inventory Management AI (proj-022)
@@ -429,7 +432,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-05-31',
-    tags: ['ml', 'forecasting', 'inventory']
+    tags: ['ml', 'forecasting', 'inventory'],
   },
   {
     id: 'task-038',
@@ -440,7 +443,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Review,
     dueDate: '2024-07-15',
-    tags: ['automation', 'integration', 'procurement']
+    tags: ['automation', 'integration', 'procurement'],
   },
   {
     id: 'task-039',
@@ -451,7 +454,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-09-30',
-    tags: ['dashboard', 'reporting', 'ui']
+    tags: ['dashboard', 'reporting', 'ui'],
   },
 
   // SecureVault - Zero Trust Framework (proj-024)
@@ -464,7 +467,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-04-30',
-    tags: ['security', 'identity', 'gateway']
+    tags: ['security', 'identity', 'gateway'],
   },
   {
     id: 'task-041',
@@ -475,7 +478,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-15',
-    tags: ['network', 'security', 'infrastructure']
+    tags: ['network', 'security', 'infrastructure'],
   },
   {
     id: 'task-042',
@@ -486,7 +489,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-08-31',
-    tags: ['policy', 'security', 'engine']
+    tags: ['policy', 'security', 'engine'],
   },
 
   // AeroSpace Dynamics - Flight Control (proj-026)
@@ -499,7 +502,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-08-31',
-    tags: ['algorithm', 'aviation', 'safety']
+    tags: ['algorithm', 'aviation', 'safety'],
   },
   {
     id: 'task-044',
@@ -510,7 +513,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-10-15',
-    tags: ['sensors', 'integration', 'data']
+    tags: ['sensors', 'integration', 'data'],
   },
   {
     id: 'task-045',
@@ -521,7 +524,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2025-03-31',
-    tags: ['compliance', 'documentation', 'aviation']
+    tags: ['compliance', 'documentation', 'aviation'],
   },
 
   // GourmetChef - Supply Chain Traceability (proj-028)
@@ -534,7 +537,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['blockchain', 'smartcontract', 'backend']
+    tags: ['blockchain', 'smartcontract', 'backend'],
   },
   {
     id: 'task-047',
@@ -545,7 +548,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-09-15',
-    tags: ['mobile', 'supplier', 'feature']
+    tags: ['mobile', 'supplier', 'feature'],
   },
   {
     id: 'task-048',
@@ -556,7 +559,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-10-31',
-    tags: ['consumer', 'ui', 'qr']
+    tags: ['consumer', 'ui', 'qr'],
   },
 
   // BuildRight - BIM Collaboration (proj-032)
@@ -569,7 +572,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-07-31',
-    tags: ['3d', 'visualization', 'bim']
+    tags: ['3d', 'visualization', 'bim'],
   },
   {
     id: 'task-050',
@@ -580,7 +583,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-09-30',
-    tags: ['collaboration', 'realtime', 'feature']
+    tags: ['collaboration', 'realtime', 'feature'],
   },
 
   // PharmaCore - Clinical Trial Management (proj-033)
@@ -593,18 +596,19 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-05-31',
-    tags: ['workflow', 'clinical', 'automation']
+    tags: ['workflow', 'clinical', 'automation'],
   },
   {
     id: 'task-052',
     title: 'Adverse Event Reporting',
-    description: 'System for capturing and reporting adverse events in compliance with regulations.',
+    description:
+      'System for capturing and reporting adverse events in compliance with regulations.',
     projectId: 'proj-033',
     assigneeId: 'user-056', // Martin Keller - PharmaCore
     priority: TaskPriority.Critical,
     status: TaskStatus.Review,
     dueDate: '2024-07-15',
-    tags: ['compliance', 'reporting', 'safety']
+    tags: ['compliance', 'reporting', 'safety'],
   },
   {
     id: 'task-053',
@@ -615,7 +619,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-11-30',
-    tags: ['export', 'compliance', 'fda']
+    tags: ['export', 'compliance', 'fda'],
   },
 
   // TravelWise - Booking Engine (proj-035)
@@ -628,7 +632,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-05-31',
-    tags: ['integration', 'api', 'flights']
+    tags: ['integration', 'api', 'flights'],
   },
   {
     id: 'task-055',
@@ -639,7 +643,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-07-15',
-    tags: ['pricing', 'algorithm', 'backend']
+    tags: ['pricing', 'algorithm', 'backend'],
   },
   {
     id: 'task-056',
@@ -650,7 +654,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-08-31',
-    tags: ['payment', 'currency', 'feature']
+    tags: ['payment', 'currency', 'feature'],
   },
 
   // SmartHome - Voice Assistant Integration (proj-037)
@@ -663,7 +667,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Done,
     dueDate: '2024-04-30',
-    tags: ['alexa', 'voice', 'integration']
+    tags: ['alexa', 'voice', 'integration'],
   },
   {
     id: 'task-058',
@@ -674,7 +678,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['google', 'voice', 'integration']
+    tags: ['google', 'voice', 'integration'],
   },
   {
     id: 'task-059',
@@ -685,7 +689,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-09-15',
-    tags: ['ai', 'voice', 'training']
+    tags: ['ai', 'voice', 'training'],
   },
 
   // LegalEase - Contract Analysis AI (proj-039)
@@ -698,7 +702,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['nlp', 'ai', 'extraction']
+    tags: ['nlp', 'ai', 'extraction'],
   },
   {
     id: 'task-061',
@@ -709,7 +713,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-08-31',
-    tags: ['risk', 'analysis', 'scoring']
+    tags: ['risk', 'analysis', 'scoring'],
   },
   {
     id: 'task-062',
@@ -720,7 +724,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-10-15',
-    tags: ['reporting', 'comparison', 'document']
+    tags: ['reporting', 'comparison', 'document'],
   },
 
   // Additional tasks for Stellar Entertainment (proj-030)
@@ -733,7 +737,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['streaming', 'video', 'performance']
+    tags: ['streaming', 'video', 'performance'],
   },
   {
     id: 'task-064',
@@ -744,7 +748,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-09-30',
-    tags: ['ml', 'recommendation', 'personalization']
+    tags: ['ml', 'recommendation', 'personalization'],
   },
 
   // Additional tasks for Drug Discovery AI (proj-034)
@@ -757,7 +761,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-08-31',
-    tags: ['deeplearning', 'molecular', 'analysis']
+    tags: ['deeplearning', 'molecular', 'analysis'],
   },
   {
     id: 'task-066',
@@ -768,7 +772,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Todo,
     dueDate: '2024-12-31',
-    tags: ['ai', 'prediction', 'safety']
+    tags: ['ai', 'prediction', 'safety'],
   },
 
   // Case Management System (proj-040)
@@ -781,7 +785,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.Done,
     dueDate: '2024-04-15',
-    tags: ['ocr', 'document', 'feature']
+    tags: ['ocr', 'document', 'feature'],
   },
   {
     id: 'task-068',
@@ -792,7 +796,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.High,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['notifications', 'calendar', 'automation']
+    tags: ['notifications', 'calendar', 'automation'],
   },
   {
     id: 'task-069',
@@ -803,7 +807,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-08-15',
-    tags: ['billing', 'time', 'integration']
+    tags: ['billing', 'time', 'integration'],
   },
 
   // Connected Car Platform (proj-021)
@@ -816,7 +820,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.InProgress,
     dueDate: '2024-06-30',
-    tags: ['ota', 'security', 'infrastructure']
+    tags: ['ota', 'security', 'infrastructure'],
   },
   {
     id: 'task-071',
@@ -827,7 +831,7 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Critical,
     status: TaskStatus.Review,
     dueDate: '2024-07-31',
-    tags: ['v2c', 'protocol', 'communication']
+    tags: ['v2c', 'protocol', 'communication'],
   },
   {
     id: 'task-072',
@@ -838,6 +842,6 @@ export const TASKS: Task[] = [
     priority: TaskPriority.Medium,
     status: TaskStatus.Todo,
     dueDate: '2024-10-31',
-    tags: ['analytics', 'behavior', 'data']
-  }
+    tags: ['analytics', 'behavior', 'data'],
+  },
 ];

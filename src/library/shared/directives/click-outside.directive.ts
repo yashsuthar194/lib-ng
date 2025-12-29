@@ -12,12 +12,12 @@ import { isPlatformBrowser } from '@angular/common';
 
 /**
  * Directive that emits an event when a click occurs outside the host element.
- * 
+ *
  * Useful for dropdowns, modals, popovers, tooltips, etc.
- * 
+ *
  * @example
  * ```html
- * <div class="dropdown" 
+ * <div class="dropdown"
  *      (libClickOutside)="closeDropdown()"
  *      [libClickOutsideEnabled]="isOpen">
  *   ...
@@ -35,10 +35,10 @@ export class ClickOutsideDirective implements OnDestroy {
 
   /** Whether the directive is active. Default: true */
   readonly enabled = input(true, { alias: 'libClickOutsideEnabled' });
-  
+
   /** Delay before starting to listen (prevents immediate triggering). Default: 0ms */
   readonly delay = input(0, { alias: 'libClickOutsideDelay' });
-  
+
   /** Selector for elements that should be ignored (not trigger outside click) */
   readonly ignore = input<string>('', { alias: 'libClickOutsideIgnore' });
 
@@ -60,18 +60,18 @@ export class ClickOutsideDirective implements OnDestroy {
 
   private initListener(): void {
     if (this.isInitialized) return;
-    
+
     this.listener = (event: MouseEvent) => {
       if (!this.enabled()) return;
-      
+
       const target = event.target as Node;
       const hostElement = this.elementRef.nativeElement;
-      
+
       // Check if click is inside the host element
       if (hostElement.contains(target)) {
         return;
       }
-      
+
       // Check if click is on an ignored element
       const ignoreSelector = this.ignore();
       if (ignoreSelector && target instanceof Element) {
@@ -79,7 +79,7 @@ export class ClickOutsideDirective implements OnDestroy {
           return;
         }
       }
-      
+
       // Run outside Angular zone for performance, then emit inside zone
       this.ngZone.run(() => {
         this.libClickOutside.emit(event);
@@ -90,7 +90,7 @@ export class ClickOutsideDirective implements OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       document.addEventListener('click', this.listener!, { capture: true });
     });
-    
+
     this.isInitialized = true;
   }
 
@@ -98,7 +98,7 @@ export class ClickOutsideDirective implements OnDestroy {
     if (this.initTimeout) {
       clearTimeout(this.initTimeout);
     }
-    
+
     if (this.listener) {
       document.removeEventListener('click', this.listener, { capture: true });
       this.listener = null;

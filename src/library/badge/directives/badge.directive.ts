@@ -48,7 +48,7 @@ import { formatBadgeValue, shouldHideBadge } from '../utils/badge-utils';
   standalone: true,
   exportAs: 'libBadge',
   host: {
-    'class': 'lib-badge-container',
+    class: 'lib-badge-container',
     '[style.position]': '"relative"',
     '[style.display]': '"inline-flex"',
   },
@@ -69,17 +69,13 @@ export class BadgeDirective implements OnInit, OnDestroy {
   readonly libBadgeVariant = input<BadgeVariant>(DEFAULT_BADGE_CONFIG.variant);
 
   /** Visual appearance */
-  readonly libBadgeAppearance = input<BadgeAppearance>(
-    DEFAULT_BADGE_CONFIG.appearance
-  );
+  readonly libBadgeAppearance = input<BadgeAppearance>(DEFAULT_BADGE_CONFIG.appearance);
 
   /** Size */
   readonly libBadgeSize = input<BadgeSize>(DEFAULT_BADGE_CONFIG.size);
 
   /** Position relative to host element */
-  readonly libBadgePosition = input<BadgePosition>(
-    DEFAULT_BADGE_CONFIG.position
-  );
+  readonly libBadgePosition = input<BadgePosition>(DEFAULT_BADGE_CONFIG.position);
 
   /** Shape */
   readonly libBadgeShape = input<BadgeShape>(DEFAULT_BADGE_CONFIG.shape);
@@ -119,15 +115,12 @@ export class BadgeDirective implements OnInit, OnDestroy {
   // ========================================
 
   /** Whether badge should be visible */
-  readonly isVisible = computed(
-    () => !shouldHideBadge(this.libBadge(), this.libBadgeHideZero())
-  );
+  readonly isVisible = computed(() => !shouldHideBadge(this.libBadge(), this.libBadgeHideZero()));
 
   /** Formatted content */
   readonly displayContent = computed(() => {
     const value = this.libBadge();
-    if (value === null || value === '' || this.libBadgeShape() === 'dot')
-      return '';
+    if (value === null || value === '' || this.libBadgeShape() === 'dot') return '';
     if (typeof value === 'number') {
       return formatBadgeValue(value, this.libBadgeMaxValue());
     }
@@ -156,7 +149,7 @@ export class BadgeDirective implements OnInit, OnDestroy {
       this.libBadgeLabel();
       this.libBadgeBgColor();
       this.libBadgeTextColor();
-      
+
       if (this.badgeElement) {
         this.updateBadge();
       }
@@ -183,10 +176,7 @@ export class BadgeDirective implements OnInit, OnDestroy {
   private createBadge(): void {
     this.badgeElement = this.renderer.createElement('span');
     this.updateBadge();
-    this.renderer.appendChild(
-      this.elementRef.nativeElement,
-      this.badgeElement
-    );
+    this.renderer.appendChild(this.elementRef.nativeElement, this.badgeElement);
   }
 
   private updateBadge(): void {
@@ -237,11 +227,7 @@ export class BadgeDirective implements OnInit, OnDestroy {
 
     // Update ARIA
     this.renderer.setAttribute(this.badgeElement, 'role', 'status');
-    this.renderer.setAttribute(
-      this.badgeElement,
-      'aria-label',
-      this.getAriaLabel()
-    );
+    this.renderer.setAttribute(this.badgeElement, 'aria-label', this.getAriaLabel());
   }
 
   private getAriaLabel(): string {
@@ -249,9 +235,7 @@ export class BadgeDirective implements OnInit, OnDestroy {
 
     const content = this.libBadge();
     if (this.libBadgeShape() === 'dot') {
-      return this.libBadgeStatus() !== 'none'
-        ? `Status: ${this.libBadgeStatus()}`
-        : 'Notification';
+      return this.libBadgeStatus() !== 'none' ? `Status: ${this.libBadgeStatus()}` : 'Notification';
     }
 
     if (typeof content === 'number') {

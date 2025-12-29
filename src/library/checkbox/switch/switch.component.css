@@ -174,7 +174,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
   font-size: calc(var(--switch-thumb-size) * 0.55);
   line-height: 1;
   color: inherit;
@@ -280,7 +282,7 @@
   .lib-switch__icon {
     transition: none;
   }
-  
+
   .lib-switch__ripple {
     animation: none;
   }

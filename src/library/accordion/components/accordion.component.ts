@@ -36,7 +36,12 @@ import {
 } from '@angular/core';
 import { AccordionService } from '../services/accordion.service';
 import { AccordionItemComponent } from './accordion-item.component';
-import type { AccordionVariant, AccordionSize, AccordionIconPosition, AccordionChangeEvent } from '../types/accordion.types';
+import type {
+  AccordionVariant,
+  AccordionSize,
+  AccordionIconPosition,
+  AccordionChangeEvent,
+} from '../types/accordion.types';
 
 @Component({
   selector: 'lib-accordion',
@@ -44,7 +49,7 @@ import type { AccordionVariant, AccordionSize, AccordionIconPosition, AccordionC
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AccordionService],
   host: {
-    'class': 'lib-accordion',
+    class: 'lib-accordion',
     '[class.lib-accordion--bordered]': 'variant() === "bordered"',
     '[class.lib-accordion--separated]': 'variant() === "separated"',
     '[class.lib-accordion--sm]': 'size() === "sm"',
@@ -83,7 +88,7 @@ export class AccordionComponent {
     effect(() => this.service.setMultipleMode(this.multiple()));
 
     // Setup change callback
-    this.service.setOnChangeCallback((event) => {
+    this.service.setOnChangeCallback(event => {
       this.accordionChange.emit(event);
     });
   }

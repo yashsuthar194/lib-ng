@@ -183,7 +183,9 @@
 }
 
 @keyframes lib-select-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ==============================================
@@ -281,8 +283,6 @@
   font-size: var(--lib-font-size-sm);
 }
 
-
-
 /* ==============================================
    Reduced Motion
    ============================================== */
@@ -297,31 +297,30 @@
 /* ==============================================
    Dark Theme
    ============================================== */
-[data-theme-mode="dark"] :host .lib-select__trigger {
+[data-theme-mode='dark'] :host .lib-select__trigger {
   background: var(--lib-color-neutral-900);
   border-color: var(--lib-color-neutral-700);
   color: var(--lib-color-neutral-100);
 }
 
-[data-theme-mode="dark"] :host .lib-select__trigger:hover:not(:disabled) {
+[data-theme-mode='dark'] :host .lib-select__trigger:hover:not(:disabled) {
   border-color: var(--lib-color-neutral-600);
 }
 
-[data-theme-mode="dark"] :host .lib-select__panel {
+[data-theme-mode='dark'] :host .lib-select__panel {
   background: var(--lib-color-neutral-900);
   border-color: var(--lib-color-neutral-700);
 }
 
-[data-theme-mode="dark"] :host .lib-select__search {
+[data-theme-mode='dark'] :host .lib-select__search {
   border-color: var(--lib-color-neutral-700);
 }
 
-[data-theme-mode="dark"] :host .lib-select__search-input {
+[data-theme-mode='dark'] :host .lib-select__search-input {
   color: var(--lib-color-neutral-100);
 }
 
-[data-theme-mode="dark"] :host .lib-select__empty,
-[data-theme-mode="dark"] :host .lib-select__loading {
+[data-theme-mode='dark'] :host .lib-select__empty,
+[data-theme-mode='dark'] :host .lib-select__loading {
   color: var(--lib-color-neutral-400);
 }
-

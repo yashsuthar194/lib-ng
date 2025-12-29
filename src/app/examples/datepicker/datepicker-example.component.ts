@@ -14,7 +14,6 @@ import {
   DateTimePickerComponent,
   MonthYearPickerComponent,
   type DateRange,
-  type TimeValue,
 } from '../../../library/datepicker';
 
 @Component({
@@ -38,12 +37,9 @@ import {
       <section class="example-section">
         <h2>Date Picker</h2>
         <p>Input field with calendar dropdown. Supports smart parsing and relative display.</p>
-        
+
         <div class="example-demo">
-          <lib-date-picker
-            placeholder="Select a date"
-            (dateChange)="onDateChange($event)"
-          />
+          <lib-date-picker placeholder="Select a date" (dateChange)="onDateChange($event)" />
         </div>
       </section>
 
@@ -51,7 +47,7 @@ import {
       <section class="example-section">
         <h2>Date Range Picker</h2>
         <p>Select start and end dates with preset shortcuts.</p>
-        
+
         <div class="example-demo">
           <lib-date-range-picker
             placeholder="Select date range"
@@ -66,7 +62,7 @@ import {
       <section class="example-section">
         <h2>Time Picker</h2>
         <p>Hour and minute selection with 12h/24h format support.</p>
-        
+
         <div class="example-demo example-demo--row">
           <div>
             <label class="example-label">12-hour format</label>
@@ -87,12 +83,9 @@ import {
       <section class="example-section">
         <h2>DateTime Picker</h2>
         <p>Combined date and time selection in a single component.</p>
-        
+
         <div class="example-demo">
-          <lib-datetime-picker
-            placeholder="Select date and time"
-            format="12h"
-          />
+          <lib-datetime-picker placeholder="Select date and time" format="12h" />
         </div>
       </section>
 
@@ -100,11 +93,9 @@ import {
       <section class="example-section">
         <h2>Month/Year Picker</h2>
         <p>Select month and year only (no day selection).</p>
-        
+
         <div class="example-demo">
-          <lib-month-year-picker
-            placeholder="Select month"
-          />
+          <lib-month-year-picker placeholder="Select month" />
         </div>
       </section>
 
@@ -112,14 +103,11 @@ import {
       <section class="example-section">
         <h2>Inline Calendar</h2>
         <p>Standalone calendar without dropdown.</p>
-        
+
         <div class="example-demo">
-          <lib-calendar
-            [selected]="inlineDate()"
-            (dateSelect)="onInlineDateSelect($event)"
-          />
+          <lib-calendar [selected]="inlineDate()" (dateSelect)="onInlineDateSelect($event)" />
         </div>
-        
+
         <p class="example-value">
           Selected: {{ inlineDate() ? formatDate(inlineDate()!) : 'None' }}
         </p>
@@ -129,11 +117,11 @@ import {
       <section class="example-section">
         <h2>Forms Integration</h2>
         <p>All pickers implement ControlValueAccessor for Angular Forms.</p>
-        
+
         <div class="example-demo">
           <lib-date-picker [formControl]="dateControl" placeholder="Form-bound date" />
         </div>
-        
+
         <p class="example-value">
           Form value: {{ dateControl.value ? formatDate(dateControl.value) : 'null' }}
         </p>
@@ -214,7 +202,7 @@ import {
 export class DatePickerExampleComponent {
   // Inline calendar
   readonly inlineDate = signal<Date | null>(null);
-  
+
   // FormControl integration
   readonly dateControl = new FormControl<Date | null>(null);
 

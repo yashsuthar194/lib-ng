@@ -7,16 +7,16 @@
   --tooltip-text: var(--lib-color-neutral-100, #f3f4f6);
   --tooltip-radius: var(--lib-border-radius-md, 6px);
   --tooltip-arrow-size: 6px;
-  
+
   position: absolute;
   z-index: var(--lib-z-index-tooltip, 10000);
   pointer-events: none;
-  
+
   /* Hidden by default */
   opacity: 0;
   visibility: hidden;
   transform: scale(0.95);
-  transition: 
+  transition:
     opacity 0.15s ease-out,
     transform 0.15s ease-out,
     visibility 0.15s;
@@ -71,7 +71,7 @@
   color: var(--tooltip-text);
   padding: var(--lib-spacing-2, 8px) var(--lib-spacing-3, 12px);
   border-radius: var(--tooltip-radius);
-  box-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1));
+  box-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
   font-size: var(--lib-font-size-sm, 0.875rem);
   line-height: var(--lib-line-height-normal, 1.5);
   max-width: 280px;

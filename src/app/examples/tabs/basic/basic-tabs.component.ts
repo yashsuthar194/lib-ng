@@ -3,7 +3,7 @@ import { TabsComponent, TabComponent } from '../../../../library/tabs';
 
 /**
  * Basic Tabs Example
- * 
+ *
  * Demonstrates simple tab usage with icons and badges.
  */
 @Component({
@@ -78,39 +78,41 @@ import { TabsComponent, TabComponent } from '../../../../library/tabs';
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6);
-      max-width: 900px;
-    }
-    
-    .description {
-      color: var(--lib-color-neutral-600);
-      margin-block-end: var(--lib-spacing-6);
-    }
-    
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
-    
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      margin-block-end: var(--lib-spacing-3);
-    }
-    
-    .example-container {
-      background: var(--lib-color-neutral-0);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-lg);
-      overflow: hidden;
-    }
-    
-    .status {
-      margin-block-start: var(--lib-spacing-2);
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-neutral-500);
-    }
-  `],
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6);
+        max-width: 900px;
+      }
+
+      .description {
+        color: var(--lib-color-neutral-600);
+        margin-block-end: var(--lib-spacing-6);
+      }
+
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
+
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        margin-block-end: var(--lib-spacing-3);
+      }
+
+      .example-container {
+        background: var(--lib-color-neutral-0);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-lg);
+        overflow: hidden;
+      }
+
+      .status {
+        margin-block-start: var(--lib-spacing-2);
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-neutral-500);
+      }
+    `,
+  ],
 })
 export class BasicTabsExampleComponent {
   readonly activeIndex = signal(0);

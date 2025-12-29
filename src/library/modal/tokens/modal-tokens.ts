@@ -3,12 +3,12 @@ import type { ModalRef } from '../classes/modal-ref';
 
 /**
  * Injection token for accessing the ModalRef in modal content components.
- * 
+ *
  * Usage:
  * ```typescript
  * export class MyDialogComponent {
  *   private readonly modalRef = inject(MODAL_REF);
- *   
+ *
  *   close() {
  *     this.modalRef.close({ saved: true });
  *   }
@@ -20,7 +20,7 @@ export const MODAL_REF = new InjectionToken<ModalRef<unknown, unknown>>('MODAL_R
 /**
  * Injection token for modal data.
  * Alternative to accessing data via modalRef.data
- * 
+ *
  * Usage:
  * ```typescript
  * export class MyDialogComponent {

@@ -257,7 +257,13 @@
 .lib-badge--gradient {
   background:
     linear-gradient(var(--lib-color-neutral-0, #fff), var(--lib-color-neutral-0, #fff)) padding-box,
-    linear-gradient(135deg, var(--lib-color-primary-500, #3b82f6), var(--lib-color-info, #0ea5e9), var(--lib-color-primary-600, #2563eb)) border-box;
+    linear-gradient(
+        135deg,
+        var(--lib-color-primary-500, #3b82f6),
+        var(--lib-color-info, #0ea5e9),
+        var(--lib-color-primary-600, #2563eb)
+      )
+      border-box;
   border: 2px solid transparent;
   color: var(--lib-color-primary-600, #2563eb);
 }
@@ -265,14 +271,26 @@
 .lib-badge--gradient.lib-badge--error {
   background:
     linear-gradient(var(--lib-color-neutral-0, #fff), var(--lib-color-neutral-0, #fff)) padding-box,
-    linear-gradient(135deg, var(--lib-color-error, #ef4444), var(--lib-color-warning, #f59e0b), var(--lib-color-error, #ef4444)) border-box;
+    linear-gradient(
+        135deg,
+        var(--lib-color-error, #ef4444),
+        var(--lib-color-warning, #f59e0b),
+        var(--lib-color-error, #ef4444)
+      )
+      border-box;
   color: var(--lib-color-error, #ef4444);
 }
 
 .lib-badge--gradient.lib-badge--success {
   background:
     linear-gradient(var(--lib-color-neutral-0, #fff), var(--lib-color-neutral-0, #fff)) padding-box,
-    linear-gradient(135deg, var(--lib-color-success, #22c55e), var(--lib-color-info, #0ea5e9), var(--lib-color-success, #22c55e)) border-box;
+    linear-gradient(
+        135deg,
+        var(--lib-color-success, #22c55e),
+        var(--lib-color-info, #0ea5e9),
+        var(--lib-color-success, #22c55e)
+      )
+      border-box;
   color: var(--lib-color-success, #22c55e);
 }
 

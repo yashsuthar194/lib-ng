@@ -211,23 +211,14 @@ import {
     <!-- Footer -->
     @if (showTodayButton()) {
       <div class="lib-calendar__footer">
-        <button
-          type="button"
-          class="lib-calendar__today-btn"
-          (click)="goToToday()"
-        >
+        <button type="button" class="lib-calendar__today-btn" (click)="goToToday()">
           {{ locale().today }}
         </button>
       </div>
     }
 
     <!-- Screen reader live region -->
-    <div
-      class="lib-calendar__sr-only"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    >
+    <div class="lib-calendar__sr-only" role="status" aria-live="polite" aria-atomic="true">
       {{ screenReaderAnnouncement() }}
     </div>
   `,
@@ -236,7 +227,7 @@ import {
 export class CalendarComponent {
   private readonly elementRef = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
-  
+
   /** Timeout ID for animation cleanup */
   private animationTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
@@ -437,7 +428,7 @@ export class CalendarComponent {
 
   navigatePrev(): void {
     this.slideDirection.set('prev');
-    
+
     if (this.view() === 'days') {
       this.viewDate.update(date => addMonths(date, -1));
     } else if (this.view() === 'months') {
@@ -448,7 +439,7 @@ export class CalendarComponent {
 
     this.announceNavigation();
     this.emitNavigationEvent('prev');
-    
+
     // Reset animation after transition (with cleanup)
     if (this.animationTimeoutId) {
       clearTimeout(this.animationTimeoutId);
@@ -458,7 +449,7 @@ export class CalendarComponent {
 
   navigateNext(): void {
     this.slideDirection.set('next');
-    
+
     if (this.view() === 'days') {
       this.viewDate.update(date => addMonths(date, 1));
     } else if (this.view() === 'months') {
@@ -469,7 +460,7 @@ export class CalendarComponent {
 
     this.announceNavigation();
     this.emitNavigationEvent('next');
-    
+
     // Reset animation after transition (with cleanup)
     if (this.animationTimeoutId) {
       clearTimeout(this.animationTimeoutId);
@@ -521,36 +512,50 @@ export class CalendarComponent {
   /** Check if day is the start date during hover preview (first clicked date) */
   isPreviewStart(day: CalendarDay): boolean {
     if (!this.isSelectingRangeEnd()) return false;
-    
+
     const rangeStart = this.range()?.start;
     const hovered = this.hoveredDate();
-    
+
     // Show start highlight when we have a start date and are hovering (selecting end)
     if (!rangeStart || !hovered) return false;
-    
-    return day.date.getFullYear() === rangeStart.getFullYear() &&
-           day.date.getMonth() === rangeStart.getMonth() &&
-           day.date.getDate() === rangeStart.getDate();
+
+    return (
+      day.date.getFullYear() === rangeStart.getFullYear() &&
+      day.date.getMonth() === rangeStart.getMonth() &&
+      day.date.getDate() === rangeStart.getDate()
+    );
   }
 
   /** Check if day is within the hover preview range (between start and hovered) */
   isInPreviewRange(day: CalendarDay): boolean {
     if (!this.isSelectingRangeEnd()) return false;
-    
+
     const rangeStart = this.range()?.start;
     const hovered = this.hoveredDate();
-    
+
     if (!rangeStart || !hovered || day.isDisabled) return false;
-    
+
     // Use getTime() to avoid mutating original dates
-    const dayTime = new Date(day.date.getFullYear(), day.date.getMonth(), day.date.getDate()).getTime();
-    const startTime = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate()).getTime();
-    const hoveredTime = new Date(hovered.getFullYear(), hovered.getMonth(), hovered.getDate()).getTime();
-    
+    const dayTime = new Date(
+      day.date.getFullYear(),
+      day.date.getMonth(),
+      day.date.getDate()
+    ).getTime();
+    const startTime = new Date(
+      rangeStart.getFullYear(),
+      rangeStart.getMonth(),
+      rangeStart.getDate()
+    ).getTime();
+    const hoveredTime = new Date(
+      hovered.getFullYear(),
+      hovered.getMonth(),
+      hovered.getDate()
+    ).getTime();
+
     // Determine preview range bounds (bidirectional support)
     const minTime = Math.min(startTime, hoveredTime);
     const maxTime = Math.max(startTime, hoveredTime);
-    
+
     // Check if day is strictly between (not on edges since they have different styling)
     return dayTime > minTime && dayTime < maxTime;
   }
@@ -558,22 +563,25 @@ export class CalendarComponent {
   /** Check if day is the currently hovered potential end date */
   isPreviewEnd(day: CalendarDay): boolean {
     if (!this.isSelectingRangeEnd()) return false;
-    
+
     const hovered = this.hoveredDate();
     const rangeStart = this.range()?.start;
-    
+
     if (!hovered || !rangeStart || day.isDisabled) return false;
-    
+
     // Don't show preview-end on the same date as start
-    const isSameAsStart = day.date.getFullYear() === rangeStart.getFullYear() &&
-                          day.date.getMonth() === rangeStart.getMonth() &&
-                          day.date.getDate() === rangeStart.getDate();
+    const isSameAsStart =
+      day.date.getFullYear() === rangeStart.getFullYear() &&
+      day.date.getMonth() === rangeStart.getMonth() &&
+      day.date.getDate() === rangeStart.getDate();
     if (isSameAsStart) return false;
-    
+
     // Check if this is the hovered date
-    return day.date.getFullYear() === hovered.getFullYear() &&
-           day.date.getMonth() === hovered.getMonth() &&
-           day.date.getDate() === hovered.getDate();
+    return (
+      day.date.getFullYear() === hovered.getFullYear() &&
+      day.date.getMonth() === hovered.getMonth() &&
+      day.date.getDate() === hovered.getDate()
+    );
   }
 
   selectMonth(monthIndex: number): void {
@@ -679,9 +687,9 @@ export class CalendarComponent {
   }
 
   private selectDateByKeyboard(date: Date): void {
-    const day = this.calendarWeeks().flat().find(d => 
-      d.date.getTime() === date.getTime()
-    );
+    const day = this.calendarWeeks()
+      .flat()
+      .find(d => d.date.getTime() === date.getTime());
     if (day && !day.isDisabled) {
       this.selectDate(day);
     }
@@ -690,12 +698,11 @@ export class CalendarComponent {
   private findDayByButton(button: HTMLButtonElement): CalendarDay | undefined {
     const dayNumber = button.textContent?.trim();
     if (!dayNumber) return undefined;
-    
+
     const isOutside = button.classList.contains('lib-calendar__day--outside');
-    return this.calendarWeeks().flat().find(d => 
-      d.day === parseInt(dayNumber, 10) && 
-      d.isCurrentMonth === !isOutside
-    );
+    return this.calendarWeeks()
+      .flat()
+      .find(d => d.day === parseInt(dayNumber, 10) && d.isCurrentMonth === !isOutside);
   }
 
   onDayFocus(day: CalendarDay): void {
@@ -715,11 +722,11 @@ export class CalendarComponent {
       day: 'numeric',
     };
     let label = date.toLocaleDateString('en-US', options);
-    
+
     if (day.isToday) label += ', today';
     if (day.isSelected) label += ', selected';
     if (day.isDisabled) label += ', unavailable';
-    
+
     return label;
   }
 
@@ -731,17 +738,13 @@ export class CalendarComponent {
     const selected = this.selected();
     if (!selected) return false;
     return (
-      selected.getMonth() === monthIndex &&
-      selected.getFullYear() === this.viewDate().getFullYear()
+      selected.getMonth() === monthIndex && selected.getFullYear() === this.viewDate().getFullYear()
     );
   }
 
   isCurrentMonth(monthIndex: number): boolean {
     const today = new Date();
-    return (
-      today.getMonth() === monthIndex &&
-      today.getFullYear() === this.viewDate().getFullYear()
-    );
+    return today.getMonth() === monthIndex && today.getFullYear() === this.viewDate().getFullYear();
   }
 
   isSelectedYear(year: number): boolean {
@@ -754,9 +757,8 @@ export class CalendarComponent {
   }
 
   private announceNavigation(): void {
-    const label = this.view() === 'days'
-      ? this.monthYearLabel()
-      : this.viewDate().getFullYear().toString();
+    const label =
+      this.view() === 'days' ? this.monthYearLabel() : this.viewDate().getFullYear().toString();
     this.screenReaderAnnouncement.set(`Navigated to ${label}`);
   }
 

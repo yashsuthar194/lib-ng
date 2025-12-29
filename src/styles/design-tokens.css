@@ -8,7 +8,7 @@
   /* ==============================================
      Theme Color Palettes
      ============================================== */
-  
+
   /* Indigo Theme (Default) */
   --lib-theme-primary-50: #eef2ff;
   --lib-theme-primary-100: #e0e7ff;
@@ -170,7 +170,7 @@
    ============================================== */
 
 /* Ocean Theme */
-[data-theme-color="ocean"] {
+[data-theme-color='ocean'] {
   --lib-theme-primary-50: #ecfeff;
   --lib-theme-primary-100: #cffafe;
   --lib-theme-primary-200: #a5f3fc;
@@ -184,7 +184,7 @@
 }
 
 /* Emerald Theme */
-[data-theme-color="emerald"] {
+[data-theme-color='emerald'] {
   --lib-theme-primary-50: #ecfdf5;
   --lib-theme-primary-100: #d1fae5;
   --lib-theme-primary-200: #a7f3d0;
@@ -198,7 +198,7 @@
 }
 
 /* Rose Theme */
-[data-theme-color="rose"] {
+[data-theme-color='rose'] {
   --lib-theme-primary-50: #fff1f2;
   --lib-theme-primary-100: #ffe4e6;
   --lib-theme-primary-200: #fecdd3;
@@ -212,7 +212,7 @@
 }
 
 /* Amber Theme */
-[data-theme-color="amber"] {
+[data-theme-color='amber'] {
   --lib-theme-primary-50: #fffbeb;
   --lib-theme-primary-100: #fef3c7;
   --lib-theme-primary-200: #fde68a;
@@ -226,7 +226,7 @@
 }
 
 /* Violet Theme */
-[data-theme-color="violet"] {
+[data-theme-color='violet'] {
   --lib-theme-primary-50: #f5f3ff;
   --lib-theme-primary-100: #ede9fe;
   --lib-theme-primary-200: #ddd6fe;
@@ -242,7 +242,7 @@
 /* ==============================================
    Dark Mode
    ============================================== */
-[data-theme-mode="dark"] {
+[data-theme-mode='dark'] {
   --lib-color-neutral-0: #0f172a;
   --lib-color-neutral-50: #1e293b;
   --lib-color-neutral-100: #334155;

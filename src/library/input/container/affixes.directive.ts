@@ -2,7 +2,7 @@ import { Directive } from '@angular/core';
 
 /**
  * Directive to mark content as a prefix inside lib-form-field.
- * 
+ *
  * @example
  * ```html
  * <lib-form-field label="Email">
@@ -15,14 +15,14 @@ import { Directive } from '@angular/core';
   selector: '[libPrefix]',
   standalone: true,
   host: {
-    'class': 'lib-form-field__prefix-content',
+    class: 'lib-form-field__prefix-content',
   },
 })
 export class PrefixDirective {}
 
 /**
  * Directive to mark content as a suffix inside lib-form-field.
- * 
+ *
  * @example
  * ```html
  * <lib-form-field label="Password">
@@ -35,7 +35,7 @@ export class PrefixDirective {}
   selector: '[libSuffix]',
   standalone: true,
   host: {
-    'class': 'lib-form-field__suffix-content',
+    class: 'lib-form-field__suffix-content',
   },
 })
 export class SuffixDirective {}

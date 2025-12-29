@@ -10,7 +10,7 @@
   --progress-bg: var(--lib-color-neutral-200, #e5e7eb);
   --progress-fill: var(--lib-color-primary-500, #6366f1);
   --progress-height: 8px;
-  
+
   display: flex;
   align-items: center;
   gap: var(--lib-spacing-3, 12px);
@@ -155,7 +155,7 @@
   .lib-progress-bar__fill {
     transition: none;
   }
-  
+
   :host(.lib-progress-bar--indeterminate) .lib-progress-bar__fill,
   :host(.lib-progress-bar--striped) .lib-progress-bar__fill {
     animation: none;

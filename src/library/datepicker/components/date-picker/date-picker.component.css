@@ -59,7 +59,7 @@
   font-weight: var(--lib-font-weight-medium, 500);
   letter-spacing: 0.02em;
   outline: none;
-  transition: 
+  transition:
     border-color var(--lib-transition-fast, 150ms ease),
     box-shadow var(--lib-transition-fast, 150ms ease);
 }
@@ -110,7 +110,7 @@
   background: transparent;
   color: var(--date-picker-icon);
   cursor: pointer;
-  transition: 
+  transition:
     color var(--lib-transition-fast, 150ms ease),
     background var(--lib-transition-fast, 150ms ease);
 }
@@ -155,7 +155,7 @@
   background: var(--lib-color-neutral-200, #e4e4e7);
   color: var(--lib-color-neutral-600, #52525b);
   cursor: pointer;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
 }

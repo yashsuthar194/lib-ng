@@ -108,7 +108,7 @@ export class StepperComponent implements AfterContentInit {
 
   // ========== Computed ==========
 
-  readonly activeStep = computed(() => this.steps()[this.stepperService.activeIndex()] ?? null);
+  readonly activeStep = computed(() => this.steps()?.[this.stepperService.activeIndex()] ?? null);
 
   readonly animationClass = computed(() => {
     const dir = this.stepperService.animationDirection();

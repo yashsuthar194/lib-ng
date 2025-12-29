@@ -1,6 +1,6 @@
 /**
  * Tooltip Position Utilities
- * 
+ *
  * Smart positioning logic with viewport boundary detection and auto-flip.
  */
 
@@ -24,16 +24,16 @@ interface Rect {
 /** Get opposite position for flipping */
 function getOpposite(position: TooltipPosition): TooltipPosition {
   const map: Record<string, TooltipPosition> = {
-    'top': 'bottom',
+    top: 'bottom',
     'top-start': 'bottom-start',
     'top-end': 'bottom-end',
-    'bottom': 'top',
-    'bottom-start': 'top-start', 
+    bottom: 'top',
+    'bottom-start': 'top-start',
     'bottom-end': 'top-end',
-    'left': 'right',
+    left: 'right',
     'left-start': 'right-start',
     'left-end': 'right-end',
-    'right': 'left',
+    right: 'left',
     'right-start': 'left-start',
     'right-end': 'left-end',
   };
@@ -49,10 +49,10 @@ function getCoords(
 ): { x: number; y: number } {
   const base = position.split('-')[0] as 'top' | 'bottom' | 'left' | 'right';
   const align = position.split('-')[1] as 'start' | 'end' | undefined;
-  
+
   let x = 0;
   let y = 0;
-  
+
   switch (base) {
     case 'top':
       y = trigger.top - tooltip.height - offset;
@@ -71,7 +71,7 @@ function getCoords(
       y = getCenterY(trigger, tooltip, align);
       break;
   }
-  
+
   return { x, y };
 }
 
@@ -95,10 +95,7 @@ function fitsInViewport(
   viewport: { width: number; height: number }
 ): boolean {
   return (
-    x >= 0 &&
-    y >= 0 &&
-    x + tooltip.width <= viewport.width &&
-    y + tooltip.height <= viewport.height
+    x >= 0 && y >= 0 && x + tooltip.width <= viewport.width && y + tooltip.height <= viewport.height
   );
 }
 
@@ -116,40 +113,40 @@ export function calculateTooltipPosition(
 ): PositionResult {
   const triggerRect = triggerEl.getBoundingClientRect();
   const tooltipRect = tooltipEl.getBoundingClientRect();
-  
+
   const trigger: Rect = {
     top: triggerRect.top + window.scrollY,
     left: triggerRect.left + window.scrollX,
     width: triggerRect.width,
     height: triggerRect.height,
   };
-  
+
   const tooltip: Rect = {
     top: 0,
     left: 0,
     width: tooltipRect.width,
     height: tooltipRect.height,
   };
-  
+
   const viewport = {
     width: window.innerWidth,
     height: window.innerHeight,
   };
-  
+
   // Try preferred position
   let coords = getCoords(trigger, tooltip, preferredPosition, offset);
   let actualPosition = preferredPosition;
-  
+
   // Check viewport fit, try opposite if needed
   const viewX = coords.x - window.scrollX;
   const viewY = coords.y - window.scrollY;
-  
+
   if (!fitsInViewport(viewX, viewY, tooltip, viewport)) {
     const opposite = getOpposite(preferredPosition);
     const oppositeCoords = getCoords(trigger, tooltip, opposite, offset);
     const oppViewX = oppositeCoords.x - window.scrollX;
     const oppViewY = oppositeCoords.y - window.scrollY;
-    
+
     if (fitsInViewport(oppViewX, oppViewY, tooltip, viewport)) {
       coords = oppositeCoords;
       actualPosition = opposite;
@@ -159,18 +156,18 @@ export function calculateTooltipPosition(
       coords.y = window.scrollY + clamp(viewY, 8, viewport.height - tooltip.height - 8);
     }
   }
-  
+
   // Calculate arrow position
   const base = actualPosition.split('-')[0];
   let arrowX: number | undefined;
   let arrowY: number | undefined;
-  
+
   if (base === 'top' || base === 'bottom') {
     arrowX = trigger.left + trigger.width / 2 - coords.x;
   } else {
     arrowY = trigger.top + trigger.height / 2 - coords.y;
   }
-  
+
   return {
     x: coords.x,
     y: coords.y,

@@ -6,9 +6,13 @@
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 
 /** Position on screen */
-export type ToastPosition = 
-  | 'top-left' | 'top-center' | 'top-right'
-  | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export type ToastPosition =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
 
 /** How the toast was closed */
 export type ToastCloseReason = 'timeout' | 'action' | 'dismiss' | 'api';
@@ -23,12 +27,12 @@ export interface ToastAction {
 export interface ToastConfig {
   message: string;
   variant?: ToastVariant;
-  duration?: number;           // ms, 0 = no auto-dismiss
+  duration?: number; // ms, 0 = no auto-dismiss
   position?: ToastPosition;
   action?: ToastAction;
-  dismissible?: boolean;       // Show X button
-  icon?: boolean;              // Show variant icon
-  id?: string;                 // Custom ID
+  dismissible?: boolean; // Show X button
+  icon?: boolean; // Show variant icon
+  id?: string; // Custom ID
 }
 
 /** Internal toast data with resolved defaults */

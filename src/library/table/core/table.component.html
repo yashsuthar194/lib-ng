@@ -1,4 +1,4 @@
-<div 
+<div
   class="lib-table-container"
   [class.lib-table--hoverable]="hoverable()"
   [class.lib-table--striped]="striped()"
@@ -23,7 +23,7 @@
           @if (columnDefs().length > 0) {
             <!-- Declarative columns -->
             @for (col of columnDefs(); track col.name()) {
-              <th 
+              <th
                 class="lib-table-header-cell"
                 [style.width]="col.width()"
                 [class.lib-table-header-cell--sortable]="col.sortable()"
@@ -58,7 +58,7 @@
         } @else {
           <!-- Data Rows -->
           @for (item of data(); track getTrackBy()($index, item); let i = $index) {
-            <tr 
+            <tr
               class="lib-table-row"
               [class.lib-table-row--even]="i % 2 === 0"
               [class.lib-table-row--odd]="i % 2 !== 0"
@@ -67,12 +67,9 @@
               @if (columnDefs().length > 0) {
                 <!-- Declarative columns -->
                 @for (col of columnDefs(); track col.name()) {
-                  <td 
-                    class="lib-table-cell"
-                    [class]="col.cellClass()"
-                  >
+                  <td class="lib-table-cell" [class]="col.cellClass()">
                     @if (col.cellTemplate()) {
-                      <ng-container 
+                      <ng-container
                         *ngTemplateOutlet="col.cellTemplate()!; context: getRowContext(item, i)"
                       ></ng-container>
                     } @else {
@@ -82,7 +79,7 @@
                 }
               } @else if (rowTemplate()) {
                 <!-- Legacy row template -->
-                <ng-container 
+                <ng-container
                   *ngTemplateOutlet="rowTemplate()!; context: getRowContext(item, i)"
                 ></ng-container>
               }

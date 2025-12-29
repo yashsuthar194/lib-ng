@@ -72,7 +72,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
         (click)="toggleDropdown()"
         (keydown)="onInputKeyDown($event)"
       />
-      
+
       <button
         type="button"
         class="lib-datetime-picker__toggle"
@@ -149,18 +149,10 @@ import { CalendarComponent } from '../calendar/calendar.component';
 
         <!-- Footer -->
         <div class="lib-datetime-picker__footer">
-          <button
-            type="button"
-            class="lib-datetime-picker__now-btn"
-            (click)="selectNow()"
-          >
+          <button type="button" class="lib-datetime-picker__now-btn" (click)="selectNow()">
             Now
           </button>
-          <button
-            type="button"
-            class="lib-datetime-picker__ok-btn"
-            (click)="confirmSelection()"
-          >
+          <button type="button" class="lib-datetime-picker__ok-btn" (click)="confirmSelection()">
             OK
           </button>
         </div>
@@ -238,8 +230,14 @@ import { CalendarComponent } from '../calendar/calendar.component';
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .lib-datetime-picker__time-section {
@@ -315,7 +313,9 @@ import { CalendarComponent } from '../calendar/calendar.component';
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lib-datetime-picker__dropdown { animation: none; }
+      .lib-datetime-picker__dropdown {
+        animation: none;
+      }
     }
   `,
 })
@@ -441,7 +441,7 @@ export class DateTimePickerComponent implements ControlValueAccessor {
 
   readonly hours = computed(() => {
     if (this.format() === '12h') {
-      return Array.from({ length: 12 }, (_, i) => i === 0 ? 12 : i);
+      return Array.from({ length: 12 }, (_, i) => (i === 0 ? 12 : i));
     }
     return Array.from({ length: 24 }, (_, i) => i);
   });

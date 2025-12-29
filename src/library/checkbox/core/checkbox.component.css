@@ -46,7 +46,7 @@
   border: var(--lib-border-width-medium, 2px) solid var(--lib-color-neutral-400, #94a3b8);
   border-radius: var(--lib-border-radius-base, 4px);
   background: transparent;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     border-color var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
@@ -104,7 +104,7 @@
   color: var(--lib-color-neutral-0, #ffffff);
   opacity: 0;
   transform: scale(0.5);
-  transition: 
+  transition:
     opacity var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
 }
@@ -192,12 +192,12 @@
   .lib-checkbox__checkmark {
     transition-duration: 0.01ms !important;
   }
-  
+
   .lib-checkbox__checkmark polyline,
   .lib-checkbox__checkmark line {
     animation-duration: 0.01ms !important;
   }
-  
+
   .lib-checkbox__ripple {
     animation-duration: 0.01ms !important;
   }

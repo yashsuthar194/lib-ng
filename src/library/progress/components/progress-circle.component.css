@@ -9,7 +9,7 @@
 :host {
   --progress-bg: var(--lib-color-neutral-200, #e5e7eb);
   --progress-fill: var(--lib-color-primary-500, #6366f1);
-  
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -110,7 +110,7 @@
   .lib-progress-circle__fill {
     transition: none;
   }
-  
+
   :host(.lib-progress-circle--indeterminate) .lib-progress-circle__svg,
   :host(.lib-progress-circle--indeterminate) .lib-progress-circle__fill {
     animation: none;

@@ -6,7 +6,7 @@
  * Properly cleans up to prevent memory leaks.
  */
 
-import { Injectable, signal, computed, effect, DestroyRef, inject, ElementRef } from '@angular/core';
+import { Injectable, signal, computed, DestroyRef, inject } from '@angular/core';
 import type { AccordionChangeEvent, AccordionItemState } from '../types/accordion.types';
 
 @Injectable()

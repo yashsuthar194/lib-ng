@@ -24,7 +24,7 @@
   --step-connector-height: 2px;
   --step-animation-duration: 300ms;
   --step-gap: var(--lib-spacing-4, 16px);
-  
+
   display: block;
   width: 100%;
 }
@@ -56,7 +56,7 @@
   display: flex;
   position: relative;
   min-width: 0;
-  
+
   /* Staggered entrance animation */
   animation: stepReveal var(--step-animation-duration) ease-out backwards;
   animation-delay: calc(var(--step-index, 0) * 80ms);
@@ -144,7 +144,7 @@
   font-weight: var(--lib-font-weight-semibold, 600);
   flex-shrink: 0;
   position: relative;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     color var(--lib-transition-fast, 150ms ease),
     transform var(--lib-transition-fast, 150ms ease);
@@ -202,7 +202,8 @@
   cursor: not-allowed;
 }
 
-.lib-stepper__step--unreachable:not(.lib-stepper__step--active):not(.lib-stepper__step--completed) .lib-stepper__step-icon {
+.lib-stepper__step--unreachable:not(.lib-stepper__step--active):not(.lib-stepper__step--completed)
+  .lib-stepper__step-icon {
   opacity: 0.6;
 }
 
@@ -239,10 +240,18 @@
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.15); }
-  70% { transform: scale(0.92); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ========================================
@@ -312,7 +321,9 @@
 /* Vertical: connector is a vertical line below the icon */
 :host(.lib-stepper--vertical) .lib-stepper__connector {
   position: absolute;
-  left: calc(var(--lib-spacing-2, 8px) + var(--step-icon-size) / 2 - var(--step-connector-height) / 2);
+  left: calc(
+    var(--lib-spacing-2, 8px) + var(--step-icon-size) / 2 - var(--step-connector-height) / 2
+  );
   top: calc(var(--lib-spacing-2, 8px) + var(--step-icon-size));
   width: var(--step-connector-height);
   bottom: 0;
@@ -344,7 +355,7 @@
 }
 
 /* Flow animation (liquid effect) */
-:host([data-animation="flow"]) .lib-stepper__connector--completed::after {
+:host([data-animation='flow']) .lib-stepper__connector--completed::after {
   animation: flowConnector 600ms ease-out forwards;
 }
 
@@ -400,7 +411,6 @@
   padding-block-start: var(--lib-spacing-2, 8px);
 }
 
-
 /* ========================================
    Content Slide Animations
    ======================================== */
@@ -442,8 +452,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Scale Animation */
@@ -532,11 +546,11 @@
     animation: none !important;
     transition: none !important;
   }
-  
+
   .lib-stepper__connector--completed::after {
     transform: scaleX(1);
   }
-  
+
   :host(.lib-stepper--vertical) .lib-stepper__connector--completed::after {
     transform: scaleY(1);
   }

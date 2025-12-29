@@ -1,6 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 import { TableComponent, ColumnDefDirective } from '../../../../library/table';
-import { Task, TaskStatus, TaskPriority } from '../../../dummy/models';
+import { Task } from '../../../dummy/models';
 import { TASKS } from '../../../dummy/data';
 
 @Component({
@@ -20,10 +20,9 @@ import { TASKS } from '../../../dummy/data';
           <ng-container libColumnDef="title" [sortable]="true">
             <ng-template #header>
               <button class="sort-header" (click)="sort('title')">
-                Title @if (sortColumn() === 'title') {
-                <span class="sort-icon">{{
-                  sortDirection() === 'asc' ? '↑' : '↓'
-                }}</span>
+                Title
+                @if (sortColumn() === 'title') {
+                  <span class="sort-icon">{{ sortDirection() === 'asc' ? '↑' : '↓' }}</span>
                 }
               </button>
             </ng-template>
@@ -33,10 +32,9 @@ import { TASKS } from '../../../dummy/data';
           <ng-container libColumnDef="priority" [sortable]="true">
             <ng-template #header>
               <button class="sort-header" (click)="sort('priority')">
-                Priority @if (sortColumn() === 'priority') {
-                <span class="sort-icon">{{
-                  sortDirection() === 'asc' ? '↑' : '↓'
-                }}</span>
+                Priority
+                @if (sortColumn() === 'priority') {
+                  <span class="sort-icon">{{ sortDirection() === 'asc' ? '↑' : '↓' }}</span>
                 }
               </button>
             </ng-template>
@@ -50,10 +48,9 @@ import { TASKS } from '../../../dummy/data';
           <ng-container libColumnDef="status" [sortable]="true">
             <ng-template #header>
               <button class="sort-header" (click)="sort('status')">
-                Status @if (sortColumn() === 'status') {
-                <span class="sort-icon">{{
-                  sortDirection() === 'asc' ? '↑' : '↓'
-                }}</span>
+                Status
+                @if (sortColumn() === 'status') {
+                  <span class="sort-icon">{{ sortDirection() === 'asc' ? '↑' : '↓' }}</span>
                 }
               </button>
             </ng-template>
@@ -63,10 +60,9 @@ import { TASKS } from '../../../dummy/data';
           <ng-container libColumnDef="dueDate" [sortable]="true">
             <ng-template #header>
               <button class="sort-header" (click)="sort('dueDate')">
-                Due Date @if (sortColumn() === 'dueDate') {
-                <span class="sort-icon">{{
-                  sortDirection() === 'asc' ? '↑' : '↓'
-                }}</span>
+                Due Date
+                @if (sortColumn() === 'dueDate') {
+                  <span class="sort-icon">{{ sortDirection() === 'asc' ? '↑' : '↓' }}</span>
                 }
               </button>
             </ng-template>

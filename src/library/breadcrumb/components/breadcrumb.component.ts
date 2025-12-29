@@ -46,19 +46,24 @@ import type {
   imports: [BreadcrumbItemComponent, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-breadcrumb',
+    class: 'lib-breadcrumb',
     '[class.lib-breadcrumb--sm]': 'size() === "sm"',
     '[class.lib-breadcrumb--lg]': 'size() === "lg"',
   },
   template: `
     <nav [attr.aria-label]="ariaLabel()">
       <ol class="lib-breadcrumb__list">
-        @for (item of displayItems(); track item.id ?? item.label; let i = $index; let last = $last) {
+        @for (
+          item of displayItems();
+          track item.id ?? item.label;
+          let i = $index;
+          let last = $last
+        ) {
           <li class="lib-breadcrumb__item">
             @if (item.isEllipsis && item.hiddenItems?.length) {
               <!-- Ellipsis with dropdown -->
               <div class="lib-breadcrumb-ellipsis">
-                <button 
+                <button
                   type="button"
                   class="lib-breadcrumb-ellipsis__trigger"
                   [attr.aria-expanded]="dropdownOpen()"
@@ -68,16 +73,16 @@ import type {
                 >
                   <span class="lib-breadcrumb-ellipsis__dots">•••</span>
                 </button>
-                
+
                 @if (dropdownOpen()) {
-                  <ul 
-                    class="lib-breadcrumb-ellipsis__menu" 
+                  <ul
+                    class="lib-breadcrumb-ellipsis__menu"
                     role="menu"
                     (keydown)="onMenuKeydown($event)"
                   >
                     @for (hidden of item.hiddenItems; track hidden.id ?? hidden.label) {
                       <li role="none">
-                        <a 
+                        <a
                           role="menuitem"
                           class="lib-breadcrumb-ellipsis__menu-item"
                           [routerLink]="hidden.link"
@@ -102,13 +107,16 @@ import type {
                 (itemClick)="onItemClick($event)"
               />
             }
-            
+
             @if (!last) {
               <span class="lib-breadcrumb__separator" aria-hidden="true">
                 @switch (separator()) {
                   @case ('chevron') {
                     <svg viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      />
                     </svg>
                   }
                   @case ('slash') {
@@ -167,8 +175,8 @@ export class BreadcrumbComponent {
     const autoGen = this.autoGenerate();
 
     // Use input items if provided, otherwise use service
-    const items = inputItems.length > 0 ? inputItems : 
-                  autoGen ? this.breadcrumbService.items() : [];
+    const items =
+      inputItems.length > 0 ? inputItems : autoGen ? this.breadcrumbService.items() : [];
 
     // Apply max items collapse if needed
     const max = this.maxItems();
@@ -216,27 +224,33 @@ export class BreadcrumbComponent {
     } else if (event.key === 'ArrowDown' && this.dropdownOpen()) {
       event.preventDefault();
       // Focus first menu item
-      const menu = this.elementRef.nativeElement.querySelector('.lib-breadcrumb-ellipsis__menu-item');
+      const menu = this.elementRef.nativeElement.querySelector(
+        '.lib-breadcrumb-ellipsis__menu-item'
+      );
       menu?.focus();
     }
   }
 
   /** Handle keyboard navigation in menu */
   onMenuKeydown(event: KeyboardEvent): void {
-    const items = this.elementRef.nativeElement.querySelectorAll('.lib-breadcrumb-ellipsis__menu-item');
+    const items = this.elementRef.nativeElement.querySelectorAll(
+      '.lib-breadcrumb-ellipsis__menu-item'
+    );
     const currentIndex = Array.from(items).indexOf(document.activeElement);
 
     switch (event.key) {
-      case 'ArrowDown':
+      case 'ArrowDown': {
         event.preventDefault();
         const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
         (items[nextIndex] as HTMLElement)?.focus();
         break;
-      case 'ArrowUp':
+      }
+      case 'ArrowUp': {
         event.preventDefault();
         const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
         (items[prevIndex] as HTMLElement)?.focus();
         break;
+      }
       case 'Home':
         event.preventDefault();
         (items[0] as HTMLElement)?.focus();

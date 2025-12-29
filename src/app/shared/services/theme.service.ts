@@ -39,7 +39,7 @@ export class ThemeService {
 
   constructor() {
     this.loadFromStorage();
-    
+
     // Effect to apply theme changes to DOM
     effect(() => {
       const color = this._themeColor();
@@ -67,7 +67,7 @@ export class ThemeService {
    * Toggle between light and dark mode
    */
   toggleMode(): void {
-    this._themeMode.update(mode => mode === 'light' ? 'dark' : 'light');
+    this._themeMode.update(mode => (mode === 'light' ? 'dark' : 'light'));
   }
 
   /**
@@ -75,14 +75,14 @@ export class ThemeService {
    */
   private applyTheme(color: ThemeColor, mode: ThemeMode): void {
     const root = document.documentElement;
-    
+
     // Set color theme attribute (indigo is default, so we remove it)
     if (color === 'indigo') {
       root.removeAttribute('data-theme-color');
     } else {
       root.setAttribute('data-theme-color', color);
     }
-    
+
     // Set mode attribute
     if (mode === 'light') {
       root.removeAttribute('data-theme-mode');

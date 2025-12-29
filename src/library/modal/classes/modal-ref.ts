@@ -3,35 +3,35 @@ import type { ModalCloseResult, ModalCloseReason, ModalConfig } from '../types/m
 
 /**
  * Reference to an open modal dialog.
- * 
+ *
  * Provides methods to close the modal and observables to react to close events.
  * The modal content component receives this via MODAL_REF injection token.
- * 
+ *
  * @template D - Type of data passed into the modal
  * @template R - Type of result returned when modal closes
- * 
+ *
  * @example
  * ```typescript
  * // In the component that opened the modal
  * const modalRef = modalService.open(EditUserComponent, {
  *   data: { userId: 123 }
  * });
- * 
+ *
  * modalRef.afterClosed$.subscribe(({ result, reason }) => {
  *   if (reason === 'button' && result?.saved) {
  *     this.refreshUsers();
  *   }
  * });
- * 
+ *
  * // In the modal content component
  * export class EditUserComponent {
  *   private modalRef = inject(MODAL_REF<UserData, { saved: boolean }>);
- *   
+ *
  *   save() {
  *     // ... save logic
  *     this.modalRef.close({ saved: true });
  *   }
- *   
+ *
  *   cancel() {
  *     this.modalRef.close({ saved: false });
  *   }
@@ -41,16 +41,16 @@ import type { ModalCloseResult, ModalCloseReason, ModalConfig } from '../types/m
 export class ModalRef<D = unknown, R = unknown> {
   /** Unique identifier for this modal instance */
   readonly id: string;
-  
+
   /** Subject for afterClosed events */
   private readonly _afterClosed = new Subject<ModalCloseResult<R>>();
-  
+
   /** Subject for backdrop click events */
   private readonly _backdropClick = new Subject<void>();
-  
+
   /** Subject for keydown events within the modal */
   private readonly _keydownEvents = new Subject<KeyboardEvent>();
-  
+
   /** Whether the modal is currently closing (prevents double-close) */
   private _isClosing = false;
 
@@ -59,13 +59,13 @@ export class ModalRef<D = unknown, R = unknown> {
    * Includes both the result data and the close reason.
    */
   readonly afterClosed$: Observable<ModalCloseResult<R>> = this._afterClosed.asObservable();
-  
+
   /**
    * Observable that emits when the backdrop is clicked.
    * Useful for custom handling before close.
    */
   readonly backdropClick$: Observable<void> = this._backdropClick.asObservable();
-  
+
   /**
    * Observable that emits keyboard events within the modal.
    * Useful for custom keyboard handling.
@@ -74,7 +74,7 @@ export class ModalRef<D = unknown, R = unknown> {
 
   /** Reference to the dynamically created component instance */
   componentInstance: unknown = null;
-  
+
   /** Callback to trigger the container's exit animation and cleanup */
   private _onCloseCallback: ((result: ModalCloseResult<R>) => void) | null = null;
 
@@ -92,7 +92,7 @@ export class ModalRef<D = unknown, R = unknown> {
   /**
    * Close the modal with an optional result.
    * The result and reason will be emitted via afterClosed$.
-   * 
+   *
    * @param result - Data to return to the opener
    */
   close(result?: R): void {
@@ -155,12 +155,12 @@ export class ModalRef<D = unknown, R = unknown> {
     this._isClosing = true;
 
     const closeResult: ModalCloseResult<R> = { result, reason };
-    
+
     // Trigger container cleanup and animation
     if (this._onCloseCallback) {
       this._onCloseCallback(closeResult);
     }
-    
+
     // Emit to subscribers
     this._afterClosed.next(closeResult);
     this._afterClosed.complete();

@@ -1,27 +1,27 @@
 /**
  * Toast Service
- * 
+ *
  * Service for showing toast notifications.
  * Provides convenience methods for different variants.
  * Manages stacking and positioning.
- * 
+ *
  * @example
  * ```typescript
  * @Component({...})
  * export class MyComponent {
  *   private toast = inject(ToastService);
- *   
+ *
  *   showSuccess() {
  *     this.toast.success('Item saved successfully');
  *   }
- *   
+ *
  *   showWithAction() {
  *     const ref = this.toast.show({
  *       message: 'Item deleted',
  *       variant: 'warning',
- *       action: { 
- *         label: 'Undo', 
- *         callback: () => this.undoDelete() 
+ *       action: {
+ *         label: 'Undo',
+ *         callback: () => this.undoDelete()
  *       }
  *     });
  *   }
@@ -41,15 +41,8 @@ import {
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { ToastContainerComponent } from '../container/toast-container.component';
 import { ToastRef } from '../classes/toast-ref';
-import type { 
-  ToastConfig, 
-  ToastPosition, 
-  ToastData 
-} from '../types/toast.types';
-import { 
-  DEFAULT_TOAST_CONFIG, 
-  MAX_VISIBLE_TOASTS 
-} from '../types/toast.types';
+import type { ToastConfig, ToastPosition, ToastData } from '../types/toast.types';
+import { DEFAULT_TOAST_CONFIG, MAX_VISIBLE_TOASTS } from '../types/toast.types';
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
@@ -57,7 +50,7 @@ export class ToastService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly appRef = inject(ApplicationRef);
   private readonly environmentInjector = inject(EnvironmentInjector);
-  
+
   /** Container components for each position */
   private containers = new Map<ToastPosition, ComponentRef<ToastContainerComponent>>();
 
@@ -100,26 +93,26 @@ export class ToastService {
     // Resolve config with defaults
     const data = this.resolveConfig(config);
     const position = data.position;
-    
+
     // Get or create container for this position
     const container = this.getOrCreateContainer(position);
-    
+
     // Check max visible toasts
     if (container.instance.count >= MAX_VISIBLE_TOASTS) {
       container.instance.dismissOldest();
     }
-    
+
     // Create toast ref
     const toastRef = new ToastRef(data);
-    
+
     // Add to container
     container.instance.addToast(toastRef);
-    
+
     // Start timer if duration > 0
     if (data.duration > 0) {
       toastRef.startTimer(data.duration);
     }
-    
+
     return toastRef;
   }
 
@@ -145,21 +138,21 @@ export class ToastService {
   /** Get or create container for a position */
   private getOrCreateContainer(position: ToastPosition): ComponentRef<ToastContainerComponent> {
     let container = this.containers.get(position);
-    
+
     if (!container) {
       container = createComponent(ToastContainerComponent, {
         environmentInjector: this.environmentInjector,
       });
-      
+
       container.instance.setPosition(position);
-      
+
       // Attach to app and DOM
       this.appRef.attachView(container.hostView);
       this.document.body.appendChild(container.location.nativeElement);
-      
+
       this.containers.set(position, container);
     }
-    
+
     return container;
   }
 
