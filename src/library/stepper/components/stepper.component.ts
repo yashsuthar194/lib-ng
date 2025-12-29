@@ -25,10 +25,10 @@ import { DEFAULT_STEPPER_CONFIG } from '../types/stepper.types';
 
 /**
  * Stepper Component
- * 
+ *
  * Multi-step workflow component with unique animations,
  * programmatic control, and full disable support.
- * 
+ *
  * @example
  * ```html
  * <lib-stepper #stepper [(activeStepIndex)]="currentStep" [linear]="true">
@@ -36,7 +36,7 @@ import { DEFAULT_STEPPER_CONFIG } from '../types/stepper.types';
  *   <lib-step label="Profile" [disabled]="!step1Valid()">Step 2 content</lib-step>
  *   <lib-step id="confirm" label="Confirm">Step 3 content</lib-step>
  * </lib-stepper>
- * 
+ *
  * <button (click)="stepper.next()">Next</button>
  * <button (click)="stepper.goToStepById('confirm')">Go to Confirm</button>
  * ```
@@ -66,50 +66,50 @@ export class StepperComponent implements AfterContentInit {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   // ========== Inputs ==========
-  
+
   /** Horizontal or vertical layout */
   readonly orientation = input<StepperOrientation>(DEFAULT_STEPPER_CONFIG.orientation);
-  
+
   /** Animation style for content transitions */
   readonly animation = input<StepperAnimation>(DEFAULT_STEPPER_CONFIG.animation);
-  
+
   /** Animation duration in ms */
   readonly animationDuration = input(DEFAULT_STEPPER_CONFIG.animationDuration);
-  
+
   /** Linear mode: must complete current step to proceed */
   readonly linear = input(DEFAULT_STEPPER_CONFIG.linear);
-  
+
   /** Label position (horizontal only) */
   readonly labelPosition = input<StepperLabelPosition>(DEFAULT_STEPPER_CONFIG.labelPosition);
-  
+
   /** Show connector lines between steps */
   readonly showConnector = input(DEFAULT_STEPPER_CONFIG.showConnector);
-  
+
   /** Alternative label layout (labels below icons) */
   readonly alternativeLabel = input(DEFAULT_STEPPER_CONFIG.alternativeLabel);
-  
+
   /** Active step index (two-way bindable) */
   readonly activeStepIndex = model(0);
 
   // ========== Outputs ==========
-  
+
   /** Emits when step changes */
   readonly stepChange = output<StepChangeEvent>();
-  
+
   /** Emits just the new index */
   readonly selectionChange = output<number>();
-  
+
   /** Emits when content animation completes */
   readonly animationDone = output<void>();
 
   // ========== Content ==========
-  
+
   readonly steps = contentChildren(StepComponent);
 
   // ========== Computed ==========
-  
+
   readonly activeStep = computed(() => this.steps()[this.stepperService.activeIndex()] ?? null);
-  
+
   readonly animationClass = computed(() => {
     const dir = this.stepperService.animationDirection();
     const anim = this.animation();
@@ -137,7 +137,7 @@ export class StepperComponent implements AfterContentInit {
     });
 
     // Sync service with model (callback, not subscription)
-    this.stepperService.onStepChange((event) => {
+    this.stepperService.onStepChange(event => {
       this.activeStepIndex.set(event.currentIndex);
       this.stepChange.emit(event);
       this.selectionChange.emit(event.currentIndex);
@@ -147,12 +147,12 @@ export class StepperComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     const allSteps = this.steps();
     allSteps.forEach((step, i) => step.setIndex(i));
-    
+
     // Register step IDs and count
     this.stepperService.setStepCount(allSteps.length);
     this.stepperService.registerStepIds(allSteps.map(s => s.effectiveId));
     this.stepperService.setLinear(this.linear());
-    
+
     // Sync input-based disabled to service
     allSteps.forEach((step, i) => {
       if (step.disabled()) {
@@ -168,7 +168,7 @@ export class StepperComponent implements AfterContentInit {
   }
 
   // ========== Public API: Navigation ==========
-  
+
   /** Go to next step */
   next(): boolean {
     return this.stepperService.next();
@@ -190,7 +190,7 @@ export class StepperComponent implements AfterContentInit {
   }
 
   // ========== Public API: Step State ==========
-  
+
   /** Mark a step as completed */
   completeStep(index?: number): void {
     this.stepperService.completeStep(index);
@@ -212,7 +212,7 @@ export class StepperComponent implements AfterContentInit {
   }
 
   // ========== Public API: Disable Control ==========
-  
+
   /** Disable a step by index */
   disableStep(index: number): void {
     this.stepperService.disableStep(index);
@@ -244,14 +244,14 @@ export class StepperComponent implements AfterContentInit {
   }
 
   // ========== Public API: Reset ==========
-  
+
   /** Reset stepper to first step */
   reset(): void {
     this.stepperService.reset();
   }
 
   // ========== Template Helpers ==========
-  
+
   isStepCompleted(index: number): boolean {
     return this.stepperService.isStepCompleted(index);
   }
@@ -263,21 +263,21 @@ export class StepperComponent implements AfterContentInit {
   /** Check if step can be navigated to (considers linear mode) */
   isStepReachable(index: number): boolean {
     if (this.isStepDisabled(index)) return false;
-    
+
     const current = this.stepperService.activeIndex();
-    
+
     // Active step is always reachable
     if (index === current) return true;
-    
+
     // In non-linear mode, all non-disabled steps are reachable
     if (!this.linear()) return true;
-    
+
     // In linear mode: can go backwards freely
     if (index < current) return true;
-    
+
     // In linear mode: can only go to next step if current is completed
     if (index === current + 1 && this.isStepCompleted(current)) return true;
-    
+
     return false;
   }
 
@@ -286,7 +286,7 @@ export class StepperComponent implements AfterContentInit {
   }
 
   // ========== Event Handlers ==========
-  
+
   onStepHeaderClick(step: StepComponent, index: number): void {
     if (this.isStepDisabled(index)) return;
     if (!step.editable() && this.isStepCompleted(index)) return;
@@ -307,16 +307,28 @@ export class StepperComponent implements AfterContentInit {
 
     switch (event.key) {
       case 'ArrowLeft':
-        if (isHorizontal) { event.preventDefault(); this.focusPreviousStep(); }
+        if (isHorizontal) {
+          event.preventDefault();
+          this.focusPreviousStep();
+        }
         break;
       case 'ArrowRight':
-        if (isHorizontal) { event.preventDefault(); this.focusNextStep(); }
+        if (isHorizontal) {
+          event.preventDefault();
+          this.focusNextStep();
+        }
         break;
       case 'ArrowUp':
-        if (!isHorizontal) { event.preventDefault(); this.focusPreviousStep(); }
+        if (!isHorizontal) {
+          event.preventDefault();
+          this.focusPreviousStep();
+        }
         break;
       case 'ArrowDown':
-        if (!isHorizontal) { event.preventDefault(); this.focusNextStep(); }
+        if (!isHorizontal) {
+          event.preventDefault();
+          this.focusNextStep();
+        }
         break;
       case 'Home':
         event.preventDefault();
@@ -327,19 +339,20 @@ export class StepperComponent implements AfterContentInit {
         this.focusStep(this.steps().length - 1);
         break;
       case 'Enter':
-      case ' ':
+      case ' ': {
         event.preventDefault();
         const focusedIdx = this.getFocusedStepIndex();
         if (focusedIdx >= 0 && !this.isStepDisabled(focusedIdx)) {
           this.stepperService.goToStep(focusedIdx);
         }
         break;
+      }
     }
   }
 
   private focusNextStep(): void {
     const allSteps = this.steps();
-    let current = this.getFocusedStepIndex();
+    const current = this.getFocusedStepIndex();
     for (let i = 1; i <= allSteps.length; i++) {
       const next = (current + i) % allSteps.length;
       if (!this.isStepDisabled(next)) {
@@ -351,7 +364,7 @@ export class StepperComponent implements AfterContentInit {
 
   private focusPreviousStep(): void {
     const allSteps = this.steps();
-    let current = this.getFocusedStepIndex();
+    const current = this.getFocusedStepIndex();
     for (let i = 1; i <= allSteps.length; i++) {
       const prev = (current - i + allSteps.length) % allSteps.length;
       if (!this.isStepDisabled(prev)) {

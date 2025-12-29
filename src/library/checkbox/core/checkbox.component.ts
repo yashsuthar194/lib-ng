@@ -1,22 +1,22 @@
 /**
  * Checkbox Component
- * 
+ *
  * @description
  * A standard checkbox component.
  * Implements ControlValueAccessor for full Angular Forms integration.
  * For toggle switches, use the SwitchComponent instead.
- * 
+ *
  * @example
  * ```html
  * <!-- Basic checkbox -->
  * <lib-checkbox [(ngModel)]="accepted">I accept the terms</lib-checkbox>
- * 
+ *
  * <!-- With FormControl -->
  * <lib-checkbox [formControl]="termsControl">Terms</lib-checkbox>
- * 
+ *
  * <!-- Indeterminate (for Select All) -->
  * <lib-checkbox [indeterminate]="someSelected">Select All</lib-checkbox>
- * 
+ *
  * <!-- With ripple -->
  * <lib-checkbox [ripple]="true">With Ripple</lib-checkbox>
  * ```
@@ -39,11 +39,11 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { 
-  CheckboxSize, 
+import {
+  CheckboxSize,
   LabelPosition,
   CheckboxChangeEvent,
-  DEFAULT_CHECKBOX_CONFIG 
+  DEFAULT_CHECKBOX_CONFIG,
 } from '../types/checkbox.types';
 
 @Component({
@@ -60,7 +60,7 @@ import {
     },
   ],
   host: {
-    'class': 'lib-checkbox',
+    class: 'lib-checkbox',
     // Size classes
     '[class.lib-checkbox--sm]': 'size() === "sm"',
     '[class.lib-checkbox--md]': 'size() === "md"',
@@ -122,8 +122,8 @@ export class CheckboxComponent implements ControlValueAccessor, OnDestroy {
   /** Emits when checked state changes */
   readonly checkedChange = output<boolean>();
 
-  /** Emits detailed change event */
-  readonly change = output<CheckboxChangeEvent>();
+  /** Emits detailed change event (use this for full event details) */
+  readonly changed = output<CheckboxChangeEvent>();
 
   // ============================================
   // Internal State
@@ -132,10 +132,11 @@ export class CheckboxComponent implements ControlValueAccessor, OnDestroy {
   private readonly internalChecked = signal(false);
   private readonly internalDisabled = signal(false);
 
-  /** 
+  /**
    * Track ripple elements for cleanup - prevents memory leaks
    */
-  private readonly rippleCleanups: Array<{ element: HTMLElement; timeoutId: number | undefined }> = [];
+  private readonly rippleCleanups: Array<{ element: HTMLElement; timeoutId: number | undefined }> =
+    [];
 
   // ============================================
   // Computed
@@ -188,11 +189,11 @@ export class CheckboxComponent implements ControlValueAccessor, OnDestroy {
 
     const newValue = !this.isChecked();
     this.internalChecked.set(newValue);
-    
+
     // Emit events
     this.onChange?.(newValue);
     this.checkedChange.emit(newValue);
-    this.change.emit({
+    this.changed.emit({
       checked: newValue,
       value: this.value(),
       source: this,
@@ -205,7 +206,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnDestroy {
   }
 
   /** Handle space key */
-  onSpace(event: KeyboardEvent): void {
+  onSpace(event: KeyboardEvent | Event): void {
     event.preventDefault();
     this.toggle(event);
   }
@@ -265,9 +266,9 @@ export class CheckboxComponent implements ControlValueAccessor, OnDestroy {
 
       this.renderer.appendChild(box, ripple);
 
-      const cleanupEntry: { element: HTMLElement; timeoutId: number | undefined } = { 
-        element: ripple, 
-        timeoutId: undefined 
+      const cleanupEntry: { element: HTMLElement; timeoutId: number | undefined } = {
+        element: ripple,
+        timeoutId: undefined,
       };
 
       cleanupEntry.timeoutId = window.setTimeout(() => {

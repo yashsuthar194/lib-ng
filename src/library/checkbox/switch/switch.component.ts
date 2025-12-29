@@ -1,30 +1,30 @@
 /**
  * Switch Component
- * 
+ *
  * @description
  * A toggle switch component for on/off settings.
  * Implements ControlValueAccessor for Angular Forms integration.
  * Supports optional icons for checked/unchecked states.
- * 
+ *
  * @example
  * ```html
  * <!-- Basic switch -->
  * <lib-switch [(ngModel)]="darkMode">Dark Mode</lib-switch>
- * 
+ *
  * <!-- With dynamic labels -->
- * <lib-switch 
+ * <lib-switch
  *   [(ngModel)]="enabled"
  *   checkedLabel="ON"
  *   uncheckedLabel="OFF">
  * </lib-switch>
- * 
+ *
  * <!-- With icons -->
  * <lib-switch [(ngModel)]="theme">
  *   <ng-template libSwitchCheckedIcon>🌙</ng-template>
  *   <ng-template libSwitchUncheckedIcon>☀️</ng-template>
  *   Theme
  * </lib-switch>
- * 
+ *
  * <!-- With FormControl -->
  * <lib-switch [formControl]="notificationsControl">Notifications</lib-switch>
  * ```
@@ -70,7 +70,7 @@ export interface SwitchChangeEvent {
 /**
  * Directive marker for the checked state icon template.
  * Use with ng-template to provide custom icon content.
- * 
+ *
  * @example
  * ```html
  * <lib-switch>
@@ -78,16 +78,16 @@ export interface SwitchChangeEvent {
  * </lib-switch>
  * ```
  */
-@Directive({ 
-  selector: '[libSwitchCheckedIcon]', 
-  standalone: true 
+@Directive({
+  selector: '[libSwitchCheckedIcon]',
+  standalone: true,
 })
 export class SwitchCheckedIconDirective {}
 
 /**
  * Directive marker for the unchecked state icon template.
  * Use with ng-template to provide custom icon content.
- * 
+ *
  * @example
  * ```html
  * <lib-switch>
@@ -95,9 +95,9 @@ export class SwitchCheckedIconDirective {}
  * </lib-switch>
  * ```
  */
-@Directive({ 
-  selector: '[libSwitchUncheckedIcon]', 
-  standalone: true 
+@Directive({
+  selector: '[libSwitchUncheckedIcon]',
+  standalone: true,
 })
 export class SwitchUncheckedIconDirective {}
 
@@ -116,7 +116,7 @@ export class SwitchUncheckedIconDirective {}
     },
   ],
   host: {
-    'class': 'lib-switch',
+    class: 'lib-switch',
     '[class.lib-switch--sm]': 'size() === "sm"',
     '[class.lib-switch--md]': 'size() === "md"',
     '[class.lib-switch--lg]': 'size() === "lg"',
@@ -186,8 +186,8 @@ export class SwitchComponent implements ControlValueAccessor, OnDestroy {
   /** Emits when checked state changes */
   readonly checkedChange = output<boolean>();
 
-  /** Emits detailed change event */
-  readonly change = output<SwitchChangeEvent>();
+  /** Emits detailed change event (use this for full event details) */
+  readonly changed = output<SwitchChangeEvent>();
 
   // ============================================
   // Internal State
@@ -196,10 +196,11 @@ export class SwitchComponent implements ControlValueAccessor, OnDestroy {
   private readonly internalChecked = signal(false);
   private readonly internalDisabled = signal(false);
 
-  /** 
+  /**
    * Track ripple elements for cleanup - prevents memory leaks
    */
-  private readonly rippleCleanups: Array<{ element: HTMLElement; timeoutId: number | undefined }> = [];
+  private readonly rippleCleanups: Array<{ element: HTMLElement; timeoutId: number | undefined }> =
+    [];
 
   // ============================================
   // Computed
@@ -249,7 +250,7 @@ export class SwitchComponent implements ControlValueAccessor, OnDestroy {
   // Public Methods
   // ============================================
 
-  toggle(event: Event): void {
+  toggle(event: Event | KeyboardEvent): void {
     event.preventDefault();
     event.stopPropagation();
 
@@ -257,10 +258,10 @@ export class SwitchComponent implements ControlValueAccessor, OnDestroy {
 
     const newValue = !this.isChecked();
     this.internalChecked.set(newValue);
-    
+
     this.onChange?.(newValue);
     this.checkedChange.emit(newValue);
-    this.change.emit({
+    this.changed.emit({
       checked: newValue,
       source: this,
     });
@@ -270,7 +271,7 @@ export class SwitchComponent implements ControlValueAccessor, OnDestroy {
     }
   }
 
-  onSpace(event: KeyboardEvent): void {
+  onSpace(event: KeyboardEvent | Event): void {
     event.preventDefault();
     this.toggle(event);
   }
@@ -327,9 +328,9 @@ export class SwitchComponent implements ControlValueAccessor, OnDestroy {
 
       this.renderer.appendChild(track, ripple);
 
-      const cleanupEntry: { element: HTMLElement; timeoutId: number | undefined } = { 
-        element: ripple, 
-        timeoutId: undefined 
+      const cleanupEntry: { element: HTMLElement; timeoutId: number | undefined } = {
+        element: ripple,
+        timeoutId: undefined,
       };
 
       cleanupEntry.timeoutId = window.setTimeout(() => {

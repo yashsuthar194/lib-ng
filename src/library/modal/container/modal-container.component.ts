@@ -15,23 +15,19 @@ import {
   Injector,
   createComponent,
   EnvironmentInjector,
+  ComponentRef,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { FocusTrapDirective } from '../../shared/directives/focus-trap.directive';
 import { ModalRef } from '../classes/modal-ref';
 import { MODAL_REF, MODAL_DATA } from '../tokens/modal-tokens';
-import type { 
-  ModalConfig, 
-  ModalAnimation, 
-  ModalCloseResult,
-  AnimationOriginPosition 
-} from '../types/modal.types';
+import type { ModalConfig, AnimationOriginPosition } from '../types/modal.types';
 import { getAnimationOrigin, MODAL_Z_INDEX_BASE } from '../types/modal.types';
 
 /**
  * Container component for modals.
  * Handles backdrop, animations, focus trapping, and dynamic component insertion.
- * 
+ *
  * @internal This component is created programmatically by ModalService.
  */
 @Component({
@@ -41,7 +37,7 @@ import { getAnimationOrigin, MODAL_Z_INDEX_BASE } from '../types/modal.types';
   template: `
     <!-- Backdrop -->
     @if (config()?.hasBackdrop !== false) {
-      <div 
+      <div
         class="lib-modal__backdrop"
         [class.lib-modal__backdrop--visible]="isOpen()"
         [class]="config()?.backdropClass"
@@ -50,9 +46,9 @@ import { getAnimationOrigin, MODAL_Z_INDEX_BASE } from '../types/modal.types';
         aria-hidden="true"
       ></div>
     }
-    
+
     <!-- Modal Panel -->
-    <div 
+    <div
       #modalPanel
       class="lib-modal__panel"
       [class]="panelClasses()"
@@ -81,7 +77,7 @@ import { getAnimationOrigin, MODAL_Z_INDEX_BASE } from '../types/modal.types';
   styleUrl: './modal-container.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-modal-container',
+    class: 'lib-modal-container',
     '[class.lib-modal-container--open]': 'isOpen()',
     '[attr.data-animation]': 'animation()',
   },
@@ -95,42 +91,42 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
 
   @ViewChild('contentContainer', { read: ViewContainerRef, static: true })
   contentContainer!: ViewContainerRef;
-  
+
   @ViewChild('modalPanel', { static: true })
   modalPanel!: ElementRef<HTMLElement>;
 
   /** Current modal configuration */
   readonly config = signal<ModalConfig | null>(null);
-  
+
   /** Whether the modal is open (controls animation state) */
   readonly isOpen = signal(false);
-  
+
   /** Z-index for this modal */
   readonly zIndex = signal(MODAL_Z_INDEX_BASE);
-  
+
   /** Reference to this modal */
   private modalRef: ModalRef<unknown, unknown> | null = null;
-  
+
   /** Reference to the dynamically created component */
-  private componentRef: any = null;
+  private componentRef: ComponentRef<unknown> | null = null;
 
   /** Animation type */
   readonly animation = computed(() => this.config()?.animation ?? 'scale');
-  
+
   /** Calculated origin position for origin animation */
   readonly originPosition = signal<AnimationOriginPosition | null>(null);
-  
+
   /** Combined panel classes */
   readonly panelClasses = computed(() => {
     const config = this.config();
     const animation = this.animation();
     const classes: string[] = [];
-    
+
     // Animation class
     if (animation !== 'none') {
       classes.push(`lib-modal__panel--${animation}`);
     }
-    
+
     // Custom panel classes
     if (config?.panelClass) {
       if (Array.isArray(config.panelClass)) {
@@ -139,7 +135,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
         classes.push(config.panelClass);
       }
     }
-    
+
     return classes.join(' ');
   });
 
@@ -168,7 +164,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
     this.modalRef = modalRef as ModalRef<unknown, unknown>;
     this.config.set(config);
     this.zIndex.set(zIndex);
-    
+
     // Calculate origin position for animation
     if (config.animation === 'origin' && config.animationOrigin) {
       const origin = getAnimationOrigin(
@@ -178,7 +174,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
       );
       this.originPosition.set(origin);
     }
-    
+
     // Create the content component with ModalRef injection
     const childInjector = Injector.create({
       parent: this.injector,
@@ -187,23 +183,23 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
         { provide: MODAL_DATA, useValue: config.data },
       ],
     });
-    
+
     this.componentRef = createComponent(component, {
       environmentInjector: this.environmentInjector,
       elementInjector: childInjector,
     });
-    
+
     // Set component instance on ModalRef
     modalRef.componentInstance = this.componentRef.instance;
-    
+
     // Insert the component
     this.contentContainer.insert(this.componentRef.hostView);
-    
+
     // Register close callback
-    modalRef._registerCloseCallback((result) => {
-      this.startExitAnimation(result);
+    modalRef._registerCloseCallback(() => {
+      this.startExitAnimation();
     });
-    
+
     // Trigger enter animation on next frame
     requestAnimationFrame(() => {
       this.isOpen.set(true);
@@ -225,7 +221,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent): void {
     this.modalRef?._emitKeydownEvent(event);
-    
+
     if (event.key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();
@@ -237,16 +233,20 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
    * Start the exit animation.
    * @internal
    */
-  startExitAnimation(result: ModalCloseResult<unknown>): void {
+  startExitAnimation(): void {
     this.isOpen.set(false);
-    
+
     // Wait for animation to complete before destroying
     const panel = this.modalPanel?.nativeElement;
     if (panel && this.animation() !== 'none') {
-      panel.addEventListener('animationend', () => {
-        this.destroy();
-      }, { once: true });
-      
+      panel.addEventListener(
+        'animationend',
+        () => {
+          this.destroy();
+        },
+        { once: true }
+      );
+
       // Fallback timeout in case animationend doesn't fire
       this.exitTimeoutId = window.setTimeout(() => this.destroy(), 300);
     } else {
@@ -256,7 +256,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
 
   /** Whether this container has been destroyed */
   private destroyed = false;
-  
+
   /** Fallback timeout ID for animation cleanup */
   private exitTimeoutId?: number;
 
@@ -267,13 +267,13 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
     // Guard against double-destroy from both animationend and timeout
     if (this.destroyed) return;
     this.destroyed = true;
-    
+
     // Clear fallback timeout if animation completed first
     if (this.exitTimeoutId) {
       clearTimeout(this.exitTimeoutId);
       this.exitTimeoutId = undefined;
     }
-    
+
     this.elementRef.nativeElement.remove();
   }
 
@@ -282,7 +282,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
    */
   private lockBodyScroll(): void {
     if (!isPlatformBrowser(this.platformId)) return;
-    
+
     this.scrollPosition = window.scrollY;
     this.document.body.style.overflow = 'hidden';
     this.document.body.style.position = 'fixed';
@@ -295,7 +295,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
    */
   private unlockBodyScroll(): void {
     if (!isPlatformBrowser(this.platformId)) return;
-    
+
     this.document.body.style.overflow = '';
     this.document.body.style.position = '';
     this.document.body.style.top = '';

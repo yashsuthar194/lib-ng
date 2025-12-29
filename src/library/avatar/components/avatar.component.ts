@@ -45,18 +45,14 @@ import {
 } from '@angular/core';
 import type { AvatarSize, AvatarShape, AvatarPresence } from '../types/avatar.types';
 import { DEFAULT_AVATAR_CONFIG } from '../types/avatar.types';
-import {
-  generateInitials,
-  generateColorFromString,
-  getAvatarSource,
-} from '../utils/avatar-utils';
+import { generateInitials, generateColorFromString, getAvatarSource } from '../utils/avatar-utils';
 
 @Component({
   selector: 'lib-avatar',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-avatar',
+    class: 'lib-avatar',
     // Size classes
     '[class.lib-avatar--xs]': 'size() === "xs"',
     '[class.lib-avatar--sm]': 'size() === "sm"',
@@ -147,7 +143,7 @@ export class AvatarComponent {
   // ========================================
 
   /** Emitted when clickable avatar is clicked */
-  readonly avatarClick = output<MouseEvent | KeyboardEvent>();
+  readonly avatarClick = output<MouseEvent | KeyboardEvent | Event>();
 
   // ========================================
   // Internal State (Signals - no subscriptions = no memory leaks)
@@ -163,12 +159,12 @@ export class AvatarComponent {
   // Computed Properties (derived from signals)
   // ========================================
 
-  /** 
+  /**
    * Loading state - only true when:
    * 1. There's an image src provided
    * 2. The image hasn't finished loading yet
    * 3. There hasn't been an error
-   * 
+   *
    * For initials/icon fallback, this is always false (no loading needed)
    */
   readonly isLoading = computed(() => {
@@ -187,9 +183,7 @@ export class AvatarComponent {
   readonly initials = computed(() => generateInitials(this.name()));
 
   /** Background color (custom or auto-generated from name) */
-  readonly computedBgColor = computed(() =>
-    this.bgColor() || generateColorFromString(this.name())
-  );
+  readonly computedBgColor = computed(() => this.bgColor() || generateColorFromString(this.name()));
 
   /** Accessible label for screen readers */
   readonly ariaLabel = computed(() => {
@@ -223,7 +217,7 @@ export class AvatarComponent {
   // ========================================
 
   /** Handle click on clickable avatar */
-  handleClick(event: MouseEvent | KeyboardEvent): void {
+  handleClick(event: MouseEvent | KeyboardEvent | Event): void {
     if (this.clickable()) {
       this.avatarClick.emit(event);
     }

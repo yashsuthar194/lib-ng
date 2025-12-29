@@ -35,7 +35,6 @@ import {
   input,
   contentChildren,
   computed,
-  AfterContentInit,
   effect,
   signal,
   output,
@@ -48,7 +47,7 @@ import type { AvatarSize, AvatarExpandTrigger } from '../types/avatar.types';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-avatar-group',
+    class: 'lib-avatar-group',
     '[class.lib-avatar-group--xs]': 'size() === "xs"',
     '[class.lib-avatar-group--sm]': 'size() === "sm"',
     '[class.lib-avatar-group--md]': 'size() === "md"',
@@ -72,17 +71,18 @@ import type { AvatarSize, AvatarExpandTrigger } from '../types/avatar.types';
       <ng-content></ng-content>
     </div>
     @if (overflowCount() > 0) {
-      <span 
-        class="lib-avatar-group__overflow" 
+      <span
+        class="lib-avatar-group__overflow"
         [attr.aria-label]="overflowCount() + ' more users'"
-        [attr.aria-hidden]="isExpanded()">
+        [attr.aria-hidden]="isExpanded()"
+      >
         +{{ overflowCount() }}
       </span>
     }
   `,
   styleUrl: './avatar-group.component.css',
 })
-export class AvatarGroupComponent implements AfterContentInit {
+export class AvatarGroupComponent {
   /** Maximum avatars to display before showing "+N" */
   readonly max = input<number>(5);
 
@@ -141,12 +141,12 @@ export class AvatarGroupComponent implements AfterContentInit {
       const total = avatarList.length;
 
       avatarList.forEach((avatar, index) => {
-        const hostElement = (avatar as any).elementRef?.nativeElement;
+        const hostElement = avatar.elementRef?.nativeElement as HTMLElement | undefined;
         if (hostElement) {
           // Set z-index for proper stacking (first avatar on top)
           hostElement.style.setProperty('--avatar-index', String(index));
           hostElement.style.zIndex = String(total - index);
-          
+
           // Manage hidden class
           if (index >= maxVisible && !expanded) {
             hostElement.classList.add('lib-avatar--hidden');
@@ -156,10 +156,6 @@ export class AvatarGroupComponent implements AfterContentInit {
         }
       });
     });
-  }
-
-  ngAfterContentInit(): void {
-    // Initial setup handled by effect
   }
 
   /** Handle mouse enter for hover trigger */

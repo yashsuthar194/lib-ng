@@ -2,7 +2,6 @@ import {
   Component,
   input,
   output,
-  signal,
   computed,
   effect,
   contentChildren,
@@ -21,10 +20,10 @@ import { DEFAULT_TABS_CONFIG } from '../types/tabs.types';
 
 /**
  * Tab container component.
- * 
+ *
  * Provides component-level TabsService instance for state management.
  * Supports lazy loading, animations, and programmatic control.
- * 
+ *
  * @example
  * ```html
  * <lib-tabs [(activeTabIndex)]="selectedIndex" (tabChange)="onTabChange($event)">
@@ -56,50 +55,50 @@ export class TabsComponent implements AfterContentInit {
   // ============================================
   // Inputs
   // ============================================
-  
+
   /** Orientation of tab headers */
   readonly orientation = input<TabOrientation>(DEFAULT_TABS_CONFIG.orientation!);
-  
+
   /** Animation type for tab transitions */
   readonly animation = input<TabAnimation>(DEFAULT_TABS_CONFIG.animation!);
-  
+
   /** Animation duration in ms */
   readonly animationDuration = input(DEFAULT_TABS_CONFIG.animationDuration!);
-  
+
   /** Keep inactive tab content in DOM (don't destroy) */
   readonly keepAlive = input(DEFAULT_TABS_CONFIG.keepAlive!);
-  
+
   /** Currently active tab index (two-way bindable) */
   readonly activeTabIndex = model(0);
 
   // ============================================
   // Outputs
   // ============================================
-  
+
   /** Emits when active tab changes */
   readonly tabChange = output<TabChangeEvent>();
-  
+
   /** Emits when a tab is closed */
   readonly tabClose = output<{ index: number; tabId?: string }>();
 
   // ============================================
   // Content Queries
   // ============================================
-  
+
   /** All tab components */
   readonly tabs = contentChildren(TabComponent);
 
   // ============================================
   // Computed Values
   // ============================================
-  
+
   /** Active tab component */
   readonly activeTab = computed(() => {
     const allTabs = this.tabs();
     const idx = this.tabsService.activeIndex();
     return allTabs[idx] ?? null;
   });
-  
+
   /** Animation direction for CSS class */
   readonly animationClass = computed(() => {
     const dir = this.tabsService.animationDirection();
@@ -111,7 +110,7 @@ export class TabsComponent implements AfterContentInit {
   // ============================================
   // Lifecycle
   // ============================================
-  
+
   constructor() {
     // Sync service with activeTabIndex model
     effect(() => {
@@ -122,7 +121,7 @@ export class TabsComponent implements AfterContentInit {
     });
 
     // Sync activeTabIndex model with service
-    this.tabsService.onTabChange((event) => {
+    this.tabsService.onTabChange(event => {
       this.activeTabIndex.set(event.currentIndex);
       this.tabChange.emit(event);
     });
@@ -135,7 +134,7 @@ export class TabsComponent implements AfterContentInit {
   // ============================================
   // Public API
   // ============================================
-  
+
   /**
    * Select a tab by index.
    */
@@ -185,7 +184,7 @@ export class TabsComponent implements AfterContentInit {
   // ============================================
   // Event Handlers
   // ============================================
-  
+
   onTabHeaderClick(tab: TabComponent, index: number): void {
     if (!tab.disabled()) {
       this.tabsService.selectTab(index, tab.id());
@@ -204,7 +203,7 @@ export class TabsComponent implements AfterContentInit {
     if (!target.classList.contains('lib-tabs__header-item')) return;
 
     const isHorizontal = this.orientation() === 'horizontal';
-    
+
     switch (event.key) {
       case 'ArrowLeft':
         if (isHorizontal) {
@@ -212,40 +211,40 @@ export class TabsComponent implements AfterContentInit {
           this.focusPreviousTab();
         }
         break;
-        
+
       case 'ArrowRight':
         if (isHorizontal) {
           event.preventDefault();
           this.focusNextTab();
         }
         break;
-        
+
       case 'ArrowUp':
         if (!isHorizontal) {
           event.preventDefault();
           this.focusPreviousTab();
         }
         break;
-        
+
       case 'ArrowDown':
         if (!isHorizontal) {
           event.preventDefault();
           this.focusNextTab();
         }
         break;
-        
+
       case 'Home':
         event.preventDefault();
         this.focusTab(0);
         break;
-        
+
       case 'End':
         event.preventDefault();
         this.focusTab(this.tabs().length - 1);
         break;
-        
+
       case 'Enter':
-      case ' ':
+      case ' ': {
         event.preventDefault();
         const focused = this.getFocusedTabIndex();
         if (focused >= 0) {
@@ -255,6 +254,7 @@ export class TabsComponent implements AfterContentInit {
           }
         }
         break;
+      }
     }
   }
 
@@ -265,18 +265,18 @@ export class TabsComponent implements AfterContentInit {
   // ============================================
   // Private Methods
   // ============================================
-  
+
   private initializeTabs(): void {
     const allTabs = this.tabs();
-    
+
     // Set indices on tabs
     allTabs.forEach((tab, index) => {
       tab.setIndex(index);
     });
-    
+
     // Initialize service with tab count
     this.tabsService.setTabCount(allTabs.length);
-    
+
     // Set initial active tab
     const initialIndex = this.activeTabIndex();
     if (initialIndex > 0 && initialIndex < allTabs.length) {
@@ -286,8 +286,8 @@ export class TabsComponent implements AfterContentInit {
 
   private focusNextTab(): void {
     const tabs = this.tabs();
-    let currentIndex = this.getFocusedTabIndex();
-    
+    const currentIndex = this.getFocusedTabIndex();
+
     for (let i = 1; i <= tabs.length; i++) {
       const nextIndex = (currentIndex + i) % tabs.length;
       if (!tabs[nextIndex].disabled()) {
@@ -299,8 +299,8 @@ export class TabsComponent implements AfterContentInit {
 
   private focusPreviousTab(): void {
     const tabs = this.tabs();
-    let currentIndex = this.getFocusedTabIndex();
-    
+    const currentIndex = this.getFocusedTabIndex();
+
     for (let i = 1; i <= tabs.length; i++) {
       const prevIndex = (currentIndex - i + tabs.length) % tabs.length;
       if (!tabs[prevIndex].disabled()) {
