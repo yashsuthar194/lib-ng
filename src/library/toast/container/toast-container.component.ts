@@ -1,6 +1,6 @@
 /**
  * Toast Container Component
- * 
+ *
  * Manages the stack of toasts for a specific position.
  * Renders toasts and handles their lifecycle.
  */
@@ -10,7 +10,6 @@ import {
   ChangeDetectionStrategy,
   signal,
   ViewContainerRef,
-  inject,
   ComponentRef,
   OnDestroy,
   ViewChild,
@@ -32,7 +31,7 @@ interface ToastEntry {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-toast-container',
+    class: 'lib-toast-container',
     '[class.lib-toast-container--top]': 'isTop()',
     '[class.lib-toast-container--bottom]': 'isBottom()',
     '[class.lib-toast-container--left]': 'isLeft()',
@@ -41,56 +40,60 @@ interface ToastEntry {
     '[style.--toast-direction]': 'getDirection()',
   },
   template: `<ng-template #toastOutlet></ng-template>`,
-  styles: [`
-    :host {
-      position: fixed;
-      z-index: var(--lib-z-index-toast, 9999);
-      display: flex;
-      flex-direction: column;
-      gap: var(--lib-spacing-3, 12px);
-      padding: var(--lib-spacing-4, 16px);
-      pointer-events: none;
-      max-height: 100vh;
-      overflow: hidden;
-    }
-    
-    /* Vertical positioning */
-    :host(.lib-toast-container--top) { top: 0; }
-    :host(.lib-toast-container--bottom) { 
-      bottom: 0; 
-      flex-direction: column-reverse; 
-    }
-    
-    /* Horizontal positioning */
-    :host(.lib-toast-container--left) { 
-      left: 0; 
-      align-items: flex-start; 
-    }
-    :host(.lib-toast-container--center) { 
-      left: 50%; 
-      transform: translateX(-50%); 
-      align-items: center; 
-    }
-    :host(.lib-toast-container--right) { 
-      right: 0; 
-      align-items: flex-end; 
-    }
-  `]
+  styles: [
+    `
+      :host {
+        position: fixed;
+        z-index: var(--lib-z-index-toast, 9999);
+        display: flex;
+        flex-direction: column;
+        gap: var(--lib-spacing-3, 12px);
+        padding: var(--lib-spacing-4, 16px);
+        pointer-events: none;
+        max-height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Vertical positioning */
+      :host(.lib-toast-container--top) {
+        top: 0;
+      }
+      :host(.lib-toast-container--bottom) {
+        bottom: 0;
+        flex-direction: column-reverse;
+      }
+
+      /* Horizontal positioning */
+      :host(.lib-toast-container--left) {
+        left: 0;
+        align-items: flex-start;
+      }
+      :host(.lib-toast-container--center) {
+        left: 50%;
+        transform: translateX(-50%);
+        align-items: center;
+      }
+      :host(.lib-toast-container--right) {
+        right: 0;
+        align-items: flex-end;
+      }
+    `,
+  ],
 })
 export class ToastContainerComponent implements OnDestroy, AfterViewInit {
   /** ViewContainerRef for dynamic component creation */
   @ViewChild('toastOutlet', { read: ViewContainerRef, static: true })
   toastOutlet!: ViewContainerRef;
-  
+
   /** Current position */
   readonly position = signal<ToastPosition>('bottom-right');
-  
+
   /** Active toasts */
   private toasts: ToastEntry[] = [];
-  
+
   /** Ready flag */
   private isReady = false;
-  
+
   /** Pending toasts before view init */
   private pendingToasts: ToastRef[] = [];
 
@@ -103,12 +106,22 @@ export class ToastContainerComponent implements OnDestroy, AfterViewInit {
   }
 
   /** Computed position checks */
-  isTop(): boolean { return this.position().startsWith('top'); }
-  isBottom(): boolean { return this.position().startsWith('bottom'); }
-  isLeft(): boolean { return this.position().endsWith('left'); }
-  isCenter(): boolean { return this.position().endsWith('center'); }
-  isRight(): boolean { return this.position().endsWith('right'); }
-  
+  isTop(): boolean {
+    return this.position().startsWith('top');
+  }
+  isBottom(): boolean {
+    return this.position().startsWith('bottom');
+  }
+  isLeft(): boolean {
+    return this.position().endsWith('left');
+  }
+  isCenter(): boolean {
+    return this.position().endsWith('center');
+  }
+  isRight(): boolean {
+    return this.position().endsWith('right');
+  }
+
   /** Get slide direction for animation */
   getDirection(): number {
     return this.isLeft() ? -1 : 1;
@@ -123,7 +136,7 @@ export class ToastContainerComponent implements OnDestroy, AfterViewInit {
   addToast(toastRef: ToastRef): void {
     // Skip if already closed
     if (toastRef.isClosed) return;
-    
+
     if (!this.isReady) {
       this.pendingToasts.push(toastRef);
       return;
@@ -135,15 +148,15 @@ export class ToastContainerComponent implements OnDestroy, AfterViewInit {
   private addToastInternal(toastRef: ToastRef): void {
     // Skip if already closed
     if (toastRef.isClosed) return;
-    
+
     const componentRef = this.toastOutlet.createComponent(ToastComponent);
     const instance = componentRef.instance;
-    
+
     // Set inputs
     componentRef.setInput('data', toastRef.data);
 
     // Handle close request - use Angular output subscription
-    const closeRequestSub = instance.closeRequest.subscribe((reason) => {
+    const closeRequestSub = instance.closeRequest.subscribe(reason => {
       instance.startExit();
       toastRef.close(reason);
     });

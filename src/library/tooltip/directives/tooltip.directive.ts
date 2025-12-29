@@ -1,8 +1,8 @@
 /**
  * Tooltip Directive
- * 
+ *
  * Attaches tooltip behavior to any element.
- * 
+ *
  * @example
  * <button libTooltip="Save changes">Save</button>
  * <button libTooltip="Settings" libTooltipPosition="right">⚙️</button>
@@ -15,10 +15,8 @@ import {
   inject,
   input,
   signal,
-  effect,
   PLATFORM_ID,
   Renderer2,
-  TemplateRef,
   ViewContainerRef,
   ComponentRef,
   HostListener,
@@ -26,15 +24,8 @@ import {
 import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { TooltipComponent } from '../components/tooltip.component';
 import { calculateTooltipPosition } from '../utils/tooltip-position';
-import type { 
-  TooltipPosition, 
-  TooltipVariant, 
-  TooltipContent 
-} from '../types/tooltip.types';
-import { 
-  DEFAULT_TOOLTIP_CONFIG, 
-  TOOLTIP_ANIMATION 
-} from '../types/tooltip.types';
+import type { TooltipPosition, TooltipVariant, TooltipContent } from '../types/tooltip.types';
+import { DEFAULT_TOOLTIP_CONFIG, TOOLTIP_ANIMATION } from '../types/tooltip.types';
 
 let tooltipIdCounter = 0;
 
@@ -56,48 +47,48 @@ export class TooltipDirective implements OnDestroy {
   // ========================================
   // Inputs
   // ========================================
-  
+
   /** Tooltip content (string or template) */
   readonly libTooltip = input.required<TooltipContent>();
-  
+
   /** Position preference */
   readonly libTooltipPosition = input<TooltipPosition>(DEFAULT_TOOLTIP_CONFIG.position);
-  
+
   /** Variant styling */
   readonly libTooltipVariant = input<TooltipVariant>(DEFAULT_TOOLTIP_CONFIG.variant);
-  
+
   /** Show delay in ms */
   readonly libTooltipShowDelay = input<number>(DEFAULT_TOOLTIP_CONFIG.showDelay);
-  
+
   /** Hide delay in ms */
   readonly libTooltipHideDelay = input<number>(DEFAULT_TOOLTIP_CONFIG.hideDelay);
-  
+
   /** Show arrow */
   readonly libTooltipShowArrow = input<boolean>(DEFAULT_TOOLTIP_CONFIG.showArrow);
-  
+
   /** Offset from element */
   readonly libTooltipOffset = input<number>(DEFAULT_TOOLTIP_CONFIG.offset);
-  
+
   /** Disabled state */
   readonly libTooltipDisabled = input<boolean>(false);
 
   // ========================================
   // State
   // ========================================
-  
+
   /** Unique ID for accessibility */
   readonly tooltipId = `lib-tooltip-${++tooltipIdCounter}`;
-  
+
   /** Visibility state */
   readonly isVisible = signal(false);
-  
+
   /** Component reference */
   private componentRef: ComponentRef<TooltipComponent> | null = null;
-  
+
   /** Timers */
   private showTimeoutId?: ReturnType<typeof setTimeout>;
   private hideTimeoutId?: ReturnType<typeof setTimeout>;
-  
+
   /** Track if already destroyed */
   private isDestroyed = false;
 
@@ -166,7 +157,7 @@ export class TooltipDirective implements OnDestroy {
 
   private scheduleShow(): void {
     this.clearTimers();
-    
+
     const delay = this.libTooltipShowDelay();
     if (delay > 0) {
       this.showTimeoutId = setTimeout(() => this.createTooltip(), delay);
@@ -177,7 +168,7 @@ export class TooltipDirective implements OnDestroy {
 
   private scheduleHide(): void {
     this.clearTimers();
-    
+
     const delay = this.libTooltipHideDelay();
     if (delay > 0) {
       this.hideTimeoutId = setTimeout(() => this.destroyTooltip(), delay);
@@ -193,14 +184,14 @@ export class TooltipDirective implements OnDestroy {
 
     // Create component
     this.componentRef = this.viewContainerRef.createComponent(TooltipComponent);
-    
+
     // Move to body for proper positioning
     const element = this.componentRef.location.nativeElement;
     this.renderer.appendChild(this.document.body, element);
-    
+
     // Set initial inputs
     this.updateTooltipInputs();
-    
+
     // Update visibility after a frame (for animation)
     requestAnimationFrame(() => {
       if (this.componentRef && !this.isDestroyed) {
@@ -214,7 +205,7 @@ export class TooltipDirective implements OnDestroy {
 
   private updateTooltipInputs(): void {
     if (!this.componentRef) return;
-    
+
     this.componentRef.setInput('id', this.tooltipId);
     this.componentRef.setInput('content', this.libTooltip());
     this.componentRef.setInput('variant', this.libTooltipVariant());
@@ -224,21 +215,21 @@ export class TooltipDirective implements OnDestroy {
 
   private updatePosition(): void {
     if (!this.componentRef || !isPlatformBrowser(this.platformId)) return;
-    
+
     const triggerEl = this.elementRef.nativeElement;
     const tooltipEl = this.componentRef.location.nativeElement;
-    
+
     const result = calculateTooltipPosition(
       triggerEl,
       tooltipEl,
       this.libTooltipPosition(),
       this.libTooltipOffset()
     );
-    
+
     this.componentRef.setInput('x', result.x);
     this.componentRef.setInput('y', result.y);
     this.componentRef.setInput('position', result.actualPosition);
-    
+
     if (result.arrowX !== undefined) {
       this.componentRef.setInput('arrowX', result.arrowX);
     }
@@ -249,15 +240,15 @@ export class TooltipDirective implements OnDestroy {
 
   private destroyTooltip(): void {
     if (!this.componentRef) return;
-    
+
     // Trigger exit animation
     this.componentRef.setInput('isVisible', false);
     this.isVisible.set(false);
-    
+
     // Destroy after animation
     const ref = this.componentRef;
     this.componentRef = null;
-    
+
     setTimeout(() => {
       if (!this.isDestroyed) {
         ref.destroy();
@@ -279,7 +270,7 @@ export class TooltipDirective implements OnDestroy {
   ngOnDestroy(): void {
     this.isDestroyed = true;
     this.clearTimers();
-    
+
     if (this.componentRef) {
       this.componentRef.destroy();
       this.componentRef = null;

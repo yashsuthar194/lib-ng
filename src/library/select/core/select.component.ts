@@ -15,21 +15,17 @@ import {
   HostListener,
   model,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormsModule,
-} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { OptionComponent } from '../option/option.component';
 import { OptionGroupComponent } from '../option-group/option-group.component';
 import { DEFAULT_SELECT_CONFIG } from '../types/select.types';
 
 /**
  * A flexible select component with search, multi-select, and custom templates.
- * 
+ *
  * Uses directive-based options for maximum flexibility and performance.
  * Fully integrated with Angular Reactive Forms via ControlValueAccessor.
- * 
+ *
  * @example
  * ```html
  * <!-- Basic usage -->
@@ -37,7 +33,7 @@ import { DEFAULT_SELECT_CONFIG } from '../types/select.types';
  *   <lib-option value="us">United States</lib-option>
  *   <lib-option value="uk">United Kingdom</lib-option>
  * </lib-select>
- * 
+ *
  * <!-- With search and multi-select -->
  * <lib-select [(value)]="selectedTags" [multiple]="true" [searchable]="true">
  *   @for (tag of tags; track tag.id) {
@@ -68,8 +64,12 @@ import { DEFAULT_SELECT_CONFIG } from '../types/select.types';
     '[class.lib-select--multiple]': 'multiple()',
     '[class.lib-select--searchable]': 'searchable()',
     '[class.lib-select--invalid]': 'isInvalid()',
+    role: 'combobox',
     '[attr.aria-expanded]': 'isOpen()',
+    '[attr.aria-haspopup]': '"listbox"',
     '[attr.aria-disabled]': 'disabled()',
+    '[attr.aria-controls]': 'isOpen() ? listboxId : null',
+    '[attr.aria-activedescendant]': 'activeDescendantId()',
   },
 })
 export class SelectComponent<T = unknown>
@@ -138,6 +138,10 @@ export class SelectComponent<T = unknown>
   // State Signals
   // ============================================
 
+  /** Unique ID for the listbox element */
+  private static instanceCounter = 0;
+  readonly listboxId = `lib-select-listbox-${++SelectComponent.instanceCounter}`;
+
   /** Whether dropdown is open */
   readonly isOpen = signal(false);
 
@@ -146,6 +150,15 @@ export class SelectComponent<T = unknown>
 
   /** Currently focused option index (keyboard navigation) */
   readonly focusedIndex = signal(-1);
+
+  /** Active descendant ID for screen readers */
+  readonly activeDescendantId = computed(() => {
+    const index = this.focusedIndex();
+    if (index < 0 || !this.isOpen()) return null;
+    const options = this.filteredOptions();
+    if (index >= options.length) return null;
+    return options[index]?.id ?? null;
+  });
 
   /** Selected value(s) - supports two-way binding */
   readonly value = model<T | T[] | null>(null);
@@ -240,10 +253,6 @@ export class SelectComponent<T = unknown>
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    // Handled via disabled() input signal
-  }
-
   // ============================================
   // Lifecycle
   // ============================================
@@ -260,10 +269,10 @@ export class SelectComponent<T = unknown>
     effect(() => {
       // Guard: only run after content is initialized
       if (!this._contentInitialized()) return;
-      
+
       const query = this.searchQuery();
       const allOptions = this.options();
-      
+
       // Use signal-based visibility (no direct DOM manipulation)
       allOptions.forEach(option => {
         const matches = option.matchesSearch(query);
@@ -368,7 +377,9 @@ export class SelectComponent<T = unknown>
     if (this.disabled()) return;
 
     // Don't handle keyboard when search input is focused (except navigation keys)
-    const isSearchFocused = (event.target as HTMLElement)?.classList?.contains('lib-select__search-input');
+    const isSearchFocused = (event.target as HTMLElement)?.classList?.contains(
+      'lib-select__search-input'
+    );
 
     switch (event.key) {
       case 'Enter':
@@ -438,13 +449,16 @@ export class SelectComponent<T = unknown>
     // Clean up previous subscriptions if options changed
     this.optionCleanups.forEach(cleanup => cleanup());
     this.optionCleanups = [];
-    
+
     // Subscribe to option events and store cleanup functions
     this.options().forEach((option, index) => {
       const selectSub = option.select.subscribe(value => this.selectOption(value));
-      const focusSub = option.focus.subscribe(() => this.focusedIndex.set(index));
+      const focusSub = option.tagFocus.subscribe(() => this.focusedIndex.set(index));
       // Store unsubscribe functions (OutputRefSubscription has unsubscribe)
-      this.optionCleanups.push(() => selectSub.unsubscribe(), () => focusSub.unsubscribe());
+      this.optionCleanups.push(
+        () => selectSub.unsubscribe(),
+        () => focusSub.unsubscribe()
+      );
     });
   }
 

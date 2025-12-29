@@ -1,8 +1,8 @@
 /**
  * Card Component
- * 
+ *
  * Container component using composition pattern.
- * 
+ *
  * @example
  * <lib-card>
  *   <lib-card-header>Title</lib-card-header>
@@ -10,12 +10,7 @@
  * </lib-card>
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  output,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import type { CardVariant } from '../types/card.types';
 
 @Component({
@@ -23,7 +18,7 @@ import type { CardVariant } from '../types/card.types';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-card',
+    class: 'lib-card',
     '[class.lib-card--elevated]': 'variant() === "elevated"',
     '[class.lib-card--outlined]': 'variant() === "outlined"',
     '[class.lib-card--filled]': 'variant() === "filled"',
@@ -40,10 +35,10 @@ import type { CardVariant } from '../types/card.types';
 export class CardComponent {
   /** Visual variant */
   readonly variant = input<CardVariant>('elevated');
-  
-  /** Make card clickable */  
+
+  /** Make card clickable */
   readonly clickable = input<boolean>(false);
-  
+
   /** Emitted when clickable card is activated */
   readonly cardClick = output<void>();
 
@@ -53,7 +48,7 @@ export class CardComponent {
     }
   }
 
-  handleKeyPress(event: KeyboardEvent): void {
+  handleKeyPress(event: KeyboardEvent | Event): void {
     if (this.clickable()) {
       event.preventDefault();
       this.cardClick.emit();

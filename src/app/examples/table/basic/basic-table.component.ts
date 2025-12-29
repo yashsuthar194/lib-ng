@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { TableComponent, ColumnDefDirective } from '../../../../library/table';
 import { User } from '../../../dummy/models';
 import { USERS } from '../../../dummy/data';
@@ -10,9 +10,7 @@ import { USERS } from '../../../dummy/data';
   template: `
     <div class="example-container">
       <h1>Basic Table Example</h1>
-      <p class="description">
-        Simple table with array data binding and legacy template approach.
-      </p>
+      <p class="description">Simple table with array data binding and legacy template approach.</p>
 
       <div class="example-card">
         <lib-table [dataSource]="users" [striped]="true" [hoverable]="true">
@@ -29,9 +27,7 @@ import { USERS } from '../../../dummy/data';
           <ng-container libColumnDef="role">
             <ng-template #header>Role</ng-template>
             <ng-template #cell let-row>
-              <span class="badge" [class]="'badge--' + row.role">{{
-                row.role
-              }}</span>
+              <span class="badge" [class]="'badge--' + row.role">{{ row.role }}</span>
             </ng-template>
           </ng-container>
 

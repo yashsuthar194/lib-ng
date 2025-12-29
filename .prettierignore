@@ -1,0 +1,25 @@
+# Prettier ignore file
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.angular/
+out-tsc/
+
+# Coverage
+coverage/
+
+# IDE
+.idea/
+.vscode/
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated files
+*.min.js
+*.min.css

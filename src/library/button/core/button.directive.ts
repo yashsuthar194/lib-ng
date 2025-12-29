@@ -1,26 +1,26 @@
 /**
  * Button Directive - Enhances native button elements with styling and interactions
- * 
+ *
  * @description
  * Applies to native <button> or <a> elements to provide consistent styling,
  * variants, loading states, and optional ripple animation.
- * 
+ *
  * @example
  * ```html
  * <!-- Primary button (default) -->
  * <button libButton>Save</button>
- * 
+ *
  * <!-- Secondary outline -->
  * <button libButton variant="outline" size="lg">Cancel</button>
- * 
+ *
  * <!-- With loading state -->
  * <button libButton [loading]="isSaving" loadingMode="inline">
  *   {{ isSaving ? 'Saving...' : 'Save' }}
  * </button>
- * 
+ *
  * <!-- Danger button with ripple -->
  * <button libButton variant="danger" [ripple]="true">Delete</button>
- * 
+ *
  * <!-- Full width -->
  * <button libButton [fullWidth]="true">Submit</button>
  * ```
@@ -40,11 +40,11 @@ import {
   Renderer2,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { 
-  ButtonVariant, 
-  ButtonSize, 
+import {
+  ButtonVariant,
+  ButtonSize,
   LoadingMode,
-  DEFAULT_BUTTON_CONFIG 
+  DEFAULT_BUTTON_CONFIG,
 } from '../types/button.types';
 
 @Directive({
@@ -52,7 +52,7 @@ import {
   standalone: true,
   exportAs: 'libButton',
   host: {
-    'class': 'lib-button',
+    class: 'lib-button',
     // Variant classes
     '[class.lib-button--primary]': 'variant() === "primary"',
     '[class.lib-button--secondary]': 'variant() === "secondary"',
@@ -92,25 +92,25 @@ export class ButtonDirective implements OnDestroy {
 
   /** Visual variant of the button */
   readonly variant = input<ButtonVariant>(DEFAULT_BUTTON_CONFIG.variant);
-  
+
   /** Size of the button */
   readonly size = input<ButtonSize>(DEFAULT_BUTTON_CONFIG.size);
-  
+
   /** Whether the button is disabled */
   readonly disabled = input<boolean>(DEFAULT_BUTTON_CONFIG.disabled);
-  
+
   /** Whether the button is in loading state */
   readonly loading = input<boolean>(DEFAULT_BUTTON_CONFIG.loading);
-  
+
   /** Loading indicator mode: 'replace' or 'inline' */
   readonly loadingMode = input<LoadingMode>(DEFAULT_BUTTON_CONFIG.loadingMode);
-  
+
   /** Enable ripple click effect (opt-in) */
   readonly ripple = input<boolean>(DEFAULT_BUTTON_CONFIG.ripple);
-  
+
   /** Full width button */
   readonly fullWidth = input<boolean>(DEFAULT_BUTTON_CONFIG.fullWidth);
-  
+
   /** Icon-only button (circular) */
   readonly iconOnly = input<boolean>(DEFAULT_BUTTON_CONFIG.iconOnly);
 
@@ -118,7 +118,7 @@ export class ButtonDirective implements OnDestroy {
   // Outputs
   // ============================================
 
-  /** 
+  /**
    * Click event (only fires when not disabled/loading)
    * Useful for preventing double-submits
    */
@@ -130,18 +130,17 @@ export class ButtonDirective implements OnDestroy {
 
   /** Whether button is disabled (disabled input OR loading) */
   readonly isDisabled = computed(() => this.disabled() || this.loading());
-  
+
   /** Whether the host element is an anchor tag */
-  readonly isAnchor = computed(() => 
-    this.elementRef.nativeElement.tagName.toLowerCase() === 'a'
-  );
+  readonly isAnchor = computed(() => this.elementRef.nativeElement.tagName.toLowerCase() === 'a');
 
   // ============================================
   // Internal State
   // ============================================
 
   /** Track ripple elements and their cleanup timeouts */
-  private readonly rippleCleanups: Array<{ element: HTMLElement; timeoutId: number | undefined }> = [];
+  private readonly rippleCleanups: Array<{ element: HTMLElement; timeoutId: number | undefined }> =
+    [];
 
   // ============================================
   // Lifecycle Hooks
@@ -161,7 +160,7 @@ export class ButtonDirective implements OnDestroy {
   // ============================================
 
   @HostListener('click', ['$event'])
-  onClick(event: MouseEvent): void {
+  onClick(event: MouseEvent | Event): void {
     if (this.isDisabled()) {
       event.preventDefault();
       event.stopPropagation();
@@ -170,16 +169,19 @@ export class ButtonDirective implements OnDestroy {
 
     // Create ripple effect if enabled
     if (this.ripple()) {
-      this.createRipple(event);
+      this.createRipple(event as MouseEvent);
     }
 
-    this.clicked.emit(event);
+    this.clicked.emit(event as MouseEvent);
   }
 
   @HostListener('keydown', ['$event'])
-  onKeydown(event: KeyboardEvent): void {
+  onKeydown(event: KeyboardEvent | Event): void {
     // For anchor elements, handle Enter/Space like a button
-    if (this.isAnchor() && (event.key === 'Enter' || event.key === ' ')) {
+    if (
+      (this.isAnchor() && (event as KeyboardEvent).key === 'Enter') ||
+      (event as KeyboardEvent).key === ' '
+    ) {
       if (this.isDisabled()) {
         event.preventDefault();
         event.stopPropagation();
@@ -235,11 +237,11 @@ export class ButtonDirective implements OnDestroy {
       this.renderer.appendChild(button, ripple);
 
       // Track ripple with its cleanup timeout to prevent memory leaks
-      const cleanupEntry: { element: HTMLElement; timeoutId: number | undefined } = { 
-        element: ripple, 
-        timeoutId: undefined 
+      const cleanupEntry: { element: HTMLElement; timeoutId: number | undefined } = {
+        element: ripple,
+        timeoutId: undefined,
       };
-      
+
       cleanupEntry.timeoutId = window.setTimeout(() => {
         ripple.remove();
         // Remove from tracking array
@@ -253,4 +255,3 @@ export class ButtonDirective implements OnDestroy {
     });
   }
 }
-
