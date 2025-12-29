@@ -84,7 +84,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
         (click)="toggleDropdown()"
         (keydown)="onInputKeyDown($event)"
       />
-      
+
       <button
         type="button"
         class="lib-date-range-picker__toggle"
@@ -127,10 +127,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
           }
 
           <!-- Calendars -->
-          <div 
-            class="lib-date-range-picker__calendars"
-            (mouseleave)="onCalendarLeave()"
-          >
+          <div class="lib-date-range-picker__calendars" (mouseleave)="onCalendarLeave()">
             <lib-calendar
               [selected]="null"
               [range]="tempRange()"
@@ -248,8 +245,14 @@ import { CalendarComponent } from '../calendar/calendar.component';
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .lib-date-range-picker__content {
@@ -344,7 +347,9 @@ import { CalendarComponent } from '../calendar/calendar.component';
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lib-date-range-picker__dropdown { animation: none; }
+      .lib-date-range-picker__dropdown {
+        animation: none;
+      }
     }
   `,
 })
@@ -410,16 +415,16 @@ export class DateRangePickerComponent implements ControlValueAccessor {
 
   readonly isOpen = signal<boolean>(false);
   readonly tempRange = signal<DateRange>({ start: null, end: null });
-  
+
   /** Currently hovered date for preview */
   readonly hoveredDate = signal<Date | null>(null);
-  
+
   /** Whether selecting start (true) or end (false) of range */
   private readonly selectingStart = signal<boolean>(true);
-  
+
   /** Computed: whether we're selecting range end (for hover preview) */
-  readonly isSelectingRangeEnd = computed(() => 
-    !this.selectingStart() && this.tempRange().start !== null
+  readonly isSelectingRangeEnd = computed(
+    () => !this.selectingStart() && this.tempRange().start !== null
   );
 
   // ============================================================================
@@ -566,7 +571,7 @@ export class DateRangePickerComponent implements ControlValueAccessor {
       const start = current.start!;
       const selectedStart = date < start ? date : start;
       const selectedEnd = date < start ? start : date;
-      
+
       this.tempRange.set({ start: selectedStart, end: selectedEnd });
       this.selectingStart.set(true);
       this.hoveredDate.set(null);

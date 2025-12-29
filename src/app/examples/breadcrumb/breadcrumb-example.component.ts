@@ -109,80 +109,82 @@ import {
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6, 24px);
-    }
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6, 24px);
+      }
 
-    h1 {
-      font-size: var(--lib-font-size-2xl, 1.5rem);
-      margin-block-end: var(--lib-spacing-6, 24px);
-      color: var(--lib-color-neutral-900, #18181b);
-    }
+      h1 {
+        font-size: var(--lib-font-size-2xl, 1.5rem);
+        margin-block-end: var(--lib-spacing-6, 24px);
+        color: var(--lib-color-neutral-900, #18181b);
+      }
 
-    .example-section {
-      margin-block-end: var(--lib-spacing-8, 32px);
-      padding: var(--lib-spacing-4, 16px);
-      background: var(--lib-color-neutral-50, #fafafa);
-      border-radius: var(--lib-border-radius-lg, 8px);
-    }
+      .example-section {
+        margin-block-end: var(--lib-spacing-8, 32px);
+        padding: var(--lib-spacing-4, 16px);
+        background: var(--lib-color-neutral-50, #fafafa);
+        border-radius: var(--lib-border-radius-lg, 8px);
+      }
 
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg, 1.125rem);
-      margin-block-end: var(--lib-spacing-2, 8px);
-      color: var(--lib-color-neutral-800, #27272a);
-    }
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg, 1.125rem);
+        margin-block-end: var(--lib-spacing-2, 8px);
+        color: var(--lib-color-neutral-800, #27272a);
+      }
 
-    .example-section h3 {
-      font-size: var(--lib-font-size-sm, 0.875rem);
-      margin-block-end: var(--lib-spacing-2, 8px);
-      color: var(--lib-color-neutral-600, #52525b);
-    }
+      .example-section h3 {
+        font-size: var(--lib-font-size-sm, 0.875rem);
+        margin-block-end: var(--lib-spacing-2, 8px);
+        color: var(--lib-color-neutral-600, #52525b);
+      }
 
-    .hint {
-      font-size: var(--lib-font-size-sm, 0.875rem);
-      color: var(--lib-color-neutral-500, #71717a);
-      margin-block-end: var(--lib-spacing-4, 16px);
-    }
+      .hint {
+        font-size: var(--lib-font-size-sm, 0.875rem);
+        color: var(--lib-color-neutral-500, #71717a);
+        margin-block-end: var(--lib-spacing-4, 16px);
+      }
 
-    .variant-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--lib-spacing-4, 16px);
-    }
+      .variant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--lib-spacing-4, 16px);
+      }
 
-    .size-stack {
-      display: flex;
-      flex-direction: column;
-      gap: var(--lib-spacing-4, 16px);
-    }
+      .size-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--lib-spacing-4, 16px);
+      }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--lib-spacing-2, 8px);
-      margin-block-end: var(--lib-spacing-4, 16px);
-    }
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--lib-spacing-2, 8px);
+        margin-block-end: var(--lib-spacing-4, 16px);
+      }
 
-    .button-row button {
-      padding: var(--lib-spacing-2, 8px) var(--lib-spacing-3, 12px);
-      border: 1px solid var(--lib-color-neutral-300, #d4d4d8);
-      border-radius: var(--lib-border-radius-md, 6px);
-      background: var(--lib-color-neutral-0, #fff);
-      cursor: pointer;
-      font-size: var(--lib-font-size-sm, 0.875rem);
-    }
+      .button-row button {
+        padding: var(--lib-spacing-2, 8px) var(--lib-spacing-3, 12px);
+        border: 1px solid var(--lib-color-neutral-300, #d4d4d8);
+        border-radius: var(--lib-border-radius-md, 6px);
+        background: var(--lib-color-neutral-0, #fff);
+        cursor: pointer;
+        font-size: var(--lib-font-size-sm, 0.875rem);
+      }
 
-    .button-row button:hover {
-      background: var(--lib-color-neutral-100, #f4f4f5);
-    }
+      .button-row button:hover {
+        background: var(--lib-color-neutral-100, #f4f4f5);
+      }
 
-    .info {
-      margin-block-start: var(--lib-spacing-2, 8px);
-      font-size: var(--lib-font-size-sm, 0.875rem);
-      color: var(--lib-color-neutral-500, #71717a);
-    }
-  `],
+      .info {
+        margin-block-start: var(--lib-spacing-2, 8px);
+        font-size: var(--lib-font-size-sm, 0.875rem);
+        color: var(--lib-color-neutral-500, #71717a);
+      }
+    `,
+  ],
 })
 export class BreadcrumbExampleComponent {
   private readonly breadcrumbService = inject(BreadcrumbService);
@@ -255,11 +257,7 @@ export class BreadcrumbExampleComponent {
 
   updateLabel(): void {
     this.dynamicItems.update(items =>
-      items.map(item =>
-        item.id === 'products'
-          ? { ...item, label: 'Updated Products!' }
-          : item
-      )
+      items.map(item => (item.id === 'products' ? { ...item, label: 'Updated Products!' } : item))
     );
   }
 

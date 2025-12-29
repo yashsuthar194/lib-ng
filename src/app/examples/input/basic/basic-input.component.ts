@@ -4,7 +4,7 @@ import { InputDirective } from '../../../../library/input';
 
 /**
  * Basic Input Examples
- * 
+ *
  * Demonstrates standalone input directive usage without wrapper.
  */
 @Component({
@@ -72,39 +72,41 @@ import { InputDirective } from '../../../../library/input';
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6);
-      max-width: 800px;
-    }
-    
-    .description {
-      color: var(--lib-color-neutral-600);
-      margin-block-end: var(--lib-spacing-6);
-    }
-    
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
-    
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      margin-block-end: var(--lib-spacing-4);
-    }
-    
-    .input-stack {
-      display: flex;
-      flex-direction: column;
-      gap: var(--lib-spacing-3);
-      max-width: 400px;
-    }
-    
-    .value-display {
-      margin-top: var(--lib-spacing-2);
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-neutral-500);
-    }
-  `],
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6);
+        max-width: 800px;
+      }
+
+      .description {
+        color: var(--lib-color-neutral-600);
+        margin-block-end: var(--lib-spacing-6);
+      }
+
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
+
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        margin-block-end: var(--lib-spacing-4);
+      }
+
+      .input-stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--lib-spacing-3);
+        max-width: 400px;
+      }
+
+      .value-display {
+        margin-top: var(--lib-spacing-2);
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-neutral-500);
+      }
+    `,
+  ],
 })
 export class BasicInputExampleComponent {
   readonly normalValue = signal('');

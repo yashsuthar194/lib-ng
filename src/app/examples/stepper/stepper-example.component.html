@@ -1,7 +1,8 @@
 <div class="example-container">
   <h1>Stepper Component</h1>
   <p class="example-description">
-    Multi-step workflow component with unique animations, programmatic control, and full disable support.
+    Multi-step workflow component with unique animations, programmatic control, and full disable
+    support.
   </p>
 
   <!-- Controls -->
@@ -26,7 +27,11 @@
     </div>
     <div class="control-group">
       <label>
-        <input type="checkbox" [checked]="linear()" (change)="linear.set($any($event.target).checked)">
+        <input
+          type="checkbox"
+          [checked]="linear()"
+          (change)="linear.set($any($event.target).checked)"
+        />
         Linear Mode
       </label>
     </div>
@@ -47,11 +52,11 @@
           <h3>Step 1: Account Information</h3>
           <div class="form-field">
             <label>Name</label>
-            <input type="text" placeholder="Enter your name">
+            <input type="text" placeholder="Enter your name" />
           </div>
           <div class="form-field">
             <label>Email</label>
-            <input type="email" placeholder="Enter your email">
+            <input type="email" placeholder="Enter your email" />
           </div>
         </div>
       </lib-step>
@@ -65,7 +70,7 @@
           </div>
           <div class="form-field">
             <label>Website</label>
-            <input type="url" placeholder="https://...">
+            <input type="url" placeholder="https://..." />
           </div>
         </div>
       </lib-step>
@@ -75,21 +80,21 @@
           <h3>Step 3: Select Plan</h3>
           <div class="plan-options">
             <label class="plan-option">
-              <input type="radio" name="plan" value="basic" checked>
+              <input type="radio" name="plan" value="basic" checked />
               <span class="plan-card">
                 <strong>Basic</strong>
                 <span>$9/month</span>
               </span>
             </label>
             <label class="plan-option">
-              <input type="radio" name="plan" value="pro">
+              <input type="radio" name="plan" value="pro" />
               <span class="plan-card">
                 <strong>Pro</strong>
                 <span>$29/month</span>
               </span>
             </label>
             <label class="plan-option">
-              <input type="radio" name="plan" value="enterprise">
+              <input type="radio" name="plan" value="enterprise" />
               <span class="plan-card">
                 <strong>Enterprise</strong>
                 <span>$99/month</span>

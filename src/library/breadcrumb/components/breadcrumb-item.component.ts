@@ -4,13 +4,7 @@
  * Renders individual breadcrumb with link, icon, and accessibility.
  */
 
-import {
-  Component,
-  ChangeDetectionStrategy,
-  input,
-  output,
-  inject,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import type { BreadcrumbItem, BreadcrumbClickEvent } from '../types/breadcrumb.types';
 
@@ -20,14 +14,14 @@ import type { BreadcrumbItem, BreadcrumbClickEvent } from '../types/breadcrumb.t
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-breadcrumb-item',
+    class: 'lib-breadcrumb-item',
     '[class.lib-breadcrumb-item--current]': 'item().current',
     '[class.lib-breadcrumb-item--disabled]': 'item().disabled',
   },
   template: `
     @if (item().current || item().disabled || !item().link) {
       <!-- Non-clickable: current page or disabled -->
-      <span 
+      <span
         class="lib-breadcrumb-item__content"
         [attr.aria-current]="item().current ? 'page' : null"
         [attr.aria-disabled]="item().disabled ? 'true' : null"
@@ -39,11 +33,7 @@ import type { BreadcrumbItem, BreadcrumbClickEvent } from '../types/breadcrumb.t
       </span>
     } @else if (navigate()) {
       <!-- Clickable with router navigation -->
-      <a 
-        class="lib-breadcrumb-item__link"
-        [routerLink]="item().link"
-        (click)="handleClick($event)"
-      >
+      <a class="lib-breadcrumb-item__link" [routerLink]="item().link" (click)="handleClick($event)">
         @if (item().icon) {
           <span class="lib-breadcrumb-item__icon" aria-hidden="true">{{ item().icon }}</span>
         }
@@ -51,11 +41,7 @@ import type { BreadcrumbItem, BreadcrumbClickEvent } from '../types/breadcrumb.t
       </a>
     } @else {
       <!-- Clickable without router (custom handling) -->
-      <button 
-        type="button"
-        class="lib-breadcrumb-item__button"
-        (click)="handleClick($event)"
-      >
+      <button type="button" class="lib-breadcrumb-item__button" (click)="handleClick($event)">
         @if (item().icon) {
           <span class="lib-breadcrumb-item__icon" aria-hidden="true">{{ item().icon }}</span>
         }

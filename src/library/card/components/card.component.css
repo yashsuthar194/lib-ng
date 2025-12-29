@@ -9,9 +9,9 @@
 :host {
   --card-bg: var(--lib-color-neutral-0, #ffffff);
   --card-border: var(--lib-color-neutral-200, #e5e7eb);
-  --card-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1));
+  --card-shadow: var(--lib-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
   --card-radius: var(--lib-border-radius-xl, 12px);
-  
+
   display: block;
   background: var(--card-bg);
   border-radius: var(--card-radius);
@@ -42,7 +42,7 @@
 
 :host(.lib-card--clickable) {
   cursor: pointer;
-  transition: 
+  transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
 }
@@ -52,7 +52,7 @@
 }
 
 :host(.lib-card--clickable.lib-card--elevated):hover {
-  box-shadow: var(--lib-shadow-lg, 0 10px 15px -3px rgba(0,0,0,0.1));
+  box-shadow: var(--lib-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
 }
 
 :host(.lib-card--clickable.lib-card--outlined):hover {

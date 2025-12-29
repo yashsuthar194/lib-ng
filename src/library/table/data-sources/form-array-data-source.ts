@@ -25,9 +25,7 @@ export class FormArrayDataSource<T> implements TableDataSource<T> {
     );
 
     // Extract raw values as data
-    this.data = computed(() =>
-      this.formGroups().map(fg => fg.getRawValue() as T)
-    );
+    this.data = computed(() => this.formGroups().map(fg => fg.getRawValue() as T));
 
     this.totalCount = computed(() => this.data().length);
   }
@@ -44,7 +42,7 @@ export class FormArrayDataSource<T> implements TableDataSource<T> {
       last: index === data.length - 1,
       even: index % 2 === 0,
       odd: index % 2 !== 0,
-      formGroup: this.formGroups()[index]
+      formGroup: this.formGroups()[index],
     };
   }
 

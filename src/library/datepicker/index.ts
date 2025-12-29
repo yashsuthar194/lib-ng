@@ -13,7 +13,10 @@ export { DatePickerComponent } from './components/date-picker/date-picker.compon
 export { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 export { TimePickerComponent } from './components/time-picker/time-picker.component';
 export { DateTimePickerComponent } from './components/datetime-picker/datetime-picker.component';
-export { MonthYearPickerComponent, type MonthYearView } from './components/month-year-picker/month-year-picker.component';
+export {
+  MonthYearPickerComponent,
+  type MonthYearView,
+} from './components/month-year-picker/month-year-picker.component';
 export { TimeWheelComponent } from './components/time-wheel/time-wheel.component';
 
 // ============================================================================
@@ -130,4 +133,3 @@ export {
   clampDate,
   isValidDate,
 } from './utils/date-utils';
-

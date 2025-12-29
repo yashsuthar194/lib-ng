@@ -1,9 +1,5 @@
 <!-- Tab Headers -->
-<div 
-  class="lib-tabs__header" 
-  role="tablist"
-  [attr.aria-orientation]="orientation()"
->
+<div class="lib-tabs__header" role="tablist" [attr.aria-orientation]="orientation()">
   @for (tab of tabs(); track trackByTab($index, tab)) {
     <button
       type="button"
@@ -23,15 +19,15 @@
       @if (tab.icon()) {
         <span class="lib-tabs__icon">{{ tab.icon() }}</span>
       }
-      
+
       <!-- Label -->
       <span class="lib-tabs__label">{{ tab.label() }}</span>
-      
+
       <!-- Badge -->
       @if (tab.badge()) {
         <span class="lib-tabs__badge">{{ tab.badge() }}</span>
       }
-      
+
       <!-- Close button -->
       @if (tab.closable()) {
         <button
@@ -41,13 +37,15 @@
           (click)="onTabClose(tab, $index, $event)"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
           </svg>
         </button>
       }
     </button>
   }
-  
+
   <!-- Active indicator (animated underline) -->
   <div class="lib-tabs__indicator" aria-hidden="true"></div>
 </div>
@@ -86,4 +84,3 @@
     </div>
   }
 </div>
-

@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent, ColumnDefDirective } from '../../../../library/table';
-import { Project, ProjectStatus } from '../../../dummy/models';
+import { Project } from '../../../dummy/models';
 import { PROJECTS } from '../../../dummy/data';
 
 @Component({
@@ -50,9 +50,7 @@ import { PROJECTS } from '../../../dummy/data';
           <ng-container libColumnDef="dates" [width]="'180px'">
             <ng-template #header>Timeline</ng-template>
             <ng-template #cell let-row>
-              <span class="date-range">
-                {{ row.startDate }} → {{ row.endDate }}
-              </span>
+              <span class="date-range"> {{ row.startDate }} → {{ row.endDate }} </span>
             </ng-template>
           </ng-container>
         </lib-table>

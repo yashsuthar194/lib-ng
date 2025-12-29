@@ -7,13 +7,21 @@
    Autofill Detection (via CSS animation)
    ============================================== */
 @keyframes libInputAutoFillStart {
-  from { /* empty */ }
-  to { /* empty */ }
+  from {
+    /* empty */
+  }
+  to {
+    /* empty */
+  }
 }
 
 @keyframes libInputAutoFillEnd {
-  from { /* empty */ }
-  to { /* empty */ }
+  from {
+    /* empty */
+  }
+  to {
+    /* empty */
+  }
 }
 
 /* ==============================================
@@ -27,7 +35,7 @@
   background: var(--lib-color-neutral-0);
   border: 1px solid var(--lib-color-neutral-300);
   border-radius: var(--lib-border-radius-md);
-  transition: 
+  transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease,
     background-color 0.15s ease;
@@ -84,7 +92,7 @@ textarea.lib-input--lg {
    Auto-Resize Textarea
    ============================================== */
 textarea.lib-input--auto-resize,
-textarea.lib-input[data-auto-resize="true"] {
+textarea.lib-input[data-auto-resize='true'] {
   resize: none;
   overflow-y: hidden;
 }
@@ -239,13 +247,13 @@ textarea.lib-input[data-auto-resize="true"] {
 /* ==============================================
    Search Input Styling
    ============================================== */
-.lib-input[type="search"] {
+.lib-input[type='search'] {
   -webkit-appearance: none;
   appearance: none;
 }
 
-.lib-input[type="search"]::-webkit-search-cancel-button,
-.lib-input[type="search"]::-webkit-search-decoration {
+.lib-input[type='search']::-webkit-search-cancel-button,
+.lib-input[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
 }
@@ -253,12 +261,12 @@ textarea.lib-input[data-auto-resize="true"] {
 /* ==============================================
    Number Input Styling
    ============================================== */
-.lib-input[type="number"] {
+.lib-input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.lib-input[type="number"]::-webkit-outer-spin-button,
-.lib-input[type="number"]::-webkit-inner-spin-button {
+.lib-input[type='number']::-webkit-outer-spin-button,
+.lib-input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -266,48 +274,48 @@ textarea.lib-input[data-auto-resize="true"] {
 /* ==============================================
    Dark Theme
    ============================================== */
-[data-theme-mode="dark"] .lib-input {
+[data-theme-mode='dark'] .lib-input {
   color: var(--lib-color-neutral-100, #f3f4f6);
   background: var(--lib-color-neutral-900, #111827);
   border-color: var(--lib-color-neutral-600, #4b5563);
 }
 
-[data-theme-mode="dark"] .lib-input::placeholder {
+[data-theme-mode='dark'] .lib-input::placeholder {
   color: var(--lib-color-neutral-500, #6b7280);
 }
 
-[data-theme-mode="dark"] .lib-input--outline:hover:not(:disabled):not(:focus) {
+[data-theme-mode='dark'] .lib-input--outline:hover:not(:disabled):not(:focus) {
   border-color: var(--lib-color-neutral-500, #6b7280);
 }
 
-[data-theme-mode="dark"] .lib-input--filled {
+[data-theme-mode='dark'] .lib-input--filled {
   background: var(--lib-color-neutral-800, #1f2937);
   border-color: transparent;
 }
 
-[data-theme-mode="dark"] .lib-input--filled:hover:not(:disabled):not(:focus) {
+[data-theme-mode='dark'] .lib-input--filled:hover:not(:disabled):not(:focus) {
   background: var(--lib-color-neutral-700, #374151);
 }
 
-[data-theme-mode="dark"] .lib-input--filled:focus {
+[data-theme-mode='dark'] .lib-input--filled:focus {
   background: var(--lib-color-neutral-900, #111827);
 }
 
-[data-theme-mode="dark"] .lib-input--focused,
-[data-theme-mode="dark"] .lib-input:focus {
+[data-theme-mode='dark'] .lib-input--focused,
+[data-theme-mode='dark'] .lib-input:focus {
   border-color: var(--lib-color-primary-400, #818cf8);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-[data-theme-mode="dark"] .lib-input--disabled,
-[data-theme-mode="dark"] .lib-input:disabled {
+[data-theme-mode='dark'] .lib-input--disabled,
+[data-theme-mode='dark'] .lib-input:disabled {
   background: var(--lib-color-neutral-800, #1f2937);
   color: var(--lib-color-neutral-600, #4b5563);
 }
 
-[data-theme-mode="dark"] .lib-input:-webkit-autofill,
-[data-theme-mode="dark"] .lib-input:-webkit-autofill:hover,
-[data-theme-mode="dark"] .lib-input:-webkit-autofill:focus {
+[data-theme-mode='dark'] .lib-input:-webkit-autofill,
+[data-theme-mode='dark'] .lib-input:-webkit-autofill:hover,
+[data-theme-mode='dark'] .lib-input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--lib-color-neutral-100, #f3f4f6);
   -webkit-box-shadow: 0 0 0 1000px var(--lib-color-neutral-800, #1f2937) inset;
   box-shadow: 0 0 0 1000px var(--lib-color-neutral-800, #1f2937) inset;

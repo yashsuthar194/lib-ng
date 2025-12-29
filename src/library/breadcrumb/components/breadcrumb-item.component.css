@@ -20,7 +20,7 @@
   font-family: inherit;
   text-decoration: none;
   color: var(--lib-color-neutral-600, #52525b);
-  transition: 
+  transition:
     background-color 0.15s ease,
     color 0.15s ease;
 }

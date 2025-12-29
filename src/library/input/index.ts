@@ -1,6 +1,6 @@
 /**
  * Input Module Public API
- * 
+ *
  * @example
  * ```typescript
  * import { InputDirective, FormFieldComponent, PrefixDirective, SuffixDirective } from '@lib/input';

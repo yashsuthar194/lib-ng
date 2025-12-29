@@ -18,13 +18,7 @@
  * - square: Equal width/height square
  * - custom: User-defined dimensions
  */
-export type SkeletonVariant =
-  | 'text'
-  | 'circle'
-  | 'rectangle'
-  | 'rounded'
-  | 'square'
-  | 'custom';
+export type SkeletonVariant = 'text' | 'circle' | 'rectangle' | 'rounded' | 'square' | 'custom';
 
 // ============================================================================
 // ANIMATIONS

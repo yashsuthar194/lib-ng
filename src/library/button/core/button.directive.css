@@ -25,7 +25,7 @@
   white-space: nowrap;
   user-select: none;
   -webkit-user-select: none;
-  transition: 
+  transition:
     background var(--lib-transition-fast, 150ms ease),
     color var(--lib-transition-fast, 150ms ease),
     border-color var(--lib-transition-fast, 150ms ease),
@@ -365,12 +365,12 @@
   .lib-button {
     transition-duration: 0.01ms !important;
   }
-  
+
   .lib-button--loading-inline::before,
   .lib-button--loading-replace::after {
     animation-duration: 0.01ms !important;
   }
-  
+
   .lib-button__ripple {
     animation-duration: 0.01ms !important;
   }

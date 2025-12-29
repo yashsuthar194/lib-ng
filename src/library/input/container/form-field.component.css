@@ -262,36 +262,36 @@
 /* ==============================================
    Dark Theme
    ============================================== */
-[data-theme-mode="dark"] .lib-form-field__label {
+[data-theme-mode='dark'] .lib-form-field__label {
   color: var(--lib-color-neutral-300, #d1d5db);
 }
 
-[data-theme-mode="dark"] .lib-form-field__container {
+[data-theme-mode='dark'] .lib-form-field__container {
   background: var(--lib-color-neutral-900, #111827);
   border-color: var(--lib-color-neutral-600, #4b5563);
 }
 
-[data-theme-mode="dark"] .lib-form-field--focused .lib-form-field__container {
+[data-theme-mode='dark'] .lib-form-field--focused .lib-form-field__container {
   border-color: var(--lib-color-primary-400, #818cf8);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-[data-theme-mode="dark"] .lib-form-field--floating-label .lib-form-field__label {
+[data-theme-mode='dark'] .lib-form-field--floating-label .lib-form-field__label {
   background: var(--lib-color-neutral-900, #111827);
   color: var(--lib-color-neutral-400, #9ca3af);
 }
 
-[data-theme-mode="dark"] .lib-form-field__prefix-content,
-[data-theme-mode="dark"] .lib-form-field__suffix-content {
+[data-theme-mode='dark'] .lib-form-field__prefix-content,
+[data-theme-mode='dark'] .lib-form-field__suffix-content {
   color: var(--lib-color-neutral-400, #9ca3af);
 }
 
-[data-theme-mode="dark"] .lib-form-field__suffix-content button:hover {
+[data-theme-mode='dark'] .lib-form-field__suffix-content button:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--lib-color-neutral-200, #e5e7eb);
 }
 
-[data-theme-mode="dark"] .lib-form-field__hint {
+[data-theme-mode='dark'] .lib-form-field__hint {
   color: var(--lib-color-neutral-400, #9ca3af);
 }
 

@@ -19,7 +19,7 @@
   --alert-text: var(--lib-color-info-800, #1e40af);
   --alert-icon: var(--lib-color-info-500, #3b82f6);
   --alert-title: var(--lib-color-info-900, #1e3a8a);
-  
+
   display: block;
 }
 
@@ -153,7 +153,7 @@
   color: var(--alert-text);
   opacity: 0.6;
   cursor: pointer;
-  transition: 
+  transition:
     opacity 0.15s ease,
     background-color 0.15s ease;
 }
@@ -202,7 +202,7 @@
     animation: none;
     opacity: 0;
   }
-  
+
   .lib-alert__dismiss {
     transition: none;
   }

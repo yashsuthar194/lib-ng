@@ -7,17 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import {
-  TableComponent,
-  ColumnDefDirective,
-  FormArrayDataSource,
-} from '../../../../library/table';
-
-interface UserFormData {
-  name: string;
-  email: string;
-  role: string;
-}
+import { TableComponent, ColumnDefDirective } from '../../../../library/table';
 
 @Component({
   selector: 'app-editable-table-example',
@@ -26,15 +16,11 @@ interface UserFormData {
   template: `
     <div class="example-container">
       <h1>Editable Table (FormArray)</h1>
-      <p class="description">
-        Inline editing with Reactive Forms. Each row is a FormGroup.
-      </p>
+      <p class="description">Inline editing with Reactive Forms. Each row is a FormGroup.</p>
 
       <div class="actions">
         <button class="btn btn-primary" (click)="addRow()">+ Add Row</button>
-        <button class="btn btn-secondary" (click)="logFormValue()">
-          Log Form Value
-        </button>
+        <button class="btn btn-secondary" (click)="logFormValue()">Log Form Value</button>
       </div>
 
       <div class="example-card">
@@ -78,18 +64,16 @@ interface UserFormData {
           <ng-container libColumnDef="actions">
             <ng-template #header>Actions</ng-template>
             <ng-template #cell let-row let-i="index">
-              <button class="btn-icon btn-delete" (click)="removeRow(i)">
-                🗑
-              </button>
+              <button class="btn-icon btn-delete" (click)="removeRow(i)">🗑</button>
             </ng-template>
           </ng-container>
         </lib-table>
       </div>
 
       @if (formArray.length === 0) {
-      <div class="empty-state">
-        <p>No rows yet. Click "Add Row" to start.</p>
-      </div>
+        <div class="empty-state">
+          <p>No rows yet. Click "Add Row" to start.</p>
+        </div>
       }
     </div>
   `,

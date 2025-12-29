@@ -1,6 +1,10 @@
 import { Component, signal, viewChild } from '@angular/core';
 import { StepperComponent, StepComponent } from '../../../library/stepper';
-import type { StepChangeEvent, StepperAnimation, StepperOrientation } from '../../../library/stepper';
+import type {
+  StepChangeEvent,
+  StepperAnimation,
+  StepperOrientation,
+} from '../../../library/stepper';
 
 @Component({
   selector: 'app-stepper-example',
@@ -11,7 +15,7 @@ import type { StepChangeEvent, StepperAnimation, StepperOrientation } from '../.
 })
 export class StepperExampleComponent {
   readonly stepper = viewChild<StepperComponent>('stepper');
-  
+
   // State
   readonly activeIndex = signal(0);
   readonly orientation = signal<StepperOrientation>('horizontal');
@@ -51,7 +55,7 @@ export class StepperExampleComponent {
   toggleStep2Disabled(): void {
     const stepperRef = this.stepper();
     if (!stepperRef) return;
-    
+
     if (this.step2Disabled()) {
       stepperRef.enableStep(1);
     } else {

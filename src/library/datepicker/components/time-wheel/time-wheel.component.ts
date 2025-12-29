@@ -98,10 +98,7 @@ const VISIBLE_ITEMS = 5;
 
       <!-- AM/PM Column (12h format only) -->
       @if (format() === '12h') {
-        <div
-          #periodWheel
-          class="lib-time-wheel__column lib-time-wheel__column--period"
-        >
+        <div #periodWheel class="lib-time-wheel__column lib-time-wheel__column--period">
           <div class="lib-time-wheel__spacer"></div>
           <div
             class="lib-time-wheel__item"
@@ -176,7 +173,7 @@ const VISIBLE_ITEMS = 5;
       color: var(--lib-color-neutral-400, #a1a1aa);
       cursor: pointer;
       scroll-snap-align: center;
-      transition: 
+      transition:
         color var(--lib-transition-fast, 150ms ease),
         transform var(--lib-transition-fast, 150ms ease);
     }
@@ -304,7 +301,7 @@ export class TimeWheelComponent implements ControlValueAccessor, AfterViewInit {
 
   readonly hours = computed(() => {
     if (this.format() === '12h') {
-      return Array.from({ length: 12 }, (_, i) => i === 0 ? 12 : i);
+      return Array.from({ length: 12 }, (_, i) => (i === 0 ? 12 : i));
     }
     return Array.from({ length: 24 }, (_, i) => i);
   });
@@ -349,7 +346,7 @@ export class TimeWheelComponent implements ControlValueAccessor, AfterViewInit {
     }
   }
 
-  snapToNearest(element: HTMLElement, type: 'hours' | 'minutes'): void {
+  snapToNearest(element: HTMLElement, _type: 'hours' | 'minutes'): void {
     const scrollTop = element.scrollTop;
     const index = Math.round(scrollTop / ITEM_HEIGHT);
     const targetScroll = index * ITEM_HEIGHT;

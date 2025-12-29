@@ -45,10 +45,7 @@ import type {
   CalendarLocale,
   DateSelectionEvent,
 } from '../../types/datepicker.types';
-import {
-  DEFAULT_CALENDAR_LOCALE,
-  DEFAULT_DATEPICKER_CONFIG,
-} from '../../types/datepicker.types';
+import { DEFAULT_CALENDAR_LOCALE, DEFAULT_DATEPICKER_CONFIG } from '../../types/datepicker.types';
 import {
   formatDate,
   parseDate,
@@ -98,7 +95,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
           (blur)="onInputBlur()"
           (keydown)="onInputKeyDown($event)"
         />
-        
+
         <button
           type="button"
           class="lib-date-picker__toggle"
@@ -320,7 +317,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     };
 
     document.addEventListener('click', handler);
-    
+
     this.destroyRef.onDestroy(() => {
       document.removeEventListener('click', handler);
     });
@@ -358,7 +355,7 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   onInputBlur(): void {
     this.onTouched();
-    
+
     // Validate input on blur
     const inputVal = this.inputValue();
     if (inputVal && !this.value()) {
@@ -395,7 +392,7 @@ export class DatePickerComponent implements ControlValueAccessor {
 
   onDateSelect(date: Date): void {
     this.setValue(date, 'calendar');
-    
+
     if (this.closeOnSelect() && this.mode() !== 'inline') {
       this.closeDropdown();
     }
@@ -439,7 +436,7 @@ export class DatePickerComponent implements ControlValueAccessor {
   private setValue(date: Date | null, source: 'calendar' | 'input' | 'clear'): void {
     this.value.set(date);
     this.onChange(date);
-    
+
     if (date) {
       this.inputValue.set(this.formatDisplayValue(date));
     }

@@ -12,10 +12,8 @@ import { COMPANIES } from '../../../dummy/data';
     <div class="example-container">
       <h1>Pagination Example</h1>
       <p class="description">
-        Navigate through pages of data. Showing {{ startIndex() + 1 }}-{{
-          endIndex()
-        }}
-        of {{ totalItems() }}
+        Navigate through pages of data. Showing {{ startIndex() + 1 }}-{{ endIndex() }} of
+        {{ totalItems() }}
       </p>
 
       <div class="example-card">
@@ -44,9 +42,7 @@ import { COMPANIES } from '../../../dummy/data';
 
           <ng-container libColumnDef="employees">
             <ng-template #header>Employees</ng-template>
-            <ng-template #cell let-row>{{
-              row.employeeCount | number
-            }}</ng-template>
+            <ng-template #cell let-row>{{ row.employeeCount | number }}</ng-template>
           </ng-container>
         </lib-table>
 
@@ -61,29 +57,13 @@ import { COMPANIES } from '../../../dummy/data';
             </select>
           </div>
 
-          <div class="page-info">
-            {{ startIndex() + 1 }}-{{ endIndex() }} of {{ totalItems() }}
-          </div>
+          <div class="page-info">{{ startIndex() + 1 }}-{{ endIndex() }} of {{ totalItems() }}</div>
 
           <div class="page-controls">
-            <button [disabled]="pageIndex() === 0" (click)="firstPage()">
-              ⏮
-            </button>
-            <button [disabled]="pageIndex() === 0" (click)="prevPage()">
-              ◀
-            </button>
-            <button
-              [disabled]="pageIndex() >= totalPages() - 1"
-              (click)="nextPage()"
-            >
-              ▶
-            </button>
-            <button
-              [disabled]="pageIndex() >= totalPages() - 1"
-              (click)="lastPage()"
-            >
-              ⏭
-            </button>
+            <button [disabled]="pageIndex() === 0" (click)="firstPage()">⏮</button>
+            <button [disabled]="pageIndex() === 0" (click)="prevPage()">◀</button>
+            <button [disabled]="pageIndex() >= totalPages() - 1" (click)="nextPage()">▶</button>
+            <button [disabled]="pageIndex() >= totalPages() - 1" (click)="lastPage()">⏭</button>
           </div>
         </div>
       </div>
@@ -185,9 +165,7 @@ export class PaginationTableExampleComponent {
   totalPages = computed(() => Math.ceil(this.totalItems() / this.pageSize()));
 
   startIndex = computed(() => this.pageIndex() * this.pageSize());
-  endIndex = computed(() =>
-    Math.min(this.startIndex() + this.pageSize(), this.totalItems())
-  );
+  endIndex = computed(() => Math.min(this.startIndex() + this.pageSize(), this.totalItems()));
 
   paginatedData = computed(() => {
     const start = this.startIndex();
@@ -208,9 +186,9 @@ export class PaginationTableExampleComponent {
     this.pageIndex.set(this.totalPages() - 1);
   }
   prevPage() {
-    this.pageIndex.update((i) => Math.max(0, i - 1));
+    this.pageIndex.update(i => Math.max(0, i - 1));
   }
   nextPage() {
-    this.pageIndex.update((i) => Math.min(this.totalPages() - 1, i + 1));
+    this.pageIndex.update(i => Math.min(this.totalPages() - 1, i + 1));
   }
 }

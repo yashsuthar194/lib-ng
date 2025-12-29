@@ -39,8 +39,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
-  border-block-end: var(--lib-border-width-thin) solid
-    var(--lib-color-neutral-700);
+  border-block-end: var(--lib-border-width-thin) solid var(--lib-color-neutral-700);
   transition: background var(--lib-transition-fast);
 }
 
@@ -51,7 +50,7 @@
 }
 
 .lib-table-header-cell--sortable::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 0;
   height: 0;
@@ -60,7 +59,8 @@
   opacity: 0.4;
   border-inline: 4px solid transparent;
   border-block-end: 5px solid currentColor;
-  transition: opacity var(--lib-transition-fast),
+  transition:
+    opacity var(--lib-transition-fast),
     transform var(--lib-transition-fast);
 }
 
@@ -80,9 +80,9 @@
 }
 
 .lib-table-row {
-  border-block-end: var(--lib-border-width-thin) solid
-    var(--lib-color-neutral-100);
-  transition: background var(--lib-transition-fast),
+  border-block-end: var(--lib-border-width-thin) solid var(--lib-color-neutral-100);
+  transition:
+    background var(--lib-transition-fast),
     box-shadow var(--lib-transition-fast);
 }
 
@@ -171,7 +171,7 @@
 }
 
 .lib-table-empty::before {
-  content: "";
+  content: '';
   display: block;
   width: 3rem;
   height: 3rem;
@@ -251,28 +251,28 @@
 /* ==============================================
    Dark Theme Support
    ============================================== */
-[data-theme-mode="dark"] .lib-table-container {
+[data-theme-mode='dark'] .lib-table-container {
   background: var(--lib-color-neutral-900);
   border-color: var(--lib-color-neutral-700);
 }
 
-[data-theme-mode="dark"] .lib-table-body {
+[data-theme-mode='dark'] .lib-table-body {
   background: var(--lib-color-neutral-900);
 }
 
-[data-theme-mode="dark"] .lib-table-row {
+[data-theme-mode='dark'] .lib-table-row {
   border-color: var(--lib-color-neutral-800);
 }
 
-[data-theme-mode="dark"] .lib-table-cell {
+[data-theme-mode='dark'] .lib-table-cell {
   color: var(--lib-color-neutral-200);
 }
 
-[data-theme-mode="dark"] .lib-table--hoverable .lib-table-row:hover {
+[data-theme-mode='dark'] .lib-table--hoverable .lib-table-row:hover {
   background: var(--lib-color-neutral-800);
   color: var(--lib-color-neutral-900);
 }
 
-[data-theme-mode="dark"] .lib-table--striped .lib-table-row--odd {
+[data-theme-mode='dark'] .lib-table--striped .lib-table-row--odd {
   background: var(--lib-color-neutral-800);
 }

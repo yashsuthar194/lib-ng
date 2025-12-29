@@ -29,12 +29,9 @@ import {
   DestroyRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import type {
-  DatePickerSize,
-  CalendarLocale,
-} from '../../types/datepicker.types';
+import type { DatePickerSize, CalendarLocale } from '../../types/datepicker.types';
 import { DEFAULT_CALENDAR_LOCALE } from '../../types/datepicker.types';
-import { addYears, isValidDate } from '../../utils/date-utils';
+import { isValidDate } from '../../utils/date-utils';
 
 export type MonthYearView = 'months' | 'years';
 
@@ -70,7 +67,7 @@ export type MonthYearView = 'months' | 'years';
         (click)="toggleDropdown()"
         (keydown)="onInputKeyDown($event)"
       />
-      
+
       <button
         type="button"
         class="lib-month-year-picker__toggle"
@@ -109,11 +106,7 @@ export type MonthYearView = 'months' | 'years';
             </svg>
           </button>
 
-          <button
-            type="button"
-            class="lib-month-year-picker__title-btn"
-            (click)="toggleView()"
-          >
+          <button type="button" class="lib-month-year-picker__title-btn" (click)="toggleView()">
             @if (view() === 'months') {
               {{ viewYear() }}
             } @else {
@@ -255,8 +248,14 @@ export type MonthYearView = 'months' | 'years';
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .lib-month-year-picker__header {
@@ -321,7 +320,7 @@ export type MonthYearView = 'months' | 'years';
       color: var(--lib-color-neutral-700, #3f3f46);
       font-size: var(--lib-font-size-sm, 14px);
       cursor: pointer;
-      transition: 
+      transition:
         background var(--lib-transition-fast, 150ms ease),
         transform var(--lib-transition-fast, 150ms ease);
     }
@@ -353,8 +352,12 @@ export type MonthYearView = 'months' | 'years';
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lib-month-year-picker__dropdown { animation: none; }
-      .lib-month-year-picker__cell { transition: none; }
+      .lib-month-year-picker__dropdown {
+        animation: none;
+      }
+      .lib-month-year-picker__cell {
+        transition: none;
+      }
     }
   `,
 })
@@ -504,7 +507,7 @@ export class MonthYearPickerComponent implements ControlValueAccessor {
   }
 
   toggleView(): void {
-    this.view.update(v => v === 'months' ? 'years' : 'months');
+    this.view.update(v => (v === 'months' ? 'years' : 'months'));
   }
 
   // ============================================================================

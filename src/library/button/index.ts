@@ -9,9 +9,9 @@ export { ButtonDirective } from './core/button.directive';
 export { ButtonGroupDirective } from './group/button-group.directive';
 
 // Types
-export type { 
-  ButtonVariant, 
-  ButtonSize, 
+export type {
+  ButtonVariant,
+  ButtonSize,
   LoadingMode,
   IconPosition,
   ButtonConfig,

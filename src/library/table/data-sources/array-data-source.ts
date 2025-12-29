@@ -6,7 +6,7 @@ import { TableDataSource } from '../types/table.types';
  */
 export class ArrayDataSource<T> implements TableDataSource<T> {
   private readonly _data = signal<T[]>([]);
-  
+
   readonly data: Signal<T[]> = this._data.asReadonly();
   readonly loading = signal(false);
   readonly totalCount: Signal<number> = computed(() => this._data().length);
@@ -40,8 +40,6 @@ export class ArrayDataSource<T> implements TableDataSource<T> {
    * Update an item in the data source
    */
   update(predicate: (item: T) => boolean, updater: (item: T) => T): void {
-    this._data.update(current => 
-      current.map(item => predicate(item) ? updater(item) : item)
-    );
+    this._data.update(current => current.map(item => (predicate(item) ? updater(item) : item)));
   }
 }

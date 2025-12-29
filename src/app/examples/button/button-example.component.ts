@@ -1,6 +1,6 @@
 /**
  * Button Example Component
- * 
+ *
  * Demonstrates all button variants, sizes, loading states, and features.
  */
 
@@ -16,7 +16,7 @@ import { ButtonDirective, ButtonGroupDirective } from '../../../library/button';
   template: `
     <div class="example-page">
       <h1>Button Examples</h1>
-      
+
       <!-- Variants Section -->
       <section class="example-section">
         <h2>Button Variants</h2>
@@ -45,10 +45,20 @@ import { ButtonDirective, ButtonGroupDirective } from '../../../library/button';
       <section class="example-section">
         <h2>Loading States</h2>
         <div class="button-row">
-          <button libButton [loading]="inlineLoading()" loadingMode="inline" (click)="simulateInlineLoading()">
+          <button
+            libButton
+            [loading]="inlineLoading()"
+            loadingMode="inline"
+            (click)="simulateInlineLoading()"
+          >
             {{ inlineLoading() ? 'Saving...' : 'Inline Loading' }}
           </button>
-          <button libButton [loading]="replaceLoading()" loadingMode="replace" (click)="simulateReplaceLoading()">
+          <button
+            libButton
+            [loading]="replaceLoading()"
+            loadingMode="replace"
+            (click)="simulateReplaceLoading()"
+          >
             Replace Loading
           </button>
         </div>
@@ -71,19 +81,21 @@ import { ButtonDirective, ButtonGroupDirective } from '../../../library/button';
         <div class="button-row">
           <button libButton>
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
             </svg>
             Add Item
           </button>
           <button libButton variant="outline">
             Download
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
             </svg>
           </button>
           <button libButton variant="danger">
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+              />
             </svg>
             Delete
           </button>
@@ -96,17 +108,21 @@ import { ButtonDirective, ButtonGroupDirective } from '../../../library/button';
         <div class="button-row">
           <button libButton [iconOnly]="true" size="sm" aria-label="Add">
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
             </svg>
           </button>
           <button libButton [iconOnly]="true" aria-label="Settings">
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+              <path
+                d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+              />
             </svg>
           </button>
           <button libButton [iconOnly]="true" size="lg" variant="danger" aria-label="Delete">
             <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+              />
             </svg>
           </button>
         </div>
@@ -143,80 +159,82 @@ import { ButtonDirective, ButtonGroupDirective } from '../../../library/button';
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6, 24px);
-      max-width: 900px;
-    }
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6, 24px);
+        max-width: 900px;
+      }
 
-    h1 {
-      font-size: var(--lib-font-size-2xl, 1.5rem);
-      margin-block-end: var(--lib-spacing-6, 24px);
-      color: var(--lib-color-neutral-900, #18181b);
-    }
+      h1 {
+        font-size: var(--lib-font-size-2xl, 1.5rem);
+        margin-block-end: var(--lib-spacing-6, 24px);
+        color: var(--lib-color-neutral-900, #18181b);
+      }
 
-    .example-section {
-      margin-block-end: var(--lib-spacing-8, 32px);
-      padding: var(--lib-spacing-4, 16px);
-      background: var(--lib-color-neutral-50, #fafafa);
-      border-radius: var(--lib-border-radius-lg, 8px);
-    }
+      .example-section {
+        margin-block-end: var(--lib-spacing-8, 32px);
+        padding: var(--lib-spacing-4, 16px);
+        background: var(--lib-color-neutral-50, #fafafa);
+        border-radius: var(--lib-border-radius-lg, 8px);
+      }
 
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg, 1.125rem);
-      margin-block-end: var(--lib-spacing-4, 16px);
-      color: var(--lib-color-neutral-800, #27272a);
-    }
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg, 1.125rem);
+        margin-block-end: var(--lib-spacing-4, 16px);
+        color: var(--lib-color-neutral-800, #27272a);
+      }
 
-    .button-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--lib-spacing-3, 12px);
-    }
+      .button-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--lib-spacing-3, 12px);
+      }
 
-    .button-row {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--lib-spacing-3, 12px);
-    }
+      .button-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--lib-spacing-3, 12px);
+      }
 
-    .form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--lib-spacing-3, 12px);
-      max-width: 300px;
-    }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--lib-spacing-3, 12px);
+        max-width: 300px;
+      }
 
-    .hint {
-      margin-block-start: var(--lib-spacing-3, 12px);
-      font-size: var(--lib-font-size-sm, 0.875rem);
-      color: var(--lib-color-neutral-500, #71717a);
-    }
+      .hint {
+        margin-block-start: var(--lib-spacing-3, 12px);
+        font-size: var(--lib-font-size-sm, 0.875rem);
+        color: var(--lib-color-neutral-500, #71717a);
+      }
 
-    /* Button Group Styles */
-    .lib-button-group {
-      display: inline-flex;
-    }
+      /* Button Group Styles */
+      .lib-button-group {
+        display: inline-flex;
+      }
 
-    .lib-button-group .lib-button {
-      border-radius: 0;
-    }
+      .lib-button-group .lib-button {
+        border-radius: 0;
+      }
 
-    .lib-button-group .lib-button:first-child {
-      border-start-start-radius: var(--lib-border-radius-md, 6px);
-      border-end-start-radius: var(--lib-border-radius-md, 6px);
-    }
+      .lib-button-group .lib-button:first-child {
+        border-start-start-radius: var(--lib-border-radius-md, 6px);
+        border-end-start-radius: var(--lib-border-radius-md, 6px);
+      }
 
-    .lib-button-group .lib-button:last-child {
-      border-start-end-radius: var(--lib-border-radius-md, 6px);
-      border-end-end-radius: var(--lib-border-radius-md, 6px);
-    }
+      .lib-button-group .lib-button:last-child {
+        border-start-end-radius: var(--lib-border-radius-md, 6px);
+        border-end-end-radius: var(--lib-border-radius-md, 6px);
+      }
 
-    .lib-button-group .lib-button:not(:first-child) {
-      margin-inline-start: -1px;
-    }
-  `],
+      .lib-button-group .lib-button:not(:first-child) {
+        margin-inline-start: -1px;
+      }
+    `,
+  ],
 })
 export class ButtonExampleComponent {
   readonly inlineLoading = signal(false);

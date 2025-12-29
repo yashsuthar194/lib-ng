@@ -40,7 +40,7 @@ export class MockApiService {
    * Returns companies filtered by industry
    */
   static getCompaniesByIndustry(industry: string): Observable<Company[]> {
-    const filtered = COMPANIES.filter(c => 
+    const filtered = COMPANIES.filter(c =>
       c.industry.toLowerCase().includes(industry.toLowerCase())
     );
     return of(filtered).pipe(delay(this.getRandomDelay()));
@@ -226,7 +226,7 @@ export class MockApiService {
    * Returns audit logs filtered by action type
    */
   static getAuditLogsByAction(action: string): Observable<AuditLog[]> {
-    const filtered = AUDIT_LOGS.filter(log => 
+    const filtered = AUDIT_LOGS.filter(log =>
       log.action.toLowerCase().includes(action.toLowerCase())
     );
     return of(filtered).pipe(delay(this.getRandomDelay()));
@@ -247,27 +247,25 @@ export class MockApiService {
     tasks: Task[];
   }> {
     const q = query.toLowerCase();
-    
+
     const result = {
-      users: USERS.filter(u => 
-        u.name.toLowerCase().includes(q) || 
-        u.email.toLowerCase().includes(q)
+      users: USERS.filter(
+        u => u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q)
       ).slice(0, 10),
-      companies: COMPANIES.filter(c => 
-        c.name.toLowerCase().includes(q) || 
-        c.industry.toLowerCase().includes(q)
+      companies: COMPANIES.filter(
+        c => c.name.toLowerCase().includes(q) || c.industry.toLowerCase().includes(q)
       ).slice(0, 10),
-      projects: PROJECTS.filter(p => 
-        p.name.toLowerCase().includes(q) || 
-        p.description.toLowerCase().includes(q)
+      projects: PROJECTS.filter(
+        p => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
       ).slice(0, 10),
-      tasks: TASKS.filter(t => 
-        t.title.toLowerCase().includes(q) || 
-        t.description.toLowerCase().includes(q) ||
-        t.tags.some(tag => tag.toLowerCase().includes(q))
-      ).slice(0, 10)
+      tasks: TASKS.filter(
+        t =>
+          t.title.toLowerCase().includes(q) ||
+          t.description.toLowerCase().includes(q) ||
+          t.tags.some(tag => tag.toLowerCase().includes(q))
+      ).slice(0, 10),
     };
-    
+
     return of(result).pipe(delay(this.getRandomDelay(300, 800)));
   }
 
@@ -289,9 +287,7 @@ export class MockApiService {
     const company = COMPANIES.find(c => c.id === companyId);
     const users = USERS.filter(u => u.companyId === companyId);
     const projects = PROJECTS.filter(p => p.companyId === companyId);
-    const tasks = TASKS.filter(t => 
-      projects.some(p => p.id === t.projectId)
-    );
+    const tasks = TASKS.filter(t => projects.some(p => p.id === t.projectId));
     const activeProjects = projects.filter(p => p.status === 'active');
 
     return of({
@@ -299,7 +295,7 @@ export class MockApiService {
       userCount: users.length,
       projectCount: projects.length,
       taskCount: tasks.length,
-      activeProjects: activeProjects.length
+      activeProjects: activeProjects.length,
     }).pipe(delay(this.getRandomDelay()));
   }
 
@@ -322,7 +318,7 @@ export class MockApiService {
       user,
       company,
       assignedTasks,
-      recentActivity
+      recentActivity,
     }).pipe(delay(this.getRandomDelay(400, 1200)));
   }
 }

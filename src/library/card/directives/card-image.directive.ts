@@ -7,8 +7,8 @@ import { Directive, input } from '@angular/core';
 @Directive({
   selector: 'img[libCardImage]',
   standalone: true,
-  host: { 
-    'class': 'lib-card-image',
+  host: {
+    class: 'lib-card-image',
     '[style.height.px]': 'height()',
     '[style.object-fit]': '"cover"',
     '[style.width]': '"100%"',

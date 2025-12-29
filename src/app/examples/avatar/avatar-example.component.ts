@@ -306,10 +306,7 @@ import { AvatarComponent, AvatarGroupComponent } from '../../../library/avatar';
             <span>→ Initials</span>
           </div>
           <div class="avatar-demo">
-            <lib-avatar
-              src="https://invalid-url.com/broken.jpg"
-              size="lg"
-            ></lib-avatar>
+            <lib-avatar src="https://invalid-url.com/broken.jpg" size="lg"></lib-avatar>
             <span>→ Icon</span>
           </div>
         </div>

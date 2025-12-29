@@ -2,7 +2,15 @@
 <div class="lib-checkbox__container">
   <!-- Checkbox Box -->
   <span class="lib-checkbox__box">
-    <svg class="lib-checkbox__checkmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <svg
+      class="lib-checkbox__checkmark"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
       @if (indeterminate()) {
         <!-- Dash for indeterminate -->
         <line x1="6" y1="12" x2="18" y2="12" />
@@ -12,7 +20,7 @@
       }
     </svg>
   </span>
-  
+
   <!-- Label -->
   <span class="lib-checkbox__label">
     <ng-content></ng-content>

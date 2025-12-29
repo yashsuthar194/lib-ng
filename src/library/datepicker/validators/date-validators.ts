@@ -245,7 +245,7 @@ export function maxRangeDays(maxDays: number): ValidatorFn {
  * Collection of all date validators
  * @example
  * import { dateValidators } from '@lib/datepicker';
- * 
+ *
  * new FormControl(null, [
  *   dateValidators.required(),
  *   dateValidators.minDate(new Date()),

@@ -3,7 +3,7 @@ import type { StepChangeEvent } from '../types/stepper.types';
 
 /**
  * StepperService - Signal-based state management
- * 
+ *
  * No subscriptions = No memory leaks
  * Uses pure signals and function callbacks only.
  */
@@ -41,7 +41,7 @@ export class StepperService {
   private _onChangeCallback?: (event: StepChangeEvent) => void;
 
   // ========== Configuration ==========
-  
+
   setStepCount(count: number): void {
     this._stepCount.set(count);
   }
@@ -55,7 +55,7 @@ export class StepperService {
   }
 
   // ========== Step State Queries ==========
-  
+
   isStepDisabled(index: number): boolean {
     return this._disabledSteps().has(index);
   }
@@ -69,13 +69,13 @@ export class StepperService {
   }
 
   // ========== Navigation ==========
-  
+
   goToStep(index: number): boolean {
     const current = this._activeIndex();
     if (index === current) return false;
     if (index < 0 || index >= this._stepCount()) return false;
     if (this.isStepDisabled(index)) return false;
-    
+
     // Linear mode: can only go to next step or previous steps
     if (this._linear() && index > current) {
       if (!this.isStepCompleted(current)) return false;
@@ -112,7 +112,7 @@ export class StepperService {
   }
 
   // ========== Step State Mutations ==========
-  
+
   completeStep(index?: number): void {
     const idx = index ?? this._activeIndex();
     this._completedSteps.update(set => new Set(set).add(idx));
@@ -139,7 +139,7 @@ export class StepperService {
   }
 
   // ========== Disable Control ==========
-  
+
   disableStep(index: number): void {
     this._disabledSteps.update(set => new Set(set).add(index));
   }
@@ -175,7 +175,7 @@ export class StepperService {
   }
 
   // ========== Animation & Reset ==========
-  
+
   endAnimation(): void {
     this._isAnimating.set(false);
   }

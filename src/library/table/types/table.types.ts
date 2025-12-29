@@ -40,17 +40,13 @@ export interface ColumnDef<T> {
 // ============================================
 // Data Source Types
 // ============================================
-export type DataInput<T> =
-  | T[]
-  | Signal<T[]>
-  | Observable<T[]>
-  | FormArray<FormGroup>;
+export type DataInput<T> = T[] | Signal<T[]> | Observable<T[]> | FormArray<FormGroup>;
 
 export interface TableDataSource<T> {
   readonly data: Signal<T[]>;
   readonly loading?: Signal<boolean>;
   readonly totalCount?: Signal<number>;
-  
+
   connect?(): void;
   disconnect?(): void;
 }
@@ -96,5 +92,5 @@ export const DEFAULT_TABLE_CONFIG: TableConfig = {
   pageSizeOptions: [5, 10, 25, 50],
   defaultPageSize: 10,
   showFirstLastButtons: true,
-  emptyMessage: 'No data available'
+  emptyMessage: 'No data available',
 };

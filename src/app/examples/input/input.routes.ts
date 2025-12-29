@@ -8,19 +8,19 @@ export const INPUT_ROUTES: Routes = [
   },
   {
     path: 'basic',
-    loadComponent: () => 
+    loadComponent: () =>
       import('./basic/basic-input.component').then(m => m.BasicInputExampleComponent),
     title: 'Basic Input',
   },
   {
     path: 'search',
-    loadComponent: () => 
+    loadComponent: () =>
       import('./search/search-input.component').then(m => m.SearchInputExampleComponent),
     title: 'Search Input',
   },
   {
     path: 'form-field',
-    loadComponent: () => 
+    loadComponent: () =>
       import('./form-field/form-field-example.component').then(m => m.FormFieldExampleComponent),
     title: 'Form Field',
   },

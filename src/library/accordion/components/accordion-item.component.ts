@@ -36,7 +36,7 @@ import { AccordionContentDirective } from '../directives/accordion-content.direc
   imports: [NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-accordion-item',
+    class: 'lib-accordion-item',
     '[class.lib-accordion-item--expanded]': 'isExpanded()',
     '[class.lib-accordion-item--disabled]': 'disabled()',
   },

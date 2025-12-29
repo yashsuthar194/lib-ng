@@ -1,6 +1,6 @@
 /**
  * Toast Component
- * 
+ *
  * Single toast notification with variant styling, icon, action button, and dismiss.
  */
 
@@ -21,13 +21,13 @@ import type { ToastData } from '../types/toast.types';
   styleUrl: './toast.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'lib-toast',
+    class: 'lib-toast',
     '[class.lib-toast--success]': 'data().variant === "success"',
     '[class.lib-toast--error]': 'data().variant === "error"',
     '[class.lib-toast--warning]': 'data().variant === "warning"',
     '[class.lib-toast--info]': 'data().variant === "info"',
     '[class.lib-toast--exiting]': 'isExiting()',
-    'role': 'alert',
+    role: 'alert',
     'aria-live': 'polite',
   },
 })
@@ -37,10 +37,10 @@ export class ToastComponent {
 
   /** Emitted when toast should close */
   readonly closeRequest = output<'action' | 'dismiss'>();
-  
+
   /** Emitted on mouse enter (pause timer) */
   readonly mouseEnter = output<void>();
-  
+
   /** Emitted on mouse leave (resume timer) */
   readonly mouseLeave = output<void>();
 

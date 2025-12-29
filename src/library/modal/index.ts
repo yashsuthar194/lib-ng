@@ -21,7 +21,4 @@ export type {
   AnimationOriginPosition,
 } from './types/modal.types';
 
-export { 
-  DEFAULT_MODAL_CONFIG,
-  getAnimationOrigin,
-} from './types/modal.types';
+export { DEFAULT_MODAL_CONFIG, getAnimationOrigin } from './types/modal.types';

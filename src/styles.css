@@ -49,16 +49,29 @@ body {
 /* ==============================================
    Typography Base
    ============================================== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--lib-font-weight-semibold);
   line-height: var(--lib-line-height-tight);
   color: var(--lib-color-neutral-900);
 }
 
-h1 { font-size: var(--lib-font-size-3xl); }
-h2 { font-size: var(--lib-font-size-2xl); }
-h3 { font-size: var(--lib-font-size-xl); }
-h4 { font-size: var(--lib-font-size-lg); }
+h1 {
+  font-size: var(--lib-font-size-3xl);
+}
+h2 {
+  font-size: var(--lib-font-size-2xl);
+}
+h3 {
+  font-size: var(--lib-font-size-xl);
+}
+h4 {
+  font-size: var(--lib-font-size-lg);
+}
 
 p {
   margin-block-end: var(--lib-spacing-4);
@@ -79,7 +92,8 @@ a:hover {
 /* ==============================================
    Code Styles
    ============================================== */
-code, pre {
+code,
+pre {
   font-family: var(--lib-font-family-mono);
   font-size: var(--lib-font-size-sm);
 }
@@ -159,18 +173,18 @@ pre code {
 /* ==============================================
    Dark Mode Adjustments
    ============================================== */
-[data-theme-mode="dark"] {
+[data-theme-mode='dark'] {
   color-scheme: dark;
 }
 
-[data-theme-mode="dark"] body {
+[data-theme-mode='dark'] body {
   background: var(--lib-color-neutral-950);
 }
 
-[data-theme-mode="dark"] ::-webkit-scrollbar-track {
+[data-theme-mode='dark'] ::-webkit-scrollbar-track {
   background: var(--lib-color-neutral-800);
 }
 
-[data-theme-mode="dark"] ::-webkit-scrollbar-thumb {
+[data-theme-mode='dark'] ::-webkit-scrollbar-thumb {
   background: var(--lib-color-neutral-600);
 }

@@ -30,7 +30,7 @@ export function createDataSource<T>(input: DataInput<T>): TableDataSource<T> {
 
   throw new Error(
     `Unsupported data source type. Expected T[], Signal<T[]>, Observable<T[]>, or FormArray. ` +
-    `Received: ${typeof input}`
+      `Received: ${typeof input}`
   );
 }
 

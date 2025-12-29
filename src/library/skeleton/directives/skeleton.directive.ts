@@ -55,12 +55,14 @@ import { SkeletonGroupComponent } from '../components/skeleton-group.component';
       <lib-skeleton [animation]="animation" />
     }
   `,
-  styles: [`
-    :host {
-      display: block;
-      width: 100%;
-    }
-  `],
+  styles: [
+    `
+      :host {
+        display: block;
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class SkeletonPlaceholderComponent {
   preset: SkeletonPreset | null = null;

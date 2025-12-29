@@ -12,10 +12,10 @@ let stepUniqueId = 0;
 
 /**
  * Step Component
- * 
- * Individual step within a stepper. Supports custom ID, 
+ *
+ * Individual step within a stepper. Supports custom ID,
  * disable input, icon/label templates, and content projection.
- * 
+ *
  * @example
  * ```html
  * <lib-step id="payment" label="Payment" [disabled]="!hasItems()">
@@ -31,38 +31,38 @@ let stepUniqueId = 0;
 })
 export class StepComponent {
   readonly internalId = `lib-step-${++stepUniqueId}`;
-  
+
   // ========== Inputs ==========
-  
+
   /** Custom ID for programmatic access (e.g., goToStepById) */
   readonly id = input<string>();
-  
+
   /** Step label text */
   readonly label = input.required<string>();
-  
+
   /** Optional sublabel/description */
   readonly sublabel = input<string>();
-  
+
   /** Icon (emoji, symbol, or icon character) */
   readonly icon = input<string>();
-  
+
   /** Mark step as optional */
   readonly optional = input(false);
-  
+
   /** Allow re-editing after completion */
   readonly editable = input(true);
-  
+
   /** Disable this step (prevents navigation to it) */
   readonly disabled = input(false);
 
   // ========== Custom Templates ==========
-  
+
   readonly iconTemplate = contentChild<TemplateRef<unknown>>('stepIcon');
   readonly labelTemplate = contentChild<TemplateRef<unknown>>('stepLabel');
   readonly contentTemplate = viewChild.required<TemplateRef<unknown>>('content');
 
   // ========== Internal State ==========
-  
+
   private readonly _index = signal(-1);
   readonly index = this._index.asReadonly();
 

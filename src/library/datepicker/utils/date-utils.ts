@@ -3,7 +3,7 @@
  *
  * Simple, reusable date manipulation functions used across DatePicker components.
  * All functions are pure (no side effects) and work with native Date objects.
- * 
+ *
  * Design principles:
  * - Simple and focused functions
  * - No external dependencies
@@ -11,7 +11,12 @@
  * - Performance optimized (O(1) where possible)
  */
 
-import type { CalendarDay, DateRange, WeekStart, WorkingDaysConfig } from '../types/datepicker.types';
+import type {
+  CalendarDay,
+  DateRange,
+  WeekStart,
+  WorkingDaysConfig,
+} from '../types/datepicker.types';
 
 // ============================================================================
 // DATE COMPARISON
@@ -34,10 +39,7 @@ export function isSameDay(date1: Date | null, date2: Date | null): boolean {
  */
 export function isSameMonth(date1: Date | null, date2: Date | null): boolean {
   if (!date1 || !date2) return false;
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getMonth() === date2.getMonth()
-  );
+  return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth();
 }
 
 /**
@@ -206,7 +208,7 @@ export function getWeekNumber(date: Date): number {
   const dayNum = d.getUTCDay() || 7;
   d.setUTCDate(d.getUTCDate() + 4 - dayNum);
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  return Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
+  return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
 }
 
 // ============================================================================
@@ -239,26 +241,26 @@ export function getWorkingDaysBetween(
       excludeSet.add(startOfDay(date).getTime().toString());
     }
   }
-  
+
   // Create Set for O(1) weekday lookup
   const workingDaysSet = new Set(config.weekdays);
-  
+
   let count = 0;
   let current = startOfDay(start);
   const endTime = startOfDay(end).getTime();
-  
+
   while (current.getTime() <= endTime) {
     const dayOfWeek = current.getDay();
     const isWorkingDay = workingDaysSet.has(dayOfWeek);
     const isExcluded = excludeSet.has(current.getTime().toString());
-    
+
     if (isWorkingDay && !isExcluded) {
       count++;
     }
-    
+
     current = addDays(current, 1);
   }
-  
+
   return count;
 }
 
@@ -282,11 +284,10 @@ export function getCalendarDays(
 ): CalendarDay[] {
   const days: CalendarDay[] = [];
   const monthStart = startOfMonth(viewDate);
-  const monthEnd = endOfMonth(viewDate);
-  
+
   // Find the first day to display (start of week containing month start)
   const calendarStart = startOfWeek(monthStart, weekStart);
-  
+
   // Create Set for O(1) disabled date lookup
   const disabledSet = new Set<string>();
   if (disabledDates) {
@@ -294,30 +295,30 @@ export function getCalendarDays(
       disabledSet.add(startOfDay(date).getTime().toString());
     }
   }
-  
+
   // Generate 42 days (6 weeks)
   for (let i = 0; i < 42; i++) {
     const date = addDays(calendarStart, i);
     const dateTime = startOfDay(date).getTime();
-    
+
     // Determine if day is disabled
     let isDisabled = false;
     if (minDate && isBefore(date, minDate)) isDisabled = true;
     if (maxDate && isAfter(date, maxDate)) isDisabled = true;
     if (disabledSet.has(dateTime.toString())) isDisabled = true;
     if (dateFilter && !dateFilter(date)) isDisabled = true;
-    
+
     // Determine range state
     let isInRange = false;
     let isRangeStart = false;
     let isRangeEnd = false;
-    
+
     if (range?.start && range?.end) {
       isInRange = isWithinRange(date, range);
       isRangeStart = isSameDay(date, range.start);
       isRangeEnd = isSameDay(date, range.end);
     }
-    
+
     days.push({
       date,
       day: date.getDate(),
@@ -331,7 +332,7 @@ export function getCalendarDays(
       isWeekend: isWeekend(date),
     });
   }
-  
+
   return days;
 }
 
@@ -358,7 +359,7 @@ export function formatDate(date: Date, format: string): string {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  
+
   return format
     .replace('YYYY', year.toString())
     .replace('MM', month.toString().padStart(2, '0'))
@@ -374,7 +375,7 @@ export function parseDate(dateString: string, format: string): Date | null {
   try {
     const formatParts = format.match(/(YYYY|MM|DD|M|D)/g);
     if (!formatParts) return null;
-    
+
     // Build regex from format
     const regexStr = format
       .replace('YYYY', '(\\d{4})')
@@ -382,30 +383,28 @@ export function parseDate(dateString: string, format: string): Date | null {
       .replace('DD', '(\\d{2})')
       .replace('M', '(\\d{1,2})')
       .replace('D', '(\\d{1,2})');
-    
+
     const match = dateString.match(new RegExp(`^${regexStr}$`));
     if (!match) return null;
-    
-    let year = 0, month = 0, day = 0;
-    
+
+    let year = 0,
+      month = 0,
+      day = 0;
+
     formatParts.forEach((part, index) => {
       const value = parseInt(match[index + 1], 10);
       if (part === 'YYYY') year = value;
       else if (part === 'MM' || part === 'M') month = value - 1;
       else if (part === 'DD' || part === 'D') day = value;
     });
-    
+
     const result = new Date(year, month, day);
-    
+
     // Validate the date
-    if (
-      result.getFullYear() !== year ||
-      result.getMonth() !== month ||
-      result.getDate() !== day
-    ) {
+    if (result.getFullYear() !== year || result.getMonth() !== month || result.getDate() !== day) {
       return null;
     }
-    
+
     return result;
   } catch {
     return null;
@@ -417,11 +416,11 @@ export function parseDate(dateString: string, format: string): Date | null {
  */
 export function getRelativeDateLabel(date: Date): string | null {
   const today = new Date();
-  
+
   if (isSameDay(date, today)) return 'Today';
   if (isSameDay(date, addDays(today, -1))) return 'Yesterday';
   if (isSameDay(date, addDays(today, 1))) return 'Tomorrow';
-  
+
   // This week
   const startOfThisWeek = startOfWeek(today, 0);
   const endOfThisWeek = addDays(startOfThisWeek, 6);
@@ -429,7 +428,7 @@ export function getRelativeDateLabel(date: Date): string | null {
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return `This ${weekdays[date.getDay()]}`;
   }
-  
+
   // Last week
   const startOfLastWeek = addDays(startOfThisWeek, -7);
   const endOfLastWeek = addDays(startOfLastWeek, 6);
@@ -437,7 +436,7 @@ export function getRelativeDateLabel(date: Date): string | null {
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return `Last ${weekdays[date.getDay()]}`;
   }
-  
+
   // Next week
   const startOfNextWeek = addDays(startOfThisWeek, 7);
   const endOfNextWeek = addDays(startOfNextWeek, 6);
@@ -445,7 +444,7 @@ export function getRelativeDateLabel(date: Date): string | null {
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     return `Next ${weekdays[date.getDay()]}`;
   }
-  
+
   // Fallback to null (use absolute date)
   return null;
 }
@@ -461,38 +460,40 @@ export function getRelativeDateLabel(date: Date): string | null {
 export function parseSmartDate(input: string): Date | null {
   const normalized = input.toLowerCase().trim();
   const today = new Date();
-  
+
   // Exact matches
   if (normalized === 'today') return today;
   if (normalized === 'yesterday') return addDays(today, -1);
   if (normalized === 'tomorrow') return addDays(today, 1);
-  
+
   // Relative days: "in X days", "X days ago"
   const inDaysMatch = normalized.match(/^in\s+(\d+)\s+days?$/);
   if (inDaysMatch) {
     return addDays(today, parseInt(inDaysMatch[1], 10));
   }
-  
+
   const daysAgoMatch = normalized.match(/^(\d+)\s+days?\s+ago$/);
   if (daysAgoMatch) {
     return addDays(today, -parseInt(daysAgoMatch[1], 10));
   }
-  
+
   // Relative weeks: "in X weeks", "X weeks ago"
   const inWeeksMatch = normalized.match(/^in\s+(\d+)\s+weeks?$/);
   if (inWeeksMatch) {
     return addDays(today, parseInt(inWeeksMatch[1], 10) * 7);
   }
-  
+
   const weeksAgoMatch = normalized.match(/^(\d+)\s+weeks?\s+ago$/);
   if (weeksAgoMatch) {
     return addDays(today, -parseInt(weeksAgoMatch[1], 10) * 7);
   }
-  
+
   // Day names: "next friday", "last monday"
   const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  
-  const nextDayMatch = normalized.match(/^next\s+(sunday|monday|tuesday|wednesday|thursday|friday|saturday)$/);
+
+  const nextDayMatch = normalized.match(
+    /^next\s+(sunday|monday|tuesday|wednesday|thursday|friday|saturday)$/
+  );
   if (nextDayMatch) {
     const targetDay = dayNames.indexOf(nextDayMatch[1]);
     const currentDay = today.getDay();
@@ -500,8 +501,10 @@ export function parseSmartDate(input: string): Date | null {
     if (daysUntil <= 0) daysUntil += 7;
     return addDays(today, daysUntil + 7);
   }
-  
-  const lastDayMatch = normalized.match(/^last\s+(sunday|monday|tuesday|wednesday|thursday|friday|saturday)$/);
+
+  const lastDayMatch = normalized.match(
+    /^last\s+(sunday|monday|tuesday|wednesday|thursday|friday|saturday)$/
+  );
   if (lastDayMatch) {
     const targetDay = dayNames.indexOf(lastDayMatch[1]);
     const currentDay = today.getDay();
@@ -509,12 +512,40 @@ export function parseSmartDate(input: string): Date | null {
     if (daysSince <= 0) daysSince += 7;
     return addDays(today, -(daysSince + 7));
   }
-  
+
   // Month day: "Dec 25", "December 25"
-  const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-  const fullMonthNames = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-  
-  const monthDayMatch = normalized.match(/^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})$/);
+  const monthNames = [
+    'jan',
+    'feb',
+    'mar',
+    'apr',
+    'may',
+    'jun',
+    'jul',
+    'aug',
+    'sep',
+    'oct',
+    'nov',
+    'dec',
+  ];
+  const fullMonthNames = [
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december',
+  ];
+
+  const monthDayMatch = normalized.match(
+    /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})$/
+  );
   if (monthDayMatch) {
     let monthIndex = monthNames.indexOf(monthDayMatch[1].substring(0, 3));
     if (monthIndex === -1) {
@@ -523,7 +554,7 @@ export function parseSmartDate(input: string): Date | null {
     const day = parseInt(monthDayMatch[2], 10);
     return new Date(today.getFullYear(), monthIndex, day);
   }
-  
+
   return null;
 }
 

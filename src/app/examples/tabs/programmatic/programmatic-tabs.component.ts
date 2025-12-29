@@ -3,7 +3,7 @@ import { TabsComponent, TabComponent, TabChangeEvent } from '../../../../library
 
 /**
  * Programmatic Tabs Example
- * 
+ *
  * Demonstrates programmatic control of tabs via API methods.
  */
 @Component({
@@ -41,9 +41,7 @@ import { TabsComponent, TabComponent, TabChangeEvent } from '../../../../library
               <div class="step-content">
                 <h3>Step 1: Getting Started</h3>
                 <p>Welcome to the wizard! Click "Next" to continue.</p>
-                <button class="btn btn--primary" (click)="goToNext()">
-                  Continue →
-                </button>
+                <button class="btn btn--primary" (click)="goToNext()">Continue →</button>
               </div>
             </lib-tab>
             <lib-tab label="Step 2" id="step-2">
@@ -83,112 +81,115 @@ import { TabsComponent, TabComponent, TabChangeEvent } from '../../../../library
         <div class="event-log">
           @for (event of eventLog(); track $index) {
             <div class="event-item">{{ event }}</div>
-          }
-          @empty {
-            <div class="event-item event-item--empty">No events yet. Click on tabs to see events.</div>
+          } @empty {
+            <div class="event-item event-item--empty">
+              No events yet. Click on tabs to see events.
+            </div>
           }
         </div>
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      padding: var(--lib-spacing-6);
-      max-width: 900px;
-    }
-    
-    .description {
-      color: var(--lib-color-neutral-600);
-      margin-block-end: var(--lib-spacing-6);
-    }
-    
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
-    
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      margin-block-end: var(--lib-spacing-3);
-    }
-    
-    .example-container {
-      background: var(--lib-color-neutral-0);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-lg);
-      overflow: hidden;
-    }
-    
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--lib-spacing-2);
-      margin-block-end: var(--lib-spacing-4);
-    }
-    
-    .btn {
-      padding: var(--lib-spacing-2) var(--lib-spacing-4);
-      background: var(--lib-color-neutral-100);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-300);
-      border-radius: var(--lib-border-radius-md);
-      cursor: pointer;
-      font-size: var(--lib-font-size-sm);
-      font-weight: var(--lib-font-weight-medium);
-      transition: all var(--lib-transition-fast);
-    }
-    
-    .btn:hover {
-      background: var(--lib-color-neutral-200);
-    }
-    
-    .btn--primary {
-      background: var(--lib-color-primary-500);
-      border-color: var(--lib-color-primary-500);
-      color: white;
-    }
-    
-    .btn--primary:hover {
-      background: var(--lib-color-primary-600);
-    }
-    
-    .step-content {
-      min-height: 150px;
-    }
-    
-    .btn-group {
-      display: flex;
-      gap: var(--lib-spacing-2);
-      margin-block-start: var(--lib-spacing-4);
-    }
-    
-    .event-log {
-      background: var(--lib-color-neutral-50);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-md);
-      padding: var(--lib-spacing-3);
-      max-height: 200px;
-      overflow-y: auto;
-      font-family: monospace;
-      font-size: var(--lib-font-size-xs);
-    }
-    
-    .event-item {
-      padding: var(--lib-spacing-1) 0;
-      border-bottom: 1px solid var(--lib-color-neutral-200);
-    }
-    
-    .event-item:last-child {
-      border-bottom: none;
-    }
-    
-    .event-item--empty {
-      color: var(--lib-color-neutral-400);
-      font-style: italic;
-    }
-  `],
+  styles: [
+    `
+      .example-page {
+        padding: var(--lib-spacing-6);
+        max-width: 900px;
+      }
+
+      .description {
+        color: var(--lib-color-neutral-600);
+        margin-block-end: var(--lib-spacing-6);
+      }
+
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
+
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        margin-block-end: var(--lib-spacing-3);
+      }
+
+      .example-container {
+        background: var(--lib-color-neutral-0);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-lg);
+        overflow: hidden;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--lib-spacing-2);
+        margin-block-end: var(--lib-spacing-4);
+      }
+
+      .btn {
+        padding: var(--lib-spacing-2) var(--lib-spacing-4);
+        background: var(--lib-color-neutral-100);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-300);
+        border-radius: var(--lib-border-radius-md);
+        cursor: pointer;
+        font-size: var(--lib-font-size-sm);
+        font-weight: var(--lib-font-weight-medium);
+        transition: all var(--lib-transition-fast);
+      }
+
+      .btn:hover {
+        background: var(--lib-color-neutral-200);
+      }
+
+      .btn--primary {
+        background: var(--lib-color-primary-500);
+        border-color: var(--lib-color-primary-500);
+        color: white;
+      }
+
+      .btn--primary:hover {
+        background: var(--lib-color-primary-600);
+      }
+
+      .step-content {
+        min-height: 150px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: var(--lib-spacing-2);
+        margin-block-start: var(--lib-spacing-4);
+      }
+
+      .event-log {
+        background: var(--lib-color-neutral-50);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-md);
+        padding: var(--lib-spacing-3);
+        max-height: 200px;
+        overflow-y: auto;
+        font-family: monospace;
+        font-size: var(--lib-font-size-xs);
+      }
+
+      .event-item {
+        padding: var(--lib-spacing-1) 0;
+        border-bottom: 1px solid var(--lib-color-neutral-200);
+      }
+
+      .event-item:last-child {
+        border-bottom: none;
+      }
+
+      .event-item--empty {
+        color: var(--lib-color-neutral-400);
+        font-style: italic;
+      }
+    `,
+  ],
 })
 export class ProgrammaticTabsExampleComponent {
   @ViewChild('tabsRef') tabsRef!: TabsComponent;
-  
+
   readonly eventLog = signal<string[]>([]);
 
   goToTab(index: number): void {

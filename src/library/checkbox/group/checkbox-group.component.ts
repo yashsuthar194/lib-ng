@@ -1,19 +1,19 @@
 /**
  * Checkbox Group Component
- * 
+ *
  * @description
  * Groups multiple checkboxes together for managing array values.
  * Implements ControlValueAccessor for Angular Forms integration.
- * 
+ *
  * @example
  * ```html
  * <!-- With options array -->
- * <lib-checkbox-group 
- *   [(ngModel)]="selectedFruits" 
+ * <lib-checkbox-group
+ *   [(ngModel)]="selectedFruits"
  *   [options]="fruits"
  *   orientation="vertical">
  * </lib-checkbox-group>
- * 
+ *
  * <!-- With content projection -->
  * <lib-checkbox-group [(ngModel)]="selected">
  *   <lib-checkbox value="apple">Apple</lib-checkbox>
@@ -49,13 +49,13 @@ import { CheckboxOption, CheckboxSize } from '../types/checkbox.types';
     },
   ],
   template: `
-    <div 
-      class="lib-checkbox-group" 
+    <div
+      class="lib-checkbox-group"
       [class.lib-checkbox-group--horizontal]="orientation() === 'horizontal'"
       [class.lib-checkbox-group--vertical]="orientation() === 'vertical'"
       role="group"
-      [attr.aria-label]="label()">
-      
+      [attr.aria-label]="label()"
+    >
       @if (options().length > 0) {
         @for (option of options(); track option.value) {
           <lib-checkbox
@@ -63,7 +63,8 @@ import { CheckboxOption, CheckboxSize } from '../types/checkbox.types';
             [checked]="isSelected(option.value)"
             [disabled]="option.disabled || isDisabled()"
             [size]="size()"
-            (checkedChange)="onOptionChange(option.value, $event)">
+            (checkedChange)="onOptionChange(option.value, $event)"
+          >
             {{ option.label }}
           </lib-checkbox>
         }
@@ -72,27 +73,29 @@ import { CheckboxOption, CheckboxSize } from '../types/checkbox.types';
       }
     </div>
   `,
-  styles: [`
-    :host {
-      display: block;
-    }
+  styles: [
+    `
+      :host {
+        display: block;
+      }
 
-    .lib-checkbox-group {
-      display: flex;
-      gap: var(--lib-spacing-3, 12px);
-    }
+      .lib-checkbox-group {
+        display: flex;
+        gap: var(--lib-spacing-3, 12px);
+      }
 
-    .lib-checkbox-group--vertical {
-      flex-direction: column;
-    }
+      .lib-checkbox-group--vertical {
+        flex-direction: column;
+      }
 
-    .lib-checkbox-group--horizontal {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  `],
+      .lib-checkbox-group--horizontal {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    `,
+  ],
   host: {
-    'class': 'lib-checkbox-group-host',
+    class: 'lib-checkbox-group-host',
   },
 })
 export class CheckboxGroupComponent<T = unknown> implements ControlValueAccessor {
@@ -157,7 +160,7 @@ export class CheckboxGroupComponent<T = unknown> implements ControlValueAccessor
   /** Handle option checkbox change */
   onOptionChange(value: T, checked: boolean): void {
     const current = [...this.internalValue()];
-    
+
     if (checked) {
       if (!current.includes(value)) {
         current.push(value);

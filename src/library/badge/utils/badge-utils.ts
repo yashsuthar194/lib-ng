@@ -27,10 +27,7 @@ export function formatBadgeValue(value: number, maxValue: number = 99): string {
  * @param content - Badge content
  * @param hideZero - Whether to hide when zero
  */
-export function shouldHideBadge(
-  content: string | number | null,
-  hideZero: boolean
-): boolean {
+export function shouldHideBadge(content: string | number | null, hideZero: boolean): boolean {
   if (content === null || content === '') return false; // Dot badge - always visible
   if (typeof content === 'number' && content === 0 && hideZero) return true;
   if (content === '0' && hideZero) return true;

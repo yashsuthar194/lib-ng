@@ -11,7 +11,7 @@ export const USERS: User[] = [
     companyId: 'comp-001',
     isActive: true,
     lastLogin: '2024-12-18T09:15:00Z',
-    createdAt: '2018-03-20T10:00:00Z'
+    createdAt: '2018-03-20T10:00:00Z',
   },
   {
     id: 'user-002',
@@ -22,7 +22,7 @@ export const USERS: User[] = [
     companyId: 'comp-001',
     isActive: true,
     lastLogin: '2024-12-17T14:30:00Z',
-    createdAt: '2018-05-15T09:00:00Z'
+    createdAt: '2018-05-15T09:00:00Z',
   },
   {
     id: 'user-003',
@@ -33,18 +33,18 @@ export const USERS: User[] = [
     companyId: 'comp-001',
     isActive: true,
     lastLogin: '2024-12-18T08:45:00Z',
-    createdAt: '2019-02-10T11:30:00Z'
+    createdAt: '2019-02-10T11:30:00Z',
   },
   {
     id: 'user-004',
-    name: 'James O\'Brien',
+    name: "James O'Brien",
     email: 'james.obrien@technova.com',
     avatarUrl: 'https://i.pravatar.cc/150?u=james-obrien',
     role: UserRole.User,
     companyId: 'comp-001',
     isActive: true,
     lastLogin: '2024-12-16T16:20:00Z',
-    createdAt: '2020-01-08T08:00:00Z'
+    createdAt: '2020-01-08T08:00:00Z',
   },
   {
     id: 'user-005',
@@ -55,7 +55,7 @@ export const USERS: User[] = [
     companyId: 'comp-001',
     isActive: false,
     lastLogin: '2024-11-20T10:00:00Z',
-    createdAt: '2023-06-15T14:00:00Z'
+    createdAt: '2023-06-15T14:00:00Z',
   },
 
   // GreenLeaf Energy (comp-002) - Renewable Energy
@@ -68,7 +68,7 @@ export const USERS: User[] = [
     companyId: 'comp-002',
     isActive: true,
     lastLogin: '2024-12-18T07:00:00Z',
-    createdAt: '2019-07-25T08:30:00Z'
+    createdAt: '2019-07-25T08:30:00Z',
   },
   {
     id: 'user-007',
@@ -79,7 +79,7 @@ export const USERS: User[] = [
     companyId: 'comp-002',
     isActive: true,
     lastLogin: '2024-12-17T18:45:00Z',
-    createdAt: '2019-09-01T10:00:00Z'
+    createdAt: '2019-09-01T10:00:00Z',
   },
   {
     id: 'user-008',
@@ -90,7 +90,7 @@ export const USERS: User[] = [
     companyId: 'comp-002',
     isActive: true,
     lastLogin: '2024-12-18T06:30:00Z',
-    createdAt: '2020-03-12T09:15:00Z'
+    createdAt: '2020-03-12T09:15:00Z',
   },
 
   // Apex Logistics International (comp-003) - Transportation
@@ -103,7 +103,7 @@ export const USERS: User[] = [
     companyId: 'comp-003',
     isActive: true,
     lastLogin: '2024-12-18T05:45:00Z',
-    createdAt: '2015-12-01T08:00:00Z'
+    createdAt: '2015-12-01T08:00:00Z',
   },
   {
     id: 'user-010',
@@ -114,7 +114,7 @@ export const USERS: User[] = [
     companyId: 'comp-003',
     isActive: true,
     lastLogin: '2024-12-17T17:30:00Z',
-    createdAt: '2016-04-20T10:30:00Z'
+    createdAt: '2016-04-20T10:30:00Z',
   },
   {
     id: 'user-011',
@@ -125,7 +125,7 @@ export const USERS: User[] = [
     companyId: 'comp-003',
     isActive: true,
     lastLogin: '2024-12-18T04:20:00Z',
-    createdAt: '2017-08-15T07:45:00Z'
+    createdAt: '2017-08-15T07:45:00Z',
   },
   {
     id: 'user-012',
@@ -136,7 +136,7 @@ export const USERS: User[] = [
     companyId: 'comp-003',
     isActive: false,
     lastLogin: '2024-10-05T12:00:00Z',
-    createdAt: '2018-02-28T09:00:00Z'
+    createdAt: '2018-02-28T09:00:00Z',
   },
 
   // FinStream Capital (comp-004) - Financial Services
@@ -149,7 +149,7 @@ export const USERS: User[] = [
     companyId: 'comp-004',
     isActive: true,
     lastLogin: '2024-12-18T08:00:00Z',
-    createdAt: '2017-01-10T09:30:00Z'
+    createdAt: '2017-01-10T09:30:00Z',
   },
   {
     id: 'user-014',
@@ -160,7 +160,7 @@ export const USERS: User[] = [
     companyId: 'comp-004',
     isActive: true,
     lastLogin: '2024-12-17T16:45:00Z',
-    createdAt: '2017-06-22T11:00:00Z'
+    createdAt: '2017-06-22T11:00:00Z',
   },
   {
     id: 'user-015',
@@ -171,7 +171,7 @@ export const USERS: User[] = [
     companyId: 'comp-004',
     isActive: true,
     lastLogin: '2024-12-18T07:30:00Z',
-    createdAt: '2018-09-05T08:45:00Z'
+    createdAt: '2018-09-05T08:45:00Z',
   },
   {
     id: 'user-016',
@@ -182,7 +182,7 @@ export const USERS: User[] = [
     companyId: 'comp-004',
     isActive: true,
     lastLogin: '2024-12-16T14:15:00Z',
-    createdAt: '2019-11-18T10:00:00Z'
+    createdAt: '2019-11-18T10:00:00Z',
   },
 
   // BioGenix Labs (comp-005) - Biotechnology
@@ -195,7 +195,7 @@ export const USERS: User[] = [
     companyId: 'comp-005',
     isActive: true,
     lastLogin: '2024-12-18T10:30:00Z',
-    createdAt: '2020-04-15T09:00:00Z'
+    createdAt: '2020-04-15T09:00:00Z',
   },
   {
     id: 'user-018',
@@ -206,7 +206,7 @@ export const USERS: User[] = [
     companyId: 'comp-005',
     isActive: true,
     lastLogin: '2024-12-17T11:20:00Z',
-    createdAt: '2020-06-01T10:30:00Z'
+    createdAt: '2020-06-01T10:30:00Z',
   },
   {
     id: 'user-019',
@@ -217,7 +217,7 @@ export const USERS: User[] = [
     companyId: 'comp-005',
     isActive: true,
     lastLogin: '2024-12-18T09:45:00Z',
-    createdAt: '2021-02-14T08:00:00Z'
+    createdAt: '2021-02-14T08:00:00Z',
   },
 
   // Quantum Computing Inc (comp-006) - Technology Research
@@ -230,7 +230,7 @@ export const USERS: User[] = [
     companyId: 'comp-006',
     isActive: true,
     lastLogin: '2024-12-18T02:00:00Z',
-    createdAt: '2021-09-05T08:00:00Z'
+    createdAt: '2021-09-05T08:00:00Z',
   },
   {
     id: 'user-021',
@@ -241,7 +241,7 @@ export const USERS: User[] = [
     companyId: 'comp-006',
     isActive: true,
     lastLogin: '2024-12-17T23:45:00Z',
-    createdAt: '2021-10-20T09:30:00Z'
+    createdAt: '2021-10-20T09:30:00Z',
   },
   {
     id: 'user-022',
@@ -252,7 +252,7 @@ export const USERS: User[] = [
     companyId: 'comp-006',
     isActive: true,
     lastLogin: '2024-12-18T01:30:00Z',
-    createdAt: '2022-03-08T07:00:00Z'
+    createdAt: '2022-03-08T07:00:00Z',
   },
 
   // CloudNine Hosting (comp-007) - Cloud Infrastructure
@@ -265,7 +265,7 @@ export const USERS: User[] = [
     companyId: 'comp-007',
     isActive: true,
     lastLogin: '2024-12-18T11:00:00Z',
-    createdAt: '2016-06-20T10:00:00Z'
+    createdAt: '2016-06-20T10:00:00Z',
   },
   {
     id: 'user-024',
@@ -276,7 +276,7 @@ export const USERS: User[] = [
     companyId: 'comp-007',
     isActive: true,
     lastLogin: '2024-12-17T19:30:00Z',
-    createdAt: '2017-01-15T09:00:00Z'
+    createdAt: '2017-01-15T09:00:00Z',
   },
   {
     id: 'user-025',
@@ -287,7 +287,7 @@ export const USERS: User[] = [
     companyId: 'comp-007',
     isActive: true,
     lastLogin: '2024-12-18T10:15:00Z',
-    createdAt: '2018-08-22T11:30:00Z'
+    createdAt: '2018-08-22T11:30:00Z',
   },
 
   // MediCare Plus (comp-008) - Healthcare
@@ -300,7 +300,7 @@ export const USERS: User[] = [
     companyId: 'comp-008',
     isActive: true,
     lastLogin: '2024-12-18T12:00:00Z',
-    createdAt: '2014-03-01T08:00:00Z'
+    createdAt: '2014-03-01T08:00:00Z',
   },
   {
     id: 'user-027',
@@ -311,7 +311,7 @@ export const USERS: User[] = [
     companyId: 'comp-008',
     isActive: true,
     lastLogin: '2024-12-17T15:20:00Z',
-    createdAt: '2015-07-14T10:00:00Z'
+    createdAt: '2015-07-14T10:00:00Z',
   },
   {
     id: 'user-028',
@@ -322,7 +322,7 @@ export const USERS: User[] = [
     companyId: 'comp-008',
     isActive: true,
     lastLogin: '2024-12-18T06:45:00Z',
-    createdAt: '2016-11-30T07:30:00Z'
+    createdAt: '2016-11-30T07:30:00Z',
   },
   {
     id: 'user-029',
@@ -333,7 +333,7 @@ export const USERS: User[] = [
     companyId: 'comp-008',
     isActive: false,
     lastLogin: '2024-09-15T09:00:00Z',
-    createdAt: '2018-05-20T11:00:00Z'
+    createdAt: '2018-05-20T11:00:00Z',
   },
 
   // EduSmart Academy (comp-009) - Education Technology
@@ -346,7 +346,7 @@ export const USERS: User[] = [
     companyId: 'comp-009',
     isActive: true,
     lastLogin: '2024-12-18T03:30:00Z',
-    createdAt: '2019-08-15T08:00:00Z'
+    createdAt: '2019-08-15T08:00:00Z',
   },
   {
     id: 'user-031',
@@ -357,7 +357,7 @@ export const USERS: User[] = [
     companyId: 'comp-009',
     isActive: true,
     lastLogin: '2024-12-17T22:00:00Z',
-    createdAt: '2020-01-20T09:30:00Z'
+    createdAt: '2020-01-20T09:30:00Z',
   },
   {
     id: 'user-032',
@@ -368,7 +368,7 @@ export const USERS: User[] = [
     companyId: 'comp-009',
     isActive: true,
     lastLogin: '2024-12-18T02:45:00Z',
-    createdAt: '2021-06-10T10:00:00Z'
+    createdAt: '2021-06-10T10:00:00Z',
   },
 
   // AutoDrive Motors (comp-010) - Automotive
@@ -381,7 +381,7 @@ export const USERS: User[] = [
     companyId: 'comp-010',
     isActive: true,
     lastLogin: '2024-12-18T06:00:00Z',
-    createdAt: '2012-06-01T08:00:00Z'
+    createdAt: '2012-06-01T08:00:00Z',
   },
   {
     id: 'user-034',
@@ -392,7 +392,7 @@ export const USERS: User[] = [
     companyId: 'comp-010',
     isActive: true,
     lastLogin: '2024-12-17T13:45:00Z',
-    createdAt: '2013-02-18T10:30:00Z'
+    createdAt: '2013-02-18T10:30:00Z',
   },
   {
     id: 'user-035',
@@ -403,7 +403,7 @@ export const USERS: User[] = [
     companyId: 'comp-010',
     isActive: true,
     lastLogin: '2024-12-18T05:30:00Z',
-    createdAt: '2015-09-12T09:00:00Z'
+    createdAt: '2015-09-12T09:00:00Z',
   },
   {
     id: 'user-036',
@@ -414,7 +414,7 @@ export const USERS: User[] = [
     companyId: 'comp-010',
     isActive: true,
     lastLogin: '2024-12-16T11:20:00Z',
-    createdAt: '2017-04-05T07:45:00Z'
+    createdAt: '2017-04-05T07:45:00Z',
   },
 
   // FreshMart Retail (comp-011) - Retail
@@ -427,7 +427,7 @@ export const USERS: User[] = [
     companyId: 'comp-011',
     isActive: true,
     lastLogin: '2024-12-18T13:00:00Z',
-    createdAt: '2009-01-15T09:00:00Z'
+    createdAt: '2009-01-15T09:00:00Z',
   },
   {
     id: 'user-038',
@@ -438,7 +438,7 @@ export const USERS: User[] = [
     companyId: 'comp-011',
     isActive: true,
     lastLogin: '2024-12-17T20:15:00Z',
-    createdAt: '2010-05-28T10:30:00Z'
+    createdAt: '2010-05-28T10:30:00Z',
   },
   {
     id: 'user-039',
@@ -449,7 +449,7 @@ export const USERS: User[] = [
     companyId: 'comp-011',
     isActive: true,
     lastLogin: '2024-12-18T08:30:00Z',
-    createdAt: '2012-11-10T08:00:00Z'
+    createdAt: '2012-11-10T08:00:00Z',
   },
 
   // SecureVault Cyber (comp-012) - Cybersecurity
@@ -462,7 +462,7 @@ export const USERS: User[] = [
     companyId: 'comp-012',
     isActive: true,
     lastLogin: '2024-12-18T07:15:00Z',
-    createdAt: '2018-10-20T08:00:00Z'
+    createdAt: '2018-10-20T08:00:00Z',
   },
   {
     id: 'user-041',
@@ -473,7 +473,7 @@ export const USERS: User[] = [
     companyId: 'comp-012',
     isActive: true,
     lastLogin: '2024-12-17T21:30:00Z',
-    createdAt: '2019-03-05T10:00:00Z'
+    createdAt: '2019-03-05T10:00:00Z',
   },
   {
     id: 'user-042',
@@ -484,7 +484,7 @@ export const USERS: User[] = [
     companyId: 'comp-012',
     isActive: true,
     lastLogin: '2024-12-18T06:00:00Z',
-    createdAt: '2020-07-22T09:30:00Z'
+    createdAt: '2020-07-22T09:30:00Z',
   },
 
   // AeroSpace Dynamics (comp-013) - Aerospace
@@ -497,7 +497,7 @@ export const USERS: User[] = [
     companyId: 'comp-013',
     isActive: true,
     lastLogin: '2024-12-18T14:30:00Z',
-    createdAt: '2010-07-10T08:00:00Z'
+    createdAt: '2010-07-10T08:00:00Z',
   },
   {
     id: 'user-044',
@@ -508,7 +508,7 @@ export const USERS: User[] = [
     companyId: 'comp-013',
     isActive: true,
     lastLogin: '2024-12-17T12:00:00Z',
-    createdAt: '2011-11-25T10:30:00Z'
+    createdAt: '2011-11-25T10:30:00Z',
   },
   {
     id: 'user-045',
@@ -519,7 +519,7 @@ export const USERS: User[] = [
     companyId: 'comp-013',
     isActive: true,
     lastLogin: '2024-12-18T09:00:00Z',
-    createdAt: '2014-06-18T07:45:00Z'
+    createdAt: '2014-06-18T07:45:00Z',
   },
 
   // GourmetChef Foods (comp-014) - Food & Beverage
@@ -532,7 +532,7 @@ export const USERS: User[] = [
     companyId: 'comp-014',
     isActive: true,
     lastLogin: '2024-12-18T08:45:00Z',
-    createdAt: '2016-03-25T09:00:00Z'
+    createdAt: '2016-03-25T09:00:00Z',
   },
   {
     id: 'user-047',
@@ -543,7 +543,7 @@ export const USERS: User[] = [
     companyId: 'comp-014',
     isActive: true,
     lastLogin: '2024-12-17T17:00:00Z',
-    createdAt: '2017-08-10T10:30:00Z'
+    createdAt: '2017-08-10T10:30:00Z',
   },
   {
     id: 'user-048',
@@ -554,7 +554,7 @@ export const USERS: User[] = [
     companyId: 'comp-014',
     isActive: true,
     lastLogin: '2024-12-18T07:00:00Z',
-    createdAt: '2019-01-05T08:00:00Z'
+    createdAt: '2019-01-05T08:00:00Z',
   },
 
   // Stellar Entertainment (comp-015) - Media & Entertainment
@@ -567,7 +567,7 @@ export const USERS: User[] = [
     companyId: 'comp-015',
     isActive: true,
     lastLogin: '2024-12-18T15:00:00Z',
-    createdAt: '2017-12-01T10:00:00Z'
+    createdAt: '2017-12-01T10:00:00Z',
   },
   {
     id: 'user-050',
@@ -578,7 +578,7 @@ export const USERS: User[] = [
     companyId: 'comp-015',
     isActive: true,
     lastLogin: '2024-12-17T14:30:00Z',
-    createdAt: '2018-06-20T11:00:00Z'
+    createdAt: '2018-06-20T11:00:00Z',
   },
 
   // BuildRight Construction (comp-016) - Construction
@@ -591,7 +591,7 @@ export const USERS: User[] = [
     companyId: 'comp-016',
     isActive: true,
     lastLogin: '2024-12-18T05:00:00Z',
-    createdAt: '2013-04-15T08:00:00Z'
+    createdAt: '2013-04-15T08:00:00Z',
   },
   {
     id: 'user-052',
@@ -602,7 +602,7 @@ export const USERS: User[] = [
     companyId: 'comp-016',
     isActive: true,
     lastLogin: '2024-12-17T16:00:00Z',
-    createdAt: '2014-09-28T10:30:00Z'
+    createdAt: '2014-09-28T10:30:00Z',
   },
   {
     id: 'user-053',
@@ -613,7 +613,7 @@ export const USERS: User[] = [
     companyId: 'comp-016',
     isActive: true,
     lastLogin: '2024-12-18T04:30:00Z',
-    createdAt: '2016-02-14T09:00:00Z'
+    createdAt: '2016-02-14T09:00:00Z',
   },
 
   // PharmaCore Industries (comp-017) - Pharmaceuticals
@@ -626,7 +626,7 @@ export const USERS: User[] = [
     companyId: 'comp-017',
     isActive: true,
     lastLogin: '2024-12-18T07:30:00Z',
-    createdAt: '2011-09-10T08:00:00Z'
+    createdAt: '2011-09-10T08:00:00Z',
   },
   {
     id: 'user-055',
@@ -637,7 +637,7 @@ export const USERS: User[] = [
     companyId: 'comp-017',
     isActive: true,
     lastLogin: '2024-12-17T13:00:00Z',
-    createdAt: '2012-04-22T10:00:00Z'
+    createdAt: '2012-04-22T10:00:00Z',
   },
   {
     id: 'user-056',
@@ -648,7 +648,7 @@ export const USERS: User[] = [
     companyId: 'comp-017',
     isActive: true,
     lastLogin: '2024-12-18T06:15:00Z',
-    createdAt: '2015-08-30T09:30:00Z'
+    createdAt: '2015-08-30T09:30:00Z',
   },
 
   // TravelWise Tours (comp-018) - Travel & Tourism
@@ -661,7 +661,7 @@ export const USERS: User[] = [
     companyId: 'comp-018',
     isActive: true,
     lastLogin: '2024-12-18T00:30:00Z',
-    createdAt: '2015-02-20T08:00:00Z'
+    createdAt: '2015-02-20T08:00:00Z',
   },
   {
     id: 'user-058',
@@ -672,18 +672,18 @@ export const USERS: User[] = [
     companyId: 'comp-018',
     isActive: true,
     lastLogin: '2024-12-17T22:15:00Z',
-    createdAt: '2016-07-08T10:30:00Z'
+    createdAt: '2016-07-08T10:30:00Z',
   },
   {
     id: 'user-059',
-    name: 'Liam O\'Connor',
+    name: "Liam O'Connor",
     email: 'liam.oconnor@travelwise.au',
     avatarUrl: 'https://i.pravatar.cc/150?u=liam-oconnor',
     role: UserRole.User,
     companyId: 'comp-018',
     isActive: true,
     lastLogin: '2024-12-17T23:45:00Z',
-    createdAt: '2018-11-22T09:00:00Z'
+    createdAt: '2018-11-22T09:00:00Z',
   },
 
   // SmartHome Devices (comp-019) - Consumer Electronics
@@ -696,7 +696,7 @@ export const USERS: User[] = [
     companyId: 'comp-019',
     isActive: true,
     lastLogin: '2024-12-18T01:00:00Z',
-    createdAt: '2018-06-30T08:00:00Z'
+    createdAt: '2018-06-30T08:00:00Z',
   },
   {
     id: 'user-061',
@@ -707,7 +707,7 @@ export const USERS: User[] = [
     companyId: 'comp-019',
     isActive: true,
     lastLogin: '2024-12-17T18:00:00Z',
-    createdAt: '2019-02-14T10:00:00Z'
+    createdAt: '2019-02-14T10:00:00Z',
   },
   {
     id: 'user-062',
@@ -718,7 +718,7 @@ export const USERS: User[] = [
     companyId: 'comp-019',
     isActive: true,
     lastLogin: '2024-12-18T00:15:00Z',
-    createdAt: '2020-09-05T09:30:00Z'
+    createdAt: '2020-09-05T09:30:00Z',
   },
 
   // LegalEase Partners (comp-020) - Legal Services
@@ -731,7 +731,7 @@ export const USERS: User[] = [
     companyId: 'comp-020',
     isActive: true,
     lastLogin: '2024-12-18T10:45:00Z',
-    createdAt: '2014-08-25T09:00:00Z'
+    createdAt: '2014-08-25T09:00:00Z',
   },
   {
     id: 'user-064',
@@ -742,7 +742,7 @@ export const USERS: User[] = [
     companyId: 'comp-020',
     isActive: true,
     lastLogin: '2024-12-17T15:30:00Z',
-    createdAt: '2015-12-10T10:30:00Z'
+    createdAt: '2015-12-10T10:30:00Z',
   },
   {
     id: 'user-065',
@@ -753,6 +753,6 @@ export const USERS: User[] = [
     companyId: 'comp-020',
     isActive: true,
     lastLogin: '2024-12-18T09:30:00Z',
-    createdAt: '2017-05-18T08:00:00Z'
-  }
+    createdAt: '2017-05-18T08:00:00Z',
+  },
 ];

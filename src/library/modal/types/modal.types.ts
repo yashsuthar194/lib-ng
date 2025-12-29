@@ -7,10 +7,10 @@
 // ============================================
 
 /** How the modal was closed - provides context for handling the result */
-export type ModalCloseReason = 
-  | 'button'        // User clicked a button (confirm, cancel, etc.)
-  | 'backdrop'      // User clicked the backdrop overlay
-  | 'escape'        // User pressed Escape key
+export type ModalCloseReason =
+  | 'button' // User clicked a button (confirm, cancel, etc.)
+  | 'backdrop' // User clicked the backdrop overlay
+  | 'escape' // User pressed Escape key
   | 'programmatic'; // Closed via code (e.g., navigation, timeout)
 
 /** Result returned when modal closes */
@@ -26,19 +26,19 @@ export interface ModalCloseResult<R = unknown> {
 // ============================================
 
 /** Available animation styles for modal entry/exit */
-export type ModalAnimation = 
-  | 'fade'        // Simple opacity fade in/out
-  | 'scale'       // Scale from 0.95 with fade (Material-style)
-  | 'slide-up'    // Slide in from bottom of screen
-  | 'slide-down'  // Slide in from top of screen
-  | 'origin'      // Animate from trigger element position
-  | 'none';       // No animation (instant)
+export type ModalAnimation =
+  | 'fade' // Simple opacity fade in/out
+  | 'scale' // Scale from 0.95 with fade (Material-style)
+  | 'slide-up' // Slide in from bottom of screen
+  | 'slide-down' // Slide in from top of screen
+  | 'origin' // Animate from trigger element position
+  | 'none'; // No animation (instant)
 
 /** Animation timing configuration */
 export interface ModalAnimationConfig {
-  enterDuration?: number;  // Default: 200ms
-  exitDuration?: number;   // Default: 150ms
-  easing?: string;         // Default: 'ease-out'
+  enterDuration?: number; // Default: 200ms
+  exitDuration?: number; // Default: 150ms
+  easing?: string; // Default: 'ease-out'
 }
 
 // ============================================
@@ -49,7 +49,7 @@ export interface ModalAnimationConfig {
 export interface ModalConfig<D = unknown> {
   /** Data to inject into the modal component */
   data?: D;
-  
+
   // --- Sizing ---
   /** Width of the modal panel (e.g., '400px', '50vw', 'auto') */
   width?: string;
@@ -61,18 +61,18 @@ export interface ModalConfig<D = unknown> {
   height?: string;
   /** Maximum height constraint */
   maxHeight?: string;
-  
+
   // --- Animation ---
   /** Animation type for entry/exit */
   animation?: ModalAnimation;
   /** Animation timing configuration */
   animationConfig?: ModalAnimationConfig;
-  /** 
+  /**
    * Origin element for 'origin' animation.
    * The modal will appear to animate from this element's position.
    */
   animationOrigin?: HTMLElement | DOMRect | 'center' | 'top' | 'bottom';
-  
+
   // --- Behavior ---
   /** Close when clicking backdrop. Default: true */
   closeOnBackdrop?: boolean;
@@ -80,13 +80,13 @@ export interface ModalConfig<D = unknown> {
   closeOnEscape?: boolean;
   /** Show backdrop overlay. Default: true */
   hasBackdrop?: boolean;
-  
+
   // --- Styling ---
   /** Additional CSS class(es) for backdrop */
   backdropClass?: string | string[];
   /** Additional CSS class(es) for modal panel */
   panelClass?: string | string[];
-  
+
   // --- Accessibility ---
   /** ARIA label for the dialog */
   ariaLabel?: string;
@@ -94,7 +94,7 @@ export interface ModalConfig<D = unknown> {
   ariaLabelledBy?: string;
   /** ID of element that describes the dialog */
   ariaDescribedBy?: string;
-  /** 
+  /**
    * Focus behavior on open.
    * - true/'first-tabbable': Focus first tabbable element
    * - 'dialog': Focus the dialog container
@@ -103,7 +103,7 @@ export interface ModalConfig<D = unknown> {
   autoFocus?: boolean | 'first-tabbable' | 'dialog';
   /** Restore focus to trigger element on close. Default: true */
   restoreFocus?: boolean;
-  
+
   // --- Advanced ---
   /** Role for the dialog. Default: 'dialog' */
   role?: 'dialog' | 'alertdialog';
@@ -168,7 +168,7 @@ export function getAnimationOrigin(
       height: 0,
     };
   }
-  
+
   if (origin === 'top') {
     return {
       x: viewportWidth / 2,
@@ -177,7 +177,7 @@ export function getAnimationOrigin(
       height: 0,
     };
   }
-  
+
   if (origin === 'bottom') {
     return {
       x: viewportWidth / 2,
@@ -186,7 +186,7 @@ export function getAnimationOrigin(
       height: 0,
     };
   }
-  
+
   // HTMLElement
   if (origin instanceof HTMLElement) {
     const rect = origin.getBoundingClientRect();
@@ -197,7 +197,7 @@ export function getAnimationOrigin(
       height: rect.height,
     };
   }
-  
+
   // DOMRect
   if ('x' in origin && 'y' in origin) {
     return {
@@ -207,7 +207,7 @@ export function getAnimationOrigin(
       height: origin.height,
     };
   }
-  
+
   // Fallback to center
   return {
     x: viewportWidth / 2,

@@ -25,7 +25,7 @@ const FOCUSABLE_SELECTOR = [
 /**
  * Directive that traps focus within the host element.
  * Essential for accessible modals, dialogs, and overlays.
- * 
+ *
  * @example
  * ```html
  * <div class="modal" libFocusTrap [libFocusTrapAutoFocus]="true">
@@ -46,15 +46,15 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
 
   /** Whether focus trap is active. Default: true */
   readonly enabled = input(true, { alias: 'libFocusTrapEnabled' });
-  
+
   /** Auto-focus first element on init. Default: true */
-  readonly autoFocus = input<boolean | 'first-tabbable' | 'dialog'>(true, { 
-    alias: 'libFocusTrapAutoFocus' 
+  readonly autoFocus = input<boolean | 'first-tabbable' | 'dialog'>(true, {
+    alias: 'libFocusTrapAutoFocus',
   });
-  
+
   /** Element to focus on init (if autoFocus is true) */
-  readonly initialFocus = input<HTMLElement | string | null>(null, { 
-    alias: 'libFocusTrapInitialFocus' 
+  readonly initialFocus = input<HTMLElement | string | null>(null, {
+    alias: 'libFocusTrapInitialFocus',
   });
 
   private keydownListener: ((event: KeyboardEvent) => void) | null = null;
@@ -69,13 +69,13 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
-    
+
     this.setupKeydownListener();
   }
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
-    
+
     // Auto-focus after the view is initialized
     if (this.autoFocus()) {
       // Small delay to ensure content is rendered
@@ -85,7 +85,7 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.removeKeydownListener();
-    
+
     // Restore focus to the previously active element
     if (this.previousActiveElement instanceof HTMLElement) {
       this.previousActiveElement.focus();
@@ -99,15 +99,11 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
     const host = this.elementRef.nativeElement;
     const nodeList = host.querySelectorAll(FOCUSABLE_SELECTOR);
     const elements = Array.from(nodeList) as HTMLElement[];
-    
+
     // Filter out elements that are not visible or are inside hidden containers
     return elements.filter((el: HTMLElement) => {
       const style = window.getComputedStyle(el);
-      return (
-        style.display !== 'none' &&
-        style.visibility !== 'hidden' &&
-        el.offsetParent !== null
-      );
+      return style.display !== 'none' && style.visibility !== 'hidden' && el.offsetParent !== null;
     });
   }
 
@@ -138,23 +134,23 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
     const host = this.elementRef.nativeElement;
     const autoFocusValue = this.autoFocus();
     const initialFocusValue = this.initialFocus();
-    
+
     // Check for specific initial focus element
     if (initialFocusValue) {
       let elementToFocus: HTMLElement | null = null;
-      
+
       if (typeof initialFocusValue === 'string') {
         elementToFocus = host.querySelector(initialFocusValue) as HTMLElement | null;
       } else if (initialFocusValue instanceof HTMLElement) {
         elementToFocus = initialFocusValue;
       }
-      
+
       if (elementToFocus) {
         elementToFocus.focus();
         return;
       }
     }
-    
+
     // Auto-focus based on mode
     if (autoFocusValue === 'dialog') {
       // Focus the dialog container itself
@@ -180,13 +176,19 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
 
       if (event.shiftKey) {
         // Shift + Tab: Going backwards
-        if (activeElement === firstElement || !this.elementRef.nativeElement.contains(activeElement)) {
+        if (
+          activeElement === firstElement ||
+          !this.elementRef.nativeElement.contains(activeElement)
+        ) {
           event.preventDefault();
           lastElement.focus();
         }
       } else {
         // Tab: Going forwards
-        if (activeElement === lastElement || !this.elementRef.nativeElement.contains(activeElement)) {
+        if (
+          activeElement === lastElement ||
+          !this.elementRef.nativeElement.contains(activeElement)
+        ) {
           event.preventDefault();
           firstElement.focus();
         }

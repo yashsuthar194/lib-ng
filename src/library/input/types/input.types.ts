@@ -7,15 +7,15 @@
 // ============================================
 
 /** Supported input types */
-export type InputType = 
-  | 'text' 
-  | 'email' 
-  | 'password' 
-  | 'number' 
-  | 'tel' 
-  | 'url' 
-  | 'search' 
-  | 'date' 
+export type InputType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
+  | 'date'
   | 'time'
   | 'datetime-local';
 
@@ -26,7 +26,7 @@ export type InputSize = 'sm' | 'md' | 'lg';
 export type InputVariant = 'outline' | 'filled' | 'underline';
 
 /** Autocomplete options for security */
-export type InputAutocomplete = 
+export type InputAutocomplete =
   | 'off'
   | 'on'
   | 'name'
@@ -65,7 +65,19 @@ export const DEFAULT_INPUT_CONFIG: Required<InputConfig> = {
 
 /** Height values for each size (in px, for reference) */
 export const INPUT_SIZE_MAP = {
-  sm: { height: 32, fontSize: 'var(--lib-font-size-sm)', padding: 'var(--lib-spacing-2) var(--lib-spacing-3)' },
-  md: { height: 40, fontSize: 'var(--lib-font-size-base)', padding: 'var(--lib-spacing-2) var(--lib-spacing-4)' },
-  lg: { height: 48, fontSize: 'var(--lib-font-size-lg)', padding: 'var(--lib-spacing-3) var(--lib-spacing-4)' },
+  sm: {
+    height: 32,
+    fontSize: 'var(--lib-font-size-sm)',
+    padding: 'var(--lib-spacing-2) var(--lib-spacing-3)',
+  },
+  md: {
+    height: 40,
+    fontSize: 'var(--lib-font-size-base)',
+    padding: 'var(--lib-spacing-2) var(--lib-spacing-4)',
+  },
+  lg: {
+    height: 48,
+    fontSize: 'var(--lib-font-size-lg)',
+    padding: 'var(--lib-spacing-3) var(--lib-spacing-4)',
+  },
 } as const;

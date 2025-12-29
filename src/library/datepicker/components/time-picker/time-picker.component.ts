@@ -63,7 +63,7 @@ import type { TimeValue, TimeFormat, DatePickerSize } from '../../types/datepick
         (click)="toggleDropdown()"
         (keydown)="onInputKeyDown($event)"
       />
-      
+
       <button
         type="button"
         class="lib-time-picker__toggle"
@@ -122,7 +122,11 @@ import type { TimeValue, TimeFormat, DatePickerSize } from '../../types/datepick
 
           <!-- AM/PM Column (12h format only) -->
           @if (format() === '12h') {
-            <div class="lib-time-picker__column lib-time-picker__column--period" role="listbox" aria-label="Period">
+            <div
+              class="lib-time-picker__column lib-time-picker__column--period"
+              role="listbox"
+              aria-label="Period"
+            >
               <button
                 type="button"
                 class="lib-time-picker__option"
@@ -149,18 +153,8 @@ import type { TimeValue, TimeFormat, DatePickerSize } from '../../types/datepick
 
         <!-- Footer -->
         <div class="lib-time-picker__footer">
-          <button
-            type="button"
-            class="lib-time-picker__now-btn"
-            (click)="selectNow()"
-          >
-            Now
-          </button>
-          <button
-            type="button"
-            class="lib-time-picker__ok-btn"
-            (click)="confirmSelection()"
-          >
+          <button type="button" class="lib-time-picker__now-btn" (click)="selectNow()">Now</button>
+          <button type="button" class="lib-time-picker__ok-btn" (click)="confirmSelection()">
             OK
           </button>
         </div>
@@ -242,8 +236,14 @@ import type { TimeValue, TimeFormat, DatePickerSize } from '../../types/datepick
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .lib-time-picker__columns {
@@ -329,7 +329,9 @@ import type { TimeValue, TimeFormat, DatePickerSize } from '../../types/datepick
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lib-time-picker__dropdown { animation: none; }
+      .lib-time-picker__dropdown {
+        animation: none;
+      }
     }
   `,
 })
@@ -431,7 +433,7 @@ export class TimePickerComponent implements ControlValueAccessor {
 
   readonly hours = computed(() => {
     if (this.format() === '12h') {
-      return Array.from({ length: 12 }, (_, i) => i === 0 ? 12 : i);
+      return Array.from({ length: 12 }, (_, i) => (i === 0 ? 12 : i));
     }
     return Array.from({ length: 24 }, (_, i) => i);
   });
@@ -490,7 +492,7 @@ export class TimePickerComponent implements ControlValueAccessor {
       this.selectedHour.set(hours);
     }
     this.selectedMinute.set(minutes);
-    
+
     // Also update the actual value so input reflects the change
     this.setValue({ hours, minutes });
 

@@ -2,25 +2,25 @@ export enum UserRole {
   Admin = 'admin',
   Manager = 'manager',
   User = 'user',
-  Guest = 'guest'
+  Guest = 'guest',
 }
 
 export enum ProjectStatus {
   Active = 'active',
   Completed = 'completed',
-  OnHold = 'on-hold'
+  OnHold = 'on-hold',
 }
 
 export enum TaskPriority {
   Low = 'low',
   Medium = 'medium',
   High = 'high',
-  Critical = 'critical'
+  Critical = 'critical',
 }
 
 export enum TaskStatus {
   Todo = 'todo',
   InProgress = 'in-progress',
   Review = 'review',
-  Done = 'done'
+  Done = 'done',
 }

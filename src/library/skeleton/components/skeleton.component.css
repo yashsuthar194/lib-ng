@@ -123,8 +123,7 @@
   will-change: transform;
 
   /* Animation */
-  animation: skeleton-shimmer var(--skeleton-duration) var(--skeleton-easing)
-    infinite;
+  animation: skeleton-shimmer var(--skeleton-duration) var(--skeleton-easing) infinite;
 }
 
 @keyframes skeleton-shimmer {
@@ -142,8 +141,7 @@
    ======================================== */
 
 .lib-skeleton--pulse {
-  animation: skeleton-pulse var(--skeleton-duration) var(--skeleton-easing)
-    infinite;
+  animation: skeleton-pulse var(--skeleton-duration) var(--skeleton-easing) infinite;
   will-change: opacity;
 }
 

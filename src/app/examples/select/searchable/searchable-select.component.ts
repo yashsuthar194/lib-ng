@@ -15,8 +15,8 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       <section class="example-section">
         <h2>Search Countries</h2>
         <div class="example-demo">
-          <lib-select 
-            [(value)]="selectedCountry" 
+          <lib-select
+            [(value)]="selectedCountry"
             [searchable]="true"
             placeholder="Search countries..."
             searchPlaceholder="Type to filter..."
@@ -28,7 +28,7 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
               </lib-option>
             }
           </lib-select>
-          
+
           <div class="example-output">
             <strong>Selected:</strong> {{ getCountryName(selectedCountry()) }}
           </div>
@@ -38,8 +38,8 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       <section class="example-section">
         <h2>Search Programming Languages</h2>
         <div class="example-demo">
-          <lib-select 
-            [(value)]="selectedLang" 
+          <lib-select
+            [(value)]="selectedLang"
             [searchable]="true"
             placeholder="Select a language..."
           >
@@ -51,59 +51,61 @@ import { SelectComponent, OptionComponent } from '../../../../library/select';
       </section>
     </div>
   `,
-  styles: [`
-    .example-page {
-      max-width: 600px;
-    }
+  styles: [
+    `
+      .example-page {
+        max-width: 600px;
+      }
 
-    .example-header {
-      margin-block-end: var(--lib-spacing-8);
-    }
+      .example-header {
+        margin-block-end: var(--lib-spacing-8);
+      }
 
-    .example-header h1 {
-      font-size: var(--lib-font-size-2xl);
-      font-weight: var(--lib-font-weight-bold);
-      color: var(--lib-color-neutral-900);
-      margin-block-end: var(--lib-spacing-2);
-    }
+      .example-header h1 {
+        font-size: var(--lib-font-size-2xl);
+        font-weight: var(--lib-font-weight-bold);
+        color: var(--lib-color-neutral-900);
+        margin-block-end: var(--lib-spacing-2);
+      }
 
-    .example-header p {
-      color: var(--lib-color-neutral-600);
-      margin: 0;
-    }
+      .example-header p {
+        color: var(--lib-color-neutral-600);
+        margin: 0;
+      }
 
-    .example-section {
-      margin-block-end: var(--lib-spacing-8);
-    }
+      .example-section {
+        margin-block-end: var(--lib-spacing-8);
+      }
 
-    .example-section h2 {
-      font-size: var(--lib-font-size-lg);
-      font-weight: var(--lib-font-weight-semibold);
-      color: var(--lib-color-neutral-800);
-      margin-block-end: var(--lib-spacing-4);
-    }
+      .example-section h2 {
+        font-size: var(--lib-font-size-lg);
+        font-weight: var(--lib-font-weight-semibold);
+        color: var(--lib-color-neutral-800);
+        margin-block-end: var(--lib-spacing-4);
+      }
 
-    .example-demo {
-      padding: var(--lib-spacing-6);
-      background: var(--lib-color-neutral-0);
-      border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
-      border-radius: var(--lib-border-radius-lg);
-    }
+      .example-demo {
+        padding: var(--lib-spacing-6);
+        background: var(--lib-color-neutral-0);
+        border: var(--lib-border-width-thin) solid var(--lib-color-neutral-200);
+        border-radius: var(--lib-border-radius-lg);
+      }
 
-    .example-output {
-      margin-block-start: var(--lib-spacing-4);
-      padding: var(--lib-spacing-3);
-      background: var(--lib-color-neutral-50);
-      border-radius: var(--lib-border-radius-base);
-      font-size: var(--lib-font-size-sm);
-      color: var(--lib-color-neutral-600);
-    }
+      .example-output {
+        margin-block-start: var(--lib-spacing-4);
+        padding: var(--lib-spacing-3);
+        background: var(--lib-color-neutral-50);
+        border-radius: var(--lib-border-radius-base);
+        font-size: var(--lib-font-size-sm);
+        color: var(--lib-color-neutral-600);
+      }
 
-    .country-flag {
-      font-size: 1.25em;
-      margin-inline-end: var(--lib-spacing-2);
-    }
-  `]
+      .country-flag {
+        font-size: 1.25em;
+        margin-inline-end: var(--lib-spacing-2);
+      }
+    `,
+  ],
 })
 export class SearchableSelectExampleComponent {
   selectedCountry = signal<string | null>(null);
@@ -128,9 +130,21 @@ export class SearchableSelectExampleComponent {
   ];
 
   languages = [
-    'TypeScript', 'JavaScript', 'Python', 'Java', 'C#', 
-    'Go', 'Rust', 'Swift', 'Kotlin', 'Ruby',
-    'PHP', 'C++', 'Scala', 'Dart', 'Elixir'
+    'TypeScript',
+    'JavaScript',
+    'Python',
+    'Java',
+    'C#',
+    'Go',
+    'Rust',
+    'Swift',
+    'Kotlin',
+    'Ruby',
+    'PHP',
+    'C++',
+    'Scala',
+    'Dart',
+    'Elixir',
   ];
 
   getCountryName(code: string | null): string {

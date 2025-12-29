@@ -73,7 +73,8 @@ import {
             <lib-skeleton variant="circle" size="2xl" />
           </div>
           <div class="size-labels">
-            <span>XS</span><span>SM</span><span>MD</span><span>LG</span><span>XL</span><span>2XL</span>
+            <span>XS</span><span>SM</span><span>MD</span><span>LG</span><span>XL</span
+            ><span>2XL</span>
           </div>
         </div>
       </section>
@@ -225,7 +226,7 @@ import {
         <p class="hint">Use the *libSkeleton directive for conditional rendering.</p>
         <div class="code-block">
           <code>&lt;div *libSkeleton="isLoading; preset: 'card'"&gt;</code>
-          <code>  Actual content here</code>
+          <code> Actual content here</code>
           <code>&lt;/div&gt;</code>
         </div>
       </section>
@@ -499,6 +500,6 @@ export class SkeletonExampleComponent {
   readonly isLoading = signal(true);
 
   toggleLoading(): void {
-    this.isLoading.update((v) => !v);
+    this.isLoading.update(v => !v);
   }
 }
